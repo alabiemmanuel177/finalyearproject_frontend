@@ -1,0 +1,24 @@
+.loginEmail {
+}
+.focus:focus {
+  border-color: blue !important;
+}
+.loginPassword {
+}
+.loginBtn {
+  background-color: orange !important;
+}
+.loginBtn:hover {
+  background-color: orangered !important;
+}
+.LoginForm input,
+button {
+  width: 500px;
+  padding: 10px !important;
+  font-size: 26px !important;
+  border-radius: 10px;
+  border: 2px solid gray;
+}
+.LoginForm p {
+  color: rgb(12, 12, 122);
+}
