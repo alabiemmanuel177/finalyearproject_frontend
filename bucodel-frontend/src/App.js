@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Classroom } from './views/Classroom';
 import { Login } from './views/Login';
 import { PasswordReset } from './views/PasswordReset';
 
@@ -9,7 +10,8 @@ export const App = () => {
       <BrowserRouter>
       <Routes>
           <Route index element={<Login/>} path="/"/>
-          <Route index element={<PasswordReset/>} path="passwordreset"/>
+          <Route element={<PasswordReset/>} path="passwordreset"/>
+          <Route index element={<Classroom/>} path="classroom"/>
       </Routes>
       </BrowserRouter>
   )
