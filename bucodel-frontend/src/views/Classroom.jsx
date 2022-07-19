@@ -1,18 +1,20 @@
 import React from "react";
-import { Classroom_sidebar } from "../components/Classroom_sidebar";
-import "./css/Classroom.css"
+import { ClassroomSidebar } from "../components/ClassroomSidebar";
+import "./css/Classroom.css";
+import { ClassroomUtil } from "../components/ClassroomUtil";
+import { ClassroomMain } from "../components/ClassroomMain";
 
 export const Classroom = () => {
   return (
-    <div>
-      <div className="classroom_sidebar">
-        <Classroom_sidebar />
+    <div className="Classroom">
+      <div className="classroom_sidebar_container">
+        <ClassroomSidebar />
       </div>
-      <div className="classroom_main">
-
+      <div className="classroom_main_container">
+        <ClassroomMain />
       </div>
-      <div className="classroom_util">
-
+      <div className="classroom_util_container">
+        <ClassroomUtil />
       </div>
     </div>
   );

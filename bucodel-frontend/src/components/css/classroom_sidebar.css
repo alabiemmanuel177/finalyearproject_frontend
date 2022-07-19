@@ -15,16 +15,25 @@
   margin-bottom: 30px;
   border: 0;
 }
-.sidebar_button button:hover{
-    background-color: white;
+.sidebar_button button:hover {
+  background-color: white;
 }
-.blue{
-    color: rgb(12, 12, 122);
-    font-weight:bold;
+.blue {
+  color: rgb(12, 12, 122);
+  font-weight: bold;
+  align-items: center;
 }
-.sidebar_head{
-    margin-bottom: 100px !important;
+.sidebar_head {
+  margin-top: 50px !important;
+  margin-bottom: 100px !important;
 }
-.sidebar_util{
-    margin-top: 200px;
+.sidebar_util {
+  margin-top: 200px;
+}
+.head {
+  font-weight: bold;
+}
+.icon{
+  font-size: 45px;
+  margin-right: 10px;
 }

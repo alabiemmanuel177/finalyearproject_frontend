@@ -1,0 +1,122 @@
+.ClassroomMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.main_searchbar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.main_searchbar input {
+  font-size: 20px;
+  width: 90%;
+  border-radius: 30px;
+  padding: 10px;
+  border: solid 1px gray;
+  margin-top: 100px;
+}
+.classroom_maincard {
+  margin-top: 30px;
+  background-color: rgb(12, 12, 122);
+  height: 300px;
+  width: 95%;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+}
+.cm_card {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+}
+.cm_card_text {
+  color: white;
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+}
+.btn-viewsch {
+  background-color: white;
+  color: rgb(12, 12, 122);
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 15px;
+  font-weight: bold;
+  width: 160px;
+}
+.cm_card_svg {
+  width: 50%;
+}
+.classroomActions {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+.assignment_Card {
+  width: 45%;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.noticeBoard_card {
+  width: 45%;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.action {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  border-radius: 15px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.actionhead {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.actionhead h5{
+    color: coral;
+}
+.opt-icon {
+  font-size: 30px;
+}
+.action_icon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.action_text {
+  margin-left: 10px;
+}
+.notice {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  margin-bottom: 20px;
+}
+.notice_icon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.lectr_notice h6 {
+  font-weight: bold;
+  margin-left: 10px;
+}
+.notice_text h5 {
+  font-weight: bold;
+}

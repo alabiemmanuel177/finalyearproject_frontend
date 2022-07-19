@@ -1,9 +1,13 @@
-.classroom_sidebar {
-  width: 25%;
+.Classroom{
+    display: flex;
+    flex-direction: row;
 }
-.classroom_main {
-  width: 50%;
+.classroom_sidebar_container{
+  width: 20%;
 }
-.classroom_util {
-  width: 25%;
+.classroom_main_container{
+  width: 60%;
+}
+.classroom_util_container{
+  width: 20%;
 }
