@@ -1,7 +1,7 @@
 import React from "react";
 import "./css/classroomMain.css";
 import { Actions } from "./actions";
-import { Notice } from "./css/notice";
+import { Notice } from "./notice";
 
 export const ClassroomMain = () => {
   return (
