@@ -20,7 +20,7 @@
   background-color: white;
 }
 .active{
-  background-color: white;
+  background-color: white !important;
 }
 .blue {
   color: rgb(12, 12, 122);

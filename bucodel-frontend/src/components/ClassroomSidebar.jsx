@@ -9,47 +9,63 @@ import { MdDashboard } from "react-icons/md";
 import { LogoutModal } from "./modal/LogoutModal";
 
 export const ClassroomSidebar = ({ active, setActive }) => {
+  
+  var btnContainer = document.getElementById("sidebar_button");
+  if (btnContainer !== null) {
+    var btns = btnContainer.getElementsByClassName("sidebarbtn");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function () {
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+      });
+    }
+  }
   const [showLogoutModal, setLogoutModal] = useState(false);
 
   const openLogoutModal = () => {
     setLogoutModal((prev) => !prev);
   };
 
-  var btnContainer = document.getElementById("sidebar_button")
-  var btns = document.getElementsByClassName("sidebarbtn");
-  for (var i = 0; i < btns.length; i++) {
-    btns[i].addEventListener("click", function() {
-      var current = document.getElementsByClassName("active");
-      current[0].className = current[0].className.replace(" active", "");
-      this.className += " active";
-    });
-  }
-
-
   return (
     <div className="classroom_sidebar">
       <h1 className="loginhead head sidebar_head">BUCODeL</h1>
       <div className="sidebar_button" id="sidebar_button">
-        <button className=" sidebarbtn active blue " onClick={() => setActive("Dashboard")}>
+        <button
+          className="sidebarbtn  active blue "
+          onClick={() => setActive("Dashboard")}
+        >
           <MdDashboard className="icon" />
           Dashboard
         </button>
-        <button className="sidebarbtn blue" onClick={() => setActive("Academics")}>
+        <button
+          className="sidebarbtn blue"
+          onClick={() => setActive("Academics")}
+        >
           <FaGraduationCap className="icon" />
           Academic Details
         </button>
-        <button className="sidebarbtn blue" onClick={() => setActive("Course Selection")}>
+        <button
+          className="sidebarbtn blue"
+          onClick={() => setActive("Course Selection")}
+        >
           <BsBookFill className="icon" />
           Course Selection
         </button>
-        <button className="sidebarbtn blue" onClick={() => setActive("Classroom")}>
+        <button
+          className="sidebarbtn blue"
+          onClick={() => setActive("Classroom")}
+        >
           <SiGoogleclassroom className="icon" />
           Classroom
         </button>
       </div>
       <div className="sidebar_util">
         <div className="sidebar_button">
-          <button className="sidebarbtn blue" onClick={() => setActive("Settings")}>
+          <button
+            className="sidebarbtn blue"
+            onClick={() => setActive("Settings")}
+          >
             <FcSettings className="icon" />
             Settings
           </button>

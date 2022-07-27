@@ -26,3 +26,6 @@
 .academicDetailsActions h5:hover{
     color: rgb(12, 12, 122) !important;
 }
+.activeaction{
+    color: rgb(12, 12, 122) !important;
+}

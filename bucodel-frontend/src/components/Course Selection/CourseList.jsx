@@ -30,109 +30,118 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 function createData(
+  Year,  
   CourseID,
-  Year,
   CourseTitle,
-  Hours,
-  CoursePassed,
-  Elective
+  Instructor,
+  Option,
+  Credit
 ) {
-  return { CourseID, Year, CourseTitle, Hours, CoursePassed, Elective };
+  return {  Year, CourseID, CourseTitle, Instructor, Option, Credit };
 }
 
 const rows = [
   createData(
-    "GEDS280",
     1,
+    "GEDS280",    
     "Software Requirements Engineering and Construction",
-    3,
-    "Yes",
-    "No"
+    "Dada Racheal",
+    "Software Engineering",
+    3
   ),
   createData(
-    "GEDS280",
     1,
+    "GEDS280",    
     "Software Requirements Engineering and Construction",
-    3,
-    "Yes",
-    "No"
-  ),
-  createData(
-    "GEDS280",
+    "Dada Racheal",
+    "Software Engineering",
+    3
+  ), createData(
     1,
+    "GEDS280",    
     "Software Requirements Engineering and Construction",
-    3,
-    "Yes",
-    "No"
-  ),
-  createData(
-    "GEDS280",
+    "Dada Racheal",
+    "Software Engineering",
+    3
+  ), createData(
     1,
+    "GEDS280",    
     "Software Requirements Engineering and Construction",
-    3,
-    "Yes",
-    "No"
-  ),
-  createData(
-    "GEDS280",
+    "Dada Racheal",
+    "Software Engineering",
+    3
+  ), createData(
     1,
+    "GEDS280",    
     "Software Requirements Engineering and Construction",
-    3,
-    "Yes",
-    "No"
-  ),
-  createData(
-    "GEDS280",
+    "Dada Racheal",
+    "Software Engineering",
+    3
+  ), createData(
     1,
+    "GEDS280",    
     "Software Requirements Engineering and Construction",
-    3,
-    "Yes",
-    "No"
-  ),
-  createData(
-    "GEDS280",
+    "Dada Racheal",
+    "Software Engineering",
+    3
+  ), createData(
     1,
+    "GEDS280",    
     "Software Requirements Engineering and Construction",
-    3,
-    "Yes",
-    "No"
-  ),
-  createData(
-    "GEDS280",
+    "Dada Racheal",
+    "Software Engineering",
+    3
+  ), createData(
     1,
+    "GEDS280",    
     "Software Requirements Engineering and Construction",
-    3,
-    "Yes",
-    "No"
+    "Dada Racheal",
+    "Software Engineering",
+    3
+  ), createData(
+    1,
+    "GEDS280",    
+    "Software Requirements Engineering and Construction",
+    "Dada Racheal",
+    "Software Engineering",
+    3
+  ), createData(
+    1,
+    "GEDS280",    
+    "Software Requirements Engineering and Construction",
+    "Dada Racheal",
+    "Software Engineering",
+    3
   ),
+  
 ];
 
-export const SelectCourses = () => {
+export const CourseList = () => {
   return (
     <>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell>Course ID</StyledTableCell>
               <StyledTableCell>Year</StyledTableCell>
+              <StyledTableCell>Course ID</StyledTableCell>
               <StyledTableCell>Course Title</StyledTableCell>
-              <StyledTableCell>Hours</StyledTableCell>
-              <StyledTableCell>Course Passed</StyledTableCell>
-              <StyledTableCell>Elective</StyledTableCell>
+              <StyledTableCell>Instructor</StyledTableCell>
+              <StyledTableCell>Option</StyledTableCell>
+              <StyledTableCell>Credit</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {rows.map((row) => (
               <StyledTableRow key={row.name}>
                 <StyledTableCell component="th" scope="row">
-                  {row.CourseID}
+                  {row.Year}
                 </StyledTableCell>
-                <StyledTableCell>{row.Year}</StyledTableCell>
+                <StyledTableCell>{row.CourseID}</StyledTableCell>
                 <StyledTableCell>{row.CourseTitle}</StyledTableCell>
-                <StyledTableCell>{row.Hours}</StyledTableCell>
-                <StyledTableCell>{row.CoursePassed}</StyledTableCell>
-                <StyledTableCell>{row.Elective}</StyledTableCell>
+                <StyledTableCell>{row.Instructor}</StyledTableCell>
+                <StyledTableCell>{row.Option}</StyledTableCell>
+                <StyledTableCell>{row.Credit}</StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>
