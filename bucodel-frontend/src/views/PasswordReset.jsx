@@ -19,6 +19,12 @@ export const PasswordReset = () => {
             <span> NB: There must be an existing email.</span>
           </h3>
         </div>
+        <div className="passwordResetsvg">
+          <img
+            src="https://res.cloudinary.com/manlikeemma/image/upload/v1659024081/BUCODEL/Password_Reset_q5xhmc.svg"
+            alt=""
+          />
+        </div>
       </div>
     </div>
   );

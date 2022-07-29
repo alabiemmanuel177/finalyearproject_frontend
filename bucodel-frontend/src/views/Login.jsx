@@ -13,14 +13,21 @@ export const Login = () => {
         <div className="logintext_container">
           <h1>Welcome Back!</h1>
           <h3>
-            Study and earn a degree in Babcock <br/>
+            Study and earn a degree in Babcock <br />
             University through its
             <span>
               {" "}
-              Center for Open <br/>
-              Distance and E-Learning(E-tech/ <br/>BUCODeL)
+              Center for Open <br />
+              Distance and E-Learning(E-tech/ <br />
+              BUCODeL)
             </span>
           </h3>
+        </div>
+        <div className="loginsvg">
+          <img
+            src="https://res.cloudinary.com/manlikeemma/image/upload/v1659024078/BUCODEL/Log_In_g36kpt.svg"
+            alt=""
+          />
         </div>
       </div>
     </div>

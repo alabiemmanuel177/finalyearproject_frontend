@@ -24,12 +24,30 @@
 .loginhead {
   color: rgb(12, 12, 122);
 }
-.logintext h1, span{
-    color: white;
+.logintext h1,
+span {
+  color: white;
 }
-.logintext h3{
-    color: rgb(177, 169, 169);
+.logintext h3 {
+  color: rgb(177, 169, 169);
 }
-.logintext_container{
-    margin-left: 15%;
+.logintext_container {
+  margin-left: 15%;
+  margin-bottom: 50px;
+}
+.loginsvg img {
+  position: absolute;
+  bottom: 0;
+  height: 400px;
+  /* -webkit-transform: scaleX(-1);
+  transform: scaleX(-1); */
+  right: 450px;
+}
+.passwordResetsvg img {
+  position: absolute;
+  bottom: 0;
+  height: 400px;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  right: 450px;
 }

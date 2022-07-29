@@ -12,7 +12,7 @@ export const ClassroomMain = () => {
       <div className="classroom_maincard">
         <div className="cm_card">
           <div className="cm_card_svg">
-            <img src="" alt="" />
+            <img src="https://res.cloudinary.com/manlikeemma/image/upload/v1659024083/BUCODEL/Reading_Time_jllnrk.svg" alt="" />
           </div>
           <div className="cm_card_text">
             <h3>Hello,</h3>

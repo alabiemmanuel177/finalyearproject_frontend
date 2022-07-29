@@ -1,12 +1,12 @@
 import React from "react";
-import "./css/AcademicDets.css";
+import "../css/AcademicDets.css";
 
-import { Utilheadicons } from "./utilheadicons";
+import { Utilheadicons } from "../utilheadicons";
 import { useState } from "react";
-import { SelectCourses } from "./Course Selection/SelectCourses";
-import { CourseList } from "./Course Selection/CourseList";
-import { OutstandingCourses } from "./Course Selection/OutstandingCourses";
-import { SpecialSelection } from "./Course Selection/SpecialSelection";
+import { SelectCourses } from "./SelectCourses";
+import { CourseList } from "./CourseList";
+import { OutstandingCourses } from "./OutstandingCourses";
+import { SpecialSelection } from "./SpecialSelection";
 
 export const CourseSelection = () => {
   const [active, setActive] = useState("SelectCourses");

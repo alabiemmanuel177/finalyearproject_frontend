@@ -51,6 +51,11 @@
 }
 .cm_card_svg {
   width: 50%;
+  display: flex;
+  justify-content: center;
+}
+.cm_card_svg img {
+  height: 250px;
 }
 .classroomActions {
   display: flex;
@@ -87,8 +92,8 @@
   flex-direction: row;
   justify-content: space-between;
 }
-.actionhead h5{
-    color: coral;
+.actionhead h5 {
+  color: coral;
 }
 .opt-icon {
   font-size: 30px;
