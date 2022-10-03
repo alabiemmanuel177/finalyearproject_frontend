@@ -2,7 +2,6 @@ import React from "react";
 import "./css/classroomMain.css";
 import { Actions } from "./actions";
 import { Notice } from "./notice";
-import { deepOrange } from "@mui/material/colors";
 
 export const ClassroomMain = () => {
   return (
