@@ -5,7 +5,6 @@ import { Notice } from "./notice";
 import { deepOrange } from "@mui/material/colors";
 
 export const ClassroomMain = () => {
-
   return (
     <div className="ClassroomMain">
       <div className="main_searchbar ">
@@ -30,10 +29,10 @@ export const ClassroomMain = () => {
         <div className="assignment_Card">
           <div className="actionhead">
             <h3>Assignments</h3>
-            <h6>See all</h6>
+            <h6 className=" underline">See all</h6>
           </div>
           <div className="assIcons">
-            <Actions colour={deepOrange} setColour={deepOrange} />
+            <Actions />
             <Actions />
             <Actions />
             <Actions />
@@ -42,7 +41,7 @@ export const ClassroomMain = () => {
         <div className="noticeBoard_card">
           <div className="actionhead">
             <h3>Noticeboard</h3>
-            <h6>See all</h6>
+            <h6 className="bluue underline">See all</h6>
           </div>
           <Notice />
           <Notice />

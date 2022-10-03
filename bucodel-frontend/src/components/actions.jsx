@@ -13,7 +13,7 @@ export const Actions = () => {
           </Avatar>
         </div>
         <div className="action_text">
-          <h5>Operation research</h5> <h6>10 marks</h6>
+          <h6>Operation Research</h6> <h6 className="grey">10 marks</h6>
         </div>
       </div>
       <div className="action_opt">

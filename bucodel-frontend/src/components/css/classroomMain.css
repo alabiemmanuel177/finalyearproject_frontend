@@ -14,23 +14,25 @@
   width: 85%;
   border-radius: 30px;
   padding: 10px;
-  border: solid 1px gray;
+  border: 0;
   margin-top: 5%;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .classroom_maincard {
   margin-top: 30px;
   background-color: rgb(38, 38, 199);
-  height: 300px;
   width: 85%;
   border-radius: 20px;
   display: flex;
   justify-content: center;
+  margin-bottom: 30px;
 }
 .cm_card {
   display: flex;
   flex-direction: row;
   height: 100%;
   width: 100%;
+  padding: 10px;
 }
 .cm_card_text {
   color: white;
@@ -60,7 +62,7 @@ buttton {
   justify-content: center;
 }
 .cm_card_svg img {
-  height: 250px;
+  height: 200px;
   margin-left: 10%;
 }
 .classroomActions {
@@ -74,7 +76,7 @@ buttton {
   width: 45%;
   padding: 20px;
   border-radius: 20px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .assIcons {
   display: flex;
@@ -85,7 +87,7 @@ buttton {
   width: 45%;
   padding: 20px;
   border-radius: 20px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .action {
   display: flex;
@@ -93,13 +95,13 @@ buttton {
   padding: 5px;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 25px;
+  margin-bottom: 35px;
   border-radius: 15px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   width: 350px;
 }
 .actionhead {
-  margin-bottom: 10px;
+  margin-bottom: 40px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -122,12 +124,24 @@ buttton {
 .action_text {
   margin-left: 10px;
 }
+.action_text h6 {
+  font-weight: bold;
+}
+.grey{
+  color: rgb(211, 206, 206);
+}
+.underline{
+  text-decoration: underline;
+}
+.bluue{
+  color: blue !important;
+}
 .notice {
   display: flex;
   flex-direction: column;
   padding: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   border-radius: 10px;
 }
 .notice_icon {
