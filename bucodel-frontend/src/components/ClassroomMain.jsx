@@ -2,11 +2,9 @@ import React from "react";
 import "./css/classroomMain.css";
 import { Actions } from "./actions";
 import { Notice } from "./notice";
-import { useState } from "react";
 import { deepOrange } from "@mui/material/colors";
 
 export const ClassroomMain = () => {
-  const [colour, setColour] = useState();
 
   return (
     <div className="ClassroomMain">

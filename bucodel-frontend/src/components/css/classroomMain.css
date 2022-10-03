@@ -15,7 +15,7 @@
   border-radius: 30px;
   padding: 10px;
   border: solid 1px gray;
-  margin-top: 100px;
+  margin-top: 5%;
 }
 .classroom_maincard {
   margin-top: 30px;
@@ -40,6 +40,11 @@
   justify-content: center;
   padding: 10px;
 }
+.cm_card_text h3,
+h1,
+buttton {
+  margin-left: 10%;
+}
 .btn-viewsch {
   background-color: white;
   color: rgb(12, 12, 122);
@@ -56,6 +61,7 @@
 }
 .cm_card_svg img {
   height: 250px;
+  margin-left: 10%;
 }
 .classroomActions {
   display: flex;
@@ -127,20 +133,20 @@
 .notice_icon {
   font-size: 10px !important;
 }
-.lectr_notice{
+.lectr_notice {
   font-weight: bold;
   display: flex;
   flex-direction: row;
   margin-left: 9px;
 }
-.lectr_notice p{
+.lectr_notice p {
   margin-left: 5px;
   color: rgb(196, 194, 194);
 }
 .notice_text h5 {
   font-weight: bold;
 }
-.notice_head{
+.notice_head {
   display: flex;
   flex-direction: row;
 }
