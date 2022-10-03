@@ -10,17 +10,21 @@
   display: flex;
   flex-direction: column;
 }
-.sidebar_button button {
-  width: 300px;
+.sidebar_button btn {
+  width: 270px;
   border-radius: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   border: 0;
+  font-size: 20px;
+  padding: 10px;
 }
-.sidebar_button button:hover {
+.sidebar_button btn:hover {
   background-color: white;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
-.active{
+.active {
   background-color: white !important;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .blue {
   color: rgb(12, 12, 122);
@@ -29,7 +33,9 @@
 }
 .sidebar_head {
   margin-top: 50px !important;
-  margin-bottom: 100px !important;
+  margin-bottom: 45px !important;
+  color: rgb(38, 38, 199);
+  font-weight: bold;
 }
 .sidebar_util {
   margin-top: 200px;
@@ -37,7 +43,8 @@
 .head {
   font-weight: bold;
 }
-.icon{
+.icon {
   font-size: 45px;
   margin-right: 10px;
+  margin-left: 10px;
 }

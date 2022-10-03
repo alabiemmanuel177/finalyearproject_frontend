@@ -11,7 +11,7 @@
 }
 .main_searchbar input {
   font-size: 20px;
-  width: 90%;
+  width: 85%;
   border-radius: 30px;
   padding: 10px;
   border: solid 1px gray;
@@ -19,9 +19,9 @@
 }
 .classroom_maincard {
   margin-top: 30px;
-  background-color: rgb(12, 12, 122);
+  background-color: rgb(38, 38, 199);
   height: 300px;
-  width: 95%;
+  width: 85%;
   border-radius: 20px;
   display: flex;
   justify-content: center;
@@ -60,7 +60,7 @@
 .classroomActions {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 90%;
   justify-content: space-evenly;
   margin-top: 20px;
 }
@@ -69,6 +69,11 @@
   padding: 20px;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.assIcons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .noticeBoard_card {
   width: 45%;
@@ -79,20 +84,24 @@
 .action {
   display: flex;
   flex-direction: row;
-  padding: 10px;
+  padding: 5px;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
   border-radius: 15px;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 350px;
 }
 .actionhead {
   margin-bottom: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  font-weight: bold;
+  margin-left: 40px;
+  margin-right: 40px;
 }
-.actionhead h5 {
+.actionhead h6 {
   color: coral;
 }
 .opt-icon {
@@ -102,6 +111,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-left: 5px;
 }
 .action_text {
   margin-left: 10px;
@@ -110,18 +120,26 @@
   display: flex;
   flex-direction: column;
   padding: 10px;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-bottom: 20px;
+  border-radius: 10px;
 }
 .notice_icon {
+  font-size: 10px !important;
+}
+.lectr_notice{
+  font-weight: bold;
   display: flex;
   flex-direction: row;
-  align-items: center;
 }
-.lectr_notice h6 {
-  font-weight: bold;
-  margin-left: 10px;
+.lectr_notice p{
+  margin-left: 5px;
+  color: rgb(196, 194, 194);
 }
 .notice_text h5 {
   font-weight: bold;
+}
+.notice_head{
+  display: flex;
+  flex-direction: row;
 }

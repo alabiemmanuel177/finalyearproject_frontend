@@ -7,7 +7,7 @@ export const Login = () => {
     <div className="login">
       <div className="loginform_container">
         <h1 className="loginhead head">BUCODeL</h1>
-        <LoginForm />
+        <LoginForm className="L-form"/>
       </div>
       <div className="logintext">
         <div className="logintext_container">

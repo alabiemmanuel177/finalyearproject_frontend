@@ -21,7 +21,7 @@ export const PasswordReset = () => {
         </div>
         <div className="passwordResetsvg">
           <img
-            src="https://res.cloudinary.com/manlikeemma/image/upload/v1659024081/BUCODEL/Password_Reset_q5xhmc.svg"
+            src="https://res.cloudinary.com/manlikeemma/image/upload/v1659024784/BUCODEL/Password_Reset_zkytni.svg"
             alt=""
           />
         </div>

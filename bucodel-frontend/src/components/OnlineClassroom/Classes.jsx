@@ -1,5 +1,4 @@
 import React from "react";
-import "boo"
 
 export const Classes = () => {
   return (

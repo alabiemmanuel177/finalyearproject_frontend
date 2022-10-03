@@ -1,26 +1,23 @@
 import React from "react";
-import { IoIosOptions } from "react-icons/io";
+import { HiDotsVertical } from "react-icons/hi";
 import Avatar from "@mui/material/Avatar";
-import Stack from "@mui/material/Stack";
-import { deepOrange} from "@mui/material/colors";
+import { deepOrange, deepPurple } from "@mui/material/colors";
 
 export const Actions = () => {
   return (
     <div className="action">
       <div className="action_icon">
         <div>
-          <Stack direction="row" spacing={2}>
-            <Avatar sx={{ bgcolor: deepOrange[500] }} variant="square">
-              O
-            </Avatar>
-          </Stack>
+          <Avatar sx={{ bgcolor: deepPurple[500] }} variant="circle">
+            O
+          </Avatar>
         </div>
         <div className="action_text">
-          <h4>Operation research</h4>
+          <h5>Operation research</h5> <h6>10 marks</h6>
         </div>
       </div>
       <div className="action_opt">
-        <IoIosOptions className="opt-icon" />
+        <HiDotsVertical className="opt-icon" />
       </div>
     </div>
   );

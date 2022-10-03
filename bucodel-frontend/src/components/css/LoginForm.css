@@ -1,12 +1,9 @@
-.loginEmail {
-}
 .focus:focus {
   border-color: blue !important;
 }
-.loginPassword {
-}
 .loginBtn {
   background-color: orange !important;
+  margin-top: 7%;
 }
 .loginBtn:hover {
   background-color: orangered !important;
@@ -21,4 +18,14 @@ button {
 }
 .LoginForm p {
   color: rgb(12, 12, 122);
+}
+.F-pass {
+  margin-top: 10px;
+  text-align: right;
+}
+.loginEmail {
+}
+
+#UserLogin {
+  margin-bottom: 50px !important;
 }

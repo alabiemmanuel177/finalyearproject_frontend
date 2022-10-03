@@ -12,13 +12,12 @@
 }
 .logintext {
   width: 50%;
-  background-color: rgb(12, 12, 122);
+  background-color: rgb(38, 38, 199);
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 .head {
-  margin-top: 10%;
+  margin-top: 5%;
   margin-bottom: 20%;
 }
 .loginhead {
@@ -34,13 +33,12 @@ span {
 .logintext_container {
   margin-left: 15%;
   margin-bottom: 50px;
+  margin-top: 30%;
 }
 .loginsvg img {
   position: absolute;
   bottom: 0;
   height: 400px;
-  /* -webkit-transform: scaleX(-1);
-  transform: scaleX(-1); */
   right: 450px;
 }
 .passwordResetsvg img {

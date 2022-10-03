@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./css/classroom_sidebar.css";
-import { FcSettings } from "react-icons/fc";
+import { IoMdSettings } from "react-icons/io";
 import { HiLogout } from "react-icons/hi";
 import { SiGoogleclassroom } from "react-icons/si";
 import { BsBookFill } from "react-icons/bs";
@@ -9,7 +9,6 @@ import { MdDashboard } from "react-icons/md";
 import { LogoutModal } from "./modal/LogoutModal";
 
 export const ClassroomSidebar = ({ active, setActive }) => {
-  
   var btnContainer = document.getElementById("sidebar_button");
   if (btnContainer !== null) {
     var btns = btnContainer.getElementsByClassName("sidebarbtn");
@@ -29,50 +28,50 @@ export const ClassroomSidebar = ({ active, setActive }) => {
 
   return (
     <div className="classroom_sidebar">
-      <h1 className="loginhead head sidebar_head">BUCODeL</h1>
+      <h1 className="sidebar_head">BucoDeL</h1>
       <div className="sidebar_button" id="sidebar_button">
-        <button
+        <btn
           className="sidebarbtn  active blue "
           onClick={() => setActive("Dashboard")}
         >
           <MdDashboard className="icon" />
           Dashboard
-        </button>
-        <button
+        </btn>
+        <btn
           className="sidebarbtn blue"
           onClick={() => setActive("Academics")}
         >
           <FaGraduationCap className="icon" />
           Academic Details
-        </button>
-        <button
+        </btn>
+        <btn
           className="sidebarbtn blue"
           onClick={() => setActive("Course Selection")}
         >
           <BsBookFill className="icon" />
           Course Selection
-        </button>
-        <button
+        </btn>
+        <btn
           className="sidebarbtn blue"
           onClick={() => setActive("Classroom")}
         >
           <SiGoogleclassroom className="icon" />
           Classroom
-        </button>
+        </btn>
       </div>
       <div className="sidebar_util">
         <div className="sidebar_button">
-          <button
+          <btn
             className="sidebarbtn blue"
             onClick={() => setActive("Settings")}
           >
-            <FcSettings className="icon" />
+            <IoMdSettings className="icon" />
             Settings
-          </button>
-          <button className="sidebarbtn blue" onClick={openLogoutModal}>
+          </btn>
+          <btn className="sidebarbtn blue" onClick={openLogoutModal}>
             <HiLogout className="icon" />
             Logout
-          </button>
+          </btn>
           <LogoutModal
             showModal={showLogoutModal}
             setShowModal={setLogoutModal}

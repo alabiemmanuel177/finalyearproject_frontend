@@ -1,16 +1,23 @@
 import React from "react";
 import Avatar from "@mui/material/Avatar";
-import Stack from "@mui/material/Stack";
 
 export const Notice = () => {
   return (
     <div className="notice">
-      <div className="notice_icon">
-        <Stack direction="row" spacing={2}>
-          <Avatar alt="Lecturer" src="/static/images/avatar/1.jpg" />{" "}
-        </Stack>
-        <div className="lectr_notice"><h6>Dr. Adekola O</h6></div>
+      <div className="notice_head">
+        <div className="notice_icon">
+          <Avatar
+            alt="Lecturer"
+            src="/static/images/avatar/1.jpg"
+            sx={{ width: 30, height: 30 }}
+          />{" "}
+        </div>{" "}
+        <div className="lectr_notice">
+          <h5>Dr. Adekola O</h5>
+          <p>15 mins ago</p>
+        </div>
       </div>
+
       <div className="notice_text">
         <h5>
           All registraions fot the semester ends on the 20th pf May 2022. Ensure

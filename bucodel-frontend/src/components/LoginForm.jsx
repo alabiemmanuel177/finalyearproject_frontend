@@ -1,21 +1,33 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./css/LoginForm.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export const LoginForm = () => {
   return (
     <div>
-      <h2 className="loginhead" style={{marginBottom:"30px"}}>Login</h2>
+      <h2 className="loginhead" style={{ marginBottom: "40px" }}>
+        Log In
+      </h2>
       <form className="LoginForm">
-        <div className="mb-3">
-          <label className="form-label">Email address</label>
-          <input type="email" placeholder="example@gmail.com" className="form-control loginEmail focus" />
+        <div className="mb-3" id="UserLogin">
+          <input
+            type="email"
+            placeholder="Username"
+            className="form-control loginEmail focus"
+          />
         </div>
         <div className="mb-3">
-          <label className="form-label">Password</label>
-          <input type="password" className="form-control loginPassword focus" placeholder="6+ strong character"/>
+          <input
+            type="password"
+            className="form-control loginPassword focus"
+            placeholder="Password"
+          />
+          <Link to="/passwordreset">
+            <p className="F-pass">Forgot Password?</p>
+          </Link>
         </div>
-        <p className="loginhead">Forgot Password?</p>        
+
         <button type="submit" className="btn btn-primary loginBtn">
           Login
         </button>
