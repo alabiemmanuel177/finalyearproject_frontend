@@ -33,7 +33,7 @@ span {
 .logintext_container {
   margin-left: 15%;
   margin-bottom: 50px;
-  margin-top: 30%;
+  margin-top: 10%;
 }
 .loginsvg img {
   position: absolute;
@@ -48,4 +48,11 @@ span {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
   right: 450px;
+}
+.login_svg-1 {
+  margin-left: 150px;
+}
+.login_svg-2 {
+  margin-left: 320px;
+  margin-top: 225px;
 }

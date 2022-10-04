@@ -7,9 +7,15 @@ export const Login = () => {
     <div className="login">
       <div className="loginform_container">
         <h1 className="loginhead head">BUCODeL</h1>
-        <LoginForm className="L-form"/>
+        <LoginForm className="L-form" />
       </div>
       <div className="logintext">
+        <div className="login_svg-1">
+          <img
+            src="https://res.cloudinary.com/manlikeemma/image/upload/v1664703033/BUCODEL/Group_1_gc0czt.svg"
+            alt=""
+          />
+        </div>
         <div className="logintext_container">
           <h1>Welcome Back!</h1>
           <h3>
@@ -26,6 +32,12 @@ export const Login = () => {
         <div className="loginsvg">
           <img
             src="https://res.cloudinary.com/manlikeemma/image/upload/v1659024078/BUCODEL/Log_In_g36kpt.svg"
+            alt=""
+          />
+        </div>
+        <div className="login_svg-2">
+          <img
+            src="https://res.cloudinary.com/manlikeemma/image/upload/v1664703033/BUCODEL/Group_2_zkqorp.svg"
             alt=""
           />
         </div>
