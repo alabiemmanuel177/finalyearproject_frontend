@@ -1,15 +1,13 @@
 import React from "react";
 import "../css/AcademicDets.css";
-
 import { Utilheadicons } from "../utilheadicons";
 import { useState } from "react";
 import { SelectCourses } from "../Course Selection/SelectCourses";
 import { Classes } from "./Classes";
-// import { OutstandingCourses } from "./OutstandingCourses";
-// import { SpecialSelection } from "./SpecialSelection";
+import { Assignment } from "./Assignment";
 
-export const ClassroomPage = () => {
-  const [active, setActive] = useState("SelectCourses");
+export const ClassroomPage = ({ active, setActive }) => {
+  const [active1, setActive1] = useState("Classes");
 
   var btnContainer = document.getElementById("academicDetailsActions");
   if (btnContainer !== null) {
@@ -29,24 +27,27 @@ export const ClassroomPage = () => {
     <>
       <div className="AcademicDetails">
         <div className="overviewHead">
-          <h1>Classroom</h1>
+          <h2>Classroom</h2>
           <Utilheadicons />
         </div>
         <div className="academicDetailsActions" id="academicDetailsActions">
-          <h5 className="action1 activeaction" onClick={() => setActive("Classes")}>
+          <h5
+            className="action1 activeaction"
+            onClick={() => setActive1("Classes")}
+          >
             Classes
           </h5>
-          <h5 className="action1" onClick={() => setActive("")}>
+          <h5 className="action1" onClick={() => setActive1("Assignments")}>
             Assignments
           </h5>
-          <h5 className="action1" onClick={() => setActive("")}>
+          <h5 className="action1" onClick={() => setActive1("")}>
             Schedule
           </h5>
         </div>
         <hr />
-        {active === "Classes" && <Classes />}
-        {active === "CourseList" && <SelectCourses />}
-        {active === "OutstandingCourses" && <SelectCourses />}
+        {active1 === "Classes" && <Classes active={active} setActive={setActive}/>}
+        {active1 === "Assignments" && <Assignment />}
+        {active1 === "Schedule" && <SelectCourses />}
       </div>
     </>
   );

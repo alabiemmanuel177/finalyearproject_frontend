@@ -48,19 +48,21 @@ export const SpecialSelection = () => {
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell>Department</StyledTableCell>
-              <StyledTableCell>School</StyledTableCell>
-              <StyledTableCell>Course List</StyledTableCell>
+              <StyledTableCell id="tableHead">Department</StyledTableCell>
+              <StyledTableCell id="tableHead">School</StyledTableCell>
+              <StyledTableCell id="tableHead">Course List</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {rows.map((row) => (
               <StyledTableRow key={row.name}>
-                <StyledTableCell component="th" scope="row">
+                <StyledTableCell id="tableHead" component="th" scope="row">
                   {row.Department}
                 </StyledTableCell>
-                <StyledTableCell>{row.School}</StyledTableCell>
-                <StyledTableCell>{row.CourseList}</StyledTableCell>
+                <StyledTableCell id="tableHead">{row.School}</StyledTableCell>
+                <StyledTableCell id="tableHead">
+                  {row.CourseList}
+                </StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>

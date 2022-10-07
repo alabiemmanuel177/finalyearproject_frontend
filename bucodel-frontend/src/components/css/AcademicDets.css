@@ -1,31 +1,48 @@
-.AcademicDetails h1{
-    margin-top: 50px;
-    color: rgb(12, 12, 122)
+.AcademicDetails h1 {
+  margin-top: 50px;
+  color: rgb(12, 12, 122);
 }
-.AcademicDetails{
-    display: flex;
-    flex-direction: column;
-    padding: 40px;
-    width: 80%;
+.AcademicDetails {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  width: 80%;
 }
-.overviewHead{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 50px;
+.overviewHead {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
-.academicDetailsActions{
-    display: flex;
-    flex-direction: row;
+.academicDetailsActions {
+  display: flex;
+  flex-direction: row;
 }
-.academicDetailsActions h5{
-    margin-right: 25px;
-    font-weight: bold;
-    color: gray;
+.academicDetailsActions h5 {
+  margin-right: 50px;
+  font-weight: bold;
+  color: gray;
 }
-.academicDetailsActions h5:hover{
-    color: rgb(12, 12, 122) !important;
+.academicDetailsActions h5:hover {
+  color: rgb(12, 12, 122) !important;
 }
-.activeaction{
-    color: rgb(12, 12, 122) !important;
+.activeaction {
+  color: rgb(12, 12, 122) !important;
+}
+.download_icon {
+  font-size: 20px;
+  margin-right: 100px;
+}
+.academicDetHead {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.coursesubmit-btn {
+  color: white;
+  background-color: rgb(12, 12, 122);
+  border-radius: 10px;
+  width: 100px;
+  padding: 5px !important;
+  font-size: 15px !important;
 }

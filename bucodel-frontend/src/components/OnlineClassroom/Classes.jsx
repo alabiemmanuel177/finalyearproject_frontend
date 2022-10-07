@@ -1,86 +1,95 @@
 import React from "react";
+import "../OnlineClassroom/css/Classes.css";
 
-export const Classes = () => {
+export const Classes = ({ active, setActive }) => {
   return (
     <>
       <div className="classContainer">
-        <div class="card" style={{width: "18rem"}}>
-          <img src="..." class="card-img-top" alt="..." />
-          <div class="card-body">
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
+        <div class="coursecards" onClick={() => setActive("OnlineClass")}>
+          <div className="coursehead">
+            <h3>COSC 302</h3>
+            <h6>Data Structures And Algorithms</h6>
+          </div>
+          <div className="coursedets">
+            <h6>Dr. Seun Ebesuwa</h6>
+            <p>3 Credit Hours</p>
           </div>
         </div>
 
-        <div class="card" style={{width: "18rem"}}>
-          <img src="..." class="card-img-top" alt="..." />
-          <div class="card-body">
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
+        <div class="coursecards" onClick={() => setActive("OnlineClass")}>
+          <div className="coursehead">
+            <h3>COSC 302</h3>
+            <h6>Data Structures And Algorithms</h6>
+          </div>
+          <div className="coursedets">
+            <h6>Dr. Seun Ebesuwa</h6>
+            <p>3 Credit Hours</p>
           </div>
         </div>
 
-        <div class="card" style={{width: "18rem"}}>
-          <img src="..." class="card-img-top" alt="..." />
-          <div class="card-body">
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
+        <div class="coursecards" onClick={() => setActive("OnlineClass")}>
+          <div className="coursehead">
+            <h3>COSC 302</h3>
+            <h6>Data Structures And Algorithms</h6>
+          </div>
+          <div className="coursedets">
+            <h6>Dr. Seun Ebesuwa</h6>
+            <p>3 Credit Hours</p>
           </div>
         </div>
 
-        <div class="card" style={{width: "18rem"}}>
-          <img src="..." class="card-img-top" alt="..." />
-          <div class="card-body">
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
+        <div class="coursecards" onClick={() => setActive("OnlineClass")}>
+          <div className="coursehead">
+            <h3>COSC 302</h3>
+            <h6>Data Structures And Algorithms</h6>
+          </div>
+          <div className="coursedets">
+            <h6>Dr. Seun Ebesuwa</h6>
+            <p>3 Credit Hours</p>
           </div>
         </div>
 
-        <div class="card" style={{width: "18rem"}}>
-          <img src="..." class="card-img-top" alt="..." />
-          <div class="card-body">
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
+        <div class="coursecards" onClick={() => setActive("OnlineClass")}>
+          <div className="coursehead">
+            <h3>COSC 302</h3>
+            <h6>Data Structures And Algorithms</h6>
+          </div>
+          <div className="coursedets">
+            <h6>Dr. Seun Ebesuwa</h6>
+            <p>3 Credit Hours</p>
           </div>
         </div>
 
-        <div class="card" style={{width: "18rem"}}>
-          <img src="..." class="card-img-top" alt="..." />
-          <div class="card-body">
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
+        <div class="coursecards" onClick={() => setActive("OnlineClass")}>
+          <div className="coursehead">
+            <h3>COSC 302</h3>
+            <h6>Data Structures And Algorithms</h6>
+          </div>
+          <div className="coursedets">
+            <h6>Dr. Seun Ebesuwa</h6>
+            <p>3 Credit Hours</p>
           </div>
         </div>
 
-        <div class="card" style={{width: "18rem"}}>
-          <img src="..." class="card-img-top" alt="..." />
-          <div class="card-body">
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
+        <div class="coursecards" onClick={() => setActive("OnlineClass")}>
+          <div className="coursehead">
+            <h3>COSC 302</h3>
+            <h6>Data Structures And Algorithms</h6>
+          </div>
+          <div className="coursedets">
+            <h6>Dr. Seun Ebesuwa</h6>
+            <p>3 Credit Hours</p>
           </div>
         </div>
 
-        <div class="card" style={{width: "18rem"}}>
-          <img src="..." class="card-img-top" alt="..." />
-          <div class="card-body">
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
+        <div class="coursecards" onClick={() => setActive("OnlineClass")}>
+          <div className="coursehead">
+            <h3>COSC 302</h3>
+            <h6>Data Structures And Algorithms</h6>
+          </div>
+          <div className="coursedets">
+            <h6>Dr. Seun Ebesuwa</h6>
+            <p>3 Credit Hours</p>
           </div>
         </div>
       </div>

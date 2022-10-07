@@ -8,7 +8,6 @@ import { OnlineClass } from "../components/OnlineClassroom/OnlineClass";
 import { Settings } from "../components/Settings";
 import { ClassroomPage } from "../components/OnlineClassroom/ClassroomPage";
 
-
 export const Classroom = () => {
   const [active, setActive] = useState("Dashboard");
 
@@ -20,8 +19,11 @@ export const Classroom = () => {
       {active === "Dashboard" && <Dashboard />}
       {active === "Academics" && <AcademicDet />}
       {active === "Course Selection" && <CourseSelection />}
-      {active === "Classroom" && <ClassroomPage />}
+      {active === "Classroom" && (
+        <ClassroomPage active={active} setActive={setActive} />
+      )}
       {active === "Settings" && <Settings />}
+      {active === "OnlineClass" && <OnlineClass />}
     </div>
   );
 };

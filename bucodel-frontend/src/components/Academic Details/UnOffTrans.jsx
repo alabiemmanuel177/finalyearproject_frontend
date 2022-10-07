@@ -115,27 +115,29 @@ export const UnOffTrans = () => {
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell>Semester</StyledTableCell>
-              <StyledTableCell>Course ID</StyledTableCell>
-              <StyledTableCell>Course Title</StyledTableCell>
-              <StyledTableCell>Score</StyledTableCell>
-              <StyledTableCell>Credit</StyledTableCell>
-              <StyledTableCell>Grade</StyledTableCell>
-              <StyledTableCell>Points</StyledTableCell>
+              <StyledTableCell id="tableHead">Semester</StyledTableCell>
+              <StyledTableCell id="tableHead">Course ID</StyledTableCell>
+              <StyledTableCell id="tableHead">Course Title</StyledTableCell>
+              <StyledTableCell id="tableHead">Score</StyledTableCell>
+              <StyledTableCell id="tableHead">Credit</StyledTableCell>
+              <StyledTableCell id="tableHead">Grade</StyledTableCell>
+              <StyledTableCell id="tableHead">Points</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {rows.map((row) => (
               <StyledTableRow key={row.name}>
-                <StyledTableCell component="th" scope="row">
+                <StyledTableCell id="tableHead" component="th" scope="row">
                   {row.Semester}
                 </StyledTableCell>
-                <StyledTableCell>{row.CourseID}</StyledTableCell>
-                <StyledTableCell>{row.CourseTitle}</StyledTableCell>
-                <StyledTableCell>{row.Score}</StyledTableCell>
-                <StyledTableCell>{row.Credit}</StyledTableCell>
-                <StyledTableCell>{row.Grade}</StyledTableCell>
-                <StyledTableCell>{row.Points}</StyledTableCell>
+                <StyledTableCell id="tableHead">{row.CourseID}</StyledTableCell>
+                <StyledTableCell id="tableHead">
+                  {row.CourseTitle}
+                </StyledTableCell>
+                <StyledTableCell id="tableHead">{row.Score}</StyledTableCell>
+                <StyledTableCell id="tableHead">{row.Credit}</StyledTableCell>
+                <StyledTableCell id="tableHead">{row.Grade}</StyledTableCell>
+                <StyledTableCell id="tableHead">{row.Points}</StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>

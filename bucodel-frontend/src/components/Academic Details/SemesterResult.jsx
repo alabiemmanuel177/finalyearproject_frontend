@@ -51,25 +51,25 @@ export const SemesterResult = () => {
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell>Semester</StyledTableCell>
-              <StyledTableCell>Level</StyledTableCell>
-              <StyledTableCell>Hours</StyledTableCell>
-              <StyledTableCell>GPA</StyledTableCell>
-              <StyledTableCell>C. Hours</StyledTableCell>
-              <StyledTableCell>CGPA</StyledTableCell>
+              <StyledTableCell id="tableHead">Semester</StyledTableCell>
+              <StyledTableCell id="tableHead">Level</StyledTableCell>
+              <StyledTableCell id="tableHead">Hours</StyledTableCell>
+              <StyledTableCell id="tableHead">GPA</StyledTableCell>
+              <StyledTableCell id="tableHead">C. Hours</StyledTableCell>
+              <StyledTableCell id="tableHead">CGPA</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {rows.map((row) => (
               <StyledTableRow key={row.name}>
-                <StyledTableCell component="th" scope="row">
+                <StyledTableCell id="tableHead" component="th" scope="row">
                   {row.Semester}
                 </StyledTableCell>
-                <StyledTableCell>{row.Level}</StyledTableCell>
-                <StyledTableCell>{row.Hours}</StyledTableCell>
-                <StyledTableCell>{row.GPA}</StyledTableCell>
-                <StyledTableCell>{row.CHours}</StyledTableCell>
-                <StyledTableCell>{row.CGPA}</StyledTableCell>
+                <StyledTableCell id="tableHead">{row.Level}</StyledTableCell>
+                <StyledTableCell id="tableHead">{row.Hours}</StyledTableCell>
+                <StyledTableCell id="tableHead">{row.GPA}</StyledTableCell>
+                <StyledTableCell id="tableHead">{row.CHours}</StyledTableCell>
+                <StyledTableCell id="tableHead">{row.CGPA}</StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>

@@ -8,8 +8,14 @@
 .loginBtn:hover {
   background-color: orangered !important;
 }
-.LoginForm input,
-button {
+.LoginForm input {
+  width: 500px;
+  padding: 10px !important;
+  font-size: 26px !important;
+  border-radius: 10px;
+  border: 2px solid gray;
+}
+.LoginForm button {
   width: 500px;
   padding: 10px !important;
   font-size: 26px !important;

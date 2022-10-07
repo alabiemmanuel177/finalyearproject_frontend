@@ -114,25 +114,29 @@ export const CheckListing = () => {
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell>Course ID</StyledTableCell>
-              <StyledTableCell>Year</StyledTableCell>
-              <StyledTableCell>Course Title</StyledTableCell>
-              <StyledTableCell>Hours</StyledTableCell>
-              <StyledTableCell>Course Passed</StyledTableCell>
-              <StyledTableCell>Elective</StyledTableCell>
+              <StyledTableCell id="tableHead">Course ID</StyledTableCell>
+              <StyledTableCell id="tableHead">Year</StyledTableCell>
+              <StyledTableCell id="tableHead">Course Title</StyledTableCell>
+              <StyledTableCell id="tableHead">Hours</StyledTableCell>
+              <StyledTableCell id="tableHead">Course Passed</StyledTableCell>
+              <StyledTableCell id="tableHead">Elective</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {rows.map((row) => (
               <StyledTableRow key={row.name}>
-                <StyledTableCell component="th" scope="row">
+                <StyledTableCell id="tableHead" component="th" scope="row">
                   {row.CourseID}
                 </StyledTableCell>
-                <StyledTableCell>{row.Year}</StyledTableCell>
-                <StyledTableCell>{row.CourseTitle}</StyledTableCell>
-                <StyledTableCell>{row.Hours}</StyledTableCell>
-                <StyledTableCell>{row.CoursePassed}</StyledTableCell>
-                <StyledTableCell>{row.Elective}</StyledTableCell>
+                <StyledTableCell id="tableHead">{row.Year}</StyledTableCell>
+                <StyledTableCell id="tableHead">
+                  {row.CourseTitle}
+                </StyledTableCell>
+                <StyledTableCell id="tableHead">{row.Hours}</StyledTableCell>
+                <StyledTableCell id="tableHead">
+                  {row.CoursePassed}
+                </StyledTableCell>
+                <StyledTableCell id="tableHead">{row.Elective}</StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>

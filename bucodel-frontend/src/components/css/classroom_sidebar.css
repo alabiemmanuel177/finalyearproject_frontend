@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: white;
+  background-color: whitesmoke;
   height: 100vh;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
@@ -17,7 +17,6 @@
   border: 0;
   font-size: 20px;
   padding: 10px;
-  
 }
 .sidebar_button btn:hover {
   background-color: white;
@@ -35,7 +34,7 @@
 .sidebar_head {
   margin-top: 50px !important;
   margin-bottom: 45px !important;
-  color: rgb(38, 38, 199);
+  color: rgb(12, 12, 122);
   font-weight: bold;
 }
 .sidebar_util {
@@ -48,4 +47,7 @@
   font-size: 45px;
   margin-right: 10px;
   margin-left: 10px;
+}
+#tableHead{
+  font-weight: bold;
 }

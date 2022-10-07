@@ -99,25 +99,27 @@ export const OutstandingCourses = () => {
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell>Year</StyledTableCell>
-              <StyledTableCell>Course ID</StyledTableCell>
-              <StyledTableCell>Course Title</StyledTableCell>
-              <StyledTableCell>Hours</StyledTableCell>
-              <StyledTableCell>Preq</StyledTableCell>
-              <StyledTableCell>Credit</StyledTableCell>
+              <StyledTableCell id="tableHead">Year</StyledTableCell>
+              <StyledTableCell id="tableHead">Course ID</StyledTableCell>
+              <StyledTableCell id="tableHead">Course Title</StyledTableCell>
+              <StyledTableCell id="tableHead">Hours</StyledTableCell>
+              <StyledTableCell id="tableHead">Preq</StyledTableCell>
+              <StyledTableCell id="tableHead">Credit</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {rows.map((row) => (
               <StyledTableRow key={row.name}>
-                <StyledTableCell component="th" scope="row">
+                <StyledTableCell id="tableHead" component="th" scope="row">
                   {row.Year}
                 </StyledTableCell>
-                <StyledTableCell>{row.CourseID}</StyledTableCell>
-                <StyledTableCell>{row.CourseTitle}</StyledTableCell>
-                <StyledTableCell>{row.Hours}</StyledTableCell>
-                <StyledTableCell>{row.Preq}</StyledTableCell>
-                <StyledTableCell>{row.Credit}</StyledTableCell>
+                <StyledTableCell id="tableHead">{row.CourseID}</StyledTableCell>
+                <StyledTableCell id="tableHead">
+                  {row.CourseTitle}
+                </StyledTableCell>
+                <StyledTableCell id="tableHead">{row.Hours}</StyledTableCell>
+                <StyledTableCell id="tableHead">{row.Preq}</StyledTableCell>
+                <StyledTableCell id="tableHead">{row.Credit}</StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>

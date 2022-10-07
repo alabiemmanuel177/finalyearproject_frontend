@@ -29,21 +29,14 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(
-  Year,  
-  CourseID,
-  CourseTitle,
-  Instructor,
-  Option,
-  Credit
-) {
-  return {  Year, CourseID, CourseTitle, Instructor, Option, Credit };
+function createData(Year, CourseID, CourseTitle, Instructor, Option, Credit) {
+  return { Year, CourseID, CourseTitle, Instructor, Option, Credit };
 }
 
 const rows = [
   createData(
     1,
-    "GEDS280",    
+    "GEDS280",
     "Software Requirements Engineering and Construction",
     "Dada Racheal",
     "Software Engineering",
@@ -51,69 +44,76 @@ const rows = [
   ),
   createData(
     1,
-    "GEDS280",    
-    "Software Requirements Engineering and Construction",
-    "Dada Racheal",
-    "Software Engineering",
-    3
-  ), createData(
-    1,
-    "GEDS280",    
-    "Software Requirements Engineering and Construction",
-    "Dada Racheal",
-    "Software Engineering",
-    3
-  ), createData(
-    1,
-    "GEDS280",    
-    "Software Requirements Engineering and Construction",
-    "Dada Racheal",
-    "Software Engineering",
-    3
-  ), createData(
-    1,
-    "GEDS280",    
-    "Software Requirements Engineering and Construction",
-    "Dada Racheal",
-    "Software Engineering",
-    3
-  ), createData(
-    1,
-    "GEDS280",    
-    "Software Requirements Engineering and Construction",
-    "Dada Racheal",
-    "Software Engineering",
-    3
-  ), createData(
-    1,
-    "GEDS280",    
-    "Software Requirements Engineering and Construction",
-    "Dada Racheal",
-    "Software Engineering",
-    3
-  ), createData(
-    1,
-    "GEDS280",    
-    "Software Requirements Engineering and Construction",
-    "Dada Racheal",
-    "Software Engineering",
-    3
-  ), createData(
-    1,
-    "GEDS280",    
-    "Software Requirements Engineering and Construction",
-    "Dada Racheal",
-    "Software Engineering",
-    3
-  ), createData(
-    1,
-    "GEDS280",    
+    "GEDS280",
     "Software Requirements Engineering and Construction",
     "Dada Racheal",
     "Software Engineering",
     3
   ),
-  
+  createData(
+    1,
+    "GEDS280",
+    "Software Requirements Engineering and Construction",
+    "Dada Racheal",
+    "Software Engineering",
+    3
+  ),
+  createData(
+    1,
+    "GEDS280",
+    "Software Requirements Engineering and Construction",
+    "Dada Racheal",
+    "Software Engineering",
+    3
+  ),
+  createData(
+    1,
+    "GEDS280",
+    "Software Requirements Engineering and Construction",
+    "Dada Racheal",
+    "Software Engineering",
+    3
+  ),
+  createData(
+    1,
+    "GEDS280",
+    "Software Requirements Engineering and Construction",
+    "Dada Racheal",
+    "Software Engineering",
+    3
+  ),
+  createData(
+    1,
+    "GEDS280",
+    "Software Requirements Engineering and Construction",
+    "Dada Racheal",
+    "Software Engineering",
+    3
+  ),
+  createData(
+    1,
+    "GEDS280",
+    "Software Requirements Engineering and Construction",
+    "Dada Racheal",
+    "Software Engineering",
+    3
+  ),
+  createData(
+    1,
+    "GEDS280",
+    "Software Requirements Engineering and Construction",
+    "Dada Racheal",
+    "Software Engineering",
+    3
+  ),
+  createData(
+    1,
+    "GEDS280",
+    "Software Requirements Engineering and Construction",
+    "Dada Racheal",
+    "Software Engineering",
+    3
+  ),
 ];
 
 export const CourseList = () => {
@@ -123,25 +123,29 @@ export const CourseList = () => {
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell>Year</StyledTableCell>
-              <StyledTableCell>Course ID</StyledTableCell>
-              <StyledTableCell>Course Title</StyledTableCell>
-              <StyledTableCell>Instructor</StyledTableCell>
-              <StyledTableCell>Option</StyledTableCell>
-              <StyledTableCell>Credit</StyledTableCell>
+              <StyledTableCell id="tableHead">Year</StyledTableCell>
+              <StyledTableCell id="tableHead">Course ID</StyledTableCell>
+              <StyledTableCell id="tableHead">Course Title</StyledTableCell>
+              <StyledTableCell id="tableHead">Instructor</StyledTableCell>
+              <StyledTableCell id="tableHead">Option</StyledTableCell>
+              <StyledTableCell id="tableHead">Credit</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {rows.map((row) => (
               <StyledTableRow key={row.name}>
-                <StyledTableCell component="th" scope="row">
+                <StyledTableCell id="tableHead" component="th" scope="row">
                   {row.Year}
                 </StyledTableCell>
-                <StyledTableCell>{row.CourseID}</StyledTableCell>
-                <StyledTableCell>{row.CourseTitle}</StyledTableCell>
-                <StyledTableCell>{row.Instructor}</StyledTableCell>
-                <StyledTableCell>{row.Option}</StyledTableCell>
-                <StyledTableCell>{row.Credit}</StyledTableCell>
+                <StyledTableCell id="tableHead">{row.CourseID}</StyledTableCell>
+                <StyledTableCell id="tableHead">
+                  {row.CourseTitle}
+                </StyledTableCell>
+                <StyledTableCell id="tableHead">
+                  {row.Instructor}
+                </StyledTableCell>
+                <StyledTableCell id="tableHead">{row.Option}</StyledTableCell>
+                <StyledTableCell id="tableHead">{row.Credit}</StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>

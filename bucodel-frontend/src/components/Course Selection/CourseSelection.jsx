@@ -10,6 +10,7 @@ import { SpecialSelection } from "./SpecialSelection";
 
 export const CourseSelection = () => {
   const [active, setActive] = useState("SelectCourses");
+  const [submitActive, setSubmitActive] = useState("Submit");
 
   var btnContainer = document.getElementById("academicDetailsActions");
   if (btnContainer !== null) {
@@ -30,29 +31,55 @@ export const CourseSelection = () => {
     <>
       <div className="AcademicDetails">
         <div className="overviewHead">
-          <h1>Overview</h1>
+          <h2>Overview</h2>
           <Utilheadicons />
         </div>
-        <div className="academicDetailsActions" id="academicDetailsActions">
-          <h5
-            className="action1 activeaction"
-            onClick={() => setActive("SelectCourses")}
-          >
-            Select Courses
-          </h5>
-          <h5 className="action1" onClick={() => setActive("CourseList")}>
-            Course list
-          </h5>
-          <h5
-            className="action1"
-            onClick={() => setActive("OutstandingCourses")}
-          >
-            Outstanding Courses
-          </h5>
-          <h5 className="action1" onClick={() => setActive("SpecialSelection")}>
-            Special Selection
-          </h5>
+        <div className="academicDetHead">
+          <div className="academicDetailsActions" id="academicDetailsActions">
+            <h5
+              className="action1 activeaction"
+              onClick={() => {
+                setActive("SelectCourses");
+                setSubmitActive("Submit");
+              }}
+            >
+              Select Courses
+            </h5>
+            <h5
+              className="action1"
+              onClick={() => {
+                setActive("CourseList");
+                setSubmitActive("Submit");
+              }}
+            >
+              Course list
+            </h5>
+            <h5
+              className="action1"
+              onClick={() => {
+                setActive("OutstandingCourses");
+                setSubmitActive("NoSubmit");
+              }}
+            >
+              Outstanding Courses
+            </h5>
+            <h5
+              className="action1"
+              onClick={() => {
+                setActive("SpecialSelection");
+                setSubmitActive("NoSubmit");
+              }}
+            >
+              Special Selection
+            </h5>
+          </div>
+          {submitActive === "Submit" && (
+            <div className="download_icon">
+              <button className="coursesubmit-btn">Submit</button>
+            </div>
+          )}
         </div>
+
         <hr />
         {active === "SelectCourses" && <SelectCourses />}
         {active === "CourseList" && <CourseList />}
