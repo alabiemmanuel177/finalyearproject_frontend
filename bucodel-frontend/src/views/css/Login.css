@@ -38,23 +38,23 @@ span {
 .loginsvg img {
   position: absolute;
   bottom: 0;
-  height: 400px;
-  right: 450px;
+  height: 40%;
+  right: 400px;
 }
 .passwordResetsvg img {
   position: absolute;
   bottom: 0;
-  height: 400px;
+  height: 40%;
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
-  right: 450px;
+  right: 400px;
 }
 .login_svg-1 {
   margin-left: 150px;
 }
 .login_svg-2 {
-  margin-left: 320px;
-  margin-top: 225px;
+  margin-left: 300px;
+  margin-top: 63px;
 }
 .passrest_text_container {
   margin-left: 15%;
@@ -62,6 +62,9 @@ span {
   margin-top: 15%;
 }
 .login_svg-3 {
-  margin-left: 320px;
-  margin-top: 210px;
+  margin-left: 300px;
+  margin-top: 62px;
+}
+.login-svg {
+  height: 20% !important;
 }

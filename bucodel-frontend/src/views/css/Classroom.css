@@ -1,14 +1,42 @@
-.Classroom {
+.classroom {
   display: flex;
   flex-direction: row;
+  width: 100%;
+  height: 100vh;
 }
-.classroom_sidebar_container {
+.sidebarContainer {
   width: 20%;
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+  height: 100vh;
 }
-.classroom_main_container {
-  width: 55%;
+.classroomContainer {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  justify-content: center;
+  align-items: flex-end;
 }
-.classroom_util_container {
-  width: 25%;
-  height: 100%;
+.classScreen {
+  width: 80%;
+}
+.util{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 60px;
+}
+.util h5 {
+  font-size: 14px;
+  font-style: Capital Std;
+  margin-left: 18px;
+}
+.util h3 {
+  font-size: 16px;
+  font-style: Capital Std;
+  margin-left: 18px;
+}
+.icon1{
+    font-size: 40px;
 }

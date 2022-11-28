@@ -1,0 +1,65 @@
+@import url("https://fonts.cdnfonts.com/css/circular-std");
+.sidebar {
+  display: flex;
+  flex-direction: column;
+}
+.logo {
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  align-items: center;
+  justify-content: center;
+}
+.logoImg img {
+  height: 50;
+  width: 56;
+  margin-right: 17px;
+}
+.logoText {
+}
+.logoText h3 {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Circular Std;
+}
+.logoText h5 {
+  font-size: 13px;
+  font-family: Circular Std;
+}
+.sidebarButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+.classroomButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sidebar-button {
+  width: 270px;
+  height: 48px;
+  border-radius: 6px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  background-color: white;
+  text-align: left;
+  font-size: 16px;
+  font-family: Circular Std;
+  border: 0;
+}
+.settingButton {
+  align-self: center;
+  margin-top: 310px;
+}
+.icon {
+  font-size: 24px;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+.active {
+  background-color: rgba(10, 54, 151, 0.04) !important;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}

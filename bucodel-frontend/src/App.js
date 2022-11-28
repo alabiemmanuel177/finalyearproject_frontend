@@ -1,19 +1,17 @@
-import React from 'react'
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Classroom } from './views/Classroom';
-import { Login } from './views/Login';
-import { PasswordReset } from './views/PasswordReset';
-
-
+import Classroom from "./views/Classroom";
+import { Login } from "./views/Login";
+import { PasswordReset } from "./views/PasswordReset";
 
 export const App = () => {
   return (
-      <BrowserRouter>
+    <BrowserRouter>
       <Routes>
-          <Route index element={<Login/>} path="/"/>
-          <Route element={<PasswordReset/>} path="passwordreset"/>
-          <Route index element={<Classroom/>} path="classroom"/>
+        <Route index element={<Classroom />} path="/" />
+        <Route element={<Login />} path="login" />
+        <Route element={<PasswordReset />} path="passwordreset" />
       </Routes>
-      </BrowserRouter>
-  )
-}
+    </BrowserRouter>
+  );
+};

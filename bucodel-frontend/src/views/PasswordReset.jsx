@@ -10,7 +10,7 @@ export const PasswordReset = () => {
         <PasswordResetForm />
       </div>
       <div className="logintext">
-      <div className="login_svg-1">
+        <div className="login_svg-1">
           <img
             src="https://res.cloudinary.com/manlikeemma/image/upload/v1664703033/BUCODEL/Group_1_gc0czt.svg"
             alt=""
