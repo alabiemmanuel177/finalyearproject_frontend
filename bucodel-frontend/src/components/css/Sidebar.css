@@ -2,6 +2,7 @@
 .sidebar {
   display: flex;
   flex-direction: column;
+  z-index: 9999;
 }
 .logo {
   display: flex;
@@ -62,4 +63,11 @@
 .active {
   background-color: rgba(10, 54, 151, 0.04) !important;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.logoutButton {
+  border-radius: 6px;
+  background-color: white;
+  font-size: 13px;
+  font-family: Circular Std;
+  color: #0a3697;
 }

@@ -8,6 +8,7 @@
   width: 20%;
   border-right: 1px solid rgba(0, 0, 0, 0.12);
   height: 100vh;
+  
 }
 .classroomContainer {
   width: 100%;
@@ -21,11 +22,11 @@
 .classScreen {
   width: 80%;
 }
-.util{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-right: 60px;
+.util {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 60px;
 }
 .util h5 {
   font-size: 14px;
@@ -37,6 +38,6 @@
   font-style: Capital Std;
   margin-left: 18px;
 }
-.icon1{
-    font-size: 40px;
+.icon1 {
+  font-size: 40px;
 }
