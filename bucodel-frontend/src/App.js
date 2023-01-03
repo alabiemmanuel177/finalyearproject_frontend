@@ -10,6 +10,10 @@ import Settings from "./views/Classroom/Settings";
 import Classes from "./views/Classroom/Classes";
 import Meeting from "./views/Meeting";
 import DoAssignment from "./views/DoAssignment";
+import LecturerPasswordReset from "./views/Lecturer/LecturerPasswordReset";
+import LecturerLogin from "./views/Lecturer/LecturerLogin";
+import AdminLogin from "./views/Admin/AdminLogin";
+import AdminPage from "./views/Admin/AdminPage";
 
 export const App = () => {
   return (
@@ -17,7 +21,7 @@ export const App = () => {
       <Routes>
         <Route index element={<Login />} path="/login" />
         <Route element={<PasswordReset />} path="/passwordreset" />
-        <Route  element={<Classroom />}>
+        <Route element={<Classroom />}>
           <Route element={<Dashboard />} path="/" />
           <Route element={<Courses />} path="/courses" />
           <Route element={<Assignment />} path="/assignment" />
@@ -26,6 +30,10 @@ export const App = () => {
           <Route element={<Classes />} path="/class" />
         </Route>
         <Route element={<Meeting />} path="/meeting" />
+        <Route element={<LecturerLogin />} path="/lecturerlogin" />
+        <Route element={<LecturerPasswordReset />} path="/lecturerreset" />
+        <Route element={<AdminLogin />} path="/adminlogin" />
+        <Route element={<AdminPage />} path="/adminpage" />
       </Routes>
     </BrowserRouter>
   );
