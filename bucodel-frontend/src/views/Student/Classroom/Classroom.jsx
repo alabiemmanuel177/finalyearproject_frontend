@@ -1,5 +1,5 @@
 import React from 'react'
-import Sidebar from '../components/Classroom Student/Sidebar'
+import Sidebar from '../../../components/Student/Classroom Student/Sidebar'
 import "./css/Classroom.css"
 import { FaRegUserCircle } from "react-icons/fa";
 import { Outlet } from 'react-router-dom';

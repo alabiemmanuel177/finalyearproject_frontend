@@ -8,9 +8,6 @@ export const LoginForm = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  const handleSubmit = (event) => {
-    e.preventDefault()
-  }
   return (
     <div>
       <h2 className="loginhead" style={{ marginBottom: "40px" }}>

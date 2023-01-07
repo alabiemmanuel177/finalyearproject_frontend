@@ -1,5 +1,5 @@
 import React from "react";
-import { PasswordResetForm } from "../components/PasswordResetForm";
+import { PasswordResetForm } from "../../components/Student/PasswordResetForm";
 import "./css/Login.css";
 
 export const PasswordReset = () => {

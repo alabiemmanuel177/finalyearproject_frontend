@@ -4,9 +4,9 @@ import {
     useState,
     // useEffect
 } from "react";
-import AssignmentList from '../../components/Classroom Student/AssignmentList';
-import MissingList from '../../components/Classroom Student/MissingList';
-import DoneList from '../../components/Classroom Student/DoneList';
+import AssignmentList from '../../../components/Student/Classroom Student/AssignmentList';
+import MissingList from '../../../components/Student/Classroom Student/MissingList';
+import DoneList from '../../../components/Student/Classroom Student/DoneList';
 
 const Assignment = () => {
     var btnContainer = document.getElementById("headers");
@@ -38,8 +38,8 @@ const Assignment = () => {
             </div>
             <hr />
             {active2 === "assigned" && <AssignmentList />}
-            {active2 === "missing" && <MissingList/>}
-            {active2 === "done" && <DoneList/>}
+            {active2 === "missing" && <MissingList />}
+            {active2 === "done" && <DoneList />}
         </div>
     )
 }

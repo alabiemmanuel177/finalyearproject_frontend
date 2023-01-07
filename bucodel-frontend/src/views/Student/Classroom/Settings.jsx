@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import Password from '../../components/Classroom Student/Password';
-import Profile from '../../components/Classroom Student/Profile';
+import Password from '../../../components/Student/Classroom Student/Password';
+import Profile from '../../../components/Student/Classroom Student/Profile';
 
 const Settings = () => {
     var btnContainer = document.getElementById("headers");

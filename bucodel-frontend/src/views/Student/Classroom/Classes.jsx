@@ -1,7 +1,7 @@
 import React from 'react'
 import "./css/classes.css"
 import { FaRegUserCircle } from "react-icons/fa";
-import ClassPost from '../../components/Classroom Student/ClassPost';
+import ClassPost from '../../../components/Student/Classroom Student/ClassPost';
 
 
 const Classes = () => {

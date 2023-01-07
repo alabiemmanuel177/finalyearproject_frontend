@@ -1,6 +1,6 @@
 import React from 'react'
-import CourseList from '../../components/Classroom Student/CourseList'
-import Resources from '../../components/Classroom Student/Resources'
+import CourseList from '../../../components/Student/Classroom Student/CourseList'
+import Resources from '../../../components/Student/Classroom Student/Resources'
 import './css/courses.css'
 import {
   useState,
