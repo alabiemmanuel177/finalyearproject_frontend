@@ -15,40 +15,53 @@ import LecturerLogin from "./views/Lecturer/LecturerLogin";
 import AdminLogin from "./views/Admin/AdminLogin";
 import AdminPage from "./views/Admin/AdminPage";
 import LecturerClassroom from "./views/Lecturer/Classroom/LecturerClassroom";
+import LecturerDashboard from "./views/Lecturer/Classroom/LecturerDashboard";
+import LecturerAssignments from "./views/Lecturer/Classroom/LecturerAssignments";
 import LandingPage from "./views/LandingPage";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#0a3697'
+    }
+  },
+});
 
 export const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        "Student"
-        <Route index element={<LandingPage/>} path="/" />
-        <Route element={<Login />} path="/login" />
-        <Route element={<PasswordReset />} path="/passwordreset" />
-        <Route element={<Meeting />} path="/meeting" />
-        <Route element={<Classroom />}>
-          <Route element={<Dashboard />} path="/dashboard" />
-          <Route element={<Courses />} path="/courses" />
-          <Route element={<Assignment />} path="/assignment" />
-          <Route element={<DoAssignment />} path="/doassignment" />
-          <Route element={<Settings />} path="/settings" />
-          <Route element={<Classes />} path="/class" />
-        </Route>
-        "Lecturer"
-        <Route element={<LecturerLogin />} path="/lecturerlogin" />
-        <Route element={<LecturerPasswordReset />} path="/lecturerreset" />
-        <Route element={<LecturerClassroom />}>
-          <Route element={<Dashboard />} path="/lecturerdashboard" />
-          <Route element={<Courses />} path="/courses" />
-          <Route element={<Assignment />} path="/assignment" />
-          <Route element={<DoAssignment />} path="/doassignment" />
-          <Route element={<Settings />} path="/settings" />
-          <Route element={<Classes />} path="/class" />
-        </Route>
-        "Admin"
-        <Route element={<AdminLogin />} path="/adminlogin" />
-        <Route element={<AdminPage />} path="/adminpage" />
-      </Routes>
-    </BrowserRouter>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Routes>
+          "Student"
+          <Route index element={<LandingPage/>} path="/" />
+          <Route element={<Login />} path="/login" />
+          <Route element={<PasswordReset />} path="/passwordreset" />
+          <Route element={<Meeting />} path="/meeting" />
+          <Route element={<Classroom />}>
+            <Route element={<Dashboard />} path="/dashboard" />
+            <Route element={<Courses />} path="/courses" />
+            <Route element={<Assignment />} path="/assignment" />
+            <Route element={<DoAssignment />} path="/doassignment" />
+            <Route element={<Settings />} path="/settings" />
+            <Route element={<Classes />} path="/class" />
+          </Route>
+          "Lecturer"
+          <Route element={<LecturerLogin />} path="/lecturerlogin" />
+          <Route element={<LecturerPasswordReset />} path="/lecturerreset" />
+          <Route element={<LecturerClassroom />}>
+            <Route element={<LecturerDashboard />} path="/lecturerdashboard" />
+            <Route element={<Courses />} path="/courses" />
+            <Route element={<LecturerAssignments />} path="/lecturerassignment" />
+            <Route element={<DoAssignment />} path="/doassignment" />
+            <Route element={<Settings />} path="/settings" />
+            <Route element={<Classes />} path="/class" />
+          </Route>
+          "Admin"
+          <Route element={<AdminLogin />} path="/adminlogin" />
+          <Route element={<AdminPage />} path="/adminpage" />
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 };
