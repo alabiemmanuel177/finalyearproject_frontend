@@ -1,8 +1,12 @@
-import React from 'react'
+import React from 'react';
+import Layout from '../../../components/Lecturer/Layout'
+import { Outlet } from 'react-router-dom';
 
 const LecturerClassroom = () => {
   return (
-    <div>LecturerClassroom</div>
+    <Layout>
+      <Outlet/>
+    </Layout>
   )
 }
 
