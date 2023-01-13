@@ -2,7 +2,7 @@ import React from 'react'
 import '../css/settings.css'
 
 
-const Password = () => {
+const Password = ({ handleOpen={handleOpen}}) => {
     return (
         <div className="password ">
             <div className="passwordForm flexrow">
@@ -17,7 +17,7 @@ const Password = () => {
                     <input type="password" className='passwordinput' />
                     <div className="passwordControls">
                         <button className='passwordCancelButton'>Cancel</button>
-                        <button className='passwordCancelUpdate'>Update</button>
+                        <button className='passwordCancelUpdate' onClick={handleOpen}>Update</button>
                     </div>
                 </div>
 

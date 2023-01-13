@@ -25,7 +25,7 @@ const Sidebar = () => {
             </div>
             <div className="sidebarButton" id='sidebarButton'>
                 <div className="classroomButton">
-                    <NavLink to="/">
+                    <NavLink to="/dashboard">
                         <button className='sidebar-button'>
                             <RiDashboardLine className='icon' />
                             Dashboard
@@ -60,7 +60,7 @@ const Sidebar = () => {
 
                 </div>
             </div>
-            <LogOutModal open={open} setOpen={setOpen}/>
+            <LogOutModal open={open} setOpen={setOpen} />
 
         </div>
     )

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import './css/logoutmodal.css'
+import './css/passwordchange.css'
 import { TbAlertOctagon } from "react-icons/tb";
 
 
@@ -18,10 +18,10 @@ const style = {
     p: 4,
     outline: 0
 };
-const LogOutModal = ({ open, setOpen }) => {
-    // const [open, setOpen] = React.useState(false);
-    // const handleOpen = () => setOpen(true);
+
+const PasswordChange = ({ open, setOpen }) => {
     const handleClose = () => setOpen(false);
+
     return (
         <div>
             <Modal
@@ -31,22 +31,26 @@ const LogOutModal = ({ open, setOpen }) => {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <div className="logoutModal">
-                        <div className="modalIcon">
+                    <div className="passwordChangeModal flexColumn">
+                        <div className="moadlIcon flexRow">
                             <TbAlertOctagon className='icon10' />
+
                         </div>
                         <div className="modalText">
-                            <h4>Log Out</h4>
-                            <h5>Are you sure you would like to log out of your account?</h5>
+                            <h3>Password Change</h3>
+                            <h4>We're about to change your password. Please confirm this action before we proceed.</h4>
                         </div>
-                        <div className="modalButton">
-                            <button className="logOutCancel" onClick={handleClose}>Cancel</button>
-                            <button className="logOutOut">Log Out</button>
+                        <div className="modalButton flexrow">
+                            <button className='cancelBTN' onClick={handleClose}>Cancel</button>
+                            <button className='changePasswordBTN'>ChangePassword</button>
                         </div>
+
                     </div>
+
                 </Box>
-            </Modal></div>
+            </Modal>
+        </div>
     )
 }
 
-export default LogOutModal
+export default PasswordChange

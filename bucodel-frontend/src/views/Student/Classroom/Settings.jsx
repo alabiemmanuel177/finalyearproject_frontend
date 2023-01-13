@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Password from '../../../components/Student/Classroom Student/Password';
 import Profile from '../../../components/Student/Classroom Student/Profile';
+import PasswordChange from '../../../components/Student/modal/PasswordChange';
 
 const Settings = () => {
     var btnContainer = document.getElementById("headers");
@@ -15,6 +16,9 @@ const Settings = () => {
         }
     }
     const [active2, setActive2] = useState("profile");
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
     return (
         <div className="courses">
             <div className="title"><h3>Settings</h3></div>
@@ -26,8 +30,10 @@ const Settings = () => {
             </div>
             <hr />
             {active2 === "profile" && <Profile />}
-            {active2 === "password" && <Password />}
+            {active2 === "password" && <Password handleOpen={handleOpen} />}
+            <PasswordChange open={open} setOpen={setOpen} />
         </div>
+
     )
 }
 

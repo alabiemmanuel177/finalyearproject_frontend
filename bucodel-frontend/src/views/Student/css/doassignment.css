@@ -1,0 +1,98 @@
+.doAssignment {
+  width: 100%;
+  padding: 20px;
+}
+.assignmentContent {
+  width: 100%;
+}
+.assignmentType h3 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: #505050;
+}
+.assignmentContentTextHead h3 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: 0.0015em;
+  color: #0a0909;
+}
+.assignmentContentTextHead h4 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #6b6e74;
+}
+.assignmentContentTextInfo h3 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.0175em;
+  color: #6b6e74;
+  margin-top: 20px;
+}
+.assignmentContentText h4 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.0015em;
+  color: #6b6e74;
+  margin-top: 20px;
+}
+.assignmentYourWork {
+  width: 381px;
+  height: 189px;
+  background: #ffffff;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+}
+.assignmentYourWork {
+  width: 30%;
+  padding: 20px;
+  justify-content: space-between;
+}
+.assignmentContentText {
+  width: 65%;
+}
+.assignmentYourWork h3 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  color: #0a0909;
+}
+.addFile {
+  width: 295px;
+  height: 44px;
+  background: #0a3697;
+  border-radius: 4px;
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+}
+.Create {
+  width: 295px;
+  height: 44px;
+  background: #ffffff;
+  border: 1.5px solid rgba(29, 26, 26, 0.25);
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #1d1a1a;
+}
