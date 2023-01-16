@@ -74,7 +74,7 @@ const LandingPage = () => {
             </div>
             <div className="aboutUs vh100 flexrow">
                 <div className="aboutUsImg">
-                    <img src="" alt="" />
+                    <img src="https://res.cloudinary.com/manlikeemma/image/upload/v1673857785/BUCODEL/image_2_ww4wae.png" alt="" />
                 </div>
                 <div className="aboutUsText flexColumn">
                     <div className="auText">
@@ -101,7 +101,7 @@ const LandingPage = () => {
                         For Direct Entry into the 200 Level , in addition to the O’Level requirements above, candidates must possess passes in 3 WAEC/GCE/Cambridge Advanced Level (A ‘Level) Certificate with a Minimum of C, which must include Accounting, Mathematics and Economics. In addition, ATS 3/ATSWA 3/Fundamental Level of Professional Examination/ACCA passes in F1, F2, F3, F4/OND-Minimum of Upper Credit/HND-Minimum of Lower Credit may be admitted into 200L of our accounting programme.</h3>
                 </div>
                 <div className="admisImg">
-                    <img src="" alt="" />
+                    <img src="https://res.cloudinary.com/manlikeemma/image/upload/v1673857786/BUCODEL/image_5_lyfqdz.png" alt="" />
                 </div>
 
             </div>
