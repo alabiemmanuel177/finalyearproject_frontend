@@ -10,7 +10,7 @@ const LecturerLogin = () => {
       <div className="loginNavbar">
         <div className="BULogo flexrow ">
           <div className="logoImg">
-            <img src="https://res.cloudinary.com/manlikeemma/image/upload/v1669629509/BUCODEL/Babcock_Logo_c46jjo.jpg" alt="Babcock Logo" />
+               <img src="https://res.cloudinary.com/manlikeemma/image/upload/v1669629509/BUCODEL/Babcock_Logo_c46jjo.jpg" alt="Babcock Logo" />
           </div>
           <div className="logoText">
             <h3>BUCODeL</h3>

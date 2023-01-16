@@ -18,13 +18,13 @@ import LecturerClassroom from "./views/Lecturer/Classroom/LecturerClassroom";
 import LecturerDashboard from "./views/Lecturer/Classroom/LecturerDashboard";
 import LecturerAssignments from "./views/Lecturer/Classroom/LecturerAssignments";
 import LandingPage from "./views/LandingPage";
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#0a3697'
-    }
+      main: "#0a3697",
+    },
   },
 });
 
@@ -34,7 +34,7 @@ export const App = () => {
       <BrowserRouter>
         <Routes>
           "Student"
-          <Route index element={<LandingPage/>} path="/" />
+          <Route index element={<LandingPage />} path="/" />
           <Route element={<Login />} path="/login" />
           <Route element={<PasswordReset />} path="/passwordreset" />
           <Route element={<Meeting />} path="/meeting" />
@@ -51,11 +51,14 @@ export const App = () => {
           <Route element={<LecturerPasswordReset />} path="/lecturerreset" />
           <Route element={<LecturerClassroom />}>
             <Route element={<LecturerDashboard />} path="/lecturerdashboard" />
-            <Route element={<Courses />} path="/courses" />
-            <Route element={<LecturerAssignments />} path="/lecturerassignment" />
-            <Route element={<DoAssignment />} path="/doassignment" />
-            <Route element={<Settings />} path="/settings" />
-            <Route element={<Classes />} path="/class" />
+            <Route element={<Courses />} path="/lecturercourses" />
+            <Route
+              element={<LecturerAssignments />}
+              path="/lecturerassignment"
+            />
+            <Route element={<DoAssignment />} path="/lecturerdoassignment" />
+            <Route element={<Settings />} path="/lecturersettings" />
+            <Route element={<Classes />} path="/lecturerclass" />
           </Route>
           "Admin"
           <Route element={<AdminLogin />} path="/adminlogin" />
