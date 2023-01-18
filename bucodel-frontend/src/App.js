@@ -17,6 +17,7 @@ import AdminPage from "./views/Admin/AdminPage";
 import LecturerClassroom from "./views/Lecturer/Classroom/LecturerClassroom";
 import LecturerDashboard from "./views/Lecturer/Classroom/LecturerDashboard";
 import LecturerAssignments from "./views/Lecturer/Classroom/LecturerAssignments";
+import LecturerDoassignment from "./views/Lecturer/LecturerDoassignment";
 import LandingPage from "./views/LandingPage";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -56,7 +57,7 @@ export const App = () => {
               element={<LecturerAssignments />}
               path="/lecturerassignment"
             />
-            <Route element={<DoAssignment />} path="/lecturerdoassignment" />
+            <Route element={<LecturerDoassignment />} path="/lecturerdoassignment" />
             <Route element={<Settings />} path="/lecturersettings" />
             <Route element={<Classes />} path="/lecturerclass" />
           </Route>
