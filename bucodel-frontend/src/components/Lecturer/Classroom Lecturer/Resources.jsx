@@ -1,9 +1,9 @@
 import React from 'react'
-import '../css/resources.css'
+import './css/resources.css'
 import { MdOutlineAssignment } from "react-icons/md";
 import { GrDocumentPdf } from "react-icons/gr";
 
-const Resources = () => {
+const LecturerResources = () => {
   return (
     <div className='Resources'>
       <div className="resourcesContainer">
@@ -57,4 +57,4 @@ const Resource = () => {
   )
 }
 
-export default Resources
+export default LecturerResources

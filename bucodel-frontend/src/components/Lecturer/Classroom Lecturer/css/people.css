@@ -1,0 +1,41 @@
+.people {
+  padding: 20px;
+}
+.peopleTitle h3 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  letter-spacing: 0.0015em;
+  color: #0a0909;
+}
+.peopleList h3 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.0175em;
+  color: #0a0909;
+}
+.peopleList button {
+  width: 83px;
+  height: 30px;
+  background: rgba(10, 54, 151, 0.1);
+  border-radius: 4px;
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.0175em;
+  color: #0a3697;
+}
+.peopleList{
+    margin-top: 15px;
+}
+.peopleTitle{
+    margin-top: 10px;
+
+}

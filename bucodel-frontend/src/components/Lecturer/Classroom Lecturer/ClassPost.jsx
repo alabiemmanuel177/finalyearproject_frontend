@@ -1,5 +1,5 @@
 import React from 'react'
-import "../css/classpost.css"
+import "./css/classpost.css"
 import { FaRegUserCircle } from "react-icons/fa";
 import { IoMdSend } from "react-icons/io";
 

@@ -20,6 +20,8 @@ import LecturerAssignments from "./views/Lecturer/Classroom/LecturerAssignments"
 import LecturerDoassignment from "./views/Lecturer/LecturerDoassignment";
 import LandingPage from "./views/LandingPage";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import LecturerCourses from "./views/Lecturer/Classroom/LecturerCourses";
+import LecturerClasses from "./views/Lecturer/Classroom/LecturerClasses";
 
 const theme = createTheme({
   palette: {
@@ -52,14 +54,14 @@ export const App = () => {
           <Route element={<LecturerPasswordReset />} path="/lecturerreset" />
           <Route element={<LecturerClassroom />}>
             <Route element={<LecturerDashboard />} path="/lecturerdashboard" />
-            <Route element={<Courses />} path="/lecturercourses" />
+            <Route element={<LecturerCourses/>} path="/lecturercourses" />
             <Route
               element={<LecturerAssignments />}
               path="/lecturerassignment"
             />
             <Route element={<LecturerDoassignment />} path="/lecturerdoassignment" />
             <Route element={<Settings />} path="/lecturersettings" />
-            <Route element={<Classes />} path="/lecturerclass" />
+            <Route element={<LecturerClasses/>} path="/lecturerclass" />
           </Route>
           "Admin"
           <Route element={<AdminLogin />} path="/adminlogin" />

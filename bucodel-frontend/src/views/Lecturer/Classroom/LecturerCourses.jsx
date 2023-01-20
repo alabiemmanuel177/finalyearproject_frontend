@@ -1,5 +1,5 @@
 import React from 'react'
-import CourseList from '../../../components/Student/Classroom Student/CourseList'
+import CourseList from '../../../components/Lecturer/Classroom Lecturer/CourseList'
 import Resources from '../../../components/Student/Classroom Student/Resources'
 import './css/courses.css'
 import {
@@ -7,7 +7,7 @@ import {
   // useEffect
 } from "react";
 
-const Courses = () => {
+const LecturerCourses = () => {
   var btnContainer = document.getElementById("headers");
   if (btnContainer !== null) {
     var btns = btnContainer.getElementsByClassName("headerButton");
@@ -28,7 +28,7 @@ const Courses = () => {
         <div className="overview headerButton active1"
           onClick={() => setActive2("overview")}><h3>Overview</h3></div>
         <div className="schedule headerButton"
-          onClick={() => setActive2("resources")}><h3>Resources</h3></div>
+          onClick={() => setActive2("resources")}><h3>Schedule</h3></div>
       </div>
       <hr />
       {active2 === "overview" && <CourseList />}
@@ -37,4 +37,4 @@ const Courses = () => {
   )
 }
 
-export default Courses
+export default LecturerCourses
