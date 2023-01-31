@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../css/settings.css'
 import { FaUserCircle } from "react-icons/fa";
 
 
-const Profile = () => {
+const Profile = ({ student, department }) => {
+
     return (
         <div className="profile">
             <div className="personalInfo flexRow">
@@ -13,13 +14,13 @@ const Profile = () => {
                 <div className="personalInfoForm">
                     <div>
                         <h4 className="label">Name</h4>
-                        <input type="text" className='mgb68' placeholder='Name' />
+                        <input type="text" className='mgb68' placeholder='Name' value={student.firstname || ""} readOnly />
                     </div>
                     <h4 className="label">Email</h4>
-                    <input type="text" placeholder='Email' />
+                    <input type="text" placeholder='Email' value={student.email || ""} readOnly />
                     <div>
                         <h4 className="label">Matric No</h4>
-                        <input type="text" placeholder='Matric No' />
+                        <input type="text" placeholder='Matric No' value={student.matricno || ""} readOnly />
                     </div>
                 </div>
             </div>
@@ -31,13 +32,13 @@ const Profile = () => {
                 <div className="personalInfoForm">
                     <div>
                         <h4 className="label">Department</h4>
-                        <input type="text" className='mgb68' placeholder='Department' />
+                        <input type="text" className='mgb68' placeholder='Department' value={department.name || ""} readOnly />
                     </div>
 
                     <h4 className="label">Level</h4>
-                    <input type="text" placeholder='500' />
+                    <input type="text" placeholder='500' value={student.level || ""} readOnly />
                     <div><h4 className="label">Programme</h4>
-                        <input type="text" placeholder='Software Engineering' /></div>
+                        <input type="text" placeholder='Software Engineering' readOnly value={department.name || ""} /></div>
 
                 </div>
             </div>
@@ -48,7 +49,7 @@ const Profile = () => {
                     <h5>This will be displayed on your profile</h5>
                 </div>
                 <div className="yourPhotoPic">
-                    <FaUserCircle className='icon9'/>
+                    <FaUserCircle className='icon9' />
                 </div>
                 <div className="yourPhotoControls flexRow">
                     <h3 className='blue'>Delete</h3>

@@ -2,7 +2,6 @@ import React from 'react'
 import './css/lecturerlogin.css'
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { NavLink } from 'react-router-dom';
-import { color } from '@mui/system';
 
 const LecturerPasswordReset = () => {
   return (

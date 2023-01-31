@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Classroom from "./views/Student/Classroom/Classroom";
 import { Login } from "./views/Student/Login";
@@ -22,6 +22,20 @@ import LandingPage from "./views/LandingPage";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import LecturerCourses from "./views/Lecturer/Classroom/LecturerCourses";
 import LecturerClasses from "./views/Lecturer/Classroom/LecturerClasses";
+import { useContext } from "react";
+import {
+  studentContext,
+  lecturerContext,
+  adminContext,
+} from "./context/Context";
+
+import {
+  StudentContextProvider,
+  AdminContextProvider,
+  LecturerContextProvider,
+} from "./context/Context";
+import axios from "axios";
+import config from "./config";
 
 const theme = createTheme({
   palette: {
@@ -32,41 +46,88 @@ const theme = createTheme({
 });
 
 export const App = () => {
+  const { student } = useContext(studentContext);
+  const { lecturer } = useContext(lecturerContext);
+  const { admin } = useContext(adminContext);
+
+  
+
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <Routes>
-          "Student"
-          <Route index element={<LandingPage />} path="/" />
-          <Route element={<Login />} path="/login" />
-          <Route element={<PasswordReset />} path="/passwordreset" />
-          <Route element={<Meeting />} path="/meeting" />
-          <Route element={<Classroom />}>
-            <Route element={<Dashboard />} path="/dashboard" />
-            <Route element={<Courses />} path="/courses" />
-            <Route element={<Assignment />} path="/assignment" />
-            <Route element={<DoAssignment />} path="/doassignment" />
-            <Route element={<Settings />} path="/settings" />
-            <Route element={<Classes />} path="/class" />
-          </Route>
-          "Lecturer"
-          <Route element={<LecturerLogin />} path="/lecturerlogin" />
-          <Route element={<LecturerPasswordReset />} path="/lecturerreset" />
-          <Route element={<LecturerClassroom />}>
-            <Route element={<LecturerDashboard />} path="/lecturerdashboard" />
-            <Route element={<LecturerCourses/>} path="/lecturercourses" />
+        <StudentContextProvider>
+          <Routes>
+            <Route index element={<LandingPage />} path="/" />
+            "Student"
+            <Route element={<Login />} path="/login" />
+            <Route element={<PasswordReset />} path="/passwordreset" />
             <Route
-              element={<LecturerAssignments />}
-              path="/lecturerassignment"
+              element={student ? <Meeting student={student} /> : <Login />}
+              path="/meeting"
             />
-            <Route element={<LecturerDoassignment />} path="/lecturerdoassignment" />
-            <Route element={<Settings />} path="/lecturersettings" />
-            <Route element={<LecturerClasses/>} path="/lecturerclass" />
-          </Route>
-          "Admin"
-          <Route element={<AdminLogin />} path="/adminlogin" />
-          <Route element={<AdminPage />} path="/adminpage" />
-        </Routes>
+            <Route
+              element={student ? <Classroom student={student} /> : <Login />}
+            >
+              <Route
+                element={<Dashboard student={student} />}
+                path="/dashboard"
+              />
+              <Route element={<Courses student={student} />} path="/courses" />
+              <Route
+                element={<Assignment student={student} />}
+                path="/assignment"
+              />
+              <Route
+                element={<DoAssignment student={student} />}
+                path="/doassignment"
+              />
+              <Route
+                element={<Settings student={student} />}
+                path="/settings"
+              />
+              <Route element={<Classes student={student} />} path="/class" />
+            </Route>
+          </Routes>
+        </StudentContextProvider>
+        <LecturerContextProvider>
+          <Routes>
+            "Lecturer"
+            <Route element={<LecturerLogin />} path="/lecturerlogin" />
+            <Route element={<LecturerPasswordReset />} path="/lecturerreset" />
+            <Route
+              element={
+                lecturer ? (
+                  <LecturerClassroom lecturer={lecturer} />
+                ) : (
+                  <LecturerLogin />
+                )
+              }
+            >
+              <Route
+                element={<LecturerDashboard />}
+                path="/lecturerdashboard"
+              />
+              <Route element={<LecturerCourses />} path="/lecturercourses" />
+              <Route
+                element={<LecturerAssignments />}
+                path="/lecturerassignment"
+              />
+              <Route
+                element={<LecturerDoassignment />}
+                path="/lecturerdoassignment"
+              />
+              <Route element={<Settings />} path="/lecturersettings" />
+              <Route element={<LecturerClasses />} path="/lecturerclass" />
+            </Route>
+          </Routes>
+        </LecturerContextProvider>
+        <AdminContextProvider>
+          <Routes>
+            "Admin"
+            <Route element={<AdminLogin />} path="/adminlogin" />
+            <Route element={<AdminPage />} path="/adminpage" />
+          </Routes>
+        </AdminContextProvider>
       </BrowserRouter>
     </ThemeProvider>
   );

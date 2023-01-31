@@ -19,7 +19,7 @@ const style = {
     outline: 0
 };
 
-const PasswordChange = ({ open, setOpen }) => {
+const PasswordChange = ({ open, setOpen, handleSubmit, }) => {
     const handleClose = () => setOpen(false);
 
     return (
@@ -42,7 +42,7 @@ const PasswordChange = ({ open, setOpen }) => {
                         </div>
                         <div className="modalButton flexrow">
                             <button className='cancelBTN' onClick={handleClose}>Cancel</button>
-                            <button className='changePasswordBTN'>ChangePassword</button>
+                            <button className='changePasswordBTN' onClick={handleSubmit}>ChangePassword</button>
                         </div>
 
                     </div>

@@ -6,7 +6,6 @@ import {
     useState,
     // useEffect
 } from "react";
-import Stream from '../../../components/Lecturer/Classroom Lecturer/Stream';
 import Groups from '../../../components/Lecturer/Classroom Lecturer/Groups';
 import People from '../../../components/Lecturer/Classroom Lecturer/People';
 import LecturerResources from '../../../components/Lecturer/Classroom Lecturer/Resources';

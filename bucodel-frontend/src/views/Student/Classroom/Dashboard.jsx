@@ -5,7 +5,8 @@ import { HiOutlineDocumentText } from "react-icons/hi";
 import Calendar from './Calendar';
 import { FaRegUserCircle } from "react-icons/fa";
 
-const Dashboard = () => {
+const Dashboard = ({ student }) => {
+  
   return (
     <div className="dashboard">
       <div className="dashboardBody">
@@ -32,7 +33,7 @@ const Dashboard = () => {
           <div className="dashboardLevel w222h98">
             <h4>Level</h4>
             <div className='flexrow sb'>
-              <h3>500</h3>
+              <h3>{student.level}</h3>
               <div className="hw40">
                 <HiOutlineDocumentText className='icon11' />
               </div>

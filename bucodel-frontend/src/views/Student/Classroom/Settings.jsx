@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Password from '../../../components/Student/Classroom Student/Password';
 import Profile from '../../../components/Student/Classroom Student/Profile';
-import PasswordChange from '../../../components/Student/modal/PasswordChange';
+import axios from 'axios';
+import config from "../../../config";
 
-const Settings = () => {
+const Settings = ({ student }) => {
     var btnContainer = document.getElementById("headers");
     if (btnContainer !== null) {
         var btns = btnContainer.getElementsByClassName("headerButton");
@@ -16,9 +17,17 @@ const Settings = () => {
         }
     }
     const [active2, setActive2] = useState("profile");
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    
+    
+
+    const [department, setDepartment] = useState("");
+    useEffect(() => {
+        const fetchDepartment = async () => {
+            const res = await axios.get(`${config.baseURL}/department/${student.department}`);
+            setDepartment(res.data);
+        };
+        fetchDepartment();
+    }, []);
     return (
         <div className="courses">
             <div className="title"><h3>Settings</h3></div>
@@ -29,9 +38,9 @@ const Settings = () => {
                     onClick={() => setActive2("password")}><h3>Passwords</h3></div>
             </div>
             <hr />
-            {active2 === "profile" && <Profile />}
-            {active2 === "password" && <Password handleOpen={handleOpen} />}
-            <PasswordChange open={open} setOpen={setOpen} />
+            {active2 === "profile" && <Profile student={student} department={department} />}
+            {active2 === "password" && <Password student={student} />}
+            
         </div>
 
     )

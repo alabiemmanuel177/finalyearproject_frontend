@@ -4,7 +4,7 @@ import "./css/Classroom.css"
 import { FaRegUserCircle } from "react-icons/fa";
 import { Outlet } from 'react-router-dom';
 
-const Classroom = () => {
+const Classroom = ({ student }) => {
 
     return (
         <div className="classroom">
@@ -16,8 +16,8 @@ const Classroom = () => {
                     <div className="util">
                         <FaRegUserCircle className='icon1' />
                         <div>
-                            <h3>Izu Onisokumen Preye</h3>
-                            <h5>19/1485</h5>
+                            <h3>{student.firstname} {student.lastname} {student.middlename}</h3>
+                            <h5>{student.matricno}</h5>
                         </div>
                     </div>
                 </div>

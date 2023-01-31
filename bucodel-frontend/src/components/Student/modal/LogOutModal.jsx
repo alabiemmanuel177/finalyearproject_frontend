@@ -3,7 +3,8 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import './css/logoutmodal.css'
 import { TbAlertOctagon } from "react-icons/tb";
-
+import { studentContext } from '../../../context/Context';
+import { useContext } from "react";
 
 const style = {
     position: 'absolute',
@@ -19,8 +20,12 @@ const style = {
     outline: 0
 };
 const LogOutModal = ({ open, setOpen }) => {
-    // const [open, setOpen] = React.useState(false);
-    // const handleOpen = () => setOpen(true);
+    const { student, dispatch } = useContext(studentContext);
+    const handleLogout = () => {
+        dispatch({ type: "LOGOUT" });
+        window.location.replace("/")
+    };
+
     const handleClose = () => setOpen(false);
     return (
         <div>
@@ -41,7 +46,7 @@ const LogOutModal = ({ open, setOpen }) => {
                         </div>
                         <div className="modalButton">
                             <button className="logOutCancel" onClick={handleClose}>Cancel</button>
-                            <button className="logOutOut">Log Out</button>
+                            <button className="logOutOut" onClick={handleLogout}>Log Out</button>
                         </div>
                     </div>
                 </Box>
