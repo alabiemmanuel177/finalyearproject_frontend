@@ -2853,45 +2853,6 @@ agent-base@6:
   dependencies:
     debug "4"
 
-agora-react-uikit@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.npmjs.org/agora-react-uikit/-/agora-react-uikit-1.2.0.tgz"
-  integrity sha512-+bqYsktLs3CV0OFQyD+uIxqlEMPMLprw446MnOQA4BWr+EFJBO3zA+J1ogXHOgJ+dSRegbD+SA8Ehe2et6K/ew==
-  dependencies:
-    agora-rtc-react "^1.1.3"
-    agora-rtm-react "^1.1.2"
-
-agora-rtc-react@^1.1.3:
-  version "1.1.3"
-  resolved "https://registry.npmjs.org/agora-rtc-react/-/agora-rtc-react-1.1.3.tgz"
-  integrity sha512-AgmDoeLoL3xC7u60lTehHi1GvHsP8l09CX3bn+NyHx6E0Dmbbxdtqkn+YrlakWa4IYOAn0d/9oKvuGrNtUiOpA==
-  dependencies:
-    agora-rtc-sdk-ng "^4.3.0"
-
-agora-rtc-sdk-ng@^4.15.1, agora-rtc-sdk-ng@^4.3.0:
-  version "4.15.1"
-  resolved "https://registry.npmjs.org/agora-rtc-sdk-ng/-/agora-rtc-sdk-ng-4.15.1.tgz"
-  integrity sha512-U1I1jOjs9NJSDPAsFuRUgiFgKRx8/J5rH12zNaAGyyXt3A+MPfYAccgfvlJIEhWn02ey97xXDklvufGercJcvw==
-  dependencies:
-    agora-rte-extension "^1.2.3"
-
-agora-rte-extension@^1.2.3:
-  version "1.2.3"
-  resolved "https://registry.npmjs.org/agora-rte-extension/-/agora-rte-extension-1.2.3.tgz"
-  integrity sha512-k3yNrYVyzJRoQJjaJUktKUI1XRtf8J1XsW8OzYKFqGlS8WQRMsES1+Phj2rfuEriiLObfuyuCimG6KHQCt5tiw==
-
-agora-rtm-react@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.npmjs.org/agora-rtm-react/-/agora-rtm-react-1.1.2.tgz"
-  integrity sha512-iNIU48khfevojXn0beJU94+HO9zvHZgpO42YJXqaEYEjdVWhZVijZw3bZWC8hTsEMuew5XB0Gk2tNJI0biRPQg==
-  dependencies:
-    agora-rtm-sdk "1.4.3-203"
-
-agora-rtm-sdk@1.4.3-203:
-  version "1.4.3-203"
-  resolved "https://registry.npmjs.org/agora-rtm-sdk/-/agora-rtm-sdk-1.4.3-203.tgz"
-  integrity sha512-uQh9zqRtELAblxt7nXSv20pH7oQfTDj7gC2NI2cDIe9dcKBlQpEVf2wBM68so6sZ767ZLcW+z/FCd5QVCt9RvA==
-
 ajv-formats@^2.1.1:
   version "2.1.1"
   resolved "https://registry.npmjs.org/ajv-formats/-/ajv-formats-2.1.1.tgz"
@@ -3476,9 +3437,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001335, caniuse-lite@^1.0.30001366:
-  version "1.0.30001367"
-  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001367.tgz"
-  integrity sha512-XDgbeOHfifWV3GEES2B8rtsrADx4Jf+juKX2SICJcaUhjYBO3bR96kvEIHa15VU6ohtOhBZuPGGYGbXMRn0NCw==
+  version "1.0.30001450"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001450.tgz"
+  integrity sha512-qMBmvmQmFXaSxexkjjfMvD5rnDL0+m+dUMZKoDYsGG8iZN29RuYh9eRoMvKsT6uMAWlyUUGDEQGJJYjzCIO9ew==
 
 case-sensitive-paths-webpack-plugin@^2.4.0:
   version "2.4.0"
