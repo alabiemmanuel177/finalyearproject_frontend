@@ -10,7 +10,7 @@ import config from "../../config";
 export const LoginForm = () => {
   const matricnoRef = useRef();
   const passwordRef = useRef();
-  const { dispatch, isFetching } = useContext(studentContext);
+  const { dispatch } = useContext(studentContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

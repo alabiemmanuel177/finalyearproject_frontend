@@ -27,7 +27,7 @@ const Settings = ({ student }) => {
             setDepartment(res.data);
         };
         fetchDepartment();
-    }, []);
+    });
     return (
         <div className="courses">
             <div className="title"><h3>Settings</h3></div>

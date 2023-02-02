@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Classroom from "./views/Student/Classroom/Classroom";
 import { Login } from "./views/Student/Login";
@@ -34,8 +34,6 @@ import {
   AdminContextProvider,
   LecturerContextProvider,
 } from "./context/Context";
-import axios from "axios";
-import config from "./config";
 
 const theme = createTheme({
   palette: {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import '../css/settings.css'
 import { FaUserCircle } from "react-icons/fa";
 

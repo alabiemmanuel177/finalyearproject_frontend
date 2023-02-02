@@ -12,13 +12,11 @@ const Password = ({ student }) => {
     const [error, setError] = useState(null);
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError(false);
-        if (newPassword != confrirmNewPassword) {
+        if (newPassword !== confrirmNewPassword) {
             setError('Passwords do not match');
             console.log(error);
         }

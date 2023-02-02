@@ -2,7 +2,7 @@ import React from 'react'
 import './css/lecturerlogin.css'
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { NavLink } from 'react-router-dom';
-import { lecturerContext } from '../../context/Context';
+// import { lecturerContext } from '../../context/Context';
 
 const LecturerLogin = () => {
   // const emailRef = useRef();

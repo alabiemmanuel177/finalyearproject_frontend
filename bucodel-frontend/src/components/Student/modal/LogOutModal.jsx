@@ -20,7 +20,7 @@ const style = {
     outline: 0
 };
 const LogOutModal = ({ open, setOpen }) => {
-    const { student, dispatch } = useContext(studentContext);
+    const { dispatch } = useContext(studentContext);
     const handleLogout = () => {
         dispatch({ type: "LOGOUT" });
         window.location.replace("/")

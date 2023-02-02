@@ -11,7 +11,6 @@ import LogOutModal from '../modal/LogOutModal';
 const Sidebar = () => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
     return (
         <div className="sidebar">
             <div className="logo">

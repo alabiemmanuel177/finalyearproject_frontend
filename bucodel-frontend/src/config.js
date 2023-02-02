@@ -1,4 +1,4 @@
 export default {
-  localURL: "http://localhost:5700",
-  baseURL: "https://bucodelbackendservices.onrender.com",
+  baseURL: "http://localhost:5700",
+  // baseURL: "https://bucodelbackendservices.onrender.com",
 };
