@@ -23,6 +23,9 @@ export default function Sub() {
                     <StudentCard/>
                     <StudentCard/>
                     <StudentCard/>
+                    <StudentCard/>
+                    <StudentCard/>
+                    <StudentCard/>
                 </div>
             </div>
             <div className='submission-content-body'>

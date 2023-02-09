@@ -46,11 +46,11 @@ export default function LecturerAssignments() {
     }
 
   return (
-    <div style={{ padding: '10px 5px' }}>
-        <div classname={'main-assign-header'} style={{padding: '25px 0 15px 35px'}}>
+    <div style={{ padding: '10px 0px' }}>
+        <div classname={'main-assign-header'} style={{padding: '25px 0 15px 30px'}}>
             <Typography color={'black'} fontWeight='bold' variant='h4'>Assignments</Typography>
         </div>
-        <div style={{ padding: '10px 15px' }}>
+        <div style={{ padding: '10px 0px' }}>
             <Tabs value={value} onChange={handleChange}>
                 <Tab sx={{ marginLeft: '25px',fontSize: '1.1rem', fontWeight: 'bold', textTransform: 'none', color: 'black'}} label={"Assigned"} {...a11yProps(0)} />
             </Tabs>
