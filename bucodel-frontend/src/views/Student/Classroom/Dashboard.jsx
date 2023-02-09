@@ -1,12 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './css/Dashboard.css'
 import { HiOutlineBookmarkAlt } from "react-icons/hi";
 import { HiOutlineDocumentText } from "react-icons/hi";
 import Calendar from './Calendar';
 import { FaRegUserCircle } from "react-icons/fa";
+import axios from 'axios';
+import config from '../../../config';
 
 const Dashboard = ({ student }) => {
-  
+  const [courseCount, setCourseCount] = useState("");
+  useEffect(() => {
+    const fetchCourseCount = async () => {
+      const res = await axios.get(`${config.baseURL}/class/classes/${student.class}/course-count`);
+      setCourseCount(res.data.courseCount);
+    };
+    fetchCourseCount();
+  });
+
+  const [assignmentCount, setAssignmentCount] = useState("");
+  useEffect(() => {
+    const fetchAssignmentCount = async () => {
+      const res = await axios.get(`${config.baseURL}/class/classes/${student.class}/assignment-count`);
+      setAssignmentCount(res.data.assignmentCount);
+    };
+    fetchAssignmentCount();
+  });
+
   return (
     <div className="dashboard">
       <div className="dashboardBody">
@@ -14,7 +33,7 @@ const Dashboard = ({ student }) => {
           <div className="dashboardCourses w222h98">
             <h4>Courses this semester</h4>
             <div className='flexrow sb'>
-              <h3>10</h3>
+              <h3>{courseCount}</h3>
               <div className="hw40">
                 <HiOutlineBookmarkAlt className='icon11' />
               </div>
@@ -24,7 +43,7 @@ const Dashboard = ({ student }) => {
           <div className="dashboardAssignments w222h98">
             <h4>Assignments</h4>
             <div className='flexrow sb'>
-              <h3>6</h3>
+              <h3>{assignmentCount}</h3>
               <div className="hw40">
                 <HiOutlineDocumentText className='icon11' />
               </div>

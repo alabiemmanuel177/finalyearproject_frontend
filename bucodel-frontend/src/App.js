@@ -48,13 +48,12 @@ export const App = () => {
   const { lecturer } = useContext(lecturerContext);
   const { admin } = useContext(adminContext);
 
-  
-
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <StudentContextProvider>
           <Routes>
+            {/* <Route component={NotFound} /> */}
             <Route index element={<LandingPage />} path="/" />
             "Student"
             <Route element={<Login />} path="/login" />
@@ -83,7 +82,7 @@ export const App = () => {
                 element={<Settings student={student} />}
                 path="/settings"
               />
-              <Route element={<Classes student={student} />} path="/class" />
+              <Route element={<Classes student={student} />} path="/class/:id" />
             </Route>
           </Routes>
         </StudentContextProvider>

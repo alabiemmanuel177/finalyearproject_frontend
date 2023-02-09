@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './css/courses.css'
 import {
     useState,
@@ -7,8 +7,10 @@ import {
 import AssignmentList from '../../../components/Student/Classroom Student/AssignmentList';
 import MissingList from '../../../components/Student/Classroom Student/MissingList';
 import DoneList from '../../../components/Student/Classroom Student/DoneList';
+import axios from 'axios';
+import config from '../../../config';
 
-const Assignment = () => {
+const Assignment = ({ student }) => {
     var btnContainer = document.getElementById("headers");
     if (btnContainer !== null) {
         var btns = btnContainer.getElementsByClassName("headerButton");
@@ -21,6 +23,33 @@ const Assignment = () => {
         }
     }
     const [active2, setActive2] = useState("assigned");
+
+    const [assignedAssignments, setAssignedAssignments] = useState([])
+    useEffect(() => {
+        const fetchAssignedAssignments = async () => {
+            const res = await axios.get(`${config.baseURL}/class/classes/${student.class}/assigned-assignments`);
+            setAssignedAssignments(res.data);
+        };
+        fetchAssignedAssignments();
+    }, []);
+
+    const [missingAssignments, setMissingAssignments] = useState([])
+    useEffect(() => {
+        const fetchMissingAssignments = async () => {
+            const res = await axios.get(`${config.baseURL}/class/classes/${student.class}/missing-assignments`);
+            setMissingAssignments(res.data);
+        };
+        fetchMissingAssignments();
+    }, []);
+
+    const [doneAssignments, setDoneAssignments] = useState([])
+    useEffect(() => {
+        const fetchDoneAssignments = async () => {
+            const res = await axios.get(`${config.baseURL}/class/classes/${student.class}/done-assignments`);
+            setDoneAssignments(res.data);
+        };
+        fetchDoneAssignments();
+    }, []);
 
     return (
         <div className="courses">
@@ -37,9 +66,9 @@ const Assignment = () => {
                 </div>
             </div>
             <hr />
-            {active2 === "assigned" && <AssignmentList />}
-            {active2 === "missing" && <MissingList />}
-            {active2 === "done" && <DoneList />}
+            {active2 === "assigned" && <AssignmentList assignedAssignments={assignedAssignments} />}
+            {active2 === "missing" && <MissingList missingAssignments={missingAssignments} />}
+            {active2 === "done" && <DoneList doneAssignments={doneAssignments} />}
         </div>
     )
 }

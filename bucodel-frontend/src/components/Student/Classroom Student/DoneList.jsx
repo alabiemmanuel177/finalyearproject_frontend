@@ -1,118 +1,44 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../css/assignmentList.css'
 import { Link } from 'react-router-dom';
 import { BsRecordCircleFill } from "react-icons/bs";
+import axios from 'axios';
+import config from '../../../config';
 
-
-const DoneList = () => {
+const DoneList = ({ doneAssignments }) => {
     return (
         <div className="assignmentList">
-            <Link to="/doassignment" style={{ textDecoration: 'none' }}>
-                <div className="assignment">
-                    <div className="top">
-                        <button disabled="disabled">10 Marks</button>
-                        <BsRecordCircleFill className='icon7 green' />
-                    </div>
-                    <h3>SENG 302: Assignment 1</h3>
-                    <h5>Can you write about the Oracle database 12C Multitenant architecture?
-                    </h5>
-                    <h4><span className='green'>Done</span></h4>
+            {doneAssignments.map((p) => (
+                <Assignment doneAssignment={p} key={p._id} />
+            ))}
 
-                </div>
-            </Link>
-            <Link to="/doassignment" style={{ textDecoration: 'none' }}>
-                <div className="assignment">
-                    <div className="top">
-                        <button disabled="disabled">10 Marks</button>
-                        <BsRecordCircleFill className='icon7 green' />
-                    </div>
-                    <h3>SENG 302: Assignment 1</h3>
-                    <h5>Can you write about the Oracle database 12C Multitenant architecture?
-                    </h5>
-                    <h4><span className='green'>Done</span></h4>
-
-                </div>
-            </Link>
-            <Link to="/doassignment" style={{ textDecoration: 'none' }}>
-                <div className="assignment">
-                    <div className="top">
-                        <button disabled="disabled">10 Marks</button>
-                        <BsRecordCircleFill className='icon7 green' />
-                    </div>
-                    <h3>SENG 302: Assignment 1</h3>
-                    <h5>Can you write about the Oracle database 12C Multitenant architecture?
-                    </h5>
-                    <h4><span className='green'>Done</span></h4>
-
-                </div>
-            </Link>
-            <Link to="/doassignment" style={{ textDecoration: 'none' }}>
-                <div className="assignment">
-                    <div className="top">
-                        <button disabled="disabled">10 Marks</button>
-                        <BsRecordCircleFill className='icon7 green' />
-                    </div>
-                    <h3>SENG 302: Assignment 1</h3>
-                    <h5>Can you write about the Oracle database 12C Multitenant architecture?
-                    </h5>
-                    <h4><span className='green'>Done</span></h4>
-
-                </div>
-            </Link>
-            <Link to="/doassignment" style={{ textDecoration: 'none' }}>
-                <div className="assignment">
-                    <div className="top">
-                        <button disabled="disabled">10 Marks</button>
-                        <BsRecordCircleFill className='icon7 green' />
-                    </div>
-                    <h3>SENG 302: Assignment 1</h3>
-                    <h5>Can you write about the Oracle database 12C Multitenant architecture?
-                    </h5>
-                    <h4><span className='green'>Done</span></h4>
-
-                </div>
-            </Link>
-            <Link to="/doassignment" style={{ textDecoration: 'none' }}>
-                <div className="assignment">
-                    <div className="top">
-                        <button disabled="disabled">10 Marks</button>
-                        <BsRecordCircleFill className='icon7 green' />
-                    </div>
-                    <h3>SENG 302: Assignment 1</h3>
-                    <h5>Can you write about the Oracle database 12C Multitenant architecture?
-                    </h5>
-                    <h4><span className='green'>Done</span></h4>
-
-                </div>
-            </Link>
-            <Link to="/doassignment" style={{ textDecoration: 'none' }}>
-                <div className="assignment">
-                    <div className="top">
-                        <button disabled="disabled">10 Marks</button>
-                        <BsRecordCircleFill className='icon7 green' />
-                    </div>
-                    <h3>SENG 302: Assignment 1</h3>
-                    <h5>Can you write about the Oracle database 12C Multitenant architecture?
-                    </h5>
-                    <h4><span className='green'>Done</span></h4>
-
-                </div>
-            </Link>
-            <Link to="/doassignment" style={{ textDecoration: 'none' }}>
-                <div className="assignment">
-                    <div className="top">
-                        <button disabled="disabled">10 Marks</button>
-                        <BsRecordCircleFill className='icon7 green' />
-                    </div>
-                    <h3>SENG 302: Assignment 1</h3>
-                    <h5>Can you write about the Oracle database 12C Multitenant architecture?
-                    </h5>
-                    <h4><span className='green'>Done</span></h4>
-
-                </div>
-            </Link>
         </div>
     )
 }
 
 export default DoneList
+
+export const Assignment = ({ doneAssignment }) => {
+    const [course, setCourse] = useState([])
+    useEffect(() => {
+        const fetchCourses = async () => {
+            const res = await axios.get(`${config.baseURL}/course/${doneAssignment.course}`);
+            setCourse(res.data)
+        };
+        fetchCourses();
+    }, []);
+    return (
+        <Link to="/doassignment" style={{ textDecoration: 'none' }}>
+            <div className="assignment">
+                <div className="top">
+                    <button disabled="disabled">{doneAssignment.mark} Marks</button>
+                    <BsRecordCircleFill className='icon7 green' />
+                </div>
+                <h3>{`${course.courseabrev}: ${doneAssignment.title}`}</h3>
+                <h5>{doneAssignment.assignmentQuestion}</h5>
+                <h4><span className='green'>Done</span></h4>
+
+            </div>
+        </Link>
+    )
+}

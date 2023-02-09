@@ -1,59 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "../css/classpost.css"
 import { FaRegUserCircle } from "react-icons/fa";
 import { IoMdSend } from "react-icons/io";
+import axios from 'axios';
+import config from '../../../config';
 
-const ClassPost = () => {
+const ClassPost = ({ posts, course, student }) => {
+    const [content, setContent] = useState("");
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const res = await axios.post(`${config.baseURL}/classpost/`, {
+                content,
+                course: course,
+                student_id: student._id,
+            });
+            res.data && window.location.reload();
+        } catch (err) {
+        }
+    };
+
     return (
         <div className="classpost">
-            <div className="post">
+            <div className="post" >
                 <div className="newPost">
                     <FaRegUserCircle className='icon1' />
                     <input
-                        placeholder='Post a message to your class'>
+                        placeholder='Post a message to your class'
+                        onChange={(e) => setContent(e.target.value)}>
                     </input>
-                    <button>Post</button>
+                    <button onClick={handleSubmit}>Post</button>
                 </div>
-                <existingPost />
-                <existingPost />
-
-
-                {/* <div className="existingPost">
-                    <div className='postInfo'>
-                        <FaRegUserCircle className='icon4 mt15' />
-                        <div>
-                            <h3>Dr. Adetofunmi Adetunji</h3>
-                            <h5>Dec 5 8:00pm</h5>
-                        </div>
-                    </div>
-                    <h4>Your mid semester test would be on 1 August by 11am at WRA come with all necessary tools. Assignments would also be submitted. Goodluck!</h4>
-                    <hr />
-                    <div className="newComment">
-                        <FaRegUserCircle className='icon4' />
-                        <input
-                            placeholder='Add Comment '>
-                        </input>
-                        <IoMdSend className='icon4' type='submit' />
-                    </div>
+                <div className="postContainer" style={{ height: "510px", overflow: "scroll" }}>
+                    {posts.map((p) => (
+                        <ExistingPost post={p} key={p._id} />
+                    ))}
                 </div>
-                <div className="existingPost">
-                    <div className='postInfo'>
-                        <FaRegUserCircle className='icon4 mt15' />
-                        <div>
-                            <h3>Dr. Adetofunmi Adetunji</h3>
-                            <h5>Dec 5 8:00pm</h5>
-                        </div>
-                    </div>
-                    <h4>Your mid semester test would be on 1 August by 11am at WRA come with all necessary tools. Assignments would also be submitted. Goodluck!</h4>
-                    <hr />
-                    <div className="newComment">
-                        <FaRegUserCircle className='icon4' />
-                        <input
-                            placeholder='Add Comment'>
-                        </input>
-                        <IoMdSend className='icon4' type='submit' />
-                    </div>
-                </div> */}
             </div>
             <div className="noticeboard">
                 <h3>Noticeboard</h3>
@@ -99,17 +83,17 @@ const ClassPost = () => {
 
 export default ClassPost
 
-export const existingPost = () => {
+export const ExistingPost = ({ post }) => {
     return (
         <div className="existingPost">
             <div className='postInfo'>
                 <FaRegUserCircle className='icon4 mt15' />
                 <div>
-                    <h3>Dr. Adetofunmi Adetunji</h3>
+                    <h3>{post.author.name}</h3>
                     <h5>Dec 5 8:00pm</h5>
                 </div>
             </div>
-            <h4>Your mid semester test would be on 1 August by 11am at WRA come with all necessary tools. Assignments would also be submitted. Goodluck!</h4>
+            <h4>{post.content}</h4>
             <hr />
             <div className="newComment">
                 <FaRegUserCircle className='icon4' />
