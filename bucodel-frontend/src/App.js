@@ -45,8 +45,9 @@ const theme = createTheme({
 
 export const App = () => {
   const { student } = useContext(studentContext);
-  const { lecturer } = useContext(lecturerContext);
+  // const { lecturer } = useContext(lecturerContext);
   const { admin } = useContext(adminContext);
+  const lecturer = true;
 
   return (
     <ThemeProvider theme={theme}>
