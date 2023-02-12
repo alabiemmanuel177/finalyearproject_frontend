@@ -16,6 +16,7 @@ import AdminLogin from "./views/Admin/AdminLogin";
 import AdminPage from "./views/Admin/AdminPage";
 import LecturerClassroom from "./views/Lecturer/Classroom/LecturerClassroom";
 import LecturerDashboard from "./views/Lecturer/Classroom/LecturerDashboard";
+import LecturerSettings from "./views/Lecturer/Classroom/LecturerSettings";
 import LecturerAssignments from "./views/Lecturer/Classroom/LecturerAssignments";
 import LecturerDoassignment from "./views/Lecturer/LecturerDoassignment";
 import LandingPage from "./views/LandingPage";
@@ -45,9 +46,9 @@ const theme = createTheme({
 
 export const App = () => {
   const { student } = useContext(studentContext);
-  // const { lecturer } = useContext(lecturerContext);
+  const { lecturer } = useContext(lecturerContext);
   const { admin } = useContext(adminContext);
-  const lecturer = true;
+  // const lecturer = true;
 
   return (
     <ThemeProvider theme={theme}>
@@ -114,7 +115,7 @@ export const App = () => {
                 element={<LecturerDoassignment />}
                 path="/lecturerdoassignment"
               />
-              <Route element={<Settings />} path="/lecturersettings" />
+              <Route element={<LecturerSettings />} path="/lecturersettings" />
               <Route element={<LecturerClasses />} path="/lecturerclass" />
             </Route>
           </Routes>
