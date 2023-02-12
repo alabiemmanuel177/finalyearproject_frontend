@@ -1,40 +1,36 @@
-import React, { useState } from 'react'
-import Password from '../../../components/Student/Classroom Student/Password';
-import Profile from '../../../components/Student/Classroom Student/Profile';
-import PasswordChange from '../../../components/Student/modal/PasswordChange';
+import { TabContext, TabList, TabPanel } from '@mui/lab'
+import { Box, Tab } from '@mui/material'
+import { useState } from 'react'
+import Profile from '../../../components/Lecturer/Settings/Profile'
+import Passwords from '../../../components/Lecturer/Settings/Passwords'
+import './css/settings.css'
 
-const Settings = () => {
-    var btnContainer = document.getElementById("headers");
-    if (btnContainer !== null) {
-        var btns = btnContainer.getElementsByClassName("headerButton");
-        for (var i = 0; i < btns.length; i++) {
-            btns[i].addEventListener("click", function () {
-                var current = document.getElementsByClassName("active1");
-                current[0].className = current[0].className.replace("active1", "");
-                this.className += " active1";
-            });
-        }
+const LecturerSettings = () => {
+    const [value, setValue] = useState(1)
+    const handleTabChange = (event, newValue) => {
+        setValue(newValue)
     }
-    const [active2, setActive2] = useState("profile");
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+
     return (
         <div className="courses">
-            <div className="title"><h3>Settings</h3></div>
-            <div className="headers" id='headers'>
-                <div className="overview headerButton active1"
-                    onClick={() => setActive2("profile")}><h3>Profile</h3></div>
-                <div className="schedule headerButton"
-                    onClick={() => setActive2("password")}><h3>Passwords</h3></div>
+            <div className="title">
+                <h3 style={{ fontWeight: 'bold'}}>Settings</h3>
             </div>
-            <hr />
-            {active2 === "profile" && <Profile />}
-            {active2 === "password" && <Password handleOpen={handleOpen} />}
-            <PasswordChange open={open} setOpen={setOpen} />
+            <div>
+                <TabContext value={value}>
+                    <Box sx={{ borderBottom: 1, borderColor: 'divider', margin: '-5px 10px', p: 0 }}>
+                        <TabList onChange={handleTabChange} sx={{p:0, m: 0}}>
+                            <Tab className='tabunit' label="Profile" value={1}></Tab>
+                            <Tab className='tabunit' label="Passwords" value={2}></Tab>
+                        </TabList>
+                    </Box>
+                    <TabPanel sx={{ p: 0, m:0 }} value={1}><Profile/></TabPanel>
+                    <TabPanel sx={{ p: 0, m:0 }} value={2}><Passwords/></TabPanel>
+                </TabContext>
+            </div>
         </div>
 
     )
 }
 
-export default Settings
+export default LecturerSettings
