@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { BsRecordCircleFill } from "react-icons/bs";
 import axios from 'axios';
 import config from '../../../config';
+import moment from 'moment';
 
 const AssignmentList = ({ assignedAssignments }) => {
     return (
@@ -19,9 +20,10 @@ export default AssignmentList
 
 export const Assignment = ({ assignedAssignment }) => {
     const [course, setCourse] = useState([])
+    const formattedDate = moment(assignedAssignment.dueDate).format("Do MMM, h:mm a");
     useEffect(() => {
         const fetchCourses = async () => {
-            const res = await axios.get(`${config.baseURL}/course/${assignedAssignment.course}`);
+            const res = await axios.get(`${config.baseURL}/course/${assignedAssignment.courseID}`);
             setCourse(res.data)
         };
         fetchCourses();
@@ -31,12 +33,12 @@ export const Assignment = ({ assignedAssignment }) => {
             <div className="assignment">
                 <div className="top">
                     <button disabled="disabled">{assignedAssignment.mark} Marks</button>
-                    <BsRecordCircleFill className='icon7' />
+                    <BsRecordCircleFill className='icon7 blue' />
                 </div>
-                <h3>{`${course.courseabrev}: ${assignedAssignment.title}`}</h3>
+                <h3 className='blue'>{`${course.courseabrev}: ${assignedAssignment.title}`}</h3>
                 <h5>{assignedAssignment.assignmentQuestion}
                 </h5>
-                <h4>{`Due, ${assignedAssignment.dueDate} `}<span className='blue'>{assignedAssignment.dueTime}</span></h4>
+                <h4 className='blue'>{`Due, ${formattedDate} `}</h4>
             </div>
         </Link>
     )

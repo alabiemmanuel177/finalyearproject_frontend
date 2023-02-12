@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { BsRecordCircleFill } from "react-icons/bs";
 import axios from 'axios';
 import config from '../../../config';
+import moment from 'moment';
 
 const MissingList = ({ missingAssignments }) => {
     return (
@@ -18,10 +19,11 @@ const MissingList = ({ missingAssignments }) => {
 export default MissingList
 
 export const Assignment = ({ missingAssignment }) => {
+    const formattedDate = moment(missingAssignment.dueDate).format("Do MMM, h:mm a");
     const [course, setCourse] = useState([])
     useEffect(() => {
         const fetchCourses = async () => {
-            const res = await axios.get(`${config.baseURL}/course/${missingAssignment.course}`);
+            const res = await axios.get(`${config.baseURL}/course/${missingAssignment.courseID}`);
             setCourse(res.data)
         };
         fetchCourses();
@@ -35,7 +37,7 @@ export const Assignment = ({ missingAssignment }) => {
                 </div>
                 <h3>{`${course.courseabrev}: ${missingAssignment.title}`}</h3>
                 <h5>{missingAssignment.assignmentQuestion}                </h5>
-                <h4>{`Due, ${missingAssignment.dueDate} `}<span className='red'>{missingAssignment.dueTime}</span></h4>
+                <h4 className='red'>{`Due, ${formattedDate} `}</h4>
 
             </div>
         </Link>

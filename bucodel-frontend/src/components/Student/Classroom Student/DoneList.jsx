@@ -22,7 +22,7 @@ export const Assignment = ({ doneAssignment }) => {
     const [course, setCourse] = useState([])
     useEffect(() => {
         const fetchCourses = async () => {
-            const res = await axios.get(`${config.baseURL}/course/${doneAssignment.course}`);
+            const res = await axios.get(`${config.baseURL}/course/${doneAssignment.courseID}`);
             setCourse(res.data)
         };
         fetchCourses();
