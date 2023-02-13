@@ -1,0 +1,241 @@
+.dashboard {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  height: 87%;
+}
+.dashboardBody {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  border-right: 1.5px solid rgba(10, 9, 9, 0.12);
+  height: 100%;
+}
+.dashboardUtil {
+  width: 30%;
+  flex-direction: column;
+}
+.w222h98 {
+  width: 222px;
+  height: 98px;
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+}
+.dashboardMetrics {
+  justify-content: space-evenly;
+  margin-top: 24px;
+}
+.sb {
+  justify-content: space-between;
+}
+.dashboardCourses {
+  padding: 18px;
+}
+.dashboardCourses h4 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.6);
+}
+.dashboardCourses h3 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 34px;
+}
+.dashboardAssignments {
+  padding: 18px;
+}
+.dashboardAssignments h4 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.6);
+}
+.dashboardAssignments h3 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 34px;
+}
+.dashboardLevel {
+  padding: 18px;
+}
+.dashboardLevel h4 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.6);
+}
+.dashboardLevel h3 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 34px;
+}
+.hw40 {
+  align-items: center;
+  display: flex;
+  height: 40px;
+  width: 40px;
+  justify-content: center;
+  border-radius: 50px;
+  background: rgba(10, 54, 151, 0.1);
+}
+.icon11 {
+  font-size: 24px;
+}
+.calendar {
+  width: 325px;
+  height: 310px;
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  margin-top: 24px;
+}
+.dashboardUtil {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.css-169iwlq-MuiCalendarPicker-root {
+  width: 316px !important;
+  max-height: 300px !important;
+}
+.dashboardContent {
+  width: 735.45px;
+  height: 200px;
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  margin-top: 24px;
+  margin-left: 34.725px;
+}
+.dashboardAssignmentNoticeBoard {
+  margin-top: 24px;
+  justify-content: space-evenly;
+}
+.dashboardAssignmentContent {
+  margin-top: 20px;
+}
+.dashboardAssignment {
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  width: 345px;
+  height: 340px;
+  padding: 20px;
+}
+.dashboardNotice {
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  width: 345px;
+  height: 340px;
+  padding: 20px;
+}
+.dashboardAssignment h4 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  /* margin-top: 26px; */
+}
+.dashboardAssignment h5 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 13px;
+}
+.ac {
+  align-items: center;
+}
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+.assignmentDash h4 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 16px;
+}
+.assignmentDash h5 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+}
+.assignmentDashMark button {
+  padding: 8px;
+  background: #eeeeee;
+  border-radius: 12px;
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 13px;
+  color: #6b6e74;
+  border: none;
+}
+.assignmentDash {
+  margin-top: 10px;
+}
+.dashboardNoticeContent {
+  width: 305px;
+  height: 135px;
+  background: rgba(249, 249, 249, 0.42);
+  border: 1px solid rgba(10, 9, 9, 0.12);
+  border-radius: 4px;
+  padding: 5px;
+  margin-top: 5px;
+}
+.noticeContent h5 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 14px;
+  color: rgba(10, 9, 9, 0.8);
+}
+.NameandTime h4 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+}
+.NameandTime h5 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+}
+.icon13 {
+  font-size: 35px;
+  margin-right: 6px;
+}
+.task {
+  width: 316px;
+  height: 115px;
+  background: rgba(10, 54, 151, 0.1);
+  border-left: 2px solid #0a3697;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+.task h4 {
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+}
+.addTask {
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 10px;
+  text-align: right;
+}
+.taskBar {
+  margin-top: 20px;
+}

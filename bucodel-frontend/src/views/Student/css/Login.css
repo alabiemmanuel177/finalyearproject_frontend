@@ -1,0 +1,70 @@
+.login {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+.loginform_container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.logintext {
+  width: 50%;
+  background-color: rgb(38, 38, 199);
+  display: flex;
+  flex-direction: column;
+}
+.head {
+  margin-top: 5%;
+  margin-bottom: 20%;
+}
+.loginhead {
+  color: rgb(12, 12, 122);
+}
+.logintext h1,
+span {
+  color: white;
+}
+.logintext h3 {
+  color: rgb(177, 169, 169);
+}
+.logintext_container {
+  margin-left: 15%;
+  margin-bottom: 50px;
+  margin-top: 10%;
+}
+.loginsvg img {
+  position: absolute;
+  bottom: 0;
+  height: 40%;
+  right: 400px;
+}
+.passwordResetsvg img {
+  position: absolute;
+  bottom: 0;
+  height: 40%;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  right: 400px;
+}
+.login_svg-1 {
+  margin-left: 150px;
+}
+.login_svg-2 {
+  margin-left: 300px;
+  margin-top: 63px;
+}
+.passrest_text_container {
+  margin-left: 15%;
+  margin-bottom: 50px;
+  margin-top: 15%;
+}
+.login_svg-3 {
+  margin-left: 300px;
+  margin-top: 62px;
+}
+.login-svg {
+  height: 20% !important;
+}

@@ -1,0 +1,146 @@
+.profile {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.personalInfo {
+  display: flex;
+  margin-bottom: 40px;
+  margin-left: 24px;
+  margin-top: 26px;
+  margin-right: 24px;
+  height: 165px;
+}
+.personalInfoText {
+  width: 45%;
+}
+.personalInfoText h4 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+}
+.personalInfoForm {
+  width: 55%;
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-evenly; */
+}
+.personalInfoForm h4 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+}
+.personalInfoForm input {
+  width: 270px;
+  height: 44px;
+  border: 1.5px solid rgba(10, 9, 9, 0.2);
+  border-radius: 11px;
+  padding: 5px;
+  /* margin-right: 36px; */
+}
+.mgb68 {
+  margin-bottom: 15px;
+}
+.academicInfo {
+  display: flex;
+  margin-bottom: 40px;
+  margin-left: 24px;
+  margin-top: 26px;
+  margin-right: 24px;
+  height: 170px;
+}
+.yourPhotoText h4 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+}
+.yourPhotoText h5 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  color: rgba(10, 9, 9, 0.62);
+}
+.yourPhoto {
+  justify-content: space-between;
+  margin-left: 24px;
+  margin-top: 26px;
+  margin-right: 24px;
+}
+.icon9 {
+  font-size: 50px;
+}
+.yourPhotoControls h3 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 18px;
+  color: rgba(10, 9, 9, 0.62);
+  margin-right: 28px;
+}
+.blue {
+  color: blue !important;
+}
+.password {
+  margin-top: 26px;
+  height: 100%;
+}
+.passwordForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.passwordFormLabel {
+  display: flex;
+  flex-direction: column;
+}
+.passwordFormLabel h4 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  margin-bottom: 57px;
+  height: 23px;
+}
+.passwordFormInput {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.passwordFormInput input {
+  width: 333px;
+  height: 44px;
+  border: 1.5px solid rgba(10, 9, 9, 0.2);
+  border-radius: 4px;
+  margin-bottom: 36px;
+}
+.passwordCancelButton {
+  width: 124px;
+  height: 44px;
+  border: 1.5px solid rgba(29, 26, 26, 0.25);
+  border-radius: 4px;
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 18px;
+  margin-right: 28px;
+  padding: 10px 20px;
+}
+.passwordCancelUpdate {
+  width: 181px;
+  height: 44px;
+  background: #0a3697;
+  border-radius: 4px;
+  padding: 10px 20px;
+  color: white;
+  border: none;
+}
+.passwordControls{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,63 @@
+.groupTitle h3 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  letter-spacing: 0.0015em;
+  color: #0a0909;
+}
+.group {
+  padding: 20px;
+}
+.groupMembers h3 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  letter-spacing: 0.0025em;
+  color: #0a0909;
+  margin-top: 10px;
+}
+.emptyGroup {
+  align-items: center;
+}
+.emptyGroup h3 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+  text-align: center;
+  color: #202223;
+  
+}
+.emptyGroup h4 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #6d7175;
+}
+.emptyGroup button {
+  width: 179px;
+  height: 44px;
+  background: #0a3697;
+  border-radius: 4px;
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.0175em;
+  color: #ffffff;
+  align-items: center;
+}
+.groupsSvg img {
+  height: 60px;
+  width: 60px;
+  margin-top: 150px;
+}

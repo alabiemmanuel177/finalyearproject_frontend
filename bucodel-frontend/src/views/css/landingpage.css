@@ -1,0 +1,338 @@
+.landingPage {
+  background-color: #f5f5f5;
+}
+.navbar {
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 76px;
+  margin-right: 70px;
+  background-color: #f5f5f5;
+  padding-top: 30px;
+}
+.BULogo {
+  align-items: center;
+}
+.userOptions {
+  align-items: center;
+}
+
+.userOptions h3:hover {
+  color: green;
+}
+.logoText {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+}
+.userOptions h3 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  color: #151515;
+}
+.mg64 {
+  margin-right: 64px;
+}
+.LPhr {
+  border: 1px solid black;
+  margin-left: 76px;
+  margin-right: 70px;
+  margin-top: 20px;
+}
+.loginBtn {
+  justify-content: center;
+  align-items: center;
+}
+.loginBtn1 button {
+  width: 136px;
+  height: 56px;
+  background: #0a3697;
+  border-radius: 4px;
+  padding: 10px;
+  color: white;
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+}
+.applyBody {
+  margin-left: 76px;
+  margin-right: 70px;
+  margin-top: 60px;
+  justify-content: space-between;
+}
+.applyText {
+  width: 721px;
+}
+.applyText h2 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  margin-top: 60px;
+}
+.applyText h3 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 20px;
+  color: #6b6e74;
+}
+.applyText h4 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 20px;
+  color: #6b6e74;
+}
+.meter {
+  margin-top: 150px;
+}
+.coursesMeter {
+  margin-right: 70px;
+}
+.applyForm {
+  width: 522px;
+  height: 576px;
+  background: #ffffff;
+  border-radius: 4px;
+  padding-left: 38px;
+  padding-right: 38px;
+  padding-top: 38px;
+}
+.applyForm h2 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 26px;
+  color: #181c25;
+}
+.applyForm h3 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 14px;
+  color: #8992a9;
+}
+.applicantsForm {
+  flex-wrap: wrap;
+  width: 446px;
+  margin-top: 30px;
+}
+.applicantsForm label {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 14px;
+  color: #181c25;
+}
+.applicantsForm input {
+  background: #fdfdfd;
+  border: 1px solid rgba(137, 146, 169, 0.2);
+  border-radius: 4px;
+  width: 208px;
+  height: 48px;
+  padding: 24px;
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 14px;
+  color: #181c25;
+  margin-bottom: 15px;
+}
+.applyForm button {
+  width: 446px;
+  height: 56px;
+  background: #0a3697;
+  border-radius: 4px;
+  color: white;
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  margin-top: 35px;
+  margin-bottom: 10px;
+}
+.aboutUs {
+  background-color: #151515;
+  width: 100%;
+  align-items: center;
+}
+.aboutUsImg {
+  width: 50%;
+}
+.aboutUsImg img {
+  width: 605px;
+  height: 540px;
+}
+.aboutUsText {
+  width: 50%;
+}
+.auText h2 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  color: #ffffff;
+}
+.auText h3 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 20px;
+  color: #9da0a5;
+}
+.auStatement {
+  margin-top: 60px;
+}
+.auStatement h2 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  color: #ffffff;
+}
+.auStatement h3 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 20px;
+  color: #9da0a5;
+}
+.Admissions {
+  margin-left: 76px;
+  margin-right: 70px;
+}
+.admisText {
+  width: 50%;
+  margin-top: 60px;
+}
+.admisText h2 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 51px;
+  color: #151515;
+}
+.admisText h3 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 20px;
+  color: #6b6e74;
+}
+.admisImg {
+  width: 50%;
+}
+.admisImg img {
+  width: 555px;
+  height: 436px;
+  margin-top: 60px;
+  margin-left: 40px;
+}
+.admissionBtn {
+  align-items: center;
+}
+.admissionBtn h3 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+}
+.admissionBtn button {
+  align-items: center;
+  padding: 10px;
+  width: 415px;
+  height: 64px;
+  background: #0a3697;
+  border-radius: 4px;
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  color: white;
+}
+.careerNextLevel {
+}
+.footer {
+  background-color: #151515;
+}
+.footerContainer {
+  margin-left: 76px;
+  margin-right: 70px;
+}
+.vh100 {
+  height: 100vh;
+}
+.vh60 {
+  height: 40vh;
+}
+.vh40 {
+  height: 60vh;
+}
+.vh30 {
+  height: 30vh;
+}
+.mg30 {
+  margin-right: 30px;
+}
+.vh70 {
+  height: 70vh;
+}
+.CopyRight h3 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  color: #ffffff;
+}
+.RMI h3 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  text-transform: uppercase;
+  color: #9da0a5;
+}
+.RMI input {
+  padding: 8px 12px;
+  width: 333px;
+  height: 36px;
+  /* Surface/Default */
+  background: #ffffff;
+  /* Border/Subdued */
+  border: 1px solid #c9cccf;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+.RMI button {
+  padding: 10px;
+  width: 333px;
+  height: 36px;
+  background: #0a3697;
+  border-radius: 4px;
+  border: 0;
+  color: white;
+}
+.quicklinks h3 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: #9da0a5;
+}
+.quicklinks h4 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  color: #ffffff;
+}
+.footerFlex {
+  justify-content: space-evenly;
+}

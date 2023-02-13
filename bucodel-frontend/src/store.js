@@ -1,20 +1,18 @@
-//configureStore.js
- 
-import { createStore } from 'redux'
-import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
- 
-import rootReducer from './reducers'
- 
+import { createStore, applyMiddleware } from "redux";
+import RootReducer from "./components/Reducer/RootReducer";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+
 const persistConfig = {
-  key: 'root',
+  key: "main-root",
   storage,
-}
- 
-const persistedReducer = persistReducer(persistConfig, rootReducer)
- 
-export default () => {
-  let store = createStore(persistedReducer)
-  let persistor = persistStore(store)
-  return { store, persistor }
-}
+};
+
+const persistedReducer = persistReducer(persistConfig, RootReducer);
+
+const store = createStore(persistedReducer, applyMiddleware());
+
+const Persistor = persistStore(store);
+
+export { Persistor };
+export default store;
