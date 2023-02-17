@@ -40,7 +40,7 @@ const LecturerClasses = () => {
                     </div>
                 </div>
                 <div className="virtualClassButton">
-                    <button onClick={handleClick}>Join Virtual Class</button>
+                    <button onClick={handleClick}>Start Virtual Class</button>
                 </div>
             </div>
             <div className="headers mg20" id='headers'>
