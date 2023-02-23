@@ -33,7 +33,7 @@
   font-weight: 700;
   font-size: 12px;
   font-style: Circular Std;
-  color: #6b6e74;
+  /* color: #6b6e74; */
   margin-left: 10px;
   margin-top: 27px;
 }
@@ -69,4 +69,7 @@
 }
 .green {
   color: #4cc82d;
+}
+.remove-file {
+  margin-bottom: 10px;
 }

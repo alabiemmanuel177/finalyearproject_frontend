@@ -10,28 +10,32 @@ const Classes = ({ student }) => {
     let { id } = useParams();
 
     const [course, setCourse] = useState([])
+    const [lecturerList, setLecturerList] = useState();
     useEffect(() => {
         const fetchCourses = async () => {
             const res = await axios.get(`${config.baseURL}/course/${id}`);
             setCourse(res.data)
+            setLecturerList(res.data.lecturer)
         };
         fetchCourses();
     }, []);
 
-    const [lecturerList, setLecturerList] = [course.lecturer];
+
     const [lecturer, setLecturer] = useState("");
     useEffect(() => {
-        const fetchLecturer = async () => {
-            const res = await axios.get(`${config.baseURL}/lecturer/${lecturerList[0]}`);
-            setLecturer(res.data.name);
-        };
-        fetchLecturer();
-    });
+        if (lecturerList && lecturerList.length > 0) {
+            const fetchLecturer = async () => {
+                const res = await axios.get(`${config.baseURL}/lecturer/${lecturerList[0]}`);
+                setLecturer(res.data.name);
+            };
+            fetchLecturer();
+        }
+    }, [lecturerList]);
 
     const [posts, setPosts] = useState([])
     useEffect(() => {
         const fetchPosts = async () => {
-            const res = await axios.get(`${config.baseURL}/classpost/posts/${course._id}`);
+            const res = await axios.get(`${config.baseURL}/classpost/posts/${id}`);
             setPosts(res.data);
         };
         fetchPosts();
@@ -54,7 +58,7 @@ const Classes = ({ student }) => {
                     <button onClick={handleClick}>Join Virtual Class</button>
                 </div>
             </div>
-            <ClassPost posts={posts} course={course._id} student={student} />
+            <ClassPost posts={posts} course={id} student={student} />
         </div>
     )
 }
