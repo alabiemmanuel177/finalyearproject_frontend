@@ -1,0 +1,82 @@
+.assign-modal-root {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 5px 12px;
+}
+
+.assign-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+    padding: 10px 0;
+}
+
+.assign-modal-title {
+    font-weight: bold;
+}
+
+.assign-modal-cancel {
+    font-size: large;
+}
+
+.assign-modal-body {
+    padding: 5px 0;
+    width: 100%;
+}
+
+.assign-modal-input {
+    margin: 8px 0;
+}
+
+.assign-modal-input-label {
+    font-size: small;
+    font-weight: bold;
+}
+
+.assign-modal-input-tag {
+    width: 100%;
+    border: 1px solid rgb(192, 192, 192);
+    padding: 3px 10px;
+    border-radius: 5px;
+    outline: none;
+}
+
+.assign-input-description {
+    font-size: 0.78rem;
+    font-weight: bold;
+    color: gray;
+    margin: 1px 0;
+}
+
+.assign-add-file {
+    width: 100%;
+    height: 85px;
+    border: 1px dashed rgb(192, 192, 192);
+    display: grid;
+    place-content: center;
+    border-radius: 5px;
+}
+
+.assign-add-file-btn {
+    transform: scale(0.8);
+    font-weight: bold;
+}
+
+.assign-bottom-btn {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 0 5px 0;
+}
+
+.assign-main-btn {
+    margin-left: 5px;
+    padding: 0.5rem 1.5rem;
+}

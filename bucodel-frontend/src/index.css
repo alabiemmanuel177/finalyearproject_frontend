@@ -12,3 +12,7 @@ a {
   outline: none;
   color: inherit;
 }
+
+button {
+  text-transform: none;
+}

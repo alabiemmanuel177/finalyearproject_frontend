@@ -14,6 +14,8 @@ import LecturerPasswordReset from "./views/Lecturer/LecturerPasswordReset";
 import LecturerLogin from "./views/Lecturer/LecturerLogin";
 import AdminLogin from "./views/Admin/AdminLogin";
 import AdminPage from "./views/Admin/AdminPage";
+import AdminCourses from "./views/Admin/Page/AdminCourses";
+import AdminDashboard from "./views/Admin/Page/AdminDashboard";
 import LecturerClassroom from "./views/Lecturer/Classroom/LecturerClassroom";
 import LecturerDashboard from "./views/Lecturer/Classroom/LecturerDashboard";
 import LecturerSettings from "./views/Lecturer/Classroom/LecturerSettings";
@@ -26,8 +28,8 @@ import LecturerClasses from "./views/Lecturer/Classroom/LecturerClasses";
 import { useContext } from "react";
 import {
   studentContext,
-  lecturerContext,
-  adminContext,
+  // lecturerContext,
+  // adminContext,
 } from "./context/Context";
 
 import {
@@ -46,9 +48,9 @@ const theme = createTheme({
 
 export const App = () => {
   const { student } = useContext(studentContext);
-  const { lecturer } = useContext(lecturerContext);
-  const { admin } = useContext(adminContext);
-  // const lecturer = true;
+  // const { lecturer } = useContext(lecturerContext);
+  //const { admin } = useContext(adminContext);
+  const lecturer = true;
 
   return (
     <ThemeProvider theme={theme}>
@@ -124,7 +126,25 @@ export const App = () => {
           <Routes>
             "Admin"
             <Route element={<AdminLogin />} path="/adminlogin" />
-            <Route element={<AdminPage />} path="/adminpage" />
+            {/* <Route element={<AdminPage />} path="/adminpage" /> */}
+            <Route
+              element={
+                lecturer ? (
+                  <AdminPage lecturer={lecturer} />
+                ) : (
+                  <AdminLogin />
+                )
+              }
+            >
+              <Route
+                element={<AdminDashboard />}
+                path="/admindashboard"
+              />
+              <Route 
+                element={<AdminCourses />} 
+                path="/admincourses" 
+              />
+            </Route>
           </Routes>
         </AdminContextProvider>
       </BrowserRouter>
