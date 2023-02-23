@@ -1,8 +1,12 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
+import AdminLayout from '../../components/Admin/Page/AdminLayout'
 
 const AdminPage = () => {
   return (
-    <div>AdminPage</div>
+    <AdminLayout>
+      <Outlet />
+    </AdminLayout>
   )
 }
 

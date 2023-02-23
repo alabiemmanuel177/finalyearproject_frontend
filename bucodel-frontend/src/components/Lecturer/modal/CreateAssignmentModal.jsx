@@ -30,7 +30,7 @@ function CreateAssignmentModal({ open, setOpen }) {
                         <label className='assign-modal-input-label'>
                             Marks
                         </label>
-                        <input className='assign-modal-input-tag' />
+                        <input className='assign-modal-input-tag' type={'number'} defaultValue={50} min={1} max={100} />
                         <span className='assign-input-description'>Select the amount you want to assign</span>
                     </div>
                     <div className='assign-modal-input'>
