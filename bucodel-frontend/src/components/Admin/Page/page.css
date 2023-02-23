@@ -53,23 +53,26 @@
     padding: 10px 15px;
     display: flex;
     align-items: center;
-    background-color: gray;
     font-size: 24px;
-    color: black;
     border-radius: 5px;
     outline: none;
-    background-color: transparent;
     cursor: pointer;
-
-}
-
-.page-sidebar-button:hover, .page-sidebar-button:active {
-    color: #0A3697;
-    background-color: rgb(233, 233, 233);
+    position: relative;
 }
 
 .page-sidebar-title {
     margin: 0 15px;
     padding: 0;
     font-size: 1.05rem;
+    position: relative;
 }
+
+.adminactive {
+    color: #0A3697;
+    background-color: #F5F7FB;
+}
+.dull {
+    background-color: transparent;
+    color: black;
+}
+
