@@ -23,7 +23,7 @@ const Courses = ({ student }) => {
   }
   const [active2, setActive2] = useState("overview");
   const id = student.class
-  
+
   //Get Courses from class
   const [objclass, setObjClass] = useState("");
   const [courses, setCourses] = useState([])
@@ -34,6 +34,15 @@ const Courses = ({ student }) => {
       setCourses(res.data.courses)
     };
     fetchCourses();
+  }, []);
+  //Get class resources
+  const [resources, setResources] = useState([])
+  useEffect(() => {
+    const fetchResources = async () => {
+      const res = await axios.get(`${config.baseURL}/class/classes/${id}/resources`);
+      setResources(res.data);
+    };
+    fetchResources();
   }, []);
   return (
     <div className="courses">
@@ -46,7 +55,7 @@ const Courses = ({ student }) => {
       </div>
       <hr />
       {active2 === "overview" && <CourseList courses={courses} />}
-      {active2 === "resources" && <Resources />}
+      {active2 === "resources" && <Resources resources={resources} />}
     </div>
   )
 }

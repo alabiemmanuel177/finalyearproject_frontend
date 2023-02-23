@@ -8,7 +8,6 @@ import config from '../../../config';
 const ClassPost = ({ posts, course, student }) => {
     const [content, setContent] = useState("");
 
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -35,7 +34,7 @@ const ClassPost = ({ posts, course, student }) => {
                 </div>
                 <div className="postContainer" style={{ height: "510px", overflow: "scroll" }}>
                     {posts.map((p) => (
-                        <ExistingPost post={p} key={p._id} />
+                        <ExistingPost post={p} key={p._id}/>
                     ))}
                 </div>
             </div>
