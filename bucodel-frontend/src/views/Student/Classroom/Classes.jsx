@@ -18,7 +18,7 @@ const Classes = ({ student }) => {
             setLecturerList(res.data.lecturer)
         };
         fetchCourses();
-    }, []);
+    }, [id]);
 
 
     const [lecturer, setLecturer] = useState("");
@@ -39,7 +39,7 @@ const Classes = ({ student }) => {
             setPosts(res.data);
         };
         fetchPosts();
-    }, []);
+    }, [id]);
 
     const handleClick = () => {
         window.location.replace("/meeting")
