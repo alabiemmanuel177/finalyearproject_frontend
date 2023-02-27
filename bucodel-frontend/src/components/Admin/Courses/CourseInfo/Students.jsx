@@ -19,6 +19,9 @@ export default function Students() {
         createData('Izu Onisokumen Preye', '19/1485', 400, 'CES', 'Software Engineering'),
         createData('Izu Onisokumen Preye', '19/1485', 400, 'CES', 'Software Engineering'),
         createData('Izu Onisokumen Preye', '19/1485', 400, 'CES', 'Software Engineering'),
+        createData('Izu Onisokumen Preye', '19/1485', 400, 'CES', 'Software Engineering'),
+        createData('Izu Onisokumen Preye', '19/1485', 400, 'CES', 'Software Engineering'),
+        createData('Izu Onisokumen Preye', '19/1485', 400, 'CES', 'Software Engineering'),
     ]
 
     const StyledTableRow = styled(TableRow)(({ theme }) => ({
