@@ -45,7 +45,7 @@
   border-radius: 6px;
   margin-top: 12px;
   margin-bottom: 12px;
-  background-color: white;
+  background-color: whitesmoke;
   text-align: left;
   font-size: 16px;
   font-family: Circular Std;
@@ -61,8 +61,9 @@
   margin-right: 16px;
 }
 .active {
-  background-color: rgba(10, 54, 151, 0.04) !important;
+  background-color: whitesmoke !important;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  color: blue;
 }
 .logoutButton {
   border-radius: 6px;

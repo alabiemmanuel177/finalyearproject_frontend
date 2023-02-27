@@ -2,7 +2,7 @@ import React from 'react'
 
 const Meeting = () => {
   return (
-    <div>Meeting</div>
+    <div id="jitsi-container"></div>
   )
 }
 

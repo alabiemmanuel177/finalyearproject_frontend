@@ -150,19 +150,8 @@ const Dashboard = ({ student }) => {
         <div className="calendar">
           <Calendar />
         </div>
-        <div className="taskBar">
-          <h4 className='blue addTask'>+ Add Task</h4>
-          <div className="task">
-            <h4>Reviewing and summarizing a chapter of a textbook related to the student's specific area of study</h4>
-          </div>
-          <div className="task">
-            <h4>Reviewing and summarizing a chapter of a textbook related to the student's specific area of study</h4>
-          </div>
-
-        </div>
       </div>
     </div>
   )
 }
-
 export default Dashboard
