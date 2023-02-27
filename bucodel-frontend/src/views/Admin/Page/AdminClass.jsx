@@ -20,8 +20,8 @@ function AdminClass() {
             <TabContext value={value}>
                 <div style={{ padding: 0 }}>
                     <TabList sx={{ padding: 0, marginLeft: 1, paddingBottom: 0, textTransform: 'none' }} onChange={handleChange}>
-                        <Tab sx={{ fontWeight: 'bold', paddingBottom: 0, textTransform: 'none' }} value={1} label='Student' />
-                        <Tab sx={{ fontWeight: 'bold', paddingBottom: 0, textTransform: 'none' }} value={2} label='Lecturer'/>
+                        <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={1} label='Student' />
+                        <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={2} label='Lecturer'/>
                     </TabList>
                 </div>
                 <TabPanel sx={{ p: 0 }} value={1}><Students/></TabPanel>
