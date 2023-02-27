@@ -34,7 +34,8 @@ const Courses = ({ student }) => {
       setCourses(res.data.courses)
     };
     fetchCourses();
-  }, []);
+  }, [id]);
+
   //Get class resources
   const [resources, setResources] = useState([])
   useEffect(() => {
@@ -43,7 +44,8 @@ const Courses = ({ student }) => {
       setResources(res.data);
     };
     fetchResources();
-  }, []);
+  }, [id]);
+
   return (
     <div className="courses">
       <div className="title"><h3>Courses</h3></div>

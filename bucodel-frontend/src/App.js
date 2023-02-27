@@ -37,6 +37,7 @@ import {
   AdminContextProvider,
   LecturerContextProvider,
 } from "./context/Context";
+import AdminClass from "./views/Admin/Page/AdminClass";
 
 const theme = createTheme({
   palette: {
@@ -143,6 +144,10 @@ export const App = () => {
               <Route 
                 element={<AdminCourses />} 
                 path="/admincourses" 
+              />
+              <Route 
+                element={<AdminClass />} 
+                path="/adminclass" 
               />
             </Route>
           </Routes>
