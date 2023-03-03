@@ -111,6 +111,31 @@
   border-radius: 4px;
   margin-top: 24px;
   margin-left: 34.725px;
+  background: #0a3697;
+}
+.welcomeText{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
+.welcomeText h4 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  /* text-align: center; */
+  letter-spacing: 0.0025em;
+  color: #ffffff;
+}
+.welcomeText h5 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 16px;
+  line-height: 20px;
+  color: rgba(255, 255, 255, 0.7);
 }
 .dashboardAssignmentNoticeBoard {
   margin-top: 24px;

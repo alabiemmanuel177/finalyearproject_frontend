@@ -1,28 +1,30 @@
-import React from 'react'
+import React, { useContext, useRef } from 'react'
 import './css/lecturerlogin.css'
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { NavLink } from 'react-router-dom';
-// import { lecturerContext } from '../../context/Context';
+import { lecturerContext } from '../../context/Context';
+import axios from 'axios';
+import config from "../../config";
 
 const LecturerLogin = () => {
-  // const emailRef = useRef();
-  // const passwordRef = useRef();
-  // const { dispatch, isFetching } = useContext(lecturerContext);
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const { dispatch } = useContext(lecturerContext);
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   dispatch({ type: "LOGIN_START" });
-  //   try {
-  //     const res = await axios.post(`${config.baseURL}/api/auth/lecturerLogin`, {
-  //       email: emailRef.current.value,
-  //       password: passwordRef.current.value,
-  //     });
-  //     dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-  //     res.data && window.location.replace("/lecturerdashboard");
-  //   } catch (err) {
-  //     dispatch({ type: "LOGIN_FAILURE" });
-  //   }
-  // };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    dispatch({ type: "LOGIN_START" });
+    try {
+      const res = await axios.post(`${config.baseURL}/lecturer/login`, {
+        email: emailRef.current.value,
+        password: passwordRef.current.value,
+      });
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+      res.data && window.location.replace("/lecturerdashboard");
+    } catch (err) {
+      dispatch({ type: "LOGIN_FAILURE" });
+    }
+  };
   return (
     <div className="lecturerLogin">
       <div className="loginNavbar">
@@ -43,22 +45,21 @@ const LecturerLogin = () => {
               <IoMdArrowRoundBack className="icon20" />
             </div>
           </NavLink>
-          <form className='lectlogin flexColumn'>
+          <form className='lectlogin flexColumn' onSubmit={handleSubmit}>
             <h3>Log In</h3>
-            <label>Username</label>
-            <input type="text" placeholder='19/1845' />
+            <label>Email</label>
+            <input type="text" placeholder='Email' ref={emailRef} />
             <label>Password</label>
-            <input type="password" placeholder='Your Password' />
+            <input type="password" placeholder='Your Password' ref={passwordRef} />
             <NavLink to='/lecturerreset' style={{ textDecoration: 'none' }}>
               <h4>Forgot Password?</h4>
             </NavLink>
-
-            <button>Log In</button>
-
+            <button type='submit'>Log In</button>
           </form>
         </div>
       </div>
-    </div>)
+    </div>
+  )
 }
 
 export default LecturerLogin
