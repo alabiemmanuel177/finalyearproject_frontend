@@ -44,6 +44,7 @@ const Classes = ({ student }) => {
     const handleClick = () => {
         window.location.replace("/meeting")
     }
+
     return (
         <div className="classes">
             <div className="classHead">
@@ -55,7 +56,7 @@ const Classes = ({ student }) => {
                     </div>
                 </div>
                 <div className="virtualClassButton">
-                    <button onClick={handleClick}>Join Virtual Class</button>
+                    <button onClick={handleClick} id="start-conference">Join Virtual Class</button>
                 </div>
             </div>
             <ClassPost posts={posts} course={id} student={student} />

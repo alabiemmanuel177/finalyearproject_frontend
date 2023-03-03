@@ -32,9 +32,9 @@ const ClassPost = ({ posts, course, student }) => {
                     </input>
                     <button onClick={handleSubmit}>Post</button>
                 </div>
-                <div className="postContainer" style={{ height: "510px", overflow: "scroll" }}>
+                <div className="postContainer">
                     {posts.map((p) => (
-                        <ExistingPost post={p} key={p._id}/>
+                        <ExistingPost post={p} key={p._id} />
                     ))}
                 </div>
             </div>
@@ -104,5 +104,3 @@ export const ExistingPost = ({ post }) => {
         </div>
     )
 }
-
-

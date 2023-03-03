@@ -61,8 +61,8 @@
   margin-right: 16px;
 }
 .active {
-  background-color: rgba(10, 54, 151, 0.04) !important;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  /* background-color: rgba(10, 54, 151, 0.04) !important; */
+  /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
 }
 .logoutButton {
   border-radius: 6px;

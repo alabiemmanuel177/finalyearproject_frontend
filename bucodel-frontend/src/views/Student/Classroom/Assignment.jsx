@@ -6,6 +6,7 @@ import {
 } from "react";
 import AssignmentList from '../../../components/Student/Classroom Student/AssignmentList';
 import MissingList from '../../../components/Student/Classroom Student/MissingList';
+import MissedList from '../../../components/Student/Classroom Student/MissedList';
 import DoneList from '../../../components/Student/Classroom Student/DoneList';
 import axios from 'axios';
 import config from '../../../config';
@@ -27,25 +28,25 @@ const Assignment = ({ student }) => {
     const [assignedAssignments, setAssignedAssignments] = useState([])
     useEffect(() => {
         const fetchAssignedAssignments = async () => {
-            const res = await axios.get(`${config.baseURL}/class/classes/${student.class}/assigned-assignments`);
+            const res = await axios.get(`${config.baseURL}/student/${student._id}/assignments/notsubmitted`);
             setAssignedAssignments(res.data);
         };
         fetchAssignedAssignments();
     }, []);
 
-    const [missingAssignments, setMissingAssignments] = useState([])
+    const [missedAssignments, setMissedAssignments] = useState([])
     useEffect(() => {
-        const fetchMissingAssignments = async () => {
-            const res = await axios.get(`${config.baseURL}/class/classes/${student.class}/missing-assignments`);
-            setMissingAssignments(res.data);
+        const fetchMissedAssignments = async () => {
+            const res = await axios.get(`${config.baseURL}/student/assignments/missed/${student._id}`);
+            setMissedAssignments(res.data);
         };
-        fetchMissingAssignments();
+        fetchMissedAssignments();
     }, []);
 
     const [doneAssignments, setDoneAssignments] = useState([])
     useEffect(() => {
         const fetchDoneAssignments = async () => {
-            const res = await axios.get(`${config.baseURL}/class/classes/${student.class}/done-assignments`);
+            const res = await axios.get(`${config.baseURL}/student/assignments/submitted/${student._id}`);
             setDoneAssignments(res.data);
         };
         fetchDoneAssignments();
@@ -59,7 +60,7 @@ const Assignment = ({ student }) => {
                     onClick={() => setActive2("assigned")}><h3>Assigned</h3>
                 </div>
                 <div className="overview headerButton"
-                    onClick={() => setActive2("missing")}><h3>Missing</h3>
+                    onClick={() => setActive2("missed")}><h3>Missed</h3>
                 </div>
                 <div className="schedule headerButton"
                     onClick={() => setActive2("done")}><h3>Done</h3>
@@ -67,7 +68,7 @@ const Assignment = ({ student }) => {
             </div>
             <hr />
             {active2 === "assigned" && <AssignmentList assignedAssignments={assignedAssignments} />}
-            {active2 === "missing" && <MissingList missingAssignments={missingAssignments} />}
+            {active2 === "missed" && <MissedList missedAssignments={missedAssignments} />}
             {active2 === "done" && <DoneList doneAssignments={doneAssignments} />}
         </div>
     )

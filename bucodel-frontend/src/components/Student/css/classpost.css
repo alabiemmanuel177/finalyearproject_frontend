@@ -17,8 +17,6 @@
   justify-content: center;
   flex-direction: column;
   width: 700px;
-  padding-top: 100px;
-  
 }
 .newPost {
   display: flex;
@@ -29,7 +27,6 @@
   border-radius: 8px;
   align-items: center;
   justify-content: space-evenly;
-  /* margin-top: 100px; */
 }
 .newPost input {
   width: 450px;
