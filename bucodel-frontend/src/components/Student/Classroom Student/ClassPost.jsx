@@ -41,47 +41,50 @@ const ClassPost = ({ posts, course, student }) => {
             <div className="noticeboard">
                 <h3>Noticeboard</h3>
                 <hr />
-                <div className="notice">
-                    <div className='noticeInfo'>
-                        <FaRegUserCircle className='icon5 mt15' />
-                        <div>
-                            <h3>Dr. Adetofunmi Adetunji</h3>
+                <div className='noticeList'>
+                    <div className="notice">
+                        <div className='noticeInfo'>
+                            <FaRegUserCircle className='icon5 mt15' />
+                            <div>
+                                <h3>Dr. Adetofunmi Adetunji</h3>
+                            </div>
                         </div>
+                        <h4>New Assignment Posted: Assignment 1</h4>
+                        <h5>Dec 5 8:00pm</h5>
                     </div>
-                    <h4>New Assignment Posted: Assignment 1</h4>
-                    <h5>Dec 5 8:00pm</h5>
-                </div>
-                <div className="notice">
-                    <div className='noticeInfo'>
-                        <FaRegUserCircle className='icon5 mt15' />
-                        <div>
-                            <h3>Dr. Adetofunmi Adetunji</h3>
+                    <hr />
+                    <div className="notice">
+                        <div className='noticeInfo'>
+                            <FaRegUserCircle className='icon5 mt15' />
+                            <div>
+                                <h3>Dr. Adetofunmi Adetunji</h3>
+                            </div>
                         </div>
+                        <h4>New Assignment Posted: Assignment 1</h4>
+                        <h5>Dec 5 8:00pm</h5>
                     </div>
-                    <h4>New Assignment Posted: Assignment 1</h4>
-                    <h5>Dec 5 8:00pm</h5>
-                </div>
-                <hr />
-                <div className="notice">
-                    <div className='noticeInfo'>
-                        <FaRegUserCircle className='icon5 mt15' />
-                        <div>
-                            <h3>Dr. Adetofunmi Adetunji</h3>
+                    <hr />
+                    <div className="notice">
+                        <div className='noticeInfo'>
+                            <FaRegUserCircle className='icon5 mt15' />
+                            <div>
+                                <h3>Dr. Adetofunmi Adetunji</h3>
+                            </div>
                         </div>
+                        <h4>New Assignment Posted: Assignment 1</h4>
+                        <h5>Dec 5 8:00pm</h5>
                     </div>
-                    <h4>New Assignment Posted: Assignment 1</h4>
-                    <h5>Dec 5 8:00pm</h5>
-                </div>
-                <hr />
-                <div className="notice">
-                    <div className='noticeInfo'>
-                        <FaRegUserCircle className='icon5 mt15' />
-                        <div>
-                            <h3>Dr. Adetofunmi Adetunji</h3>
+                    <hr />
+                    <div className="notice">
+                        <div className='noticeInfo'>
+                            <FaRegUserCircle className='icon5 mt15' />
+                            <div>
+                                <h3>Dr. Adetofunmi Adetunji</h3>
+                            </div>
                         </div>
+                        <h4>New Assignment Posted: Assignment 1</h4>
+                        <h5>Dec 5 8:00pm</h5>
                     </div>
-                    <h4>New Assignment Posted: Assignment 1</h4>
-                    <h5>Dec 5 8:00pm</h5>
                 </div>
                 <hr />
 

@@ -21,6 +21,7 @@
 .classScreen {
   width: 80%;
   height: 100%;
+  overflow: hidden;
 }
 .util {
   display: flex;
@@ -42,6 +43,5 @@
   font-size: 40px;
 }
 .classoutlet {
-  height: calc(100% - 87px);
-  overflow: hidden auto;
+  height: 100%;
 }
