@@ -19,18 +19,6 @@ export default MissingList
 
 export const Assignment = ({ missingAssignment }) => {
     const formattedDate = moment(missingAssignment.dueDate).format("Do MMM, h:mm a");
-<<<<<<< HEAD
-    const [course, setCourse] = useState([])
-    useEffect(() => {
-        const fetchCourses = async () => {
-            const res = await axios.get(`${config.baseURL}/course/${missingAssignment.courseID}`);
-            setCourse(res.data)
-        };
-        fetchCourses();
-    }, [missingAssignment]);
-
-=======
->>>>>>> 36aedf1a5957479d1f05c6b0a9f55770979c995c
     return (
         <Link to="/doassignment" style={{ textDecoration: 'none' }}>
             <div className="assignment">
