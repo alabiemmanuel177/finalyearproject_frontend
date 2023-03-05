@@ -69,7 +69,7 @@ export const LecturerContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(lecturerReducer, lecturerINITIAL_STATE);
 
   useEffect(() => {
-    localStorage.setItem("admin", JSON.stringify(state.lecturer));
+    localStorage.setItem("lecturer", JSON.stringify(state.lecturer));
   }, [state.lecturer]);
   return (
     <lecturerContext.Provider

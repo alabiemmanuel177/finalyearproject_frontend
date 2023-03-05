@@ -1,9 +1,8 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import './css/logoutmodal.css'
+import './css/passwordchange.css'
 import { TbAlertOctagon } from "react-icons/tb";
-import { lecturerContext } from '../../../context/Context';
 
 
 const style = {
@@ -20,13 +19,9 @@ const style = {
     outline: 0
 };
 
-const LogOutModal = ({ open, setOpen }) => {
-    const { dispatch } = React.useContext(lecturerContext);
-    const handleLogout = () => {
-        dispatch({ type: "LOGOUT" });
-        window.location.replace("/")
-    };
+const PasswordChange = ({ open, setOpen, handleSubmit, }) => {
     const handleClose = () => setOpen(false);
+
     return (
         <div>
             <Modal
@@ -36,22 +31,26 @@ const LogOutModal = ({ open, setOpen }) => {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <div className="logoutModal">
-                        <div className="modalIcon">
+                    <div className="passwordChangeModal flexColumn">
+                        <div className="moadlIcon flexRow">
                             <TbAlertOctagon className='icon10' />
+
                         </div>
                         <div className="modalText">
-                            <h4>Log Out</h4>
-                            <h5>Are you sure you would like to log out of your account?</h5>
+                            <h3>Password Change</h3>
+                            <h4>We're about to change your password. Please confirm this action before we proceed.</h4>
                         </div>
-                        <div className="modalButton">
-                            <button className="logOutCancel" onClick={handleClose}>Cancel</button>
-                            <button className="logOutOut" onClick={handleLogout}>Log Out</button>
+                        <div className="modalButton flexrow">
+                            <button className='cancelBTN' onClick={handleClose}>Cancel</button>
+                            <button className='changePasswordBTN' onClick={handleSubmit}>ChangePassword</button>
                         </div>
+
                     </div>
+
                 </Box>
-            </Modal></div>
+            </Modal>
+        </div>
     )
 }
 
-export default LogOutModal
+export default PasswordChange

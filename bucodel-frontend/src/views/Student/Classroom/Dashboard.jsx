@@ -102,9 +102,9 @@ const Dashboard = ({ student }) => {
             <div>
               <h4>Notice</h4>
             </div>
-            {notices.map((p) => (
-              <Notice notice={p} key={p._id} />
-            ))}
+              {notices.map((p) => (
+                <Notice notice={p} key={p._id} />
+              ))}
           </div>
         </div>
 

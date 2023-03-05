@@ -86,7 +86,10 @@ export const App = () => {
                 element={<Settings student={student} />}
                 path="/settings"
               />
-              <Route element={<Classes student={student} />} path="/class/:id" />
+              <Route
+                element={<Classes student={student} />}
+                path="/class/:id"
+              />
             </Route>
           </Routes>
         </StudentContextProvider>
@@ -105,20 +108,29 @@ export const App = () => {
               }
             >
               <Route
-                element={<LecturerDashboard />}
+                element={<LecturerDashboard lecturer={lecturer} />}
                 path="/lecturerdashboard"
               />
-              <Route element={<LecturerCourses lecturer={lecturer}/>} path="/lecturercourses" />
               <Route
-                element={<LecturerAssignments lecturer={lecturer}/>}
+                element={<LecturerCourses lecturer={lecturer} />}
+                path="/lecturercourses"
+              />
+              <Route
+                element={<LecturerAssignments lecturer={lecturer} />}
                 path="/lecturerassignment"
               />
               <Route
-                element={<LecturerDoassignment lecturer={lecturer}/>}
-                path="/lecturerdoassignment"
+                element={<LecturerDoassignment lecturer={lecturer} />}
+                path="/lecturerdoassignment/:id"
               />
-              <Route element={<LecturerSettings lecturer={lecturer}/>} path="/lecturersettings" />
-              <Route element={<LecturerClasses lecturer={lecturer}/>} path="/lecturerclass" />
+              <Route
+                element={<LecturerSettings lecturer={lecturer} />}
+                path="/lecturersettings"
+              />
+              <Route
+                element={<LecturerClasses lecturer={lecturer} />}
+                path="/lecturerclass/:id"
+              />
             </Route>
           </Routes>
         </LecturerContextProvider>
@@ -129,25 +141,12 @@ export const App = () => {
             {/* <Route element={<AdminPage />} path="/adminpage" /> */}
             <Route
               element={
-                lecturer ? (
-                  <AdminPage lecturer={lecturer} />
-                ) : (
-                  <AdminLogin />
-                )
+                lecturer ? <AdminPage lecturer={lecturer} /> : <AdminLogin />
               }
             >
-              <Route
-                element={<AdminDashboard />}
-                path="/admindashboard"
-              />
-              <Route 
-                element={<AdminCourses />} 
-                path="/admincourses" 
-              />
-              <Route 
-                element={<AdminClass />} 
-                path="/adminclass" 
-              />
+              <Route element={<AdminDashboard />} path="/admindashboard" />
+              <Route element={<AdminCourses />} path="/admincourses" />
+              <Route element={<AdminClass />} path="/adminclass" />
             </Route>
           </Routes>
         </AdminContextProvider>
