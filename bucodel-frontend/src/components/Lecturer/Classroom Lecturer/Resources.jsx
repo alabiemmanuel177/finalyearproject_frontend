@@ -3,7 +3,7 @@ import './css/resources.css'
 import { MdOutlineAssignment } from "react-icons/md";
 import { GrDocumentPdf } from "react-icons/gr";
 
-const LecturerResources = () => {
+const LecturerResources = ({ resources }) => {
   return (
     <div className='Resources'>
       <div className="resourcesContainer">

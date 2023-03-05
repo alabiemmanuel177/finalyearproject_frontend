@@ -1,19 +1,68 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../css/Dashboard.css'
 import { HiOutlineBookmarkAlt } from "react-icons/hi";
 import { HiOutlineDocumentText } from "react-icons/hi";
 import Calendar from './LecturerCalendar';
 import { FaRegUserCircle } from "react-icons/fa";
+import axios from 'axios';
+import config from '../../../config';
+import moment from 'moment';
+import { Link } from 'react-router-dom';
 
-const Dashboard = () => {
+const Dashboard = ({ lecturer }) => {
+  const [courseCount, setCourseCount] = useState("");
+  useEffect(() => {
+    const fetchCourseCount = async () => {
+      const res = await axios.get(`${config.baseURL}/lecturer/${lecturer._id}/count-courses`);
+      setCourseCount(res.data);
+    };
+    fetchCourseCount();
+  });
+
+  const [assignmentCount, setAssignmentCount] = useState("");
+  useEffect(() => {
+    const fetchAssignmentCount = async () => {
+      const res = await axios.get(`${config.baseURL}/lecturer/${lecturer._id}/assignments/count`);
+      setAssignmentCount(res.data.count);
+    };
+    fetchAssignmentCount();
+  });
+
+  const [notices, setNotices] = useState([]);
+  useEffect(() => {
+    const fetchNotices = async () => {
+      const res = await axios.get(`${config.baseURL}/notice`);
+      setNotices(res.data);
+    };
+    fetchNotices();
+  });
+
+  const [studentCount, setStudentCount] = useState("");
+  useEffect(() => {
+    const fetchStudentCount = async () => {
+      const res = await axios.get(`${config.baseURL}/lecturer/${lecturer._id}/students-count`);
+      setStudentCount(res.data.studentCount);
+    };
+    fetchStudentCount();
+  });
+
+  const [assignedAssignments, setAssignedAssignments] = useState([])
+  useEffect(() => {
+    const fetchAssignedAssignments = async () => {
+      const res = await axios.get(`${config.baseURL}/lecturer/assignments/${lecturer._id}`);
+      setAssignedAssignments(res.data);
+    };
+    fetchAssignedAssignments();
+  }, []);
+
   return (
     <div className="dashboard">
       <div className="dashboardBody">
         <div className="dashboardMetrics flexrow">
           <div className="dashboardCourses w222h98">
-            <h4>Courses this semester</h4>
+            <h4>Courses tutoring</h4>
             <div className='flexrow sb'>
-              <h3>10</h3>
+              <h3>{courseCount.count}</h3>
               <div className="hw40">
                 <HiOutlineBookmarkAlt className='icon11' />
               </div>
@@ -21,18 +70,18 @@ const Dashboard = () => {
 
           </div>
           <div className="dashboardAssignments w222h98">
-            <h4>Assignments</h4>
+            <h4>Assignments given</h4>
             <div className='flexrow sb'>
-              <h3>6</h3>
+              <h3>{assignmentCount}</h3>
               <div className="hw40">
                 <HiOutlineDocumentText className='icon11' />
               </div>
             </div>
           </div>
           <div className="dashboardLevel w222h98">
-            <h4>Level</h4>
+            <h4>Total students</h4>
             <div className='flexrow sb'>
-              <h3>500</h3>
+              <h3>{studentCount}</h3>
               <div className="hw40">
                 <HiOutlineDocumentText className='icon11' />
               </div>
@@ -44,53 +93,12 @@ const Dashboard = () => {
           <div className="dashboardAssignment">
             <div className='flexrow sb ac'>
               <h4>Assignment</h4>
-              <h5 className='blue'>View all</h5>
+              <Link to={'/lecturerassignment'}><h5 className='blue'>View all</h5></Link>
             </div>
             <div className="dashboardAssignmentContent">
-              <div className="assignmentDash flexrow sb">
-                <div className='flexColumn'>
-                  <h4>SENG 302: Assignment 1</h4>
-                  <h5>Due, Dec 5 <span className='blue'>8:00 PM</span></h5>
-                </div>
-
-                <div className="assignmentDashMark">
-                  <button>10 Marks</button>
-                </div>
-              </div>
-              <hr />
-              <div className="assignmentDash flexrow sb">
-                <div className='flexColumn'>
-                  <h4>SENG 302: Assignment 1</h4>
-                  <h5>Due, Dec 5 <span className='blue'>8:00 PM</span></h5>
-                </div>
-
-                <div className="assignmentDashMark">
-                  <button>10 Marks</button>
-                </div>
-              </div>
-              <hr />
-              <div className="assignmentDash flexrow sb">
-                <div className='flexColumn'>
-                  <h4>SENG 302: Assignment 1</h4>
-                  <h5>Due, Dec 5 <span className='blue'>8:00 PM</span></h5>
-                </div>
-
-                <div className="assignmentDashMark">
-                  <button>10 Marks</button>
-                </div>
-              </div>
-              <hr />
-              <div className="assignmentDash flexrow sb">
-                <div className='flexColumn'>
-                  <h4>SENG 302: Assignment 1</h4>
-                  <h5>Due, Dec 5 <span className='blue'>8:00 PM</span></h5>
-                </div>
-
-                <div className="assignmentDashMark">
-                  <button>10 Marks</button>
-                </div>
-              </div>
-              <hr />
+              {assignedAssignments.map((p) => (
+                <Assignment assignedAssignment={p} key={p._id} />
+              ))}
             </div>
 
           </div>
@@ -98,30 +106,9 @@ const Dashboard = () => {
             <div>
               <h4>Notice</h4>
             </div>
-            <div className="dashboardNoticeContent">
-              <div className="noticeHead flexrow">
-                <div ><FaRegUserCircle className='icon13' /></div>
-                <div className="NameandTime">
-                  <h4>Dr. Adetofunmi Adetunji</h4>
-                  <h5>Dec 5 8:00 PM</h5>
-                </div>
-              </div>
-              <div className="noticeContent">
-                <h5>Your mid semester test would be on 1 August by 11am at WRA come with all necessary tools. Assignments would also be submitted. Goodluck!</h5>
-              </div>
-            </div>
-            <div className="dashboardNoticeContent">
-              <div className="noticeHead flexrow">
-                <div ><FaRegUserCircle className='icon13' /></div>
-                <div className="NameandTime">
-                  <h4>Dr. Adetofunmi Adetunji</h4>
-                  <h5>Dec 5 8:00 PM</h5>
-                </div>
-              </div>
-              <div className="noticeContent">
-                <h5>Your mid semester test would be on 1 August by 11am at WRA come with all necessary tools. Assignments would also be submitted. Goodluck!</h5>
-              </div>
-            </div>
+            {notices.map((p) => (
+              <Notice notice={p} key={p._id} />
+            ))}
           </div>
         </div>
 
@@ -145,4 +132,38 @@ const Dashboard = () => {
   )
 }
 
+const Assignment = (assignedAssignment) => {
+  const formattedDate = moment(assignedAssignment.assignedAssignment.dueDate).format("Do MMM, h:mm a");
+  return (
+    <Link to={`/doassignment/${assignedAssignment.assignedAssignment._id}`} style={{ textDecoration: 'none' }}>
+      <div className="assignmentDash flexrow sb">
+        <div className='flexColumn'>
+          <h4>{`${assignedAssignment.assignedAssignment.courseId.courseabrev} : ${assignedAssignment.assignedAssignment.title}`}</h4>
+          <h5 className='blue'>{`Due, ${formattedDate} `}</h5>
+        </div>
+        <div className="assignmentDashMark">
+          <button>{`${assignedAssignment.assignedAssignment.grade} marks`}</button>
+        </div>
+      </div>
+      <hr />
+    </Link>)
+}
+
+const Notice = ({ notice }) => {
+  const formattedDate = moment(notice.createdAt).format("Do MMM, h:mm a");
+  return (
+    <div className="dashboardNoticeContent">
+      <div className="noticeHead flexrow">
+        <div ><FaRegUserCircle className='icon13' /></div>
+        <div className="NameandTime">
+          <h4>{notice.author.name}</h4>
+          <h5>{formattedDate}</h5>
+        </div>
+      </div>
+      <div className="noticeContent">
+        <h5>{notice.description}</h5>
+      </div>
+    </div>
+  )
+}
 export default Dashboard

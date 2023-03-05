@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "../css/classpost.css"
 import { FaRegUserCircle } from "react-icons/fa";
 import { IoMdSend } from "react-icons/io";
 import axios from 'axios';
 import config from '../../../config';
+import moment from 'moment';
 
 const ClassPost = ({ posts, course, student }) => {
     const [content, setContent] = useState("");
@@ -20,6 +21,15 @@ const ClassPost = ({ posts, course, student }) => {
         } catch (err) {
         }
     };
+
+    const [notices, setNotices] = useState([]);
+    useEffect(() => {
+        const fetchNotices = async () => {
+            const res = await axios.get(`${config.baseURL}/notice`);
+            setNotices(res.data);
+        };
+        fetchNotices();
+    });
 
     return (
         <div className="classpost">
@@ -41,40 +51,11 @@ const ClassPost = ({ posts, course, student }) => {
             <div className="noticeboard">
                 <h3>Noticeboard</h3>
                 <hr />
-                <div className="notice">
-                    <div className='noticeInfo'>
-                        <FaRegUserCircle className='icon5 mt15' />
-                        <div>
-                            <h3>Dr. Adetofunmi Adetunji</h3>
-                        </div>
-                    </div>
-                    <h4>New Assignment Posted: Assignment 1</h4>
-                    <h5>Dec 5 8:00pm</h5>
+                <div className="noticeContainer">
+                    {notices.map((p) => (
+                        <Notice notice={p} key={p._id} />
+                    ))}
                 </div>
-                <hr />
-                <div className="notice">
-                    <div className='noticeInfo'>
-                        <FaRegUserCircle className='icon5 mt15' />
-                        <div>
-                            <h3>Dr. Adetofunmi Adetunji</h3>
-                        </div>
-                    </div>
-                    <h4>New Assignment Posted: Assignment 1</h4>
-                    <h5>Dec 5 8:00pm</h5>
-                </div>
-                <hr />
-                <div className="notice">
-                    <div className='noticeInfo'>
-                        <FaRegUserCircle className='icon5 mt15' />
-                        <div>
-                            <h3>Dr. Adetofunmi Adetunji</h3>
-                        </div>
-                    </div>
-                    <h4>New Assignment Posted: Assignment 1</h4>
-                    <h5>Dec 5 8:00pm</h5>
-                </div>
-                <hr />
-
             </div>
         </div>
     )
@@ -83,16 +64,18 @@ const ClassPost = ({ posts, course, student }) => {
 export default ClassPost
 
 export const ExistingPost = ({ post }) => {
+    const formattedDate = moment(post.content.createdAt).format("Do MMM, h:mm a");
+
     return (
         <div className="existingPost">
             <div className='postInfo'>
                 <FaRegUserCircle className='icon4 mt15' />
                 <div>
                     <h3>{post.author.name}</h3>
-                    <h5>Dec 5 8:00pm</h5>
+                    <h5>{formattedDate}</h5>
                 </div>
             </div>
-            <h4>{post.content}</h4>
+            <h4>{post.content.content}</h4>
             <hr />
             <div className="newComment">
                 <FaRegUserCircle className='icon4' />
@@ -100,6 +83,25 @@ export const ExistingPost = ({ post }) => {
                     placeholder='Add Comment '>
                 </input>
                 <IoMdSend className='icon4' type='submit' />
+            </div>
+        </div>
+    )
+}
+
+const Notice = ({ notice }) => {
+    // console.log(notice);
+    const formattedDate = moment(notice.createdAt).format("Do MMM, h:mm a");
+    return (
+        <div className="dashboardNoticeContent">
+            <div className="noticeHead flexrow">
+                <div ><FaRegUserCircle className='icon13' /></div>
+                <div className="NameandTime">
+                    <h4>{notice.author.name}</h4>
+                    <h5>{formattedDate}</h5>
+                </div>
+            </div>
+            <div className="noticeContent">
+                <h5>{notice.description}</h5>
             </div>
         </div>
     )

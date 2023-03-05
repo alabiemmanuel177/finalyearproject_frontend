@@ -21,7 +21,7 @@ const Classroom = ({ student }) => {
                         </div>
                     </div>
                 </div>
-                <Outlet />
+                <div className='classoutlet'><Outlet /></div>
             </div>
         </div>
     )

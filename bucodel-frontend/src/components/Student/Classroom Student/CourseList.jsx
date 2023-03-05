@@ -25,8 +25,8 @@ const CourseCard = ({ course }) => {
         fetchLecturer();
     });
     return (
-        <>
-            <Link to={`/class/${course._id}`} style={{ textDecoration: 'none' }}>
+        <div className='maincourse'>
+            <Link to={`/class/${course._id}`} style={{ textDecoration: 'none', height: '192px' }}>
                 <div className="course">
                     <div className="courseTitle">
                         <h3>{course.courseabrev}</h3>
@@ -41,7 +41,7 @@ const CourseCard = ({ course }) => {
                     </div>
                 </div>
             </Link>
-        </>
+        </div>
     )
 }
 

@@ -7,12 +7,12 @@ import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 import "./css/calendar.css"
 
 export default function Calendar() {
-  const [value, setValue] = React.useState();
+  const [value, setValue] = React.useState(dayjs());
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <StaticDatePicker
         displayStaticWrapperAs="desktop"
-        openTo="year"
+        openTo="day"
         value={value}
         onChange={(newValue) => {
           setValue(newValue);
