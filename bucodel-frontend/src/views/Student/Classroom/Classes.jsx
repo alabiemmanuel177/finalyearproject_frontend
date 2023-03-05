@@ -46,7 +46,7 @@ const Classes = ({ student }) => {
     }
 
     return (
-        <div className="classes" style={{ overflow: 'hidden auto' }}>
+        <div className="classes">
             <div className="classHead">
                 <div className="classTitle">
                     <h3>{`${course.courseabrev}: ${course.title} `}</h3>

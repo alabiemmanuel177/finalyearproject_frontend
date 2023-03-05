@@ -5,11 +5,13 @@
   flex-wrap: wrap;
   align-items: center;
   margin-top: 20px;
+  height: calc(100vh - 192px);
+  overflow: hidden auto;
 }
 .maincourse {
   width: 240px;
   height: 192px;
-  margin: 15px 5px 15px 20px;
+  margin: 15px 5px 5px 20px;
 }
 .course {
   display: flex;

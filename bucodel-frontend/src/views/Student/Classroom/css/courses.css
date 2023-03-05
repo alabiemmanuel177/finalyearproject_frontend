@@ -2,6 +2,9 @@
   width: 100%;
   height: 100%;
 }
+.courseheader {
+  height: 95px;
+}
 .title h3 {
   font-style: Circular Std;
   font-size: 34px;
