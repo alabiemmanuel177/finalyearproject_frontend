@@ -31,7 +31,7 @@ const Assignment = ({ student }) => {
             setAssignedAssignments(res.data);
         };
         fetchAssignedAssignments();
-    }, []);
+    }, [student]);
 
     const [missingAssignments, setMissingAssignments] = useState([])
     useEffect(() => {
@@ -40,7 +40,7 @@ const Assignment = ({ student }) => {
             setMissingAssignments(res.data);
         };
         fetchMissingAssignments();
-    }, []);
+    }, [student]);
 
     const [doneAssignments, setDoneAssignments] = useState([])
     useEffect(() => {
@@ -49,7 +49,7 @@ const Assignment = ({ student }) => {
             setDoneAssignments(res.data);
         };
         fetchDoneAssignments();
-    }, []);
+    }, [student]);
 
     return (
         <div className="courses">

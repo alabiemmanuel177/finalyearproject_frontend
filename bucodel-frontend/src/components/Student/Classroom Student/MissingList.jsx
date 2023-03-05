@@ -27,7 +27,8 @@ export const Assignment = ({ missingAssignment }) => {
             setCourse(res.data)
         };
         fetchCourses();
-    }, []);
+    }, [missingAssignment]);
+
     return (
         <Link to="/doassignment" style={{ textDecoration: 'none' }}>
             <div className="assignment">
