@@ -9,7 +9,7 @@ import config from '../../../config';
 const Resources = ({ resources }) => {
 
   return (
-    <div className='Resources'>
+    <div className='resources'>
       <div className="resourcesContainer">
         {resources.map((p) => (
           <Resource resource={p} key={p._id} />
