@@ -1,8 +1,10 @@
 .courseList {
   display: flex;
+  flex-direction: row;
   justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
   margin-top: 20px;
-  overflow:  hidden auto;
 }
 .maincourse {
   width: 240px;
