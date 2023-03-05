@@ -16,7 +16,7 @@ export const LoginForm = () => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axios.post(`${config.baseURL}/studentLogin`, {
+      const res = await axios.post(`${config.baseURL}/student/login`, {
         matricno: matricnoRef.current.value,
         password: passwordRef.current.value,
       });

@@ -28,7 +28,7 @@ import LecturerClasses from "./views/Lecturer/Classroom/LecturerClasses";
 import { useContext } from "react";
 import {
   studentContext,
-  // lecturerContext,
+  lecturerContext,
   // adminContext,
 } from "./context/Context";
 
@@ -49,9 +49,8 @@ const theme = createTheme({
 
 export const App = () => {
   const { student } = useContext(studentContext);
-  // const { lecturer } = useContext(lecturerContext);
+  const { lecturer } = useContext(lecturerContext);
   //const { admin } = useContext(adminContext);
-  const lecturer = true;
 
   return (
     <ThemeProvider theme={theme}>
@@ -81,7 +80,7 @@ export const App = () => {
               />
               <Route
                 element={<DoAssignment student={student} />}
-                path="/doassignment"
+                path="/doassignment/:id"
               />
               <Route
                 element={<Settings student={student} />}
@@ -109,17 +108,17 @@ export const App = () => {
                 element={<LecturerDashboard />}
                 path="/lecturerdashboard"
               />
-              <Route element={<LecturerCourses />} path="/lecturercourses" />
+              <Route element={<LecturerCourses lecturer={lecturer}/>} path="/lecturercourses" />
               <Route
-                element={<LecturerAssignments />}
+                element={<LecturerAssignments lecturer={lecturer}/>}
                 path="/lecturerassignment"
               />
               <Route
-                element={<LecturerDoassignment />}
+                element={<LecturerDoassignment lecturer={lecturer}/>}
                 path="/lecturerdoassignment"
               />
-              <Route element={<LecturerSettings />} path="/lecturersettings" />
-              <Route element={<LecturerClasses />} path="/lecturerclass" />
+              <Route element={<LecturerSettings lecturer={lecturer}/>} path="/lecturersettings" />
+              <Route element={<LecturerClasses lecturer={lecturer}/>} path="/lecturerclass" />
             </Route>
           </Routes>
         </LecturerContextProvider>

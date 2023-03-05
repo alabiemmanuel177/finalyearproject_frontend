@@ -8,6 +8,13 @@ import {
 } from "react";
 import config from '../../../config';
 import axios from 'axios';
+import io from "socket.io-client";
+const socket = io(`${config.baseURL}`);
+
+socket.on('LECTURER_UPLOADED_NEW_COURSES', (message) => {
+  console.log(message)
+  window.location.reload();
+});
 
 const Courses = ({ student }) => {
   var btnContainer = document.getElementById("headers");
