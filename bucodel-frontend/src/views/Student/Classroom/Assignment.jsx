@@ -40,13 +40,8 @@ const Assignment = ({ student }) => {
             const res = await axios.get(`${config.baseURL}/student/assignments/missed/${student._id}`);
             setMissedAssignments(res.data);
         };
-<<<<<<< HEAD
-        fetchMissingAssignments();
-    }, [student]);
-=======
         fetchMissedAssignments();
-    }, []);
->>>>>>> 36aedf1a5957479d1f05c6b0a9f55770979c995c
+    }, );
 
     const [doneAssignments, setDoneAssignments] = useState([])
     useEffect(() => {
