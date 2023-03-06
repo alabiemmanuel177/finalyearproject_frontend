@@ -1,38 +1,8 @@
-.courseList {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-top: 20px;
-  height: calc(100vh - 192px);
-  overflow: hidden auto;
-}
-.maincourse {
-  width: 240px;
-  height: 192px;
-  margin: 15px 5px 5px 20px;
-}
-.course {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 40px;
-  border-radius: 8px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
-}
-.courseTitle {
-  height: 120px;
-  width: 100%;
-  border-radius: 8px 8px 0px 0px;
-  background-color: #0a3697;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
-}
 .courseTitle h3 {
   font-weight: 500;
   font-size: 18px;
   font-style: Circular Std;
   color: white;
-  margin-top: 15px;
   margin-left: 15px;
 }
 .courseLecturer {
