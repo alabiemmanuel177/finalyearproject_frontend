@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 
-function PeopleCard({ name, role }) {
+export function PeopleCard({ name, role }) {
     return (
         <div className='peoplelistcard' style={{ padding: '0 5px',display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '12px 0' }}>
             <div style={{ display: 'flex', alignItems: 'center', }}>
-                <div style={{ height: '36px', width: '36px', marginRight: '15px' }}>
+                <div style={{ height: '30px', width: '30px', marginRight: '15px' }}>
                     <img style={{ height: '100%', width: '100%' }} src="https://cdn-icons-png.flaticon.com/512/147/147144.png" alt="AVATAR" />
                 </div>
                 <h6 style={{ margin: 0 }}>{name}</h6>
