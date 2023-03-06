@@ -5,9 +5,16 @@ import ClassPost from '../../../components/Student/Classroom Student/ClassPost';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import config from '../../../config';
+import { TabContext, TabList, TabPanel } from '@mui/lab';
+import { Tab } from '@mui/material';
+import Resources from '../../../components/Student/Classroom Student/Resources';
+import Groups from '../../../components/Student/Classroom Student/Groups';
+import People from '../../../components/Student/Classroom Student/People';
 
 const Classes = ({ student }) => {
     let { id } = useParams();
+    const [value, setValue] = useState('1')
+    const handleChange = (event, newValue) => setValue(newValue);
 
     const [course, setCourse] = useState([])
     const [lecturerList, setLecturerList] = useState();
@@ -45,6 +52,16 @@ const Classes = ({ student }) => {
         window.location.replace("/meeting")
     }
 
+  //Get class resources
+  const [resources, setResources] = useState([])
+  useEffect(() => {
+    const fetchResources = async () => {
+      const res = await axios.get(`${config.baseURL}/class/classes/${id}/resources`);
+      setResources(res.data);
+        };
+        fetchResources();
+    }, [id]);
+
     return (
         <div className="classes">
             <div className="classHead">
@@ -59,7 +76,22 @@ const Classes = ({ student }) => {
                     <button onClick={handleClick} id="start-conference">Join Virtual Class</button>
                 </div>
             </div>
-            <ClassPost posts={posts} course={id} student={student} />
+            <div>
+                <TabContext value={value}>
+                    <div style={{ padding: 0 }}>
+                        <TabList sx={{ padding: 0, marginLeft: 1, paddingBottom: 0, textTransform: 'none' }} onChange={handleChange}>
+                            <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'1'} label='Stream' />
+                            <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'2'} label='People'/>
+                            <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'3'} label='Groups'/>
+                            <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'4'} label='Resources'/>
+                        </TabList>
+                    </div>
+                    <TabPanel sx={{ p: 0 }} value={'1'}><ClassPost posts={posts} course={id} student={student} /></TabPanel>
+                    <TabPanel sx={{ p: 0 }} value={'2'}><People /></TabPanel>
+                    <TabPanel sx={{ p: 0 }} value={'3'}><Groups /></TabPanel>
+                    <TabPanel sx={{ p: 0 }} value={'4'}><Resources resources={resources} /></TabPanel>
+                </TabContext>
+            </div>
         </div>
     )
 }

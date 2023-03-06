@@ -49,7 +49,7 @@ const ClassPost = ({ posts, course, student }) => {
                 </div>
             </div>
             <div className="noticeboard">
-                <h3>Noticeboard</h3>
+                <h3>Classboard</h3>
                 <hr />
                 <div className="noticeContainer">
                     {notices.map((p) => (
