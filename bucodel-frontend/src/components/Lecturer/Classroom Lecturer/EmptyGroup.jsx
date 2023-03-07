@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
+import CreateGroupModal from '../modal/CreateGroupModal';
 
 const EmptyGroup = () => {
+    const [open, setOpen] = useState(false)
+    const handleOpen = () => setOpen(true);
+
     return (
         <div className="emptyGroup flexColumn">
             <div className="groupsSvg">
@@ -8,8 +12,8 @@ const EmptyGroup = () => {
             </div>
             <h3>You have not created any student groups</h3>
             <h4>Click on create group in order to create a group</h4>
-            <button>Create Groups</button>
-
+            <button onClick={handleOpen}>Create Groups</button>
+            <CreateGroupModal open={open} setOpen={setOpen} />
         </div>
     )
 }
