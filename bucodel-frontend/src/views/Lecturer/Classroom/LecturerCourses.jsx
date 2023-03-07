@@ -32,19 +32,20 @@ const LecturerCourses = ({ lecturer }) => {
     };
     fetchCourses();
   });
-console.log(courses);
   return (
     <div className="courses">
       <div className="title"><h3>Courses</h3></div>
       <div className="headers" id='headers'>
         <div className="overview headerButton active1"
-          onClick={() => setActive2("overview")}><h3>Overview</h3></div>
-        <div className="schedule headerButton"
-          onClick={() => setActive2("resources")}><h3>Resources</h3></div>
+          onClick={() => setActive2("overview")}><h3>Overview</h3>
+        </div>
+        {/* <div className="schedule headerButton"
+          onClick={() => setActive2("resources")}><h3>Resources</h3>
+        </div> */}
       </div>
       <hr />
       {active2 === "overview" && <CourseList courses={courses} />}
-      {active2 === "resources" && <Resources />}
+      {/* {active2 === "resources" && <Resources />} */}
     </div>
   )
 }

@@ -41,7 +41,7 @@ const Assignment = ({ student }) => {
             setMissedAssignments(res.data);
         };
         fetchMissedAssignments();
-    }, );
+    },);
 
     const [doneAssignments, setDoneAssignments] = useState([])
     useEffect(() => {

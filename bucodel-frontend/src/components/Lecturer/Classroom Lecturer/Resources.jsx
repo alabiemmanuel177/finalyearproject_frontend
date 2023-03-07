@@ -2,59 +2,78 @@ import React from 'react'
 import './css/resources.css'
 import { MdOutlineAssignment } from "react-icons/md";
 import { GrDocumentPdf } from "react-icons/gr";
+import moment from 'moment';
+import axios from 'axios';
+import config from '../../../config';
 
-const LecturerResources = ({ resources }) => {
+const LecturerResources = ({ resources, course}) => {
   return (
     <div className='Resources'>
       <div className="resourcesContainer">
-        <Resource />
-        <Resource />
-        <Resource />
-        <Resource />
+        {resources.map((p) => (
+          <Resource resource={p} key={p._id} course={course}/>
+        ))}
       </div>
     </div>
   )
 }
 
-const Resource = () => {
+const Resource = ({ resource, course}) => {
+  const formattedDate = moment(resource.createdAt).format("Do MMM, h:mm a");
+  const [files, setFiles] = resource.files;
+  console.log(resource);
+
   return (
     <div className="resource">
       <div className="color1">
         <div className='flexRow'>
           <MdOutlineAssignment className='icon8' />
           <div className="resourceDetails">
-            <h2>Lecture 1</h2>
-            <h3>COSC 302: Data Structure And Algorithms</h3>
+            <h2>{resource.title}</h2>
+            <h3>{`${course.courseabrev}: ${course.title} `}</h3>
           </div>
         </div>
-        <div className="date">Friday, 29 Jul 2022</div>
+        <div className="date">{formattedDate}</div>
       </div>
       <div className="resourceContent">
-        <h4>These are the lecture slides for week 1, 2 and 3 with their various exercises and practice questions. do well to download and study them.</h4>
+        <h4>{resource.description}</h4>
         <div className="resourceFiles">
           <div className="files">
-            <div className="file">
-              <GrDocumentPdf className='icon8 red1' />
-              <div className="filename">
-                <h2>DSA Lecture Slides Week 1</h2>
-                <h3>PDF</h3>
-              </div>
-            </div>
-            <div className="file">
-              <GrDocumentPdf className='icon8 red1' />
-              <div className="filename">
-                <h2>DSA Lecture Slides Week 1</h2>
-                <h3>PDF</h3>
-              </div>
-            </div>
+            {resource.files.map((p) => (
+              <File file={p} key={p._id} id={resource._id} />
+            ))}
           </div>
         </div>
       </div>
 
     </div>
-
-
   )
 }
 
+const File = ({ file, id }) => {
+  const handleDownload = async (file) => {
+    try {
+      const response = await axios.get(`${config.baseURL}/coursematerial/${id}/file/${file._id}`, {
+        responseType: 'blob'
+      });
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', file.filename);
+      document.body.appendChild(link);
+      link.click();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  return (
+    <div className="file">
+      <GrDocumentPdf className='icon8 red1' />
+      <div className="filename" onClick={() => handleDownload(file)}>
+        <h2>{file.filename}</h2>
+        <h3>PDF</h3>
+      </div>
+    </div>
+  )
+}
 export default LecturerResources

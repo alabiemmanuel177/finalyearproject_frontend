@@ -43,7 +43,7 @@ const ClassPost = ({ posts, course, lecturer }) => {
                 </div>
                 <div className="postContainer">
                     {posts.map((p) => (
-                        <ExistingPost post={p} key={p._id} />
+                        <ExistingPost post={p} key={p.content._id} />
                     ))}
                 </div>
             </div>

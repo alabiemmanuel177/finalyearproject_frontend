@@ -53,6 +53,14 @@ const LecturerClasses = ({ lecturer }) => {
         fetchPosts();
     }, [id]);
 
+    const [resources, setResources] = useState([])
+    useEffect(() => {
+        const fetchResources = async () => {
+            const res = await axios.get(`${config.baseURL}/course/${id}/materials`);
+            setResources(res.data.materials);
+        };
+        fetchResources();
+    }, [id]);
 
     const [active2, setActive2] = useState("stream");
     return (
@@ -90,9 +98,9 @@ const LecturerClasses = ({ lecturer }) => {
             </div>
             <hr />
             {active2 === "stream" && <ClassPost posts={posts} course={id} lecturer={lecturer} />}
-            {active2 === "people" && <People course={id}/>}
+            {active2 === "people" && <People course={id} />}
             {active2 === "groups" && <Groups />}
-            {active2 === "resources" && <LecturerResources />}
+            {active2 === "resources" && <LecturerResources resources={resources} course={course}/>}
             {active2 === "gradebook" && <Gradebook />}
 
         </div>

@@ -8,15 +8,15 @@ const CourseList = ({ courses }) => {
     return (
         <div className="courseList">
             {courses.map((p) => (
-                <CourseCard course={p} key={p._id}/>
-            ))}            
+                <CourseCard course={p} key={p._id} />
+            ))}
         </div>
     )
 }
 
 const CourseCard = ({ course }) => {
     return (
-        <>
+        <div className='maincourse'>
             <Link to={`/lecturerclass/${course._id}`} style={{ textDecoration: 'none' }}>
                 <div className="course">
                     <div className="courseTitle">
@@ -32,7 +32,7 @@ const CourseCard = ({ course }) => {
                     </div>
                 </div>
             </Link>
-        </>
+        </div>
     )
 }
 export default CourseList

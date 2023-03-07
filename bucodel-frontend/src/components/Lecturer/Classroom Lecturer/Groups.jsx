@@ -9,7 +9,7 @@ import "./css/group.css"
 import { FaRegUserCircle } from "react-icons/fa";
 
 const Groups = () => {
-  const [empty] = useState(false);
+  const [empty] = useState(true);
   return (
     <div className='group'>
       {empty ? (<div>

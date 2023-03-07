@@ -89,7 +89,7 @@ const Dashboard = ({ student }) => {
           <div className="dashboardAssignment" style={{ overflow: 'hidden auto' }}>
             <div className='flexrow sb ac'>
               <h4>Assignment</h4>
-              <h5 className='blue'>View all</h5>
+              <Link to={"/assignment"}><h5 className='blue'>View all</h5></Link>
             </div>
             <div className="dashboardAssignmentContent">
               {assignedAssignments.map((p) => (
@@ -102,9 +102,9 @@ const Dashboard = ({ student }) => {
             <div>
               <h4>Notice</h4>
             </div>
-              {notices.map((p) => (
-                <Notice notice={p} key={p._id} />
-              ))}
+            {notices.map((p) => (
+              <Notice notice={p} key={p._id} />
+            ))}
           </div>
         </div>
 

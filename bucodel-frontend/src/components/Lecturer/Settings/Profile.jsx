@@ -12,7 +12,6 @@ export function SettingsInput({ label, placeholder, value }) {
 }
 
 function Profile({ lecturer }) {
-    console.log(lecturer);
     return (
         <div className='settings-profile-tab'>
             <div className='settings-unit-tab'>
@@ -30,7 +29,7 @@ function Profile({ lecturer }) {
                     <h6>Academic Info</h6>
                 </div>
                 <div className='settings-unit-tab-body'>
-                    <SettingsInput label="Department" placeholder={'Software Engineer'} value={lecturer.department.name}/>
+                    <SettingsInput label="Department" placeholder={'Software Engineer'} value={lecturer.department.name} />
                     <SettingsInput label="Level" placeholder={'Facilitator'} />
                 </div>
             </div>
