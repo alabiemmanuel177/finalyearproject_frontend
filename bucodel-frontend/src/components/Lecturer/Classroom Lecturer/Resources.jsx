@@ -5,24 +5,24 @@ import { GrDocumentPdf } from "react-icons/gr";
 import moment from 'moment';
 import axios from 'axios';
 import config from '../../../config';
+import EmptyResources from './EmptyResource';
 
-const LecturerResources = ({ resources, course}) => {
+const LecturerResources = ({ resources, course, empty }) => {
   return (
     <div className='Resources'>
-      <div className="resourcesContainer">
+      {empty ? (<div className="resourcesContainer">
         {resources.map((p) => (
-          <Resource resource={p} key={p._id} course={course}/>
+          <Resource resource={p} key={p._id} course={course} />
         ))}
       </div>
+      ) : (<EmptyResources />)}
     </div>
   )
 }
 
-const Resource = ({ resource, course}) => {
+const Resource = ({ resource, course }) => {
   const formattedDate = moment(resource.createdAt).format("Do MMM, h:mm a");
   const [files, setFiles] = resource.files;
-  console.log(resource);
-
   return (
     <div className="resource">
       <div className="color1">
@@ -30,7 +30,7 @@ const Resource = ({ resource, course}) => {
           <MdOutlineAssignment className='icon8' />
           <div className="resourceDetails">
             <h2>{resource.title}</h2>
-            <h3>{`${course.courseabrev}: ${course.title} `}</h3>
+            <h3>{`${course.courseabrev}: ${course.title}`}</h3>
           </div>
         </div>
         <div className="date">{formattedDate}</div>

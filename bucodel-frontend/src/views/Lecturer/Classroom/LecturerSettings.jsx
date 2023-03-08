@@ -6,7 +6,7 @@ import Passwords from '../../../components/Lecturer/Settings/Passwords'
 import './css/settings.css'
 
 const LecturerSettings = ({ lecturer }) => {
-    const [value, setValue] = useState('1')
+    const [value, setValue] = useState('Profile')
     const handleTabChange = (event, newValue) => {
         setValue(newValue)    }
 

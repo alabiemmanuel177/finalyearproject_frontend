@@ -29,9 +29,18 @@ const LecturerClasses = ({ lecturer }) => {
         fetchCourses();
     }, [id]);
 
+    const [clazz, setClass] = useState([])
+    useEffect(() => {
+        const fetchClass = async () => {
+            const res = await axios.get(`${config.baseURL}/course/${id}/class`);
+            setClass(res.data.classId)
+        };
+        fetchClass();
+    }, [id]);
     const handleClick = () => {
         window.location.replace("/meeting")
     }
+
     var btnContainer = document.getElementById("headers");
     if (btnContainer !== null) {
         var btns = btnContainer.getElementsByClassName("headerButton");
@@ -54,12 +63,29 @@ const LecturerClasses = ({ lecturer }) => {
     }, [id]);
 
     const [resources, setResources] = useState([])
+    const [emptyRes, setEmptyRes] = useState(false);
     useEffect(() => {
         const fetchResources = async () => {
             const res = await axios.get(`${config.baseURL}/course/${id}/materials`);
             setResources(res.data.materials);
+            if (res.data.materials.length > 0) {
+                setEmptyRes(true)
+            }
         };
         fetchResources();
+    }, [id]);
+
+    const [groups, setGroups] = useState([])
+    const [empty, setEmpty] = useState(false);
+    useEffect(() => {
+        const fetchGroups = async () => {
+            const res = await axios.get(`${config.baseURL}/group/courses/${id}/groups`);
+            setGroups(res.data);
+            if (res.data.length > 0) {
+                setEmpty(true)
+            }
+        };
+        fetchGroups();
     }, [id]);
 
     const [active2, setActive2] = useState("stream");
@@ -99,10 +125,9 @@ const LecturerClasses = ({ lecturer }) => {
             <hr />
             {active2 === "stream" && <ClassPost posts={posts} course={id} lecturer={lecturer} />}
             {active2 === "people" && <People course={id} />}
-            {active2 === "groups" && <Groups />}
-            {active2 === "resources" && <LecturerResources resources={resources} course={course}/>}
+            {active2 === "groups" && <Groups groups={groups} empty={empty} course={id} clazz={clazz} />}
+            {active2 === "resources" && <LecturerResources resources={resources} course={course} empty={emptyRes} />}
             {active2 === "gradebook" && <Gradebook />}
-
         </div>
     )
 }

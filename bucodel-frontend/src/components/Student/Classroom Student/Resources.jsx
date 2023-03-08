@@ -6,20 +6,19 @@ import moment from 'moment';
 import axios from 'axios';
 import config from '../../../config';
 
-const Resources = ({ resources }) => {
-
+const Resources = ({ resources, course }) => {
   return (
     <div className='resources'>
       <div className="resourcesContainer">
         {resources.map((p) => (
-          <Resource resource={p} key={p._id} />
+          <Resource resource={p} key={p._id} course={course}/>
         ))}
       </div>
     </div>
   )
 }
 
-const Resource = ({ resource }) => {
+const Resource = ({ resource, course }) => {
   const formattedDate = moment(resource.createdAt).format("Do MMM, h:mm a");
   const [files, setFiles] = resource.files;
 
@@ -30,7 +29,7 @@ const Resource = ({ resource }) => {
           <MdOutlineAssignment className='icon8' />
           <div className="resourceDetails">
             <h2>{resource.title}</h2>
-            <h3>COSC 302: Data Structure And Algorithms</h3>
+            <h3>{`${course.courseabrev}: ${course.title}`}</h3>
           </div>
         </div>
         <div className="date">{formattedDate}</div>

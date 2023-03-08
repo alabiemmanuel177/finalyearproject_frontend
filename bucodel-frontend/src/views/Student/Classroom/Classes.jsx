@@ -56,8 +56,8 @@ const Classes = ({ student }) => {
   const [resources, setResources] = useState([])
   useEffect(() => {
     const fetchResources = async () => {
-      const res = await axios.get(`${config.baseURL}/class/classes/${id}/resources`);
-      setResources(res.data);
+      const res = await axios.get(`${config.baseURL}/course/${id}/materials`);
+      setResources(res.data.materials);
         };
         fetchResources();
     }, [id]);
@@ -87,9 +87,9 @@ const Classes = ({ student }) => {
                         </TabList>
                     </div>
                     <TabPanel sx={{ p: 0 }} value={'1'}><ClassPost posts={posts} course={id} student={student} /></TabPanel>
-                    <TabPanel sx={{ p: 0 }} value={'2'}><People /></TabPanel>
+                    <TabPanel sx={{ p: 0 }} value={'2'}><People course={id} student={student}/></TabPanel>
                     <TabPanel sx={{ p: 0 }} value={'3'}><Groups /></TabPanel>
-                    <TabPanel sx={{ p: 0 }} value={'4'}><Resources resources={resources} /></TabPanel>
+                    <TabPanel sx={{ p: 0 }} value={'4'}><Resources resources={resources} course={course}/></TabPanel>
                 </TabContext>
             </div>
         </div>
