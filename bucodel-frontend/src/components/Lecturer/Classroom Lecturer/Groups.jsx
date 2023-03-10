@@ -20,7 +20,7 @@ const Groups = ({ groups, empty, course, clazz }) => {
 
 const Group = ({ group }) => {
   return (
-    <div>
+    <div style={{ marginBottom: '35px', }}>
       <div className="groupTitle mgt20">
         <h3>{group.name}</h3>
         <hr className='blue' />

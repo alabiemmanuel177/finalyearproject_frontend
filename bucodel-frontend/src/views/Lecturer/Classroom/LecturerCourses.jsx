@@ -9,6 +9,8 @@ import {
 import io from "socket.io-client";
 import config from '../../../config';
 import axios from 'axios';
+import { TabContext, TabList, TabPanel } from '@mui/lab';
+import { Tab } from '@mui/material';
 const socket = io(`${config.baseURL}`);
 
 const LecturerCourses = ({ lecturer }) => {
@@ -23,7 +25,8 @@ const LecturerCourses = ({ lecturer }) => {
       });
     }
   }
-  const [active2, setActive2] = useState("overview");
+  const [value, setValue] = useState("1");
+  const handleChange = (event, newValue) => setValue(newValue);
   const [courses, setCourses] = useState([])
   useEffect(() => {
     const fetchCourses = async () => {
@@ -36,16 +39,19 @@ const LecturerCourses = ({ lecturer }) => {
     <div className="courses">
       <div className="title"><h3>Courses</h3></div>
       <div className="headers" id='headers'>
-        <div className="overview headerButton active1"
-          onClick={() => setActive2("overview")}><h3>Overview</h3>
-        </div>
-        {/* <div className="schedule headerButton"
-          onClick={() => setActive2("resources")}><h3>Resources</h3>
-        </div> */}
+        <TabContext value={value}>
+          <div>
+            <TabList onChange={handleChange}>
+              <Tab label={'Overview'} value={"1"} />
+              <Tab label={'Schedule'} value={"2"} />
+            </TabList>
+            <TabPanel className='coursestab' value='1'>
+              <CourseList courses={courses} />
+            </TabPanel>
+            <TabPanel className='coursestab' value='2'>Schedule</TabPanel>
+          </div>
+        </TabContext>
       </div>
-      <hr />
-      {active2 === "overview" && <CourseList courses={courses} />}
-      {/* {active2 === "resources" && <Resources />} */}
     </div>
   )
 }

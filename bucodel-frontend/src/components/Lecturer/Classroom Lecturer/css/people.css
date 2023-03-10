@@ -1,6 +1,9 @@
 .people {
   padding: 20px;
 }
+.peopleLecturer {
+  margin-bottom: 35px;
+}
 .peopleTitle h3 {
   font-family: "Circular Std";
   font-style: normal;
@@ -37,5 +40,4 @@
 }
 .peopleTitle{
     margin-top: 10px;
-
 }

@@ -1,7 +1,7 @@
-import { TextareaAutosize, Modal, Button } from '@mui/material'
+import { TextareaAutosize, Modal, Button, IconButton } from '@mui/material'
 import React from 'react';
 import './css/createassignmentmodal.css'
-import { MdOutlineCancel } from 'react-icons/md';
+import { GrClose } from 'react-icons/gr';
 
 function CreateAssignmentModal({ open, setOpen }) {
     const handleClose = () => setOpen(false)
@@ -16,15 +16,35 @@ function CreateAssignmentModal({ open, setOpen }) {
                     <div className='assign-modal-header'>
                         <div className='assign-modal-title'>Assignment</div>
                         <div className='assign-modal-cancel'>
-                            <MdOutlineCancel className='assign-modal-cancel' />
+                            <IconButton onClick={() => setOpen(false)}>
+                                <GrClose className='assign-modal-cancel' />
+                            </IconButton>
                         </div>
                     </div>
                     <div className='assign-modal-body'>
                         <div className='assign-modal-input'>
                             <label className='assign-modal-input-label'>
+                                Course
+                            </label>
+                            <input className='assign-modal-input-tag' type={'text'} />
+                        </div>
+                        <div className='assign-modal-input'>
+                            <label className='assign-modal-input-label'>
                                 Title
                             </label>
                             <input className='assign-modal-input-tag' type={'text'} />
+                        </div>
+                        <div className='assign-modal-input'>
+                            <label className='assign-modal-input-label'>
+                                Date
+                            </label>
+                            <input className='assign-modal-input-tag' type={'date'} />
+                        </div>
+                        <div className='assign-modal-input'>
+                            <label className='assign-modal-input-label'>
+                                Time
+                            </label>
+                            <input className='assign-modal-input-tag' type={'time'} />
                         </div>
                         <div className='assign-modal-input'>
                             <label className='assign-modal-input-label'>

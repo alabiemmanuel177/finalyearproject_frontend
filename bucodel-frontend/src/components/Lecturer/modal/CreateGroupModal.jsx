@@ -43,7 +43,13 @@ function CreateGroupModal({ open, setOpen, course, clazz }) {
                             <label className='assign-modal-input-label'>
                                 Group Number
                             </label>
-                            <p>{`The system will create groups with ${groupCapacity} students each, and any remaining students will be added to the last group(s) to complete the group`}</p>
+                            <input className='assign-modal-input-tag' type={'number'} defaultValue={4} min={'2'} max={'20'} />
+                        </div>
+                        <div className='assign-modal-input' style={{ marginBottom: '40px' }}>
+                            <label className='assign-modal-input-label'>
+                                Leftover Students
+                            </label>
+                            <p style={{fontSize: '0.8rem', color: 'grey'}}>{`The system will create groups with ${groupCapacity} students each, and any remaining students will be added to the last group(s) to complete the group`}</p>
                         </div>
                         <div className='assign-bottom-btn'>
                             <Button onClick={() => setOpen(false)} className='assign-main-btn' sx={{ textTransform: 'none' }} variant='outlined'>Cancel</Button>

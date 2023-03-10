@@ -57,11 +57,11 @@ const Courses = ({ student }) => {
             <div style={{ padding: 0 }}>
               <TabList sx={{ padding: 0, marginLeft: 1, paddingBottom: 0, textTransform: 'none' }} onChange={handleChange}>
                 <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'1'} label='Overview' />
-                <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'2'} label='Resources' />
+                <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'2'} label='Schedule' />
               </TabList>
             </div>
             <TabPanel sx={{ p: 0 }} value={'1'}><CourseList courses={courses} /></TabPanel>
-            <TabPanel sx={{ p: 0 }} value={'2'}><Resources resources={resources} /></TabPanel>
+            <TabPanel sx={{ p: 0 }} value={'2'}>Schedule</TabPanel>
           </TabContext>
         </div>
       </div>

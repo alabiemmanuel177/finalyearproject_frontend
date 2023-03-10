@@ -3,11 +3,13 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 450px;
+    width: 500px;
     background-color: white;
     border: 1px solid lightgray;
     border-radius: 5px;
-    padding: 5px 12px;
+    padding: 5px 22px;
+    max-height: 90%;
+    overflow: hidden auto;
 }
 
 .assign-modal-header {
@@ -20,6 +22,7 @@
 
 .assign-modal-title {
     font-weight: bold;
+    font-size: 1.1rem;
 }
 
 .assign-modal-cancel {
@@ -32,11 +35,12 @@
 }
 
 .assign-modal-input {
-    margin: 8px 0;
+    margin: 18px 0;
 }
 
 .assign-modal-input-label {
-    font-size: small;
+    font-size: 0.95rem;
+    margin-bottom: 5px;
     font-weight: bold;
 }
 
@@ -74,9 +78,11 @@
     display: flex;
     justify-content: flex-end;
     margin: 10px 0 5px 0;
+    font-weight: bold;
 }
 
 .assign-main-btn {
     margin-left: 5px;
     padding: 0.5rem 1.5rem;
+    font-weight: bold;
 }
