@@ -48,10 +48,11 @@ const Assignment = ({ student }) => {
         const fetchDoneAssignments = async () => {
             const res = await axios.get(`${config.baseURL}/student/assignments/submitted/${student._id}`);
             setDoneAssignments(res.data);
+
         };
         fetchDoneAssignments();
     }, [student]);
-
+    // console.log(doneAssignments);
     return (
         <div className="courses">
             <div className="title"><h3>Assignments</h3></div>
