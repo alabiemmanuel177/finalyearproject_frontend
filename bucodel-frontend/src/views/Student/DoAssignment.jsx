@@ -5,6 +5,7 @@ import config from '../../config';
 import "./css/doassignment.css";
 import moment from 'moment';
 import { GrDocumentPdf } from "react-icons/gr";
+import CreateAssignment from '../../components/Student/modal/CreateAssignment';
 
 const DoAssignment = ({ student }) => {
   let { id } = useParams();
@@ -22,7 +23,7 @@ const DoAssignment = ({ student }) => {
 
     };
     fetchAssignment();
-  }, [id]);
+  }, [student._id, id]);
   console.log(assignment);
   const [formattedDate, setformattedDate] = useState(null)
   return (
@@ -91,6 +92,7 @@ const AssignmentSubmitted = () => {
 }
 
 const AssignmentNotSubmitted = () => {
+  const [open, setOpen] = useState(false)
   const [file, setFile] = useState(null);
   const fileInputRef = useRef(null);
 
@@ -122,7 +124,8 @@ const AssignmentNotSubmitted = () => {
         <>
           <input type="file" accept=".pdf,.ppt,.pptx,.doc,.docx" onChange={handleFileChange} ref={fileInputRef} style={{ display: 'none' }} />
           <button className="addFile" onClick={handleButtonClick}>+ Add File</button>
-          <button className="Create" disabled>Create</button>
+          <button className="Create" onClick={() => setOpen(true)}>Create</button>
+          <CreateAssignment open={open} setOpen={setOpen} />
         </>
         :
         <>
