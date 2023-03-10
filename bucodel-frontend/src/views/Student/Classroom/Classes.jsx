@@ -27,7 +27,6 @@ const Classes = ({ student }) => {
         fetchCourses();
     }, [id]);
 
-
     const [lecturer, setLecturer] = useState("");
     useEffect(() => {
         if (lecturerList && lecturerList.length > 0) {
