@@ -29,7 +29,7 @@ function NewNotice({ open, setOpen }) {
                         <TextareaAutosize
                             aria-label="minimum height"
                             minRows={5}
-                            placeholder={'Notice description'}
+                            placeholder={'Your mid semester test would be on 1 August by 11am at WRA come with all necessary tool. Assignments would also be submitted. Goodluck!'}
                             className='assign-modal-input-tag'
                         />
                     </div>
