@@ -1,5 +1,5 @@
 import React from 'react'
-import { Modal, Button } from '@mui/material'
+import { Modal, Button, TextareaAutosize } from '@mui/material'
 import './css/createassignmentmodal.css'
 import { MdOutlineCancel } from 'react-icons/md';
 
@@ -13,7 +13,7 @@ function CreateResourceModal({ open, setOpen }) {
             <div className='assign-modal-root'>
                 <div className='assign-modal-header'>
                     <div className='assign-modal-title'>Assignment</div>
-                    <div className='assign-modal-cancel'>
+                    <div className='assign-modal-cancel' onClick={() => setOpen(false)}>
                         <MdOutlineCancel className='assign-modal-cancel'/>
                     </div>
                 </div>

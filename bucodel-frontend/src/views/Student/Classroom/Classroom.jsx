@@ -1,10 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Sidebar from '../../../components/Student/Classroom Student/Sidebar'
 import "./css/Classroom.css"
 import { FaRegUserCircle } from "react-icons/fa";
 import { Outlet } from 'react-router-dom';
+import { IoMdNotificationsOutline } from 'react-icons/io';
+import { IconButton } from '@mui/material';
+import Notifications from '../../../components/Lecturer/modal/Notifications';
 
 const Classroom = ({ student }) => {
+    const [anchorEl, setAnchorEl] = useState(null)
+    const open = Boolean(anchorEl)
+    const handleClick = (event) => setAnchorEl(event.currentTarget);
+    const handleClose = () => setAnchorEl(null);
 
     return (
         <div className="classroom">
@@ -13,6 +20,18 @@ const Classroom = ({ student }) => {
             </div>
             <div className='classScreen'>
                 <div className="classroomContainer">
+                    <div className="util" style={{ borderRight: '1px solid lightgray' }}>
+                        <IconButton
+                            id='notification-button'
+                            aria-controls={open ? 'notification-button' : undefined}
+                            aria-haspopup="true"
+                            aria-expanded={open ? 'true' : undefined}
+                            onClick={handleClick}
+                            >
+                        <IoMdNotificationsOutline className='icon1' />
+                        </IconButton>
+                        <Notifications open={open} anchorEl={anchorEl} handleClose={handleClose} />
+                    </div>
                     <div className="util">
                         <FaRegUserCircle className='icon1' />
                         <div>

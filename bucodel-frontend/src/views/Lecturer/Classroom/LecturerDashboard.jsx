@@ -8,8 +8,13 @@ import axios from 'axios';
 import config from '../../../config';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
+import { Button } from '@mui/material';
+import NewNotice from '../../../components/Lecturer/modal/NewNotice';
 
 const Dashboard = ({ lecturer }) => {
+  const [open, setOpen] = useState(false)
+  const handleOpen = () => setOpen(true);
+
   const [courseCount, setCourseCount] = useState("");
   useEffect(() => {
     const fetchCourseCount = async () => {
@@ -103,8 +108,15 @@ const Dashboard = ({ lecturer }) => {
 
           </div>
           <div className="dashboardNotice">
-            <div>
+            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
               <h4>Notice</h4>
+              <Button 
+                sx={{textTransform: 'none', fontWeight: 'bold'}} 
+                variant='text'
+                onClick={handleOpen}
+              >
+                Add +
+              </Button>
             </div>
             {notices.map((p) => (
               <Notice notice={p} key={p._id} />
@@ -128,6 +140,7 @@ const Dashboard = ({ lecturer }) => {
 
         </div>
       </div>
+      <NewNotice open={open} setOpen={setOpen} />
     </div>
   )
 }
