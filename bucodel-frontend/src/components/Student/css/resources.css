@@ -72,6 +72,16 @@
   justify-content: center;
   margin-right: 10px;
 }
+.submittedFile {
+  border: 1.5px solid rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  width: 313px;
+  height: 66px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-right: 10px;
+}
 .red1 {
   background-color: red;
   padding: 5px;
@@ -83,9 +93,27 @@
   font-style: Circular Std;
 }
 .file h3 {
+  font-family: "Circular Std";
   font-size: 14px;
   font-weight: 600;
   font-style: Circular Std;
+  color: rgba(0, 0, 0, 0.5);
+}
+.submittedFile h2 {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.0175em;
+  color: #000000;
+}
+.submittedFile h4 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.0175em;
   color: rgba(0, 0, 0, 0.5);
 }
 .resourceFiles {

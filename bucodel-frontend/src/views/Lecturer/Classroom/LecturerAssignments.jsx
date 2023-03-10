@@ -62,6 +62,27 @@ export default function LecturerAssignments({ lecturer }) {
     fetchAssignments();
   }, [lecturer]);
 
+  const [title, setTitle] = useState()
+  const [description, setDescription] = useState()
+  const [dueDate, setDueDate] = useState()
+  const [grade, setGrade] = useState()
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post(`${config.baseURL}/classpost/`, {
+        creatorId: lecturer._id,
+        // courseId: course,
+        title: title,
+        description: description,
+        grade: grade,
+        dueDate: dueDate,
+      });
+      res.data && window.location.reload();
+    } catch (err) {
+    }
+  };
+
   return (
     <div style={{ padding: '10px 0px' }}>
       <div className='main-assign-header'>
@@ -73,7 +94,7 @@ export default function LecturerAssignments({ lecturer }) {
           <Tab sx={{ marginLeft: '25px', fontSize: '1.1rem', fontWeight: 'bold', textTransform: 'none', color: 'black' }} label={"Assigned"} {...a11yProps(0)} />
         </Tabs>
         <TabPanel value={value} index={0}>
-          <Assignment assignments={assignments}/>
+          <Assignment assignments={assignments} />
         </TabPanel>
       </div>
       <CreateAssignmentModal open={open} setOpen={setOpen} />

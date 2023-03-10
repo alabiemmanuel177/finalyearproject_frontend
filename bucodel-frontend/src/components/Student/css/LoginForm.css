@@ -35,3 +35,6 @@
 #UserLogin {
   margin-bottom: 50px !important;
 }
+.error {
+  color: red;
+}

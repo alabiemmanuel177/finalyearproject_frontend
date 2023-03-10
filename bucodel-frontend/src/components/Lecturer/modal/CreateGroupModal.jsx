@@ -1,5 +1,5 @@
 import { Modal, Button } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import './css/createassignmentmodal.css'
 import { MdOutlineCancel } from 'react-icons/md';
 import axios from 'axios';
@@ -8,7 +8,6 @@ import config from '../../../config';
 
 function CreateGroupModal({ open, setOpen, course, clazz }) {
     const [groupCapacity, setGroupCapacity] = useState("");
-    console.log(course);
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {

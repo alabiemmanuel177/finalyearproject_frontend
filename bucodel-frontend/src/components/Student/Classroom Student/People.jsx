@@ -45,6 +45,29 @@ export function PeopleCardS({ name, student, k }) {
         </div>
     )
 }
+export function PeopleCardG({ name, p, leader }) {
+    var role = ""
+    if (leader === p._id) {
+        role = "Leader"
+    }
+    return (
+        <div className='peoplelistcard' style={{ padding: '0 5px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '12px 0' }}>
+            <div style={{ display: 'flex', alignItems: 'center', }}>
+                <div style={{ height: '30px', width: '30px', marginRight: '15px' }}>
+                    <img style={{ height: '100%', width: '100%' }} src="https://cdn-icons-png.flaticon.com/512/147/147144.png" alt="AVATAR" />
+                </div>
+                <h6 style={{ margin: 0 }}>{name}</h6>
+            </div>
+            {
+                role && (
+                    <div style={{ width: '100px', backgroundColor: 'lightblue', padding: '8px 15px', display: 'grid', placeContent: 'center' }}>
+                        <h6 style={{ margin: 0, color: '#0a3697', fontSize: '0.9rem' }}>{role}</h6>
+                    </div>
+                )
+            }
+        </div>
+    )
+}
 
 function People({ course, student }) {
     const [members, setMemebers] = useState();

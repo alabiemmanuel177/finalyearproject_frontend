@@ -62,7 +62,6 @@ const ClassPost = ({ posts, course, lecturer }) => {
 
 export const ExistingPost = ({ post }) => {
     const formattedDate = moment(post.content.createdAt).format("Do MMM, h:mm a");
-    // console.log(post);
     return (
         <div className="existingPost">
             <div className='postInfo'>
@@ -86,7 +85,6 @@ export const ExistingPost = ({ post }) => {
 }
 
 const Notice = ({ notice }) => {
-    // console.log(notice);
     const formattedDate = moment(notice.createdAt).format("Do MMM, h:mm a");
     return (
         <div className="dashboardNoticeContent">

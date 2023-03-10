@@ -1,9 +1,5 @@
 import React from 'react'
 import EmptyGroup from './EmptyGroup';
-import {
-  useState,
-  // useEffect
-} from "react";
 import "./css/group.css"
 
 import { FaRegUserCircle } from "react-icons/fa";

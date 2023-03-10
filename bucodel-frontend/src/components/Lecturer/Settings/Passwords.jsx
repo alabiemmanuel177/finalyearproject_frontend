@@ -61,7 +61,7 @@ export default function Passwords({ lecturer }) {
                 </div>
             </div>
             <Button sx={{ textTransform: 'none', fontWeight: 'bold', float: 'right', margin: '30px 200px 0 0' }} variant='contained' onClick={handleOpen}>Update Password</Button>
-            <PasswordChange open={open} setOpen={setOpen} handleSubmit={handleSubmit} />
+            <PasswordChange open={open} setOpen={setOpen} handleSubmit={handleSubmit} error={error}/>
         </div>
 
     )

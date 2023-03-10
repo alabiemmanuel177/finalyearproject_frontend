@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import config from '../../config';
 import "./css/doassignment.css";
 import moment from 'moment';
+import { GrDocumentPdf } from "react-icons/gr";
 
 const DoAssignment = ({ student }) => {
   let { id } = useParams();
@@ -14,20 +15,82 @@ const DoAssignment = ({ student }) => {
     const fetchAssignment = async () => {
       const res = await axios.get(`${config.baseURL}/assignment/${id}/${student._id}`);
       setAssignment(res.data)
-      setformattedDate(moment(res.data.assignment.dueDate).format("Do MMM, h:mm a"))
-      if (res.data.answer = []) {
+      setformattedDate(moment(res.data.dueDate).format("Do MMM, h:mm a"))
+      if (!res.data.answer) {
         setSubmitted(false)
       }
+
     };
     fetchAssignment();
   }, [id]);
-
+  console.log(assignment);
   const [formattedDate, setformattedDate] = useState(null)
+  return (
+    <div className='doAssignment flexColumn'>
+      <div className="assignmentType ">
+        <h3>Assignment  / Assigned</h3>
+      </div>
+      <div className="assignmentContent flexrow jcsb">
+        {assignment &&
+          <>
+            <div className="assignmentContentText">
+              <div className="assignmentContentTextHead">
+                <h3>{assignment.title}</h3>
+                <h4>{`${assignment.courseabrev} : ${assignment.courseTitle}`}</h4>
+              </div>
+              <div className="assignmentContentTextInfo flexrow jcsb">
+                {!submitted ?
+                  <><h3 className='blue'>{`Due, ${formattedDate} `}</h3></>
+                  :
+                  <><h3 className='green'>Done</h3></>
+                }
+
+                <h3 className='blue'>{`${assignment.grade} mark(s)`}</h3>
+              </div>
+              <hr className='blue' />
+              <h4>{assignment.description}</h4>
+              <hr />
+            </div>
+
+            <div className="assignmentYourWork flexColumn">
+              <h3>Your Work</h3>
+              {!submitted ?
+                <AssignmentNotSubmitted />
+                :
+                <AssignmentSubmitted />
+              }
+            </div>
+          </>
+        }
+      </div>
+
+    </div>
+  )
+}
+
+export default DoAssignment
 
 
+const AssignmentSubmitted = () => {
 
-  console.log(submitted);
+  return (
+    <>
+      <hr />
+      <div className="files">
+        <div className="submittedFile">
+          <GrDocumentPdf className='icon8 red1' />
+          <div className="filename" >
+            <h2>Assignment 1</h2>
+            <h4>PDF</h4>
+          </div>
+        </div>
+      </div>
+      <button className="addFile2">Unsubmit</button>
+    </>
+  )
+}
 
+const AssignmentNotSubmitted = () => {
   const [file, setFile] = useState(null);
   const fileInputRef = useRef(null);
 
@@ -52,50 +115,23 @@ const DoAssignment = ({ student }) => {
     // do something with the selected file
     console.log('Selected file:', file);
   };
-
   return (
-    <div className='doAssignment flexColumn'>
-      <div className="assignmentType ">
-        <h3>Assignment  / Assigned</h3>
-      </div>
-      <div className="assignmentContent flexrow jcsb">
-        {assignment && (<><div className="assignmentContentText">
-          <div className="assignmentContentTextHead">
-            <h3>{assignment.assignment.title}</h3>
-            <h4>COSC 302: Data Structures and Algorithm</h4>
-          </div>
-          <div className="assignmentContentTextInfo flexrow jcsb">
-            <h3>{`Due, ${formattedDate} `}</h3>
-            <h3 className='blue'>{`${assignment.assignment.grade} mark(s)`}</h3>
-          </div>
-          <hr className='blue' />
-          <h4>{assignment.assignment.description}</h4>
-          <hr />
-        </div>
+    <>
+      <hr />
+      {!file ?
+        <>
+          <input type="file" accept=".pdf,.ppt,.pptx,.doc,.docx" onChange={handleFileChange} ref={fileInputRef} style={{ display: 'none' }} />
+          <button className="addFile" onClick={handleButtonClick}>+ Add File</button>
+          <button className="Create" disabled>Create</button>
+        </>
+        :
+        <>
+          <p>Selected file: {file.name}</p>
+          <button className="remove-file Create" onClick={handleRemoveFile}>Remove File</button>
+          <button className="Create" onClick={handleSubmit}>Submit</button>
+        </>
+      }
 
-          <div className="assignmentYourWork flexColumn">
-            <h3>Your Work</h3>
-            {!submitted ? <> <hr />
-              {!file ?
-                <>
-                  <input type="file" accept=".pdf,.ppt,.pptx,.doc,.docx" onChange={handleFileChange} ref={fileInputRef} style={{ display: 'none' }} />
-                  <button className="addFile" onClick={handleButtonClick}>+ Add File</button>
-                  <button className="Create" disabled>Create</button>
-                </>
-                :
-                <>
-                  <p>Selected file: {file.name}</p>
-                  <button className="remove-file Create" onClick={handleRemoveFile}>Remove File</button>
-                  <button className="Create" onClick={handleSubmit}>Submit</button>
-                </>
-              }</> : (
-              <div>Helo</div>
-            )}
-          </div></>)}
-      </div>
-
-    </div>
+    </>
   )
 }
-
-export default DoAssignment

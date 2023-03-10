@@ -27,7 +27,6 @@ const Dashboard = ({ student }) => {
     };
     fetchNotices();
   });
-  // console.log(notices);
 
   const [assignmentCount, setAssignmentCount] = useState("");
   useEffect(() => {
@@ -136,7 +135,6 @@ const Assignment = (assignedAssignment) => {
 }
 
 const Notice = ({ notice }) => {
-  // console.log(notice);
   const formattedDate = moment(notice.createdAt).format("Do MMM, h:mm a");
   return (
     <div className="dashboardNoticeContent">

@@ -52,15 +52,35 @@ const Classes = ({ student }) => {
         window.location.replace("/meeting")
     }
 
-  //Get class resources
-  const [resources, setResources] = useState([])
-  useEffect(() => {
-    const fetchResources = async () => {
-      const res = await axios.get(`${config.baseURL}/course/${id}/materials`);
-      setResources(res.data.materials);
+    //Get class resources
+    const [resources, setResources] = useState([])
+    const [emptyRes, setEmptyRes] = useState(false);
+    useEffect(() => {
+        const fetchResources = async () => {
+            const res = await axios.get(`${config.baseURL}/course/${id}/materials`);
+            setResources(res.data.materials);
+            if (res.data.materials.length > 0) {
+                setEmptyRes(true)
+            }
         };
         fetchResources();
     }, [id]);
+
+    const [group, setGroup] = useState()
+    const [empty, setEmpty] = useState(false);
+    const [leader, setLeader] = useState()
+    useEffect(() => {
+        const fetchGroup = async () => {
+            const res = await axios.get(`${config.baseURL}/group/students/${student._id}/courses/${id}/groups`);
+            setGroup(res.data);
+            setLeader(res.data.leader)
+            if (!group) {
+                setEmpty(true)
+            }
+        };
+        fetchGroup();
+    }, [id]);
+    // console.log(group);
 
     return (
         <div className="classes">
@@ -81,15 +101,15 @@ const Classes = ({ student }) => {
                     <div style={{ padding: 0 }}>
                         <TabList sx={{ padding: 0, marginLeft: 1, paddingBottom: 0, textTransform: 'none' }} onChange={handleChange}>
                             <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'1'} label='Stream' />
-                            <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'2'} label='People'/>
-                            <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'3'} label='Groups'/>
-                            <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'4'} label='Resources'/>
+                            <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'2'} label='People' />
+                            <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'3'} label='Groups' />
+                            <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'4'} label='Resources' />
                         </TabList>
                     </div>
                     <TabPanel sx={{ p: 0 }} value={'1'}><ClassPost posts={posts} course={id} student={student} /></TabPanel>
-                    <TabPanel sx={{ p: 0 }} value={'2'}><People course={id} student={student}/></TabPanel>
-                    <TabPanel sx={{ p: 0 }} value={'3'}><Groups /></TabPanel>
-                    <TabPanel sx={{ p: 0 }} value={'4'}><Resources resources={resources} course={course}/></TabPanel>
+                    <TabPanel sx={{ p: 0 }} value={'2'}><People course={id} student={student} /></TabPanel>
+                    <TabPanel sx={{ p: 0 }} value={'3'}><Groups group={group} empty={empty} leader={leader}/></TabPanel>
+                    <TabPanel sx={{ p: 0 }} value={'4'}><Resources resources={resources} course={course} empty={emptyRes} /></TabPanel>
                 </TabContext>
             </div>
         </div>

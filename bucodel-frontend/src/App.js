@@ -29,7 +29,7 @@ import { useContext } from "react";
 import {
   studentContext,
   lecturerContext,
-  // adminContext,
+  adminContext,
 } from "./context/Context";
 
 import {
@@ -50,7 +50,7 @@ const theme = createTheme({
 export const App = () => {
   const { student } = useContext(studentContext);
   const { lecturer } = useContext(lecturerContext);
-  //const { admin } = useContext(adminContext);
+  const { admin } = useContext(adminContext);
 
   return (
     <ThemeProvider theme={theme}>
@@ -138,11 +138,8 @@ export const App = () => {
           <Routes>
             "Admin"
             <Route element={<AdminLogin />} path="/adminlogin" />
-            {/* <Route element={<AdminPage />} path="/adminpage" /> */}
             <Route
-              element={
-                lecturer ? <AdminPage lecturer={lecturer} /> : <AdminLogin />
-              }
+              element={admin ? <AdminPage admin={admin} /> : <AdminLogin />}
             >
               <Route element={<AdminDashboard />} path="/admindashboard" />
               <Route element={<AdminCourses />} path="/admincourses" />

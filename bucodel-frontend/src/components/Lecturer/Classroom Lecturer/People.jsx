@@ -17,9 +17,6 @@ const People = ({ course }) => {
     };
     fetchMembers();
   });
-
-
-  // console.log(members);
   return (
     <div className="people">
       <div className="peopleTitle">
