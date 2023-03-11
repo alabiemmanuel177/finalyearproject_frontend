@@ -12,7 +12,7 @@
   flex-direction: column;
   height: 90%;
   position: relative;
-  overflow: hidden scroll;
+  overflow: hidden scroll !important;
 }
 .icon8 {
   font-size: 56px;

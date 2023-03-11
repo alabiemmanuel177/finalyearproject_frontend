@@ -21,7 +21,7 @@ socket.on('LECTURER_UPLOADED_NEW_COURSES', (message) => {
 
 const Courses = ({ student }) => {
 
-  const [value, setValue] = useState('1');
+  const [value, setValue] = useState('Overview');
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }
@@ -56,12 +56,12 @@ const Courses = ({ student }) => {
           <TabContext value={value}>
             <div style={{ padding: 0 }}>
               <TabList sx={{ padding: 0, marginLeft: 1, paddingBottom: 0, textTransform: 'none' }} onChange={handleChange}>
-                <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'1'} label='Overview' />
-                <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'2'} label='Schedule' />
+                <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'Overview'} label='Overview' />
+                <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'Schedule'} label='Resources' />
               </TabList>
             </div>
-            <TabPanel sx={{ p: 0 }} value={'1'}><CourseList courses={courses} /></TabPanel>
-            <TabPanel sx={{ p: 0 }} value={'2'}>Schedule</TabPanel>
+            <TabPanel sx={{ p: 0 }} value={'Overview'}><CourseList courses={courses} /></TabPanel>
+            <TabPanel sx={{ p: 0 }} value={'Schedule'}><Resources resources={resources} /></TabPanel>
           </TabContext>
         </div>
       </div>
