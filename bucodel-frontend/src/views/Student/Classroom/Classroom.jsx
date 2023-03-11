@@ -34,9 +34,9 @@ const Classroom = ({ student }) => {
                     </div>
                     <div className="util">
                         <FaRegUserCircle className='icon1' />
-                        <div>
-                            <h3>{student.firstname} {student.lastname} {student.middlename}</h3>
-                            <h5>{student.matricno}</h5>
+                        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start', paddingLeft: '15px'}}>
+                            <h3 style={{margin: '0 0 5px 0'}}>{student.firstname} {student.lastname} {student.middlename}</h3>
+                            <h5 style={{margin:0}}>{student.matricno}</h5>
                         </div>
                     </div>
                 </div>
