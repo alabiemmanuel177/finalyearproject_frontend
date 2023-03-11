@@ -34,7 +34,7 @@ const LecturerClassroom = ({lecturer}) => {
           </div>
           <div className="util">
             <FaRegUserCircle className='icon1' />
-            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start', paddingLeft: '15px'}}>
+            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start', paddingLeft: '12px'}}>
                 <h3 style={{margin: '0'}}>{lecturer.name}</h3>
             </div>
           </div>
