@@ -3,7 +3,7 @@ import React from 'react';
 import { BsPerson } from 'react-icons/bs';
 import { styled } from '@mui/system';
 import { Search } from '@mui/icons-material';
-import { AiOutlineMore } from 'react-icons/ai';
+import { AiOutlineFunnelPlot } from 'react-icons/ai';
 
 export default function Students() {
     function createData(name, matricId, year, school, department) {
@@ -41,7 +41,16 @@ export default function Students() {
     <div style={{ padding: '0', width: '100%' }}>
         <div style={{ padding: '7px 30px', borderTop: '1px solid lightgray', borderBottom: '1px solid lightgray', display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
             <Search style={{ height: '25px', width: '25px', color: 'gray', marginRight: '6px' }}/>
-            <input style={{ border: 0, height: '100%', width: '100%', outline: 'none'}} placeholder='Search'/>
+            <input style={{ border: 0, height: '100%', width: '85%', outline: 'none'}} placeholder='Search'/>
+            <div style={{ padding: '5px 8px', margin: '0', width: '15%', border: '1px solid lightgray', borderRadius: '5px', display: 'flex', alignItems: 'center' }}>
+                <AiOutlineFunnelPlot fontSize={20}/>
+                <select style={{ padding: '0', margin: '0 0 0 2px', width: '100%', outline: 'none', border: 'none', background: 'transparent' }}>
+                    <option value={'Filter'}>Filter</option>
+                    <option value={'Filter'}>School</option>
+                    <option value={'Filter'}>Department</option>
+                    <option value={'Filter'}>Level</option>
+                </select>
+            </div>
         </div>
         <div style={{ height: 'calc(100vh - 300px)', overflow: 'hidden auto' }}>
             <TableContainer sx={{ m: 0, padding: '0 10px',  margin: 0 }} component={Paper}>
@@ -66,8 +75,7 @@ export default function Students() {
                                 <TableCell align='left'>{row.school}</TableCell>
                                 <TableCell align='left'>
                                     <div  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: 0}}>
-                                        {row.department} 
-                                        <AiOutlineMore/>
+                                        {row.department}
                                     </div>
                                 </TableCell>
                             </StyledTableRow>

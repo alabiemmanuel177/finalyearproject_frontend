@@ -30,11 +30,11 @@ export default function Lecturer() {
 
   return (
     <div style={{ padding: '0', width: '100%' }}>
-        <div style={{ padding: '12px 30px', borderTop: '1px solid lightgray', borderBottom: '1px solid lightgray', display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
+        <div style={{ padding: '7px 30px', borderTop: '1px solid lightgray', borderBottom: '1px solid lightgray', display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
             <Search style={{ height: '25px', width: '25px', color: 'gray', marginRight: '6px' }}/>
             <input style={{ border: 0, height: '100%', width: '100%', outline: 'none'}} placeholder='Search'/>
         </div>
-        <div>
+        <div style={{ height: 'calc(100vh - 260px)', overflow: 'hidden auto' }}>
             <TableContainer sx={{ m: 0, p: 2, margin: 0 }} component={Paper}>
                 <Table>
                     <TableHead>

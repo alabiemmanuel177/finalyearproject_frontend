@@ -24,8 +24,8 @@ function AdminClass() {
                         <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'2'} label='Lecturer'/>
                     </TabList>
                 </div>
-                <TabPanel sx={{ p: 0 }} value={'1'}><Students/></TabPanel>
-                <TabPanel sx={{ p: 0 }} value={'2'}><Lecturer/></TabPanel>
+                <TabPanel sx={{ p: 0, }} value={'1'}><Students/></TabPanel>
+                <TabPanel sx={{ p: 0, }} value={'2'}><Lecturer/></TabPanel>
             </TabContext>
         </div>
     </div>

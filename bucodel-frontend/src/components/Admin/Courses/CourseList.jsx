@@ -2,11 +2,13 @@ import { Avatar, AvatarGroup, Card, CardActions, CardContent, CardHeader } from 
 import React from 'react'
 import { GrMoreVertical } from 'react-icons/gr'
 import { NavLink } from 'react-router-dom'
+import { Search } from '@mui/icons-material'
+import { AiOutlineFunnelPlot } from 'react-icons/ai'
 
 const CourseCard = () => {
     return (
         <NavLink to='/adminclass'>
-            <Card variant='outlined' sx={{ borderRadius: 2, maxWidth: 245, margin: '10px' }}>
+            <Card variant='outlined' sx={{ borderRadius: 2, maxWidth: 245, margin: '15px 10px' }}>
                 <CardHeader 
                     sx={{ bgcolor: '#0A3697', color: 'white' }}
                     action={<GrMoreVertical/>}
@@ -36,16 +38,26 @@ const CourseCard = () => {
 function CourseList() {
   return (
     <div className='admin-courselist-root'>
-        <div style={{ display: 'flex', margin: '10px 0' }} className="admin-courselist-bar">
-            <div className='admin-courselist-search'>
-                <input placeholder='Search' className='admin-courselist-input'/>
+        <div style={{ padding: '5px 30px', borderTop: '1px solid lightgray', borderBottom: '1px solid lightgray', display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
+            <Search style={{ height: '25px', width: '25px', color: 'gray', marginRight: '6px' }}/>
+            <input style={{ border: 0, height: '100%', width: '85%', outline: 'none'}} placeholder='Search'/>
+            <div style={{ padding: '5px 8px', margin: '0', width: '15%', border: '1px solid lightgray', borderRadius: '5px', display: 'flex', alignItems: 'center' }}>
+                <AiOutlineFunnelPlot fontSize={20}/>
+                <select style={{ padding: '0', margin: '0 0 0 2px', width: '100%', outline: 'none', border: 'none', background: 'transparent' }}>
+                    <option value={'Filter'}>Filter</option>
+                    <option value={'Filter'}>School</option>
+                    <option value={'Filter'}>Department</option>
+                    <option value={'Filter'}>Level</option>
+                </select>
             </div>
-            <div><input/></div>
-            <div><input/></div>
         </div>
-        <div style={{display: 'flex', flexWrap: 'wrap'}} className="admin-courselist-grid">
+        <div style={{display: 'flex', flexWrap: 'wrap', height: 'calc(100vh - 250px)', overflow: 'hidden auto', alignContent: 'flex-start', alignItems: 'center', justifyContent: 'flex-start'}} className="admin-courselist-grid">
             <CourseCard/>
             <CourseCard/>
+            <CourseCard/>
+            <CourseCard/>
+            <CourseCard/>
+            <CourseCard/> 
             <CourseCard/>
             <CourseCard/>
             <CourseCard/>

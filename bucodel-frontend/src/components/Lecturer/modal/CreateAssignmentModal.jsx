@@ -26,7 +26,12 @@ function CreateAssignmentModal({ open, setOpen }) {
                             <label className='assign-modal-input-label'>
                                 Course
                             </label>
-                            <input className='assign-modal-input-tag' type={'text'} />
+                            <select className='assign-modal-input-tag'>
+                                <option>SENG 302</option>
+                                <option>SENG 302</option>
+                                <option>SENG 302</option>
+                                <option>SENG 302</option>
+                            </select>
                         </div>
                         <div className='assign-modal-input'>
                             <label className='assign-modal-input-label'>
@@ -38,7 +43,7 @@ function CreateAssignmentModal({ open, setOpen }) {
                             <label className='assign-modal-input-label'>
                                 Date
                             </label>
-                            <input className='assign-modal-input-tag' type={'date'} />
+                            <input className='assign-modal-input-tag' type={'date'} value={"2023-03-12"} />
                         </div>
                         <div className='assign-modal-input'>
                             <label className='assign-modal-input-label'>

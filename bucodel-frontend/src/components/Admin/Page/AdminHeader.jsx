@@ -16,14 +16,12 @@ export default function AdminHeader() {
           </div>
         </div>
         <div className='page-header-menu'>
-          <div className="classroomContainer">
-            <div className="util">
+          <div className="pclassroomContainer">
               <FaRegUserCircle className='icon1' />
-              <div>
+              <div className='page-util-details'>
                 <h3>Izu Onisokumen Preye</h3>
                 <h5>19/1485</h5>
               </div>
-            </div>
           </div>
         </div>
     </div>
