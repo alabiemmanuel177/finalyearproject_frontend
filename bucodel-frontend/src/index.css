@@ -2,6 +2,7 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
 }
 hr{
   margin: 0;
@@ -15,4 +16,12 @@ a {
 
 button {
   text-transform: none;
+}
+
+.span {
+  color: black !important;
+}
+
+.logintext {
+  color: black !important;
 }

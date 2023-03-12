@@ -38,6 +38,7 @@ import {
   LecturerContextProvider,
 } from "./context/Context";
 import AdminClass from "./views/Admin/Page/AdminClass";
+import AdminDatabase from "./views/Admin/Page/AdminDatabase";
 
 const theme = createTheme({
   palette: {
@@ -51,6 +52,7 @@ export const App = () => {
   const { student } = useContext(studentContext);
   const { lecturer } = useContext(lecturerContext);
   const { admin } = useContext(adminContext);
+  //const admin = true
 
   return (
     <ThemeProvider theme={theme}>
@@ -144,6 +146,7 @@ export const App = () => {
               <Route element={<AdminDashboard />} path="/admindashboard" />
               <Route element={<AdminCourses />} path="/admincourses" />
               <Route element={<AdminClass />} path="/adminclass" />
+              <Route element={<AdminDatabase/>} path="/admindatabase" />  
             </Route>
           </Routes>
         </AdminContextProvider>
