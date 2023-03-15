@@ -52,7 +52,6 @@ export const App = () => {
   const { student } = useContext(studentContext);
   const { lecturer } = useContext(lecturerContext);
   const { admin } = useContext(adminContext);
-  //const admin = true
 
   return (
     <ThemeProvider theme={theme}>
@@ -143,10 +142,22 @@ export const App = () => {
             <Route
               element={admin ? <AdminPage admin={admin} /> : <AdminLogin />}
             >
-              <Route element={<AdminDashboard />} path="/admindashboard" />
-              <Route element={<AdminCourses />} path="/admincourses" />
-              <Route element={<AdminClass />} path="/adminclass" />
-              <Route element={<AdminDatabase/>} path="/admindatabase" />  
+              <Route
+                element={<AdminDashboard admin={admin} />}
+                path="/admindashboard"
+              />
+              <Route
+                element={<AdminCourses admin={admin} />}
+                path="/admincourses"
+              />
+              <Route
+                element={<AdminClass admin={admin} />}
+                path="/adminclass"
+              />
+              <Route
+                element={<AdminDatabase admin={admin} />}
+                path="/admindatabase"
+              />
             </Route>
           </Routes>
         </AdminContextProvider>

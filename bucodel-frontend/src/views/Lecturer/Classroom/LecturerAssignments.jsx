@@ -7,6 +7,24 @@ import './css/assignment.css'
 import CreateAssignmentModal from '../../../components/Lecturer/modal/CreateAssignmentModal';
 import axios from 'axios';
 import config from '../../../config';
+import io from "socket.io-client";
+const socket = io(`${config.baseURL}`);
+
+socket.on('NEW_ASSIGNMENT_UPLOADED', (message) => {
+  console.log(message)
+  window.location.reload();
+});
+
+socket.on('ASSIGNMENT_UPDATED', (message) => {
+  console.log(message)
+  window.location.reload();
+});
+
+socket.on('ASSIGNMENT_DELETED', (message) => {
+  console.log(message)
+  window.location.reload();
+});
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -76,7 +94,7 @@ export default function LecturerAssignments({ lecturer }) {
           <Assignment assignments={assignments} />
         </TabPanel>
       </div>
-      <CreateAssignmentModal open={open} setOpen={setOpen} lecturer={lecturer._id}/>
+      <CreateAssignmentModal open={open} setOpen={setOpen} lecturer={lecturer._id} />
     </div>
   )
 

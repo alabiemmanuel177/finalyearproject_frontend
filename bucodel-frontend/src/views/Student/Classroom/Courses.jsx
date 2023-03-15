@@ -11,7 +11,6 @@ import {
 import config from '../../../config';
 import axios from 'axios';
 import io from "socket.io-client";
-
 const socket = io(`${config.baseURL}`);
 
 socket.on('LECTURER_UPLOADED_NEW_COURSES', (message) => {

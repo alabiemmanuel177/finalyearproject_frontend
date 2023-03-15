@@ -5,7 +5,7 @@ import Lecturer from '../../../components/Admin/Courses/CourseInfo/Lecturer'
 import Students from '../../../components/Admin/Courses/CourseInfo/Students'
 
 function AdminClass() {
-    const [value, setValue] = useState('1')
+    const [value, setValue] = useState('Student')
     const handleChange = (event, newValue) => {
         setValue(newValue)
     }
@@ -20,12 +20,12 @@ function AdminClass() {
             <TabContext value={value}>
                 <div style={{ padding: 0 }}>
                     <TabList sx={{ padding: 0, marginLeft: 1, paddingBottom: 0, textTransform: 'none' }} onChange={handleChange}>
-                        <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'1'} label='Student' />
-                        <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'2'} label='Lecturer'/>
+                        <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'Student'} label='Student' />
+                        <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'Lecturer'} label='Lecturer'/>
                     </TabList>
                 </div>
-                <TabPanel sx={{ p: 0, }} value={'1'}><Students/></TabPanel>
-                <TabPanel sx={{ p: 0, }} value={'2'}><Lecturer/></TabPanel>
+                <TabPanel sx={{ p: 0, }} value={'Student'}><Students/></TabPanel>
+                <TabPanel sx={{ p: 0, }} value={'Lecturer'}><Lecturer/></TabPanel>
             </TabContext>
         </div>
     </div>

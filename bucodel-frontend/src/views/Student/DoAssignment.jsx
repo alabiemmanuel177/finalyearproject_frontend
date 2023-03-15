@@ -7,6 +7,18 @@ import moment from 'moment';
 import { GrDocumentPdf } from "react-icons/gr";
 import CreateAssignment from '../../components/Student/modal/CreateAssignment';
 import UnsubmitAssignment from '../../components/Student/modal/UnsubmitAssignmnet';
+import io from "socket.io-client";
+const socket = io(`${config.baseURL}`);
+
+socket.on('ASSIGNMENT_UPDATED', (message) => {
+  console.log(message)
+  window.location.reload();
+});
+
+socket.on('ASSIGNMENT_ANSWER_GRADED', (message) => {
+  console.log(message)
+  window.location.reload();
+});
 
 const DoAssignment = ({ student }) => {
   let { id } = useParams();

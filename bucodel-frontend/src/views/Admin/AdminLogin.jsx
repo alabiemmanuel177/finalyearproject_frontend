@@ -41,11 +41,13 @@ const AdminLogin = () => {
       </div>
       <div className='LoginContainer mgt60'>
         <div className="lecturerLoginForm flexColumn">
-          <NavLink to='/' style={{ textDecoration: 'none', color: 'black' }}>
+          <div className="flexRow jcsb ac"><NavLink to='/' style={{ textDecoration: 'none', color: 'black' }}>
             <div className="back">
               <IoMdArrowRoundBack className="icon20" />
             </div>
           </NavLink>
+            <h4>Admin</h4> </div>
+
           <form className='lectlogin flexColumn' onSubmit={handleSubmit}>
             <h3>Log In</h3>
             <label>Email</label>

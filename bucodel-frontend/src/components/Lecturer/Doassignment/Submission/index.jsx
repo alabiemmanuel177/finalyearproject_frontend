@@ -2,6 +2,14 @@ import { Button, Checkbox, MenuItem, Select } from '@mui/material'
 import React from 'react'
 import './index.css'
 import StudentCard from './StudentCard'
+import io from "socket.io-client";
+import config from '../../../../config';
+const socket = io(`${config.baseURL}`);
+
+socket.on('ASSIGNMENT_ANSWER_DELETED', (message) => {
+    console.log(message)
+    window.location.reload();
+});
 
 export default function Sub({ submissions }) {
     return (
