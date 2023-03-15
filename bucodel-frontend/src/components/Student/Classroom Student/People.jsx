@@ -71,14 +71,22 @@ export function PeopleCardG({ name, p, leader }) {
 
 function People({ course, student }) {
     const [members, setMemebers] = useState();
+    const [message, setMessage] = useState();
     const [lecturers, setLecturers] = useState([]);
     const [students, setStudents] = useState([]);
     useEffect(() => {
         const fetchMembers = async () => {
             const res = await axios.get(`${config.baseURL}/course/${course}/members`);
-            setMemebers(res.data);
-            setLecturers(res.data.lecturer)
-            setStudents(res.data.students)
+            if (res.data.message) {
+                setMessage(res.data.message)
+            }
+            else {
+                setMemebers(res.data);
+                setLecturers(res.data.course.lecturer)
+                setStudents(res.data.students)
+            }
+            console.log(members, message);
+
         };
         fetchMembers();
     });

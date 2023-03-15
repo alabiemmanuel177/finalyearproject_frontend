@@ -58,7 +58,7 @@ const Dashboard = ({ lecturer }) => {
       setAssignedAssignments(res.data);
     };
     fetchAssignedAssignments();
-  }, []);
+  }, [lecturer._id]);
 
   return (
     <div className="dashboard">
@@ -108,10 +108,10 @@ const Dashboard = ({ lecturer }) => {
 
           </div>
           <div className="dashboardNotice">
-            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <h4>Notice</h4>
-              <Button 
-                sx={{textTransform: 'none', fontWeight: 'bold'}} 
+              <Button
+                sx={{ textTransform: 'none', fontWeight: 'bold' }}
                 variant='text'
                 onClick={handleOpen}
               >
@@ -129,18 +129,8 @@ const Dashboard = ({ lecturer }) => {
         <div className="calendar">
           <Calendar />
         </div>
-        <div className="taskBar">
-          <h4 className='blue addTask'>+ Add Task</h4>
-          <div className="task">
-            <h4>Reviewing and summarizing a chapter of a textbook related to the student's specific area of study</h4>
-          </div>
-          <div className="task">
-            <h4>Reviewing and summarizing a chapter of a textbook related to the student's specific area of study</h4>
-          </div>
-
-        </div>
       </div>
-      <NewNotice open={open} setOpen={setOpen} />
+      <NewNotice open={open} setOpen={setOpen} author={lecturer._id}/>
     </div>
   )
 }

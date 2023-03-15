@@ -1,82 +1,84 @@
 .submission-root {
-    width: 100%;
-    padding: 0;
-    margin: 0;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  height: 100%;
 }
 
 .submission-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 0;
-    margin: 0;
-    border-bottom: 1px solid lightgray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  margin: 0;
+  border-bottom: 1px solid lightgray;
 }
 
 .submission-content {
-    display: grid;
-    grid-template-columns: 35% 65%;
+  display: grid;
+  grid-template-columns: 35% 65%;
+  height: 700px !important;
 }
 
 .submission-studentlist {
-    border-right: 1px solid lightgray;
+  border-right: 1px solid lightgray;
 }
 
 .submission-studentcard {
-    padding: 12px 0;
-    border-left: 1px solid lightgray;
-    border-bottom: 1px solid lightgray;
-    display: flex;
-    align-items: center;
+  padding: 12px 0;
+  border-left: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  align-items: center;
 }
 
 .sub-checkbox {
-    margin: 0px 0px 0px 5px;
+  margin: 0px 0px 0px 5px;
 }
 
 .sub-studentcard-pic {
-    margin: 0px 5px;
+  margin: 0px 5px;
 }
 
 .sub-stdcard-icon {
-    font-size: 32px;
+  font-size: 32px;
 }
 
 .sub-studentcard-info p {
-    margin: 0 10px;
+  margin: 0 10px;
 }
 
 .sub-stdcard-name {
-    font-weight: bold;
-    font-size: 0.91rem;
+  font-weight: bold;
+  font-size: 0.91rem;
 }
 
 .sub-stdcard-number {
-    font-size: 0.85rem;
+  font-size: 0.85rem;
 }
 
 .submission-content-body {
-    padding: 15px 20px;
+  padding: 15px 20px;
 }
 
 .sub-content-head {
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .sub-content-head-word {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .sub-content-head-mark {
-    font-weight: bold;
-    color: gray;
+  font-weight: bold;
+  color: gray;
 }
 
 .sub-content-mainbody {
-    width: 100%;
-    min-height: 300px;
-    border: 1px solid lightgray;
+  width: 100%;
+  min-height: 300px;
+  border: 1px solid lightgray;
 }

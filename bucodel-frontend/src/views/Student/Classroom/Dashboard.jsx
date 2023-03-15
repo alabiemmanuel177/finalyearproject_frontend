@@ -44,7 +44,7 @@ const Dashboard = ({ student }) => {
       setAssignedAssignments(res.data);
     };
     fetchAssignedAssignments();
-  }, []);
+  }, [student._id]);
   return (
     <div className="dashboard">
       <div className="dashboardBody">
@@ -80,7 +80,7 @@ const Dashboard = ({ student }) => {
         <div className="dashboardContent flexrow">
           <img src="https://res.cloudinary.com/manlikeemma/image/upload/v1677670946/BUCODEL/undraw_reading_time_re_phf7_1_sboim1.svg" alt="" style={{ height: "200px" }} />
           <div className="welcomeText flexColumn">
-            <h4>Hello Preye,</h4>
+            <h4>Hello {student.firstname},</h4>
             <h5>Welcome to our platform, where you can discover, learn, and achieve your academic goals. Let's get started</h5>
           </div>
         </div>
