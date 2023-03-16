@@ -12,20 +12,11 @@ export default function Lecturer() {
     const [lecturers, setLecturers] = useState([]);
     useEffect(() => {
         const fetchLecturers = async () => {
-            const res = await axios.get(`${config.baseURL}/admin/courses`);
+            const res = await axios.get(`${config.baseURL}/admin/all/lecturers`);
             setLecturers(res.data);
         };
         fetchLecturers();
     });
-    function createData(name, matricId, school, department, role) {
-        return { name, matricId, school, department, role }
-    }
-
-    const rows = [
-        createData('Izu Onisokumen Preye', '19/1485', 'CES', 'Software Engineering', 'Facilitator'),
-        createData('Izu Onisokumen Preye', '19/1485', 'CES', 'Software Engineering', 'Tutor'),
-    ]
-
     const StyledTableRow = styled(TableRow)(({ theme }) => ({
         '& > *': {
             border: 0,
@@ -60,25 +51,23 @@ export default function Lecturer() {
                         <TableHead>
                             <TableRow>
                                 <TableCell sx={{ fontWeight: 'bold' }}>Name</TableCell>
-                                <TableCell sx={{ fontWeight: 'bold' }} align='left'>Matric ID</TableCell>
                                 <TableCell sx={{ fontWeight: 'bold' }} align='left'>School</TableCell>
                                 <TableCell sx={{ fontWeight: 'bold' }} align='left'>Department</TableCell>
                                 <TableCell sx={{ fontWeight: 'bold' }} align='left'></TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {rows.map((row) => (
-                                <StyledTableRow key={row.name}>
+                            {lecturers.map((lecturer) => (
+                                <StyledTableRow key={lecturer._id}>
                                     <TableCell component={'th'} scope='row'>
-                                        <BsPerson style={{ fontSize: '28px', marginRight: '10px' }} /> {row.name}
+                                        <BsPerson style={{ fontSize: '28px', marginRight: '10px' }} /> {lecturer.name}
                                     </TableCell>
-                                    <TableCell align='left'>{row.matricId}</TableCell>
-                                    <TableCell align='left'>{row.school}</TableCell>
-                                    <TableCell align='left'>{row.department}</TableCell>
+                                    <TableCell align='left'>{lecturer.department.school.abrev}</TableCell>
+                                    <TableCell align='left'>{lecturer.department.name}</TableCell>
                                     <TableCell align='left'>
                                         <div
                                             style={{ padding: 0, color: 'blue', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                            {row.role}
+                                            {lecturer.type}
                                         </div>
                                     </TableCell>
                                 </StyledTableRow>

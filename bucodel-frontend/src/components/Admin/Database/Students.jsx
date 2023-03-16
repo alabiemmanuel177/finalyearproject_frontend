@@ -11,30 +11,11 @@ export default function Students() {
     const [students, setStudents] = useState([]);
     useEffect(() => {
         const fetchStudents = async () => {
-            const res = await axios.get(`${config.baseURL}/admin/courses`);
+            const res = await axios.get(`${config.baseURL}/admin/all/students`);
             setStudents(res.data);
         };
         fetchStudents();
     });
-
-
-    function createData(name, matricId, year, school, department) {
-        return { name, matricId, year, school, department }
-    }
-
-    const rows = [
-        createData('Izu Onisokumen Preye', '19/1485', 400, 'CES', 'Software Engineering'),
-        createData('Izu Onisokumen Preye', '19/1485', 400, 'CES', 'Software Engineering'),
-        createData('Izu Onisokumen Preye', '19/1485', 400, 'CES', 'Software Engineering'),
-        createData('Izu Onisokumen Preye', '19/1485', 400, 'CES', 'Software Engineering'),
-        createData('Izu Onisokumen Preye', '19/1485', 400, 'CES', 'Software Engineering'),
-        createData('Izu Onisokumen Preye', '19/1485', 400, 'CES', 'Software Engineering'),
-        createData('Izu Onisokumen Preye', '19/1485', 400, 'CES', 'Software Engineering'),
-        createData('Izu Onisokumen Preye', '19/1485', 400, 'CES', 'Software Engineering'),
-        createData('Izu Onisokumen Preye', '19/1485', 400, 'CES', 'Software Engineering'),
-        createData('Izu Onisokumen Preye', '19/1485', 400, 'CES', 'Software Engineering'),
-        createData('Izu Onisokumen Preye', '19/1485', 400, 'CES', 'Software Engineering'),
-    ]
 
     const StyledTableRow = styled(TableRow)(({ theme }) => ({
         '& > *': {
@@ -71,23 +52,23 @@ export default function Students() {
                             <TableRow>
                                 <TableCell sx={{ fontWeight: 'bold' }}>Name</TableCell>
                                 <TableCell sx={{ fontWeight: 'bold' }} align='left'>Matric ID</TableCell>
-                                <TableCell sx={{ fontWeight: 'bold' }} align='left'>Year</TableCell>
+                                <TableCell sx={{ fontWeight: 'bold' }} align='left'>Level</TableCell>
                                 <TableCell sx={{ fontWeight: 'bold' }} align='left'>School</TableCell>
                                 <TableCell sx={{ fontWeight: 'bold' }} align='left'>Department</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {rows.map((row) => (
-                                <StyledTableRow key={row.name}>
+                            {students.map((student) => (
+                                <StyledTableRow key={student._id}>
                                     <TableCell component={'th'} scope='row'>
-                                        <BsPerson style={{ fontSize: '28px', marginRight: '10px' }} /> {row.name}
+                                        <BsPerson style={{ fontSize: '28px', marginRight: '10px' }} />{`${student.lastname} ${student.firstname} ${student.middlename} `}
                                     </TableCell>
-                                    <TableCell align='left'>{row.matricId}</TableCell>
-                                    <TableCell align='left'>{row.year}</TableCell>
-                                    <TableCell align='left'>{row.school}</TableCell>
+                                    <TableCell align='left'>{student.matricno}</TableCell>
+                                    <TableCell align='left'>{student.level}</TableCell>
+                                    <TableCell align='left'>{student.department.school.abrev}</TableCell>
                                     <TableCell align='left'>
                                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: 0 }}>
-                                            {row.department}
+                                            {student.department.name}
                                         </div>
                                     </TableCell>
                                 </StyledTableRow>
