@@ -10,7 +10,7 @@ import config from '../../../config'
 const CourseCard = ({ course }) => {
     return (
         <NavLink to='/adminclass' >
-            <Card variant='outlined' sx={{ borderRadius: 2, height: '200px', width: 245, margin: '15px 10px' }}>
+            <Card variant='outlined' sx={{ borderRadius: 2, height: '195px', width: 245, margin: '15px 10px' }}>
                 <CardHeader
                     sx={{ bgcolor: '#0A3697', color: 'white' }}
                     action={<GrMoreVertical />}
