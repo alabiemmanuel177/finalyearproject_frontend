@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './css/resources.css'
 import { MdOutlineAssignment } from "react-icons/md";
 import { GrDocumentPdf } from "react-icons/gr";
@@ -6,10 +6,21 @@ import moment from 'moment';
 import axios from 'axios';
 import config from '../../../config';
 import EmptyResources from './EmptyResource';
+import { Button } from '@mui/material';
+import CreateResourceModal from '../modal/CreateResourceModal';
 
 const LecturerResources = ({ resources, course, empty }) => {
+  const [open, setOpen] = useState(false)
+  const handleOpen = () => setOpen(true);
+
   return (
     <div className='Resources'>
+      <div className="addResouces">
+        <div className='main-assign-header'>
+          <Button onClick={handleOpen} sx={{ p: '8px 20px', textTransform: 'none', fontWeight: 'bold' }} className='assign-create' variant='contained' >Add Resources</Button>
+          <CreateResourceModal open={open} setOpen={setOpen} />
+        </div>
+      </div>
       {empty ? (<div className="resourcesContainer">
         {resources.map((p) => (
           <Resource resource={p} key={p._id} course={course} />
@@ -22,57 +33,70 @@ const LecturerResources = ({ resources, course, empty }) => {
 
 const Resource = ({ resource, course }) => {
   const formattedDate = moment(resource.createdAt).format("Do MMM, h:mm a");
-  const [files, setFiles] = resource.files;
-  return (
-    <div className="resource">
-      <div className="color1">
-        <div className='flexRow'>
-          <MdOutlineAssignment className='icon8' />
-          <div className="resourceDetails">
-            <h2>{resource.title}</h2>
-            <h3>{`${course.courseabrev}: ${course.title}`}</h3>
-          </div>
-        </div>
-        <div className="date">{formattedDate}</div>
-      </div>
-      <div className="resourceContent">
-        <h4>{resource.description}</h4>
-        <div className="resourceFiles">
-          <div className="files">
-            {resource.files.map((p) => (
-              <File file={p} key={p._id} id={resource._id} />
-            ))}
-          </div>
-        </div>
-      </div>
 
-    </div>
+  return (
+    <>
+      <div className="resource">
+        <div className="color1">
+          <div className='flexRow'>
+            <MdOutlineAssignment className='icon8' />
+            <div className="resourceDetails">
+              <h2>{resource.title}</h2>
+              <h3>{`${course.courseabrev}: ${course.title}`}</h3>
+            </div>
+          </div>
+          <div className="date">{formattedDate}</div>
+        </div>
+        <div className="resourceContent">
+          <h4>{resource.description}</h4>
+          <div className="resourceFiles">
+            <div className="files">
+              {resource.files.map((p) => (
+                <File file={p} key={p} id={resource._id} />
+              ))}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </>
   )
 }
 
 const File = ({ file, id }) => {
-  const handleDownload = async (file) => {
-    try {
-      const response = await axios.get(`${config.baseURL}/coursematerial/${id}/file/${file._id}`, {
-        responseType: 'blob'
-      });
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', file.filename);
-      document.body.appendChild(link);
-      link.click();
-    } catch (error) {
-      console.error(error);
-    }
+  //Get class resources
+  const [fileDets, setFileDets] = useState(null)
+  useEffect(() => {
+    const fetchFileDets = async () => {
+      const res = await axios.get(`${config.baseURL}/coursematerialfile/${file}/`);
+      setFileDets(res.data);
+    };
+    fetchFileDets();
+  }, [file]);
+
+  const handleDownload = async () => {
+    const fileUrl = fileDets.fileUrl
+    const fileName = fileDets.fileName
+    const res = await axios.get(fileUrl, {
+      responseType: 'blob'
+    });
+    const url = window.URL.createObjectURL(new Blob([res.data]));
+    const link = document.createElement('a');
+    link.href = url;
+    const fileExt = fileUrl.substring(fileUrl.lastIndexOf('.') + 1);
+    link.setAttribute('download', `${fileName}.${fileExt}`);
+    document.body.appendChild(link);
+    link.click();
   };
   return (
     <div className="file">
-      <GrDocumentPdf className='icon8 red1' />
-      <div className="filename" onClick={() => handleDownload(file)}>
-        <h2>{file.filename}</h2>
-        <h3>PDF</h3>
-      </div>
+      {fileDets && <>
+        <GrDocumentPdf className='icon8 red1' />
+        <div className="filename" onClick={handleDownload}>
+          <h2>{fileDets.fileName}</h2>
+          <h3>PDF</h3>
+        </div>
+      </>}
     </div>
   )
 }

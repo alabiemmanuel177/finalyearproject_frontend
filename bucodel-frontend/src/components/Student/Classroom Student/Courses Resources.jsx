@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../css/resources.css'
 import { MdOutlineAssignment } from "react-icons/md";
 import { GrDocumentPdf } from "react-icons/gr";
@@ -20,8 +20,6 @@ const Resources = ({ resources }) => {
 
 const Resource = ({ resource }) => {
   const formattedDate = moment(resource.createdAt).format("Do MMM, h:mm a");
-  const [files, setFiles] = resource.files;
-
   return (
     <div className="resource">
       <div className="color1">
@@ -39,7 +37,7 @@ const Resource = ({ resource }) => {
         <div className="resourceFiles">
           <div className="files">
             {resource.files.map((p) => (
-              <File file={p} key={p._id} id={resource._id} />
+              <File file={p} key={p} id={resource._id} />
             ))}
           </div>
         </div>
@@ -50,29 +48,42 @@ const Resource = ({ resource }) => {
 }
 
 const File = ({ file, id }) => {
-  const handleDownload = async (file) => {
-    try {
-      const response = await axios.get(`${config.baseURL}/coursematerial/${id}/file/${file._id}`, {
-        responseType: 'blob'
-      });
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', file.filename);
-      document.body.appendChild(link);
-      link.click();
-    } catch (error) {
-      console.error(error);
-    }
+  //Get class resources
+  const [fileDets, setFileDets] = useState(null)
+  useEffect(() => {
+    const fetchFileDets = async () => {
+      const res = await axios.get(`${config.baseURL}/coursematerialfile/${file}/`);
+      setFileDets(res.data);
+    };
+    fetchFileDets();
+  }, [file]);
+
+  const handleDownload = async () => {
+    const fileUrl = fileDets.fileUrl
+    const fileName = fileDets.fileName
+    const res = await axios.get(fileUrl, {
+      responseType: 'blob'
+    });
+    const url = window.URL.createObjectURL(new Blob([res.data]));
+    const link = document.createElement('a');
+    link.href = url;
+    const fileExt = fileUrl.substring(fileUrl.lastIndexOf('.') + 1);
+    link.setAttribute('download', `${fileName}.${fileExt}`);
+    document.body.appendChild(link);
+    link.click();
   };
+
   return (
     <div className="file">
-      <GrDocumentPdf className='icon8 red1' />
-      <div className="filename" onClick={() => handleDownload(file)}>
-        <h2>{file.filename}</h2>
-        <h3>PDF</h3>
-      </div>
+      {fileDets && <>
+        <GrDocumentPdf className='icon8 red1' />
+        <div className="filename" onClick={handleDownload}>
+          <h2>{fileDets.fileName}</h2>
+          <h3>PDF</h3>
+        </div>
+      </>}
     </div>
+
   )
 }
 

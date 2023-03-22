@@ -1,12 +1,10 @@
 import React from 'react'
 import '../../Lecturer/modal/css/createassignmentmodal.css'
 import { GrClose } from 'react-icons/gr';
-import { TextareaAutosize, Modal, Button, IconButton } from '@mui/material'
-import { EditorContent, useEditor } from '@tiptap/react';
-import StarterKit from '@tiptap/starter-kit';
+import { Modal, Button, IconButton } from '@mui/material'
 import Tiptap from './Tiptap';
 
-function CreateAssignment({ open, setOpen }) {
+function CreateAssignment({ open, setOpen, handleSubmit }) {
     const handleClose = () => setOpen(false);
 
     return (
@@ -28,13 +26,13 @@ function CreateAssignment({ open, setOpen }) {
                         <Tiptap />
                         <div className='assign-bottom-btn'>
                             <Button onClick={handleClose} className='assign-main-btn' sx={{ textTransform: 'none' }} variant='outlined'>Cancel</Button>
-                            <Button className='assign-main-btn' sx={{ textTransform: 'none' }} variant='contained'>Submit</Button>
+                            <Button className='assign-main-btn' sx={{ textTransform: 'none' }} variant='contained' onClick={handleSubmit}>Submit</Button>
                         </div>
                     </div>
                 </div>
             </Modal>
         </div>
-  )
+    )
 }
 
 export default CreateAssignment

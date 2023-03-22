@@ -22,12 +22,12 @@ const LandingPage = () => {
                         <NavLink to='/lecturerlogin' style={{ textDecoration: 'none' }}>
                             <h3 className='mg64'>Lecturer</h3>
                         </NavLink>
-                        {/* <NavLink to='/adminlogin'style={{ textDecoration: 'none'}}>
-                            <h3>Admin</h3>
-                        </NavLink> */}
                     </div>
                     <div className="loginBtn1">
-                        <button>Log In</button>
+                        <NavLink to='/adminlogin' style={{ textDecoration: 'none' }}>
+                            <button>Log In</button>
+                        </NavLink>
+
                     </div>
                 </div>
                 <hr className='LPhr' />

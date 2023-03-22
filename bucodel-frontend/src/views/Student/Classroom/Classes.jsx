@@ -68,18 +68,22 @@ const Classes = ({ student }) => {
     const [group, setGroup] = useState()
     const [empty, setEmpty] = useState(false);
     const [leader, setLeader] = useState()
+    const [message, setMessage] = useState();
     useEffect(() => {
         const fetchGroup = async () => {
             const res = await axios.get(`${config.baseURL}/group/students/${student._id}/courses/${id}/groups`);
-            setGroup(res.data);
-            setLeader(res.data.leader)
-            if (!group) {
-                setEmpty(true)
+            if (res.data.message) {
+                setMessage(res.data.message)
+            } else {
+                setGroup(res.data);
+                setLeader(res.data.leader)
+                if (!group) {
+                    setEmpty(true)
+                }
             }
         };
         fetchGroup();
-    }, [id]);
-    // console.log(group);
+    }, [id, student._id, message, group]);
 
     return (
         <div className="classes">
@@ -107,7 +111,7 @@ const Classes = ({ student }) => {
                     </div>
                     <TabPanel sx={{ p: 0 }} value={'1'}><ClassPost posts={posts} course={id} student={student} /></TabPanel>
                     <TabPanel sx={{ p: 0 }} value={'2'}><People course={id} student={student} /></TabPanel>
-                    <TabPanel sx={{ p: 0 }} value={'3'}><Groups group={group} empty={empty} leader={leader}/></TabPanel>
+                    <TabPanel sx={{ p: 0 }} value={'3'}><Groups group={group} empty={empty} leader={leader} /></TabPanel>
                     <TabPanel sx={{ p: 0 }} value={'4'}><Resources resources={resources} course={course} empty={emptyRes} /></TabPanel>
                 </TabContext>
             </div>

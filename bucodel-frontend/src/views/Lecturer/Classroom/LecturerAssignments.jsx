@@ -7,6 +7,24 @@ import './css/assignment.css'
 import CreateAssignmentModal from '../../../components/Lecturer/modal/CreateAssignmentModal';
 import axios from 'axios';
 import config from '../../../config';
+import io from "socket.io-client";
+const socket = io(`${config.baseURL}`);
+
+socket.on('NEW_ASSIGNMENT_UPLOADED', (message) => {
+  console.log(message)
+  window.location.reload();
+});
+
+socket.on('ASSIGNMENT_UPDATED', (message) => {
+  console.log(message)
+  window.location.reload();
+});
+
+socket.on('ASSIGNMENT_DELETED', (message) => {
+  console.log(message)
+  window.location.reload();
+});
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -62,27 +80,6 @@ export default function LecturerAssignments({ lecturer }) {
     fetchAssignments();
   }, [lecturer]);
 
-  const [title, setTitle] = useState()
-  const [description, setDescription] = useState()
-  const [dueDate, setDueDate] = useState()
-  const [grade, setGrade] = useState()
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await axios.post(`${config.baseURL}/classpost/`, {
-        creatorId: lecturer._id,
-        // courseId: course,
-        title: title,
-        description: description,
-        grade: grade,
-        dueDate: dueDate,
-      });
-      res.data && window.location.reload();
-    } catch (err) {
-    }
-  };
-
   return (
     <div style={{ padding: '10px 0px' }}>
       <div className='main-assign-header'>
@@ -97,7 +94,7 @@ export default function LecturerAssignments({ lecturer }) {
           <Assignment assignments={assignments} />
         </TabPanel>
       </div>
-      <CreateAssignmentModal open={open} setOpen={setOpen} />
+      <CreateAssignmentModal open={open} setOpen={setOpen} lecturer={lecturer._id} />
     </div>
   )
 

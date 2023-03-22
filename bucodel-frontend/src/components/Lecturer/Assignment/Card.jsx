@@ -2,12 +2,17 @@ import React from 'react'
 import { Button, Card, CardActions, CardContent, CardHeader, Grid, Typography } from '@mui/material'
 import { BsRecordCircleFill } from 'react-icons/bs'
 import { NavLink } from 'react-router-dom'
+import moment from 'moment';
 
-export default function AssignedCards() {
+export default function AssignedCards({ assignment }) {
+  const momentObj = moment(assignment.dueDate)
+  const date = momentObj.format('Do MMM'); // get the date string in the format of "YYYY-MM-DD"
+  const time = momentObj.format('HH:mm');
+
   return (
     <Grid item xs={5} md={3}>
-      <NavLink to='/lecturerdoassignment'>
-        <Card>
+      <NavLink to={`/lecturerdoassignment/${assignment._id}`}>
+        <Card className='assignmentCard'>
           <CardHeader
             sx={{ padding: '10px 20px 10px 10px', position: 'relative' }}
             action={
@@ -28,14 +33,14 @@ export default function AssignedCards() {
           />
           <CardContent sx={{ padding: '0px 10px' }}>
             <Typography variant="body1" sx={{ fontWeight: 'bold', margin: '5px 0px' }} component='div'>
-              SENG 302: Assignment 1
+              {`${assignment.courseId.courseabrev}: ${assignment.title}`}
             </Typography>
-            <Typography variant={'body2'} sx={{ color: 'grey' }}>
-              Can you write about the Oracle database 12C Multitenant architecture?
+            <Typography variant={'body2'} sx={{ color: 'grey' }} className="assignmentDesc">
+              {assignment.description}
             </Typography>
           </CardContent>
           <CardActions sx={{ padding: '12px 4px' }}>
-            <Button sx={{ color: 'gray', textTransform: 'none' }}>Due, Dec 8 •&nbsp; <span style={{ color: '#0A3697', fontWeight: 'bold' }}>{' '}8:00pm</span></Button>
+            <Button sx={{ color: 'gray', textTransform: 'none' }}>Due, {date} •&nbsp; <span style={{ color: '#0A3697', fontWeight: 'bold' }}>{time}</span></Button>
           </CardActions>
         </Card>
       </NavLink>

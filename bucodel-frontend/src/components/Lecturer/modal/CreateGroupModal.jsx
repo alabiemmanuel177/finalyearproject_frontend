@@ -28,7 +28,7 @@ function CreateGroupModal({ open, setOpen, course, clazz }) {
                     <div className='assign-modal-header'>
                         <div className='assign-modal-title'>Assignment</div>
                         <div className='assign-modal-cancel'>
-                            <MdOutlineCancel className='assign-modal-cancel' />
+                            <MdOutlineCancel className='assign-modal-cancel' onClick={setOpen(false)} />
                         </div>
                     </div>
                     <div className='assign-modal-body'>
@@ -49,7 +49,7 @@ function CreateGroupModal({ open, setOpen, course, clazz }) {
                             <label className='assign-modal-input-label'>
                                 Leftover Students
                             </label>
-                            <p style={{fontSize: '0.8rem', color: 'grey'}}>{`The system will create groups with ${groupCapacity} students each, and any remaining students will be added to the last group(s) to complete the group`}</p>
+                            <p style={{ fontSize: '0.8rem', color: 'grey' }}>{`The system will create groups with ${groupCapacity} students each, and any remaining students will be added to the last group(s) to complete the group`}</p>
                         </div>
                         <div className='assign-bottom-btn'>
                             <Button onClick={() => setOpen(false)} className='assign-main-btn' sx={{ textTransform: 'none' }} variant='outlined'>Cancel</Button>

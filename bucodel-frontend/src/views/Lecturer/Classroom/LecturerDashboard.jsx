@@ -8,7 +8,7 @@ import axios from 'axios';
 import config from '../../../config';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
-import { Button } from '@mui/material';
+import { Avatar, Button } from '@mui/material';
 import NewNotice from '../../../components/Lecturer/modal/NewNotice';
 
 const Dashboard = ({ lecturer }) => {
@@ -58,7 +58,7 @@ const Dashboard = ({ lecturer }) => {
       setAssignedAssignments(res.data);
     };
     fetchAssignedAssignments();
-  }, []);
+  }, [lecturer._id]);
 
   return (
     <div className="dashboard">
@@ -108,10 +108,10 @@ const Dashboard = ({ lecturer }) => {
 
           </div>
           <div className="dashboardNotice">
-            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <h4>Notice</h4>
-              <Button 
-                sx={{textTransform: 'none', fontWeight: 'bold'}} 
+              <Button
+                sx={{ textTransform: 'none', fontWeight: 'bold' }}
                 variant='text'
                 onClick={handleOpen}
               >
@@ -129,18 +129,8 @@ const Dashboard = ({ lecturer }) => {
         <div className="calendar">
           <Calendar />
         </div>
-        <div className="taskBar">
-          <h4 className='blue addTask'>+ Add Task</h4>
-          <div className="task">
-            <h4>Reviewing and summarizing a chapter of a textbook related to the student's specific area of study</h4>
-          </div>
-          <div className="task">
-            <h4>Reviewing and summarizing a chapter of a textbook related to the student's specific area of study</h4>
-          </div>
-
-        </div>
       </div>
-      <NewNotice open={open} setOpen={setOpen} />
+      <NewNotice open={open} setOpen={setOpen} author={lecturer._id}/>
     </div>
   )
 }
@@ -162,19 +152,19 @@ const Assignment = (assignedAssignment) => {
     </Link>)
 }
 
-const Notice = ({ notice }) => {
+function Notice({ notice }) {
   const formattedDate = moment(notice.createdAt).format("Do MMM, h:mm a");
   return (
-    <div className="dashboardNoticeContent">
-      <div className="noticeHead flexrow">
-        <div ><FaRegUserCircle className='icon13' /></div>
-        <div className="NameandTime">
-          <h4>{notice.author.name}</h4>
-          <h5>{formattedDate}</h5>
+    <div className="notice-dash-item">
+      <div className="notice-dash-header">
+        <Avatar sx={{ width: 30, height: 30 }}>A</Avatar>
+        <div className="notice-dash-header-info">
+          <h6 className='ass-info-title notice-date'>{notice.author.name}</h6>
+          <p className='ass-info-date'>{formattedDate}</p>
         </div>
       </div>
-      <div className="noticeContent">
-        <h5>{notice.description}</h5>
+      <div className="notice-dash-body">
+        <p>{notice.description}</p>
       </div>
     </div>
   )

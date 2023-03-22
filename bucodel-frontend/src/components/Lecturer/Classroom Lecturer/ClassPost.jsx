@@ -5,6 +5,33 @@ import { IoMdSend } from "react-icons/io";
 import axios from 'axios';
 import config from '../../../config';
 import moment from 'moment';
+import io from "socket.io-client";
+const socket = io(`${config.baseURL}`);
+
+socket.on('NEW_COMMENT', (message) => {
+    console.log(message)
+    window.location.reload();
+});
+socket.on('COMMENT_UPDATED', (message) => {
+    console.log(message)
+    window.location.reload();
+});
+socket.on('COMMENT_DELETED', (message) => {
+    console.log(message)
+    window.location.reload();
+});
+socket.on('NEW_CLASSPOST_POSTED', (message) => {
+    console.log(message)
+    window.location.reload();
+});
+socket.on('CLASSPOST_UPDATED', (message) => {
+    console.log(message)
+    window.location.reload();
+});
+socket.on('CLASSPOST_DELETED', (message) => {
+    console.log(message)
+    window.location.reload();
+});
 
 const ClassPost = ({ posts, course, lecturer }) => {
     const [content, setContent] = useState("");

@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react'
 import './css/courses.css'
 import {
-    useState,
-    // useEffect
+    useState
 } from "react";
 import AssignmentList from '../../../components/Student/Classroom Student/AssignmentList';
 import MissingList from '../../../components/Student/Classroom Student/MissingList';
@@ -10,6 +9,23 @@ import MissedList from '../../../components/Student/Classroom Student/MissedList
 import DoneList from '../../../components/Student/Classroom Student/DoneList';
 import axios from 'axios';
 import config from '../../../config';
+import io from "socket.io-client";
+const socket = io(`${config.baseURL}`);
+
+socket.on('NEW_ASSIGNMENT_UPLOADED', (message) => {
+    console.log(message)
+    window.location.reload();
+});
+
+socket.on('ASSIGNMENT_UPDATED', (message) => {
+    console.log(message)
+    window.location.reload();
+});
+
+socket.on('ASSIGNMENT_DELETED', (message) => {
+    console.log(message)
+    window.location.reload();
+});
 
 const Assignment = ({ student }) => {
     var btnContainer = document.getElementById("headers");

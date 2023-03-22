@@ -8,6 +8,7 @@ import axios from 'axios';
 import config from '../../../config';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
+import { Avatar } from '@mui/material';
 
 const Dashboard = ({ student }) => {
   const [courseCount, setCourseCount] = useState("");
@@ -44,7 +45,7 @@ const Dashboard = ({ student }) => {
       setAssignedAssignments(res.data);
     };
     fetchAssignedAssignments();
-  }, []);
+  }, [student._id]);
   return (
     <div className="dashboard">
       <div className="dashboardBody">
@@ -80,7 +81,7 @@ const Dashboard = ({ student }) => {
         <div className="dashboardContent flexrow">
           <img src="https://res.cloudinary.com/manlikeemma/image/upload/v1677670946/BUCODEL/undraw_reading_time_re_phf7_1_sboim1.svg" alt="" style={{ height: "200px" }} />
           <div className="welcomeText flexColumn">
-            <h4>Hello Preye,</h4>
+            <h4>Hello {student.firstname},</h4>
             <h5>Welcome to our platform, where you can discover, learn, and achieve your academic goals. Let's get started</h5>
           </div>
         </div>
@@ -134,19 +135,19 @@ const Assignment = (assignedAssignment) => {
     </Link>)
 }
 
-const Notice = ({ notice }) => {
+function Notice({ notice }) {
   const formattedDate = moment(notice.createdAt).format("Do MMM, h:mm a");
   return (
-    <div className="dashboardNoticeContent">
-      <div className="noticeHead flexrow">
-        <div ><FaRegUserCircle className='icon13' /></div>
-        <div className="NameandTime">
-          <h4>{notice.author.name}</h4>
-          <h5>{formattedDate}</h5>
+    <div className="notice-dash-item">
+      <div className="notice-dash-header">
+        <Avatar sx={{ width: 30, height: 30 }}>A</Avatar>
+        <div className="notice-dash-header-info">
+          <h6 className='ass-info-title notice-date'>{notice.author.name}</h6>
+          <p className='ass-info-date'>{formattedDate}</p>
         </div>
       </div>
-      <div className="noticeContent">
-        <h5>{notice.description}</h5>
+      <div className="notice-dash-body">
+        <p>{notice.description}</p>
       </div>
     </div>
   )

@@ -10,20 +10,16 @@ import Groups from '../../../components/Lecturer/Classroom Lecturer/Groups';
 import People from '../../../components/Lecturer/Classroom Lecturer/People';
 import LecturerResources from '../../../components/Lecturer/Classroom Lecturer/Resources';
 import Gradebook from '../../../components/Lecturer/Classroom Lecturer/Gradebook';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import axios from 'axios';
 import config from '../../../config';
 
 const LecturerClasses = ({ lecturer }) => {
     let { id } = useParams();
-    const location = useLocation();
-    
-
     const [course, setCourse] = useState([])
     const [lecturerList, setLecturerList] = useState();
     useEffect(() => {
-        console.log(location);
         const fetchCourses = async () => {
             const res = await axios.get(`${config.baseURL}/course/${id}`);
             setCourse(res.data)
@@ -39,7 +35,8 @@ const LecturerClasses = ({ lecturer }) => {
             setClass(res.data.classId)
         };
         fetchClass();
-    }, [id]);
+    }, [id, lecturerList]);
+
     const handleClick = () => {
         window.location.replace("/meeting")
     }
