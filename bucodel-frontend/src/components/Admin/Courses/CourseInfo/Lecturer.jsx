@@ -20,7 +20,7 @@ function TableItem({ name, school, matricId, department, role }) {
                 alignItems: 'center',
                 width: '100%', 
                 margin: '0', 
-                padding: '10px 20px' 
+                padding: '9px 20px' 
             }}
         >
             <div style={{ width: '32.5%', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', margin: '0' }}>
