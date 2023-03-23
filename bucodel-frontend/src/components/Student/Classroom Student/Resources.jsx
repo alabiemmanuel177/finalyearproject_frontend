@@ -41,7 +41,7 @@ const Resource = ({ resource, course }) => {
         <div className="resourceFiles">
           <div className="files">
             {resource.files.map((p) => (
-              <File file={p} key={p._id} id={resource._id} />
+              <File file={p} key={p} id={resource._id} />
             ))}
           </div>
         </div>

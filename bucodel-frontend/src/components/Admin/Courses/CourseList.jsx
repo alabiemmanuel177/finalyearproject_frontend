@@ -15,7 +15,7 @@ function MenuComponent({ anchorEl, children, handleClose, open }) {
             anchorEl={anchorEl}
             open={open}
             onClose={handleClose}
-            MenuListProps={{'aria-labelledby': 'card-more-button'}}
+            MenuListProps={{ 'aria-labelledby': 'card-more-button' }}
         >
             {children}
         </Menu>
@@ -27,13 +27,13 @@ const CourseCard = ({ course }) => {
     const open = Boolean(anchorEl)
 
     const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
+        setAnchorEl(event.currentTarget);
     };
 
     const handleClose = () => {
-      setAnchorEl(null);
+        setAnchorEl(null);
     };
-    
+
     return (
         <Card variant='outlined' sx={{ borderRadius: 2, height: '195px', width: 245, margin: '15px 10px' }}>
             <CardHeader
@@ -42,9 +42,9 @@ const CourseCard = ({ course }) => {
                     <>
                         <IconButton
                             id='card-more-button'
-                            aria-controls={ open ? 'card-more-menu' : undefined }
+                            aria-controls={open ? 'card-more-menu' : undefined}
                             aria-haspopup='true'
-                            aria-expanded={open ? 'true' : undefined }
+                            aria-expanded={open ? 'true' : undefined}
                             onClick={handleClick}
                         >
                             <GrMoreVertical style={{ height: '16px', width: '16px', color: 'white' }} />
@@ -52,27 +52,27 @@ const CourseCard = ({ course }) => {
                         <MenuComponent open={open} anchorEl={anchorEl} handleClose={handleClose}>
                             <MenuItem>
                                 <ListItemIcon><EditOutlined /></ListItemIcon>
-                                <ListItemText sx={{color: 'black'}}>Edit</ListItemText>
+                                <ListItemText sx={{ color: 'black' }}>Edit</ListItemText>
                             </MenuItem>
-                            <MenuItem sx={{ color: 'red',  }}>
+                            <MenuItem sx={{ color: 'red', }}>
                                 <ListItemIcon>
-                                    <DeleteOutlined sx={{ color: 'red !important'}}/>
+                                    <DeleteOutlined sx={{ color: 'red !important' }} />
                                 </ListItemIcon>
-                                <ListItemText sx={{ color: 'red !important', fontSize: '0.9rem'}}>Delete Class</ListItemText>
+                                <ListItemText sx={{ color: 'red !important', fontSize: '0.9rem' }}>Delete Class</ListItemText>
                             </MenuItem>
                         </MenuComponent>
                     </>
-                    }
+                }
                 title={
-                    <NavLink to='/adminclass' >
+                    <NavLink to={`/adminclass/${course._id}`}>
                         <h5 style={{ fontWeight: 'bold', position: 'relative' }} >{course.courseabrev}</h5>
                     </NavLink>
-                    }
+                }
                 subheader={
-                    <NavLink to='/adminclass' >
+                    <NavLink to={`/adminclass/${course._id}`}>
                         <h6 style={{ fontWeight: 'bold', fontSize: '0.95rem', color: 'white' }}>{course.title}</h6>
                     </NavLink>
-                    }
+                }
             />
             <CardContent sx={{ display: 'flex', alignItems: 'center', padding: '8px' }}>
                 <div style={{ margin: '0 5px 0 0', padding: 0, width: '24px', height: '24px', borderRadius: '50%', position: 'relative' }} className='admin-coursecard-avatar'>

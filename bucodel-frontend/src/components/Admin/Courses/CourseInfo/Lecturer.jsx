@@ -7,20 +7,20 @@ function TableItem({ name, school, matricId, department, role }) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
+        setAnchorEl(event.currentTarget);
     };
     const handleClose = () => {
-      setAnchorEl(null);
+        setAnchorEl(null);
     };
 
     return (
         <li className='custom-table-item'
-            style={{ 
+            style={{
                 display: 'flex',
                 alignItems: 'center',
-                width: '100%', 
-                margin: '0', 
-                padding: '9px 20px' 
+                width: '100%',
+                margin: '0',
+                padding: '9px 20px'
             }}
         >
             <div style={{ width: '32.5%', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', margin: '0' }}>
@@ -39,7 +39,7 @@ function TableItem({ name, school, matricId, department, role }) {
                     aria-expanded={open ? 'true' : undefined}
                     onClick={handleClick}
                 >
-                    <AiOutlineMore/>
+                    <AiOutlineMore />
                 </IconButton>
                 <Menu
                     id='item-menu'
@@ -48,11 +48,11 @@ function TableItem({ name, school, matricId, department, role }) {
                     onClose={handleClose}
                     MenuListProps={{
                         'aria-labelledby': 'item-button',
-                      }}
+                    }}
                     sx={{ borderRadius: '10px' }}
                 >
                     <MenuItem style={{ color: 'red', display: 'flex', padding: '8px 20px 8px 15px', justifyContent: 'flex-start', alignItems: 'center' }}>
-                        <CancelOutlined style={{ marginRight: '5px', fontSize: '1.1rem' }}/>
+                        <CancelOutlined style={{ marginRight: '5px', fontSize: '1.1rem' }} />
                         <h6 style={{ margin: '0 5px 0 0', fontSize: '0.9rem' }}>Remove</h6>
                     </MenuItem>
                 </Menu>
@@ -61,51 +61,39 @@ function TableItem({ name, school, matricId, department, role }) {
     )
 }
 
-function Student2() {
-  return (
-    <div style={{ width: '100%' }}>
-        <div style={{ padding: '7px 30px', borderTop: '1px solid lightgray', borderBottom: '1px solid lightgray', display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
-            <Search style={{ height: '25px', width: '25px', color: 'gray', marginRight: '6px' }}/>
-            <input style={{ border: 0, height: '100%', width: '100%', outline: 'none'}} placeholder='Search'/>
-        </div>
-        <div style={{ padding: '0', margin: '0', }}>
-            <li 
-                style={{ 
-                    display: 'flex',
-                    alignItems: 'center',
-                    width: '100%', 
-                    margin: '0', 
-                    padding: '12px 20px',
-                    borderBottom: '1px solid lightgray',
-                    fontSize: '0.9rem',
-                    fontWeight: 'bold',
-                }}
-            >
-                <div style={{ width: '31.7%', }}>Name</div>
-                <div style={{ width: '13.1%', }}>Matric ID</div>
-                <div style={{ width: '13.2%', }}>School</div>
-                <div style={{ width: '27.5%', }}>Department</div>
-                <div style={{ width: '13.2%', }}></div>
-            </li>
-            <div style={{ height: 'calc(100vh - 330px)', width: '100%', overflow: 'hidden auto', }}>
-                <TableItem name={'Izu Onisokumen Preye'} role={'Facilitator'} school={'CEC'} department={'Software Engineering'} matricId={'19/1485'} />
-                <TableItem name={'Izu Onisokumen Preye'} role={'Tutor'} school={'CEC'} department={'Software Engineering'} matricId={'19/1485'} />
-                <TableItem name={'Izu Onisokumen Preye'} school={'CEC'} department={'Software Engineering'} matricId={'19/1485'} />
-                <TableItem name={'Izu Onisokumen Preye'} school={'CEC'} department={'Software Engineering'} matricId={'19/1485'} />
-                <TableItem name={'Izu Onisokumen Preye'} school={'CEC'} department={'Software Engineering'} matricId={'19/1485'} />
-                <TableItem name={'Izu Onisokumen Preye'} school={'CEC'} department={'Software Engineering'} matricId={'19/1485'} />
-                <TableItem name={'Izu Onisokumen Preye'} school={'CEC'} department={'Software Engineering'} matricId={'19/1485'} />
-                <TableItem name={'Izu Onisokumen Preye'} school={'CEC'} department={'Software Engineering'} matricId={'19/1485'} />
-                <TableItem name={'Izu Onisokumen Preye'} school={'CEC'} department={'Software Engineering'} matricId={'19/1485'} />
-                <TableItem name={'Izu Onisokumen Preye'} school={'CEC'} department={'Software Engineering'} matricId={'19/1485'} />
-                <TableItem name={'Izu Onisokumen Preye'} school={'CEC'} department={'Software Engineering'} matricId={'19/1485'} />
-                <TableItem name={'Izu Onisokumen Preye'} school={'CEC'} department={'Software Engineering'} matricId={'19/1485'} />
-                <TableItem name={'Izu Onisokumen Preye'} school={'CEC'} department={'Software Engineering'} matricId={'19/1485'} />
-                <TableItem name={'Izu Onisokumen Preye'} school={'CEC'} department={'Software Engineering'} matricId={'19/1485'} />
+function Student2({ lecturers }) {
+    return (
+        <div style={{ width: '100%' }}>
+            <div style={{ padding: '7px 30px', borderTop: '1px solid lightgray', borderBottom: '1px solid lightgray', display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
+                <Search style={{ height: '25px', width: '25px', color: 'gray', marginRight: '6px' }} />
+                <input style={{ border: 0, height: '100%', width: '100%', outline: 'none' }} placeholder='Search' />
+            </div>
+            <div style={{ padding: '0', margin: '0', }}>
+                <li
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        width: '100%',
+                        margin: '0',
+                        padding: '12px 20px',
+                        borderBottom: '1px solid lightgray',
+                        fontSize: '0.9rem',
+                        fontWeight: 'bold',
+                    }}
+                >
+                    <div style={{ width: '31.7%', }}>Name</div>
+                    <div style={{ width: '13.1%', }}>Matric ID</div>
+                    <div style={{ width: '13.2%', }}>School</div>
+                    <div style={{ width: '27.5%', }}>Department</div>
+                    <div style={{ width: '13.2%', }}></div>
+                </li>
+                <div style={{ height: 'calc(100vh - 330px)', width: '100%', overflow: 'hidden auto', }}>
+                    {lecturers.map((lecturer) => (<TableItem name={lecturer.name} role={lecturer.type} school={lecturer.department.school.abrev} department={lecturer.department.name} matricId={'19/1485'} />
+                    ))}
+                </div>
             </div>
         </div>
-    </div>
-  )
+    )
 }
 
 export default Student2

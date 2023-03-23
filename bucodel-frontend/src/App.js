@@ -39,6 +39,7 @@ import {
 } from "./context/Context";
 import AdminClass from "./views/Admin/Page/AdminClass";
 import AdminDatabase from "./views/Admin/Page/AdminDatabase";
+import AdminSettings from "./views/Admin/AdminSettings";
 
 const theme = createTheme({
   palette: {
@@ -152,11 +153,15 @@ export const App = () => {
               />
               <Route
                 element={<AdminClass admin={admin} />}
-                path="/adminclass"
+                path="/adminclass/:id"
               />
               <Route
                 element={<AdminDatabase admin={admin} />}
                 path="/admindatabase"
+              />
+              <Route
+                element={<AdminSettings admin={admin} />}
+                path="/adminsettings"
               />
             </Route>
           </Routes>

@@ -6,7 +6,6 @@ import { InputAdornment } from '@mui/material';
 import EmptyGroup from './EmptyGroup';
 
 function Groups({ group, empty, leader }) {
-    console.log(group);
     return (
         <> {empty ? (
             <div style={{ height: '65vh', overflow: 'hidden auto', display: 'grid', gridTemplateColumns: '63% 37%', padding: '20px' }}>

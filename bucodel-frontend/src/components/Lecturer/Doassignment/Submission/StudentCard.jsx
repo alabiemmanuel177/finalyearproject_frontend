@@ -3,7 +3,6 @@ import { FaRegUserCircle } from 'react-icons/fa'
 import { Checkbox } from '@mui/material';
 
 export default function StudentCard({ submission }) {
-  console.log(submission);
   const student = submission.studentId
   return (
     <div className='submission-studentcard'>
