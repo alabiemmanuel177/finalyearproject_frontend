@@ -13,15 +13,22 @@ a {
   outline: none;
   color: inherit;
 }
+a:hover {
+  color: inherit;
+}
 
 button {
   text-transform: none;
 }
 
 .span {
-  color: black !important;
+  color: inherit !important;
 }
 
 .logintext {
-  color: black !important;
+  color: inherit !important;
+}
+
+.custom-table-item:nth-child(odd) {
+  background-color: azure;
 }
