@@ -1,8 +1,8 @@
 import { TabContext, TabList, TabPanel } from '@mui/lab'
 import { Tab } from '@mui/material'
 import React, { useState } from 'react'
-import Lecturer from '../../../components/Admin/Courses/CourseInfo/Lecturer'
 import Students from '../../../components/Admin/Courses/CourseInfo/Students'
+import Lecturer from '../../../components/Admin/Courses/CourseInfo/Lecturer'
 
 function AdminClass() {
     const [value, setValue] = useState('Student')
@@ -24,8 +24,8 @@ function AdminClass() {
                         <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'Lecturer'} label='Lecturer'/>
                     </TabList>
                 </div>
-                <TabPanel sx={{ p: 0, }} value={'Student'}><Students/></TabPanel>
-                <TabPanel sx={{ p: 0, }} value={'Lecturer'}><Lecturer/></TabPanel>
+                <TabPanel sx={{ p: 0, }} value={'Student'}><Students /></TabPanel>
+                <TabPanel sx={{ p: 0, }} value={'Lecturer'}><Lecturer /></TabPanel>
             </TabContext>
         </div>
     </div>
