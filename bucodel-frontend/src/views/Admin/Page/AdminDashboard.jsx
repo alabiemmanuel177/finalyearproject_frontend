@@ -4,13 +4,15 @@ import axios from 'axios'
 import moment from 'moment'
 import React, { useEffect, useState } from 'react'
 import { FaChalkboardTeacher } from 'react-icons/fa'
+import NewNotice from '../../../components/Admin/Page/NewNotice'
 import config from '../../../config'
 import Calendar from '../../Lecturer/Classroom/LecturerCalendar'
 import '../Page/css/dashboard.css'
 
-export default function AdminDashboard() {
+export default function AdminDashboard({ admin }) {
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true);
+
   const [courseCount, setCourseCount] = useState("");
   useEffect(() => {
     const fetchCourseCount = async () => {
@@ -103,6 +105,7 @@ export default function AdminDashboard() {
           <Calendar />
         </div>
       </div>
+      <NewNotice open={open} setOpen={setOpen} author={admin._id} />
     </div>
   )
 }

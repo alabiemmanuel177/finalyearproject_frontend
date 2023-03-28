@@ -4,6 +4,7 @@ import './index.css'
 import StudentCard from './StudentCard'
 import io from "socket.io-client";
 import config from '../../../../config';
+import FileViewer from './FileViewer';
 const socket = io(`${config.baseURL}`);
 
 socket.on('ASSIGNMENT_ANSWER_DELETED', (message) => {
@@ -37,7 +38,8 @@ export default function Sub({ submissions }) {
                         <h6 className='sub-content-head-mark'>8/10</h6>
                     </div>
                     <div className='sub-content-mainbody'>
-                        body
+                        <FileViewer />
+
                     </div>
                     <div>Comment Section</div>
                 </div>

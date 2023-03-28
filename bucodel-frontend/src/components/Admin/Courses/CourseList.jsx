@@ -6,6 +6,8 @@ import { DeleteOutlined, EditOutlined, Search } from '@mui/icons-material'
 import { AiOutlineFunnelPlot } from 'react-icons/ai'
 import axios from 'axios'
 import config from '../../../config'
+import EditCourseModal from '../modals/EditCourseModal'
+import DeleteModal from '../modals/Delete Modal'
 
 function MenuComponent({ anchorEl, children, handleClose, open }) {
     return (
@@ -25,6 +27,11 @@ function MenuComponent({ anchorEl, children, handleClose, open }) {
 const CourseCard = ({ course }) => {
     const [anchorEl, setAnchorEl] = useState(null)
     const open = Boolean(anchorEl)
+    const [openE, setOpenE] = useState(false)
+    const handleOpen = () => setOpenE(true);
+
+    const [openD, setOpenD] = useState(false)
+    const handleOpenD = () => setOpenD(true);
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -52,13 +59,16 @@ const CourseCard = ({ course }) => {
                         <MenuComponent open={open} anchorEl={anchorEl} handleClose={handleClose}>
                             <MenuItem>
                                 <ListItemIcon><EditOutlined /></ListItemIcon>
-                                <ListItemText sx={{ color: 'black' }}>Edit</ListItemText>
+                                <ListItemText sx={{ color: 'black' }} onClick={handleOpen}>Edit</ListItemText>
+                                <EditCourseModal open={openE} setOpen={setOpenE} course={course} />
+
                             </MenuItem>
                             <MenuItem sx={{ color: 'red', }}>
                                 <ListItemIcon>
                                     <DeleteOutlined sx={{ color: 'red !important' }} />
                                 </ListItemIcon>
-                                <ListItemText sx={{ color: 'red !important', fontSize: '0.9rem' }}>Delete Class</ListItemText>
+                                <ListItemText sx={{ color: 'red !important', fontSize: '0.9rem' }} onClick={handleOpenD}>Delete Class</ListItemText>
+                                <DeleteModal open={openD} setOpen={setOpenD} course={course} />
                             </MenuItem>
                         </MenuComponent>
                     </>
@@ -78,10 +88,10 @@ const CourseCard = ({ course }) => {
                 <div style={{ margin: '0 5px 0 0', padding: 0, width: '24px', height: '24px', borderRadius: '50%', position: 'relative' }} className='admin-coursecard-avatar'>
                     <img style={{ height: '100%', width: '100%', position: 'relative', borderRadius: '50%', }} src="https://mui.com/static/images/avatar/1.jpg" alt="man" />
                 </div>
-                <h6 style={{ margin: 0, fontSize: '0.9rem', fontWeight: 'bold' }}>Dr Adetofunmi Adetunji</h6>
+                <h6 style={{ margin: 0, fontSize: '0.9rem', fontWeight: 'bold' }}>{course.lecturer[0].name}</h6>
             </CardContent>
             <CardActions sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <div style={{ backgroundColor: 'lightgray', padding: '3px 8px', borderRadius: '15px', color: '#444444', fontSize: '0.75rem' }}>3 Units</div>
+                <div style={{ backgroundColor: 'lightgray', padding: '3px 8px', borderRadius: '15px', color: '#444444', fontSize: '0.75rem' }}>{course.unit} Units</div>
                 <AvatarGroup max={60}>
                     <Avatar sx={{ width: 20, height: 20 }} src={'https://mui.com/static/images/avatar/1.jpg'}>RB</Avatar>
                     <Avatar sx={{ width: 20, height: 20 }} src={'https://mui.com/static/images/avatar/1.jpg'}>RB</Avatar>
@@ -94,6 +104,8 @@ const CourseCard = ({ course }) => {
 }
 
 function CourseList() {
+
+
     const [courses, setCourses] = useState([]);
     useEffect(() => {
         const fetchCourses = async () => {

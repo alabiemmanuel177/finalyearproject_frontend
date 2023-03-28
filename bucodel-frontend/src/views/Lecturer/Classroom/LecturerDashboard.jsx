@@ -130,7 +130,7 @@ const Dashboard = ({ lecturer }) => {
           <Calendar />
         </div>
       </div>
-      <NewNotice open={open} setOpen={setOpen} author={lecturer._id}/>
+      <NewNotice open={open} setOpen={setOpen} author={lecturer._id} />
     </div>
   )
 }
@@ -138,7 +138,7 @@ const Dashboard = ({ lecturer }) => {
 const Assignment = (assignedAssignment) => {
   const formattedDate = moment(assignedAssignment.assignedAssignment.dueDate).format("Do MMM, h:mm a");
   return (
-    <Link to={`/doassignment/${assignedAssignment.assignedAssignment._id}`} style={{ textDecoration: 'none' }}>
+    <Link to={`/lecturerdoassignment/${assignedAssignment.assignedAssignment._id}`} style={{ textDecoration: 'none' }}>
       <div className="assignmentDash flexrow sb">
         <div className='flexColumn'>
           <h4>{`${assignedAssignment.assignedAssignment.courseId.courseabrev} : ${assignedAssignment.assignedAssignment.title}`}</h4>
