@@ -1,31 +1,36 @@
 .lecturerdoass-root {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
+  height: 100% !important;
 }
 
 .lecturerdoass-header {
-    padding: 10px 20px 25px 20px;
+  padding: 5px 0px 0px 20px;
 }
 
 .lecturerdoass-direct p {
-    color: gray;
-    font-weight: bold;
-    font-size: 0.9rem;
+  color: gray;
+  font-weight: bold;
+  font-size: 0.9rem;
 }
 
 .lecturerdoass-main h3 {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .tabunit {
-    text-transform: none;
-    margin: 0;
-    padding: 10px 20px 0 20px;
-    font-weight: bold;
-    font-size: medium;
+  text-transform: none;
+  margin: 0;
+  padding: 10px 20px 0 20px;
+  font-weight: bold;
+  font-size: medium;
 }
 
 .tabpanel-doass {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
+  height: 100% !important;
+}
+.lecturerdoass-body {
+  height: 100% !important;
 }

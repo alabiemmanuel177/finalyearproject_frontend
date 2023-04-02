@@ -61,7 +61,7 @@ export default function LecturerDoassignment() {
                     <h3>{assignment.title}</h3>
                 </div>
             </div>
-            <div>
+            <div className='lecturerdoass-body'>
                 <TabContext value={value}>
                     <Box sx={{ borderBottom: 1, borderColor: 'divider', margin: 0, p: 0 }}>
                         <TabList onChange={handleChange} sx={{ p: 0, m: 0 }}>

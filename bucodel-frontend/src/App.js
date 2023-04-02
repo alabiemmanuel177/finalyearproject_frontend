@@ -44,7 +44,7 @@ import AdminSettings from "./views/Admin/AdminSettings";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#0a3697",
+      main: "#000",
     },
   },
 });

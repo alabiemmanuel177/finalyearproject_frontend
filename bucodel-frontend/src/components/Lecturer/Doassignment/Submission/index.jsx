@@ -1,10 +1,10 @@
 import { Button, Checkbox, MenuItem, Select } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 import './index.css'
 import StudentCard from './StudentCard'
 import io from "socket.io-client";
 import config from '../../../../config';
-import FileViewer from './FileViewer';
+import DocViewer, { DocViewerRenderers } from "react-doc-viewer";
 const socket = io(`${config.baseURL}`);
 
 socket.on('ASSIGNMENT_ANSWER_DELETED', (message) => {
@@ -13,35 +13,40 @@ socket.on('ASSIGNMENT_ANSWER_DELETED', (message) => {
 });
 
 export default function Sub({ submissions }) {
+    // const docs = [
+    //     { uri: "https://res.cloudinary.com/manlikeemma/raw/upload/v1678733885/BUCODEL/Assignments/gzs7nec7v08hku4iysrp.docx" },
+    // ];
+
+    const [selectedSubmission, setSelectedSubmission] = useState(null);
+
+    const handleSelectSubmission = (submission) => {
+        setSelectedSubmission(submission);
+    };
+
     return (
         <div className='submission-root'>
             <div className='submission-header'>
                 <div>
-                    <Checkbox className='sub-checkbox' />
-                    <Button size='small' variant='contained' color='primary'>Return</Button>
+
                 </div>
                 <Select size='small' defaultValue={10} sx={{ width: '100px' }}>
-                    <MenuItem>10</MenuItem>
+                    <MenuItem>Unmarked</MenuItem>
+                    <MenuItem>Marked</MenuItem>
                 </Select>
             </div>
             <div className='submission-content'>
                 <div className='submission-studentlist'>
-                    <div className='submission-studentlist-wrap'>
-                        {submissions.map((p) => (
-                            <StudentCard submission={p} key={p._id} />
-                        ))}
-                    </div>
+                    {submissions.map((p) => (
+                        <div key={p._id} onClick={() => handleSelectSubmission(p)}>
+                            <StudentCard submission={p} selected={p === selectedSubmission} />
+                        </div>
+                    ))}
                 </div>
                 <div className='submission-content-body'>
                     <div className='sub-content-head'>
-                        <h5 className='sub-content-head-word'>Izu Onisokumen Preye</h5>
                         <h6 className='sub-content-head-mark'>8/10</h6>
                     </div>
-                    <div className='sub-content-mainbody'>
-                        <FileViewer />
-
-                    </div>
-                    <div>Comment Section</div>
+                    <DocViewer {...(selectedSubmission ? { documents: [{ uri: selectedSubmission.file.fileUrl }], pluginRenderers: DocViewerRenderers, style: { width: "100%", height: "60%" } } : { documents: docs, pluginRenderers: DocViewerRenderers, style: { width: "100%", height: "60%" } })} />
                 </div>
             </div>
         </div>
