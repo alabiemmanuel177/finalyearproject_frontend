@@ -13,9 +13,9 @@ socket.on('ASSIGNMENT_ANSWER_DELETED', (message) => {
 });
 
 export default function Sub({ submissions }) {
-    // const docs = [
-    //     { uri: "https://res.cloudinary.com/manlikeemma/raw/upload/v1678733885/BUCODEL/Assignments/gzs7nec7v08hku4iysrp.docx" },
-    // ];
+    const docs = [
+        { uri: "https://res.cloudinary.com/manlikeemma/raw/upload/v1678733885/BUCODEL/Assignments/gzs7nec7v08hku4iysrp.docx" },
+    ];
 
     const [selectedSubmission, setSelectedSubmission] = useState(null);
 
