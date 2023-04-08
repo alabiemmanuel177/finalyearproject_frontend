@@ -107,6 +107,7 @@ function CourseList() {
 
 
     const [courses, setCourses] = useState([]);
+    const [search, setSearch] = useState("");
     useEffect(() => {
         const fetchCourses = async () => {
             const res = await axios.get(`${config.baseURL}/admin/all/courses`);
@@ -118,7 +119,7 @@ function CourseList() {
         <div className='admin-courselist-root'>
             <div style={{ padding: '5px 30px', borderTop: '1px solid lightgray', borderBottom: '1px solid lightgray', display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
                 <Search style={{ height: '25px', width: '25px', color: 'gray', marginRight: '6px' }} />
-                <input style={{ border: 0, height: '100%', width: '85%', outline: 'none' }} placeholder='Search' />
+                <input style={{ border: 0, height: '100%', width: '85%', outline: 'none' }} placeholder='Search' onChange={(e) => setSearch(e.target.value)} />
                 <div style={{ padding: '5px 8px', margin: '0', width: '12%', border: '1px solid lightgray', borderRadius: '5px', display: 'flex', alignItems: 'center' }}>
                     <AiOutlineFunnelPlot fontSize={20} />
                     <select style={{ padding: '0', margin: '0 0 0 2px', width: '100%', outline: 'none', border: 'none', background: 'transparent' }}>
@@ -139,7 +140,7 @@ function CourseList() {
                 </div>
             </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', height: 'calc(100vh - 250px)', overflow: 'hidden auto', alignContent: 'flex-start', alignItems: 'center', justifyContent: 'flex-start' }} className="admin-courselist-grid">
-                {courses.map((p) => (
+                {courses.filter((p) => { return search.toLowerCase() === "" ? p : p.title.toLowerCase().includes(search) || p.courseabrev.toLowerCase().includes(search) || p.lecturer[0].name.toLowerCase().includes(search) }).map((p) => (
                     <CourseCard course={p} key={p._id} />
                 ))}
 

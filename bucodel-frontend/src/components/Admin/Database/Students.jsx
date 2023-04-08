@@ -29,12 +29,13 @@ export default function Students() {
             border: 0,
         },
     }));
+    const [search, setSearch] = useState("");
 
     return (
         <div style={{ padding: '0', width: '100%' }}>
             <div style={{ padding: '7px 30px', borderTop: '1px solid lightgray', borderBottom: '1px solid lightgray', display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
                 <Search style={{ height: '25px', width: '25px', color: 'gray', marginRight: '6px' }} />
-                <input style={{ border: 0, height: '100%', width: '85%', outline: 'none' }} placeholder='Search' />
+                <input style={{ border: 0, height: '100%', width: '85%', outline: 'none' }} placeholder='Search' onChange={(e) => setSearch(e.target.value)}/>
                 <div style={{ padding: '5px 8px', margin: '0', width: '15%', border: '1px solid lightgray', borderRadius: '5px', display: 'flex', alignItems: 'center' }}>
                     <AiOutlineFunnelPlot fontSize={20} />
                     <select style={{ padding: '0', margin: '0 0 0 2px', width: '100%', outline: 'none', border: 'none', background: 'transparent' }}>
@@ -58,7 +59,7 @@ export default function Students() {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {students.map((student) => (
+                            {students.filter((student) => { return search.toLowerCase() === "" ? student : student.firstname.toLowerCase().includes(search) || student.middlename.toLowerCase().includes(search) || student.lastname.toLowerCase().includes(search) || student.matricno.toLowerCase().includes(search) || student.department.name.toLowerCase().includes(search)  }).map((student) => (
                                 <StyledTableRow key={student._id}>
                                     <TableCell component={'th'} scope='row'>
                                         <BsPerson style={{ fontSize: '28px', marginRight: '10px' }} />{`${student.lastname} ${student.firstname} ${student.middlename} `}
