@@ -3,11 +3,11 @@ import '../css/resources.css'
 import { MdOutlineAssignment } from "react-icons/md";
 import { GrDocumentPdf } from "react-icons/gr";
 import { FaFileWord, FaFilePowerpoint } from "react-icons/fa";
-import { AiFillFileUnknown } from "react-icons/ai"
 import moment from 'moment';
 import axios from 'axios';
 import config from '../../../config';
 import EmptyResources from './EmptyResource';
+import {AiFillFileUnknown} from "react-icons/ai"
 
 const Resources = ({ resources, course, empty }) => {
   return (
@@ -78,17 +78,16 @@ const File = ({ file, id }) => {
     link.click();
   };
 
-
   const getFileIcon = (fileExt) => {
     switch (fileExt) {
       case "pdf":
-        return <GrDocumentPdf className="icon8 " />;
+        return <GrDocumentPdf className="icon8 red1" />;
       case "doc":
       case "docx":
-        return <FaFileWord className="icon8 word" />;
+        return <FaFileWord className="icon8 red1" />;
       case "ppt":
       case "pptx":
-        return <FaFilePowerpoint className="icon8 ppt" />;
+        return <FaFilePowerpoint className="icon8 red1" />;
       default:
         return <AiFillFileUnknown className="icon8 " />;
     }
@@ -96,19 +95,17 @@ const File = ({ file, id }) => {
 
   return (
     <div className="file" onClick={handleDownload}>
-      {fileDets && <>
-        {getFileIcon(fileDets.fileUrl.substring(fileDets.fileUrl.lastIndexOf('.') + 1))}
-        <div className="filename" >
-          <h2 style={{
-            overflow: "hidden",
-            textOverflow: "ellipsis"
-          }}>{fileDets.fileName}</h2>
-          <h3 style={{ textTransform: "uppercase" }}>{fileDets.fileUrl.substring(fileDets.fileUrl.lastIndexOf('.') + 1)}</h3>
-        </div>
-      </>}
-    </div >
-  )
-}
-
+      {fileDets && (
+        <>
+          {getFileIcon(fileDets.fileExt)}
+          <div className="filename">
+            <h2>{fileDets.fileName}</h2>
+            <h3>{fileDets.fileExt}</h3>
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
 
 export default Resources

@@ -1,9 +1,11 @@
 import React from 'react'
 
 const Meeting = () => {
-  return (
-    <div id="jitsi-container"></div>
-  )
+    return (
+        <div>
+
+        </div>
+    )
 }
 
 export default Meeting

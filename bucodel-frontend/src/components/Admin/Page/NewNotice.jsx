@@ -7,7 +7,6 @@ import axios from 'axios';
 function NewNotice({ open, setOpen, author }) {
     const handleClose = () => setOpen(false);
     const [description, setDescription] = useState()
-    const authorType = useState("Admin")
     const [setError] = useState(false)
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -16,11 +15,10 @@ function NewNotice({ open, setOpen, author }) {
                 `${config.baseURL}/notice`,
                 {
                     description: description,
-                    authorType,
+                    authorType: "Admin",
                     author
                 }
             );
-            alert("Notice submitted successfully");
             window.location.reload()
             console.log(response);
         } catch (err) {

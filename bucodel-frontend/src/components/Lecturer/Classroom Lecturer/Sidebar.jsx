@@ -42,25 +42,22 @@ const Sidebar = () => {
                             Assignments
                         </button>
                     </NavLink>
-                </div>
-                <div className="settingButton">
+                    <div className="mgt200"></div>
+
                     <NavLink to="/lecturersettings">
                         <button className='sidebar-button'>
                             <AiOutlineSetting className='icon' />
                             Settings
                         </button>
                     </NavLink>
-                </div>
-                <div className="logOutButton">
                     <button className='sidebar-button' onClick={handleOpen}>
                         <HiOutlineLogout className='icon' />
                         Log Out
                     </button>
 
                 </div>
+                <LogOutModal open={open} setOpen={setOpen} />
             </div>
-            <LogOutModal open={open} setOpen={setOpen} />
-
         </div>
     )
 }

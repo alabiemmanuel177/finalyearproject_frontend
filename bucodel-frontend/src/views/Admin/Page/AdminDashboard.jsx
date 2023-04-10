@@ -1,4 +1,4 @@
-import { Add, BookmarkRounded, MoreHoriz, Person } from '@mui/icons-material'
+import { BookmarkRounded, Person } from '@mui/icons-material'
 import { Avatar, Button, IconButton } from '@mui/material'
 import axios from 'axios'
 import moment from 'moment'
@@ -94,9 +94,12 @@ export default function AdminDashboard({ admin }) {
                 Add +
               </Button>
             </div>
-            {notices.map((p) => (
-              <Notice notice={p} key={p._id} />
-            ))}
+            <div className="noticeContainer">
+              {notices.map((p) => (
+                <Notice notice={p} key={p._id} />
+              ))}
+            </div>
+
           </div>
         </div>
       </div>

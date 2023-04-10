@@ -71,6 +71,7 @@
   display: flex;
   justify-content: center;
   margin-right: 10px;
+  cursor: pointer !important;
 }
 .submittedFile {
   border: 1.5px solid rgba(0, 0, 0, 0.15);
@@ -124,4 +125,18 @@
 }
 .filename {
   cursor: pointer !important;
+}
+.filename h2 {
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.word {
+  color: blue;
+}
+.ppt {
+  color: orange;
+}
+.pdf {
+  color: red;
 }

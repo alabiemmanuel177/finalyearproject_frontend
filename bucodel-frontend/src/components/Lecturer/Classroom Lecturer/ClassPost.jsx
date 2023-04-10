@@ -6,6 +6,8 @@ import axios from 'axios';
 import config from '../../../config';
 import moment from 'moment';
 import io from "socket.io-client";
+import PostProfilePicture from '../../ProfilePics/PostProfilePicture';
+import CommentProfilePicture from '../../ProfilePics/CommentProfilePicture';
 const socket = io(`${config.baseURL}`);
 
 socket.on('NEW_COMMENT', (message) => {
@@ -61,7 +63,7 @@ const ClassPost = ({ posts, course, lecturer }) => {
         <div className="classpost">
             <div className="post">
                 <div className="newPost">
-                    <FaRegUserCircle className='icon1' />
+                    <PostProfilePicture lecturer={lecturer} className='mgb10' />
                     <input
                         placeholder='Post a message to your class'
                         onChange={(e) => setContent(e.target.value)}>
@@ -70,7 +72,7 @@ const ClassPost = ({ posts, course, lecturer }) => {
                 </div>
                 <div className="postContainer">
                     {posts.map((p) => (
-                        <ExistingPost post={p} key={p.content._id} />
+                        <ExistingPost post={p} key={p.content._id} lecturer={lecturer} />
                     ))}
                 </div>
             </div>
@@ -87,12 +89,37 @@ const ClassPost = ({ posts, course, lecturer }) => {
     )
 }
 
-export const ExistingPost = ({ post }) => {
+export const ExistingPost = ({ post, lecturer }) => {
     const formattedDate = moment(post.content.createdAt).format("Do MMM, h:mm a");
+
+    const [comments, setComments] = useState([])
+    useEffect(() => {
+        const fetchComments = async () => {
+            const res = await axios.get(`${config.baseURL}/classpost/${post.content._id}/comments`);
+            setComments(res.data);
+        };
+        fetchComments();
+    }, [post.content._id]);
+
+    const [comment, setComment] = useState("");
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const res = await axios.post(`${config.baseURL}/classcomment/`, {
+                classPost: post.content._id,
+                comment,
+                lecturer_id: lecturer._id,
+            });
+            res.data && window.location.reload();
+        } catch (err) {
+        }
+    };
+    const { profilePic: { fileUrl } = {} } = post.author;
+
     return (
         <div className="existingPost">
             <div className='postInfo'>
-                <FaRegUserCircle className='icon4 mt15' />
+                <PostProfilePicture fileUrl={fileUrl} className='icon4 mt15' />
                 <div>
                     <h3>{post.author.name}</h3>
                     <h5>{formattedDate}</h5>
@@ -100,13 +127,36 @@ export const ExistingPost = ({ post }) => {
             </div>
             <h4>{post.content.content}</h4>
             <hr />
+            {comments.map((p) => (
+                <ExistingComment comment={p} key={p.content._id} />
+            ))}
             <div className="newComment">
-                <FaRegUserCircle className='icon4' />
                 <input
-                    placeholder='Add Comment '>
+                    className='mgl10'
+                    placeholder='Add Comment '
+                    onChange={(e) => setComment(e.target.value)}>
                 </input>
-                <IoMdSend className='icon4' type='submit' />
+                <IoMdSend className='icon4' onClick={handleSubmit} />
             </div>
+        </div>
+    )
+}
+
+export const ExistingComment = ({ comment }) => {
+    const { profilePic: { fileUrl } = {} } = comment.author;
+
+    const formattedDate = moment(comment.content.createdAt).format("Do MMM, h:mm a");
+    return (
+        <div className="existingComment">
+            <div className='postInfo'>
+                <CommentProfilePicture fileUrl={fileUrl} className='icon4 mt15' />
+                <div>
+                    <h3>{comment.author.name}</h3>
+                    <h5>{formattedDate}</h5>
+                </div>
+            </div>
+            <h4>{comment.content.comment}</h4>
+            <hr />
         </div>
     )
 }

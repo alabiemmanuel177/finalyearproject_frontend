@@ -3,15 +3,19 @@ import '../css/assignmentList.css'
 import { Link } from 'react-router-dom';
 import { BsRecordCircleFill } from "react-icons/bs";
 import moment from 'moment';
+import EmptyAssignment from './EmptyAssignment';
 
-const AssignmentList = ({ assignedAssignments }) => {
+const AssignmentList = ({ assignedAssignments, empty }) => {
 
     return (
-        <div className="assignmentList">
-            {assignedAssignments.map((p) => (
-                <Assignment assignedAssignment={p} key={p._id} />
-            ))}
-        </div>
+        <> {empty ? (
+            <div className="assignmentList">
+                {assignedAssignments.map((p) => (
+                    <Assignment assignedAssignment={p} key={p._id} />
+                ))}
+            </div>
+        ) : (<EmptyAssignment />)}
+        </>
     )
 }
 

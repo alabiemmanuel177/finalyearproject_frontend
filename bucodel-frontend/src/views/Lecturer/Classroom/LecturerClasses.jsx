@@ -1,22 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./css/classes.css"
 import { FaRegUserCircle } from "react-icons/fa";
 import ClassPost from '../../../components/Lecturer/Classroom Lecturer/ClassPost';
-import {
-    useState,
-    // useEffect
-} from "react";
 import Groups from '../../../components/Lecturer/Classroom Lecturer/Groups';
 import People from '../../../components/Lecturer/Classroom Lecturer/People';
 import LecturerResources from '../../../components/Lecturer/Classroom Lecturer/Resources';
 import Gradebook from '../../../components/Lecturer/Classroom Lecturer/Gradebook';
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
 import axios from 'axios';
 import config from '../../../config';
+import { TabContext, TabList, TabPanel } from '@mui/lab';
+import { Tab } from '@mui/material';
 
 const LecturerClasses = ({ lecturer }) => {
     let { id } = useParams();
+    const [value, setValue] = useState('1')
+    const handleChange = (event, newValue) => setValue(newValue);
     const [course, setCourse] = useState([])
     const [lecturerList, setLecturerList] = useState();
     useEffect(() => {
@@ -95,39 +94,35 @@ const LecturerClasses = ({ lecturer }) => {
                 <div className="classTitle">
                     <h4>{`Courses / ${course.courseabrev}`}</h4>
                     <h3>{`${course.courseabrev}: ${course.title} `}</h3>
-                    <div className='flexrow'>
+                    {/* <div className='flexrow'>
                         <FaRegUserCircle className='icon2' />
                         <h5>{lecturer.name}</h5>
-                    </div>
+                    </div> */}
                 </div>
-                <div className="virtualClassButton">
+                {/* <div className="virtualClassButton">
                     <button onClick={handleClick}>Start Virtual Class</button>
-                </div>
+                </div> */}
             </div>
-            <div className="headers mg20" id='headers'>
-                <div className="overview headerButton active1"
-                    onClick={() => setActive2("stream")}>
-                    <h3>Stream</h3>
-                </div>
-                <div className="overview headerButton"
-                    onClick={() => setActive2("people")}>
-                    <h3>People</h3></div>
-                <div className="overview headerButton "
-                    onClick={() => setActive2("groups")}>
-                    <h3>Groups</h3></div>
-                <div className="overview headerButton"
-                    onClick={() => setActive2("resources")}>
-                    <h3>Resources</h3></div>
-                <div className="overview headerButton "
-                    onClick={() => setActive2("gradebook")}>
-                    <h3>Gradebook</h3></div>
+            <div>
+                <TabContext value={value}>
+                    <div style={{ padding: 0 }}>
+                        <TabList sx={{ padding: 0, marginLeft: 1, paddingBottom: 0, textTransform: 'none' }} onChange={handleChange}>
+                            <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'1'} label='Stream' />
+                            <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'2'} label='People' />
+                            <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'3'} label='Groups' />
+                            <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'4'} label='Resources' />
+                            <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'5'} label='GradeBook' />
+
+                        </TabList>
+                    </div>
+                    <TabPanel sx={{ p: 0 }} value={'1'}><ClassPost posts={posts} course={id} lecturer={lecturer} /></TabPanel>
+                    <TabPanel sx={{ p: 0 }} value={'2'}><People course={id} /></TabPanel>
+                    <TabPanel sx={{ p: 0 }} value={'3'}><Groups groups={groups} empty={empty} course={id} clazz={clazz} /></TabPanel>
+                    <TabPanel sx={{ p: 0 }} value={'4'}><LecturerResources resources={resources} course={course} empty={emptyRes} /></TabPanel>
+                    <TabPanel sx={{ p: 0 }} value={'5'}><Gradebook /></TabPanel>
+                </TabContext>
             </div>
             <hr />
-            {active2 === "stream" && <ClassPost posts={posts} course={id} lecturer={lecturer} />}
-            {active2 === "people" && <People course={id} />}
-            {active2 === "groups" && <Groups groups={groups} empty={empty} course={id} clazz={clazz} />}
-            {active2 === "resources" && <LecturerResources resources={resources} course={course} empty={emptyRes} />}
-            {active2 === "gradebook" && <Gradebook />}
         </div>
     )
 }

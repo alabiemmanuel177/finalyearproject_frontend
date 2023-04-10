@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom';
 import { IoMdNotificationsOutline } from 'react-icons/io';
 import { IconButton } from '@mui/material';
 import Notifications from '../../../components/Lecturer/modal/Notifications';
-
+import {ProfilePicture} from "../../../components/Student/Classroom Student/ProfilePicture"
 const Classroom = ({ student }) => {
     const [anchorEl, setAnchorEl] = useState(null)
     const open = Boolean(anchorEl)
@@ -33,7 +33,7 @@ const Classroom = ({ student }) => {
                         <Notifications open={open} anchorEl={anchorEl} handleClose={handleClose} />
                     </div>
                     <div className="util">
-                        <FaRegUserCircle className='icon1' />
+                        <ProfilePicture student={student} />
                         <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start', paddingLeft: '12px'}}>
                             <h3 style={{margin: '0 0 5px 0'}}>{student.firstname} {student.lastname} {student.middlename}</h3>
                             <h5 style={{margin:0}}>{student.matricno}</h5>

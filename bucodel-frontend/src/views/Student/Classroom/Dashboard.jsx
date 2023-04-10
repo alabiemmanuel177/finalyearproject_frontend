@@ -98,13 +98,16 @@ const Dashboard = ({ student }) => {
             </div>
 
           </div>
-          <div className="dashboardNotice" style={{ overflow: 'hidden auto' }}>
-            <div>
+          <div className="dashboardNotice">
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <h4>Notice</h4>
             </div>
-            {notices.map((p) => (
-              <Notice notice={p} key={p._id} />
-            ))}
+            <div className="noticeContainer">
+              {notices.map((p) => (
+                <Notice notice={p} key={p._id} />
+              ))}
+            </div>
+
           </div>
         </div>
 

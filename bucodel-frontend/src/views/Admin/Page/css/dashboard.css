@@ -1,207 +1,212 @@
 .admin-dash-root {
-    height: 100%;
-    overflow: hidden scroll;
-    display: grid;
-    grid-template-columns: 68% 32%;
+  height: 100%;
+  overflow: hidden scroll;
+  display: grid;
+  grid-template-columns: 68% 32%;
 }
 
 .main-1 {
-    padding: 15px;
-    border-right: 1px solid lightgray;
+  padding: 15px;
+  border-right: 1px solid lightgray;
 }
 
 .main-2 {
-    padding: 5px;
+  padding: 5px;
 }
 
 .level-1 {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
 .level-1-box {
-    width: 31.5%;
-    margin: 0 0 0 0;
-    padding: 10px 15px;
-    border-radius: 8px;
-    border: 1px solid lightgray;
-
+  width: 31.5%;
+  margin: 0 0 0 0;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid lightgray;
 }
 
 .level-1-box-name {
-    margin: 0 0 5px 0;
-    font-weight: bold;
-    font-size: 0.8rem;
-    color: rgb(112, 112, 112);
+  margin: 0 0 5px 0;
+  font-weight: bold;
+  font-size: 0.8rem;
+  color: rgb(112, 112, 112);
 }
 
 .level-1-box-info {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .level-1-box-value {
-    font-weight: bolder;
-    margin: 0;
-    font-size: 1.5rem;
+  font-weight: bolder;
+  margin: 0;
+  font-size: 1.5rem;
 }
 
 .level-2 {
-    height: 200px;
-    border-radius: 8px;
-    background-color: #0a3697;
-    margin-bottom: 15px;
+  height: 200px;
+  border-radius: 8px;
+  background-color: #0a3697;
+  margin-bottom: 15px;
 }
 
 .level-3 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .level-3-box {
-    width: 49%;
-    border-radius: 8px;
-    border: 1px solid lightgray;
-    height: 500px;
-    padding: 15px 0 15px 15px;
-    overflow: hidden;
+  width: 49%;
+  border-radius: 8px;
+  border: 1px solid lightgray;
+  height: 500px;
+  padding: 15px 0 15px 15px;
+  overflow: hidden;
 }
 
 .admin-dash-assign-list {
-    height: 95%;
-    overflow: hidden auto;
-    padding-right: 10px;
+  height: 95%;
+  overflow: hidden auto;
+  padding-right: 10px;
 }
 
 .admin-dash-assign-header {
-    height: 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
+  height: 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .admin-dash-assign-header h4 {
-    font-size: medium;
-    margin: 0;
-    font-weight: bold;
+  font-size: medium;
+  margin: 0;
+  font-weight: bold;
 }
 
 .admin-dash-assign-header button {
-    text-transform: none;
-    font-weight: bold;
-    padding: 0 10px;
+  text-transform: none;
+  font-weight: bold;
+  padding: 0 10px;
 }
 
 .admin-dash-assign-item {
-    margin: 3px 0;
-    padding: 8px 0;
-    border-bottom: 1px solid lightgray;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  margin: 3px 0;
+  padding: 8px 0;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .ass-info {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .ass-info-title {
-    font-size: 0.85rem;
-    font-weight: bold;
-    margin: 0 0 5px 0;
+  font-size: 0.85rem;
+  font-weight: bold;
+  margin: 0 0 5px 0;
 }
 
 .ass-info-date {
-    font-size: 0.7rem;
-    margin: 0;
+  font-size: 0.7rem;
+  margin: 0;
 }
 
 .pill {
-    padding: 5px 10px;
-    border-radius: 25px;
-    background-color: lightgray;
-    color: black;
-    font-size: 0.65rem;
-    font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 25px;
+  background-color: lightgray;
+  color: black;
+  font-size: 0.65rem;
+  font-weight: bold;
 }
 
 .notice-dash-item {
-    border-radius: 8px;
-    border: 1px solid lightgray;
-    padding: 10px;
-    margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid lightgray;
+  padding: 10px;
+  margin: 10px 0;
+  width: 100%;
+}
+.noticeContainer {
+  max-height: 280px;
+  overflow-y: auto;
+  padding-right: 10px;
 }
 
 .notice-dash-header {
-    margin-top: 5px;
-    display: flex;
-    justify-content: flex-start;
+  margin-top: 5px;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .notice-dash-header-info {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .notice-date {
-    margin-bottom: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 .notice-dash-body {
-    margin: 7px 0 0 0;
+  margin: 7px 0 0 0;
 }
 
 .notice-dash-body p {
-    margin: 0;
-    font-size: small;
+  margin: 0;
+  font-size: small;
 }
 
 .level-4 {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .level-4 > div {
-    position: relative;
-    width: 100%;
-    height: 100%;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .level-5 {
-    width: 100%;
-    height: 500px;
+  width: 100%;
+  height: 500px;
 }
 
 .admin-task-header {
-    height: 5%;
-    margin-bottom: 10px;
+  height: 5%;
+  margin-bottom: 10px;
 }
 
 .admin-task-list {
-    height: 95%;
-    overflow: hidden auto;
-    padding: 0 10px;
-    width: 100%;
+  height: 95%;
+  overflow: hidden auto;
+  padding: 0 10px;
+  width: 100%;
 }
 
 .admin-task-item {
-    margin: 10px 0;
-    background-color: aliceblue;
-    width: 100%;
-    border-left: 3px solid #0a3697;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
+  margin: 10px 0;
+  background-color: aliceblue;
+  width: 100%;
+  border-left: 3px solid #0a3697;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
 }
 
 .admin-task-item p {
-    font-size: 0.95rem;
-    padding: 5px 12.5px;
+  font-size: 0.95rem;
+  padding: 5px 12.5px;
 }

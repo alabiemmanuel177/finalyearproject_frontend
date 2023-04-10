@@ -4,6 +4,7 @@ import { FaRegUserCircle } from "react-icons/fa";
 import axios from 'axios';
 import config from '../../../config';
 import EmptyPeople from './Empty People';
+import { PeopleCard, PeopleCardS } from '../../Student/Classroom Student/People';
 
 const People = ({ course }) => {
   const [members, setMemebers] = useState();
@@ -23,7 +24,6 @@ const People = ({ course }) => {
         setLecturers(res.data.course.lecturer)
         setStudents(res.data.students)
       }
-      console.log(members, message);
     };
     fetchMembers();
   });
@@ -35,8 +35,8 @@ const People = ({ course }) => {
           <hr className='blue' />
         </div>
         <div className="peopleLecturer">
-          {lecturers.map((p) => (
-            <Lecturer lecturer={p} key={p._id} />
+          {lecturers?.map((p) => (
+            <PeopleCard name={p.name} role={p.type} key={p._id} lecturer={p} />
           ))}
 
         </div>
@@ -45,8 +45,8 @@ const People = ({ course }) => {
           <hr className='blue' />
         </div>
         <div className="peopleLecturer">
-          {students.map((p) => (
-            <Student student={p} key={p._id} />
+          {students?.map((p) => (
+            <PeopleCardS name={`${p.lastname} ${p.firstname} ${p.matricno}`} key={p._id} student={p} k={p._id} user={p} isStudent={false}/>
           ))}
 
         </div>
@@ -54,26 +54,5 @@ const People = ({ course }) => {
     </div>
   )
 }
-const Lecturer = ({ lecturer }) => {
-  return (
-    <div className="peopleList flexrow jcsb ac">
-      <div className='flexrow ac'>
-        <FaRegUserCircle className='icon4' />
-        <h3>{lecturer.name}</h3>
-      </div>
-      <button disabled>{lecturer.type}</button>
-    </div>
-  )
-}
 
-const Student = ({ student }) => {
-  return (
-    <div className="peopleList flexrow jcsb ac">
-      <div className='flexrow ac'>
-        <FaRegUserCircle className='icon4' />
-        <h3>{`${student.lastname} ${student.firstname} ${student.matricno}`}</h3>
-      </div>
-    </div>
-  )
-}
 export default People

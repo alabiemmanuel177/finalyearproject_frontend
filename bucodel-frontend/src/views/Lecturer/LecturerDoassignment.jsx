@@ -25,7 +25,7 @@ socket.on('ASSIGNMENT_ANSWER_GRADED', (message) => {
     window.location.reload();
 });
 
-export default function LecturerDoassignment() {
+export default function LecturerDoassignment({ lecturer }) {
     let { id } = useParams();
 
     const [value, setValue] = useState('Overview')
@@ -70,7 +70,7 @@ export default function LecturerDoassignment() {
                         </TabList>
                     </Box>
                     <TabPanel className='tabpanel-doass' value='Overview'>
-                        <Overview assignment={assignment} />
+                        <Overview assignment={assignment} lecturer={lecturer} />
                     </TabPanel>
                     <TabPanel className='tabpanel-doass' value='Submissions' >
                         <Sub submissions={submissions} />

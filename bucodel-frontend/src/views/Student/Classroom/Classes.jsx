@@ -90,14 +90,14 @@ const Classes = ({ student }) => {
             <div className="classHead">
                 <div className="classTitle">
                     <h3>{`${course.courseabrev}: ${course.title} `}</h3>
-                    <div className='flexrow'>
+                    {/* <div className='flexrow'>
                         <FaRegUserCircle className='icon2' />
                         <h5>{lecturer}</h5>
-                    </div>
+                    </div> */}
                 </div>
-                <div className="virtualClassButton">
+                {/* <div className="virtualClassButton">
                     <button onClick={handleClick} id="start-conference">Join Virtual Class</button>
-                </div>
+                </div> */}
             </div>
             <div>
                 <TabContext value={value}>
