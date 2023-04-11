@@ -18,6 +18,7 @@ const Settings = ({ student }) => {
         };
         fetchDepartment();
     });
+
     return (
         <div className="courses">
             <div className="title"><h3>Settings</h3></div>
@@ -34,7 +35,6 @@ const Settings = ({ student }) => {
                 </TabContext>
             </div>
         </div>
-
     )
 }
 

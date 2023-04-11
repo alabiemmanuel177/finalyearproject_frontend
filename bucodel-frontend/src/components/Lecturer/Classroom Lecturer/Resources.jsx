@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import './css/resources.css'
 import { MdOutlineAssignment } from "react-icons/md";
 import { GrDocumentPdf } from "react-icons/gr";
+import { FaFileWord, FaFilePowerpoint } from "react-icons/fa";
+import { AiFillFileUnknown } from "react-icons/ai"
 import moment from 'moment';
 import axios from 'axios';
 import config from '../../../config';
@@ -88,16 +90,34 @@ const File = ({ file, id }) => {
     document.body.appendChild(link);
     link.click();
   };
+
+  const getFileIcon = (fileExt) => {
+    switch (fileExt) {
+      case "pdf":
+        return <GrDocumentPdf className="icon8 " />;
+      case "doc":
+      case "docx":
+        return <FaFileWord className="icon8 word" />;
+      case "ppt":
+      case "pptx":
+        return <FaFilePowerpoint className="icon8 ppt" />;
+      default:
+        return <AiFillFileUnknown className="icon8 " />;
+    }
+  };
   return (
-    <div className="file">
+    <div className="file" onClick={handleDownload}>
       {fileDets && <>
-        <GrDocumentPdf className='icon8 red1' />
-        <div className="filename" onClick={handleDownload}>
-          <h2>{fileDets.fileName}</h2>
-          <h3>PDF</h3>
+        {getFileIcon(fileDets.fileUrl.substring(fileDets.fileUrl.lastIndexOf('.') + 1))}
+        <div className="filename" >
+          <h2 style={{
+            overflow: "hidden",
+            textOverflow: "ellipsis"
+          }}>{fileDets.fileName}</h2>
+          <h3 style={{ textTransform: "uppercase" }}>{fileDets.fileUrl.substring(fileDets.fileUrl.lastIndexOf('.') + 1)}</h3>
         </div>
       </>}
-    </div>
+    </div >
   )
 }
 export default LecturerResources

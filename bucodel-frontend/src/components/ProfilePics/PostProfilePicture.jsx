@@ -22,9 +22,6 @@ export const PostProfilePicture = ({ fileUrl, student, lecturer }) => {
         getUserDetails();
     }, []);
 
-
-
-
     useEffect(() => {
         if (fileUrl) {
             setImage(fileUrl);

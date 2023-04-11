@@ -4,20 +4,27 @@ import axios from "axios";
 import { FaUserCircle } from "react-icons/fa";
 import config from "../../../config";
 
-export const ProfilePicture = ({ student }) => {
+export const ProfilePicture = ({ student, lecturer }) => {
     const [userData, setUserData] = useState(null);
     const [image, setImage] = useState(null);
 
     useEffect(() => {
         const getUserDetails = async () => {
-            const res = await axios.get(`${config.baseURL}/student/${student._id}`);
-            setUserData(res.data);
-            if (res.data.profilePic) {
-                setImage(res.data.profilePic.fileUrl);
+            if (student && student._id) {
+                const res = await axios.get(`${config.baseURL}/student/${student._id}`);
+                setUserData(res.data);
+                if (res.data.profilePic) {
+                    setImage(res.data.profilePic.fileUrl);
+                }
+            }
+            else if (lecturer && lecturer._id) {
+                const res = await axios.get(`${config.baseURL}/lecturer/${lecturer._id}`);
+                setUserData(res.data);
+
             }
         };
         getUserDetails();
-    }, [student._id]);
+    }, []);
 
     return (
         <div className="profile-picture">

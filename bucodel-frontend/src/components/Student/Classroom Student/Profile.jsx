@@ -5,7 +5,6 @@ import axios from 'axios';
 import config from '../../../config';
 import ProfilePicture from './ProfilePicture';
 
-
 const Profile = ({ student, department }) => {
     const [file, setFile] = useState(null);
 
@@ -85,7 +84,6 @@ const Profile = ({ student, department }) => {
                     <input type="text" placeholder='500' value={student.level || ""} readOnly />
                     <div><h4 className="label">Programme</h4>
                         <input type="text" placeholder='Software Engineering' readOnly value={department.name || ""} /></div>
-
                 </div>
             </div>
             <hr />

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import "./css/people.css"
-import { FaRegUserCircle } from "react-icons/fa";
 import axios from 'axios';
 import config from '../../../config';
 import EmptyPeople from './Empty People';
@@ -46,7 +45,7 @@ const People = ({ course }) => {
         </div>
         <div className="peopleLecturer">
           {students?.map((p) => (
-            <PeopleCardS name={`${p.lastname} ${p.firstname} ${p.matricno}`} key={p._id} student={p} k={p._id} user={p} isStudent={false}/>
+            <PeopleCardS name={`${p.lastname} ${p.firstname} ${p.matricno}`} key={p._id} student={p} k={p._id} user={p} isStudent={false} />
           ))}
 
         </div>

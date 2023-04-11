@@ -1,6 +1,6 @@
+import React, { useState } from 'react'
 import { TabContext, TabList, TabPanel } from '@mui/lab'
 import { Box, Tab } from '@mui/material'
-import { useState } from 'react'
 import Profile from '../../../components/Lecturer/Settings/Profile'
 import Passwords from '../../../components/Lecturer/Settings/Passwords'
 import './css/settings.css'
@@ -8,7 +8,8 @@ import './css/settings.css'
 const LecturerSettings = ({ lecturer }) => {
     const [value, setValue] = useState('Profile')
     const handleTabChange = (event, newValue) => {
-        setValue(newValue)    }
+        setValue(newValue)
+    }
 
     return (
         <div className="courses">
