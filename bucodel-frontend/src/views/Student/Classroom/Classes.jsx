@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "./css/classes.css"
 import { FaRegUserCircle } from "react-icons/fa";
 import ClassPost from '../../../components/Student/Classroom Student/ClassPost';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import config from '../../../config';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
@@ -13,8 +13,12 @@ import People from '../../../components/Student/Classroom Student/People';
 
 const Classes = ({ student }) => {
     let { id } = useParams();
-    const [value, setValue] = useState('1')
-    const handleChange = (event, newValue) => setValue(newValue);
+    const [value, setValue] = useState(localStorage.getItem('ssactiveTab') || '1'); // Initialize the active tab value from localStorage, or default to '1'
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+        localStorage.setItem('ssactiveTab', newValue); // Store the active tab value in localStorage
+    };
 
     const [course, setCourse] = useState([])
     const [lecturerList, setLecturerList] = useState();
@@ -47,9 +51,6 @@ const Classes = ({ student }) => {
         fetchPosts();
     }, [id]);
 
-    const handleClick = () => {
-        window.location.replace("/meeting")
-    }
 
     //Get class resources
     const [resources, setResources] = useState([])
@@ -95,9 +96,12 @@ const Classes = ({ student }) => {
                         <h5>{lecturer}</h5>
                     </div> */}
                 </div>
-                {/* <div className="virtualClassButton">
-                    <button onClick={handleClick} id="start-conference">Join Virtual Class</button>
-                </div> */}
+                <Link to={`/meeting/${course._id}`} style={{ textDecoration: 'none' }}>
+
+                    <div className="virtualClassButton">
+                        <button id="start-conference">Join Virtual Class</button>
+                    </div>
+                </Link>
             </div>
             <div>
                 <TabContext value={value}>
@@ -111,7 +115,7 @@ const Classes = ({ student }) => {
                     </div>
                     <TabPanel sx={{ p: 0 }} value={'1'}><ClassPost posts={posts} course={id} student={student} /></TabPanel>
                     <TabPanel sx={{ p: 0 }} value={'2'}><People course={id} student={student} /></TabPanel>
-                    <TabPanel sx={{ p: 0 }} value={'3'}><Groups group={group} empty={empty} leader={leader} /></TabPanel>
+                    <TabPanel sx={{ p: 0 }} value={'3'}><Groups group={group} empty={empty} leader={leader} student={student} /></TabPanel>
                     <TabPanel sx={{ p: 0 }} value={'4'}><Resources resources={resources} course={course} empty={emptyRes} /></TabPanel>
                 </TabContext>
             </div>

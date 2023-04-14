@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import "./css/classes.css"
-import { FaRegUserCircle } from "react-icons/fa";
 import ClassPost from '../../../components/Lecturer/Classroom Lecturer/ClassPost';
 import Groups from '../../../components/Lecturer/Classroom Lecturer/Groups';
 import People from '../../../components/Lecturer/Classroom Lecturer/People';
 import LecturerResources from '../../../components/Lecturer/Classroom Lecturer/Resources';
 import Gradebook from '../../../components/Lecturer/Classroom Lecturer/Gradebook';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import config from '../../../config';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
@@ -14,8 +13,12 @@ import { Tab } from '@mui/material';
 
 const LecturerClasses = ({ lecturer }) => {
     let { id } = useParams();
-    const [value, setValue] = useState('1')
-    const handleChange = (event, newValue) => setValue(newValue);
+    const [value, setValue] = useState(localStorage.getItem('activeTab') || '1'); // Initialize the active tab value from localStorage, or default to '1'
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+        localStorage.setItem('activeTab', newValue); // Store the active tab value in localStorage
+    };
     const [course, setCourse] = useState([])
     const [lecturerList, setLecturerList] = useState();
     useEffect(() => {
@@ -35,22 +38,6 @@ const LecturerClasses = ({ lecturer }) => {
         };
         fetchClass();
     }, [id, lecturerList]);
-
-    const handleClick = () => {
-        window.location.replace("/meeting")
-    }
-
-    var btnContainer = document.getElementById("headers");
-    if (btnContainer !== null) {
-        var btns = btnContainer.getElementsByClassName("headerButton");
-        for (var i = 0; i < btns.length; i++) {
-            btns[i].addEventListener("click", function () {
-                var current = document.getElementsByClassName("active1");
-                current[0].className = current[0].className.replace("active1", "");
-                this.className += " active1";
-            });
-        }
-    }
 
     const [posts, setPosts] = useState([])
     useEffect(() => {
@@ -87,7 +74,6 @@ const LecturerClasses = ({ lecturer }) => {
         fetchGroups();
     }, [id]);
 
-    const [active2, setActive2] = useState("stream");
     return (
         <div className="classes">
             <div className="classHead">
@@ -99,9 +85,11 @@ const LecturerClasses = ({ lecturer }) => {
                         <h5>{lecturer.name}</h5>
                     </div> */}
                 </div>
-                {/* <div className="virtualClassButton">
-                    <button onClick={handleClick}>Start Virtual Class</button>
-                </div> */}
+                <Link to={`/lecturermeeting/${course._id}`} style={{ textDecoration: 'none' }}>
+                    <div className="virtualClassButton">
+                        <button >Start Virtual Class</button>
+                    </div>
+                </Link>
             </div>
             <div>
                 <TabContext value={value}>
@@ -117,7 +105,7 @@ const LecturerClasses = ({ lecturer }) => {
                     </div>
                     <TabPanel sx={{ p: 0 }} value={'1'}><ClassPost posts={posts} course={id} lecturer={lecturer} /></TabPanel>
                     <TabPanel sx={{ p: 0 }} value={'2'}><People course={id} /></TabPanel>
-                    <TabPanel sx={{ p: 0 }} value={'3'}><Groups groups={groups} empty={empty} course={id} clazz={clazz} /></TabPanel>
+                    <TabPanel sx={{ p: 0 }} value={'3'}><Groups groups={groups} empty={empty} course={id} clazz={clazz} lecturer={lecturer} /></TabPanel>
                     <TabPanel sx={{ p: 0 }} value={'4'}><LecturerResources resources={resources} course={course} empty={emptyRes} /></TabPanel>
                     <TabPanel sx={{ p: 0 }} value={'5'}><Gradebook /></TabPanel>
                 </TabContext>

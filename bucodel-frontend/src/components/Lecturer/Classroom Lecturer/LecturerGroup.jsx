@@ -1,7 +1,6 @@
 import { Send } from '@mui/icons-material';
 import { OutlinedInput } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { PeopleCardG } from './People';
 import { InputAdornment } from '@mui/material';
 import EmptyGroup from './EmptyGroup';
 import axios from 'axios';
@@ -11,45 +10,55 @@ import { FaFilePowerpoint, FaFileWord } from 'react-icons/fa';
 import { AiFillFileUnknown } from 'react-icons/ai';
 import CommentProfilePicture from '../../ProfilePics/CommentProfilePicture';
 import moment from 'moment';
+import { PeopleCardG } from '../../Student/Classroom Student/People';
+import { Button } from '@mui/material';
+import AddGroupPost from '../modal/AddGroupPost';
 
-function Groups({ group, empty, leader, student }) {
+function LecturerGroup({ activeGroup, leader, lecturer, course }) {
     const [groupPost, setGroupPost] = useState([])
     useEffect(() => {
         const fetchGroup = async () => {
-            const res = await axios.get(`${config.baseURL}/grouppost/group/${group._id}`);
+            const res = await axios.get(`${config.baseURL}/grouppost/group/${activeGroup._id}`);
             setGroupPost(res.data);
         };
         fetchGroup();
     }, []);
 
+    const [open, setOpen] = useState(false)
+    const handleOpen = () => setOpen(true);
+
+
     return (
-        <> {empty ? (
-            <div style={{ height: '', overflow: 'hidden auto', display: 'grid', gridTemplateColumns: '70% 30%', padding: '20px' }}>
-
-                <div className="groupContainer">
-                    <div style={{ marginRight: '10px', border: '1px solid lightgray', borderRadius: '10px' }}>
-                        {groupPost.map((p) => (<GroupContent key={p._id} post={p} student={student} />))}
-
-                    </div>
+        <div style={{ height: '', overflow: 'hidden auto', display: 'grid', gridTemplateColumns: '63% 37%', padding: '20px' }}>
+            <div>
+                <div className="addResouces">
+                    <Button onClick={handleOpen} sx={{ p: '8px 20px', textTransform: 'none', fontWeight: 'bold' }} className='' variant='contained' >Post</Button>
+                    <AddGroupPost open={open} setOpen={setOpen} group={activeGroup} lecturer={lecturer} course={course} />
                 </div>
-                <div style={{ marginRight: '25px' }}>
-                    <div style={{ borderBottom: '2px solid #0a3697' }}>
-                        <h5>Group 1</h5>
-                    </div>
-                    <GroupMembers group={group} leader={leader} />
+                <div style={{ marginRight: '25px', border: '1px solid lightgray', borderRadius: '10px', overflowY: "scroll", maxHeight: "430px", marginTop: "10px" }}>
+
+                    {groupPost.map((p) => (<GroupContent key={p._id} post={p} lecturer={lecturer} />))}
+
                 </div>
             </div>
-        ) : (<EmptyGroup />)}
-        </>
+
+            <div style={{ marginRight: '25px' }}>
+                <div style={{ borderBottom: '2px solid #0a3697' }}>
+                    <h5>Group 1</h5>
+                </div>
+                <GroupMembers group={activeGroup} leader={leader} />
+            </div>
+        </div>
+
     )
 }
 
-export default Groups
+export default LecturerGroup
 
-export const GroupContent = ({ post, student }) => {
+export const GroupContent = ({ post, lecturer }) => {
     const formattedDate = moment(post.createdAt).format("Do MMM, h:mm a");
 
-    const lecturer = post.lecturer_id.name
+    const lecturerName = post.lecturer_id.name
     const content = post.content
 
     const [comments, setComments] = useState([])
@@ -68,7 +77,7 @@ export const GroupContent = ({ post, student }) => {
             const res = await axios.post(`${config.baseURL}/groupcomment/`, {
                 groupPost: post._id,
                 comment,
-                student_id: student._id,
+                lecturer_id: lecturer._id,
             });
             res.data && window.location.reload();
         } catch (err) {
@@ -77,13 +86,13 @@ export const GroupContent = ({ post, student }) => {
 
     return (
         <>
-            <div style={{ borderBottom: '1px solid lightgray', }}>
+            <div style={{ borderBottom: '1px solid lightgray' }}>
                 <div style={{ display: 'flex', alignItems: 'center', padding: '10px 10px 0px 10px' }}>
                     <div style={{ height: '30px', width: '30px', marginRight: '10px' }}>
                         <img style={{ height: '100%', width: '100%' }} src="https://cdn-icons-png.flaticon.com/512/147/147144.png" alt="AVATAR" />
                     </div>
                     <div>
-                        <h6 style={{ fontSize: '0.85rem', margin: 0, fontWeight: 'bold' }}>{lecturer}</h6>
+                        <h6 style={{ fontSize: '0.85rem', margin: 0, fontWeight: 'bold' }}>{lecturerName}</h6>
                         <p style={{ fontSize: '0.75rem', margin: 0, }}>{formattedDate}</p>
                     </div>
                 </div>
@@ -102,15 +111,16 @@ export const GroupContent = ({ post, student }) => {
                 <GroupComment comment={p} key={p.content._id} />
             ))}
             <div style={{ padding: '10px', display: 'flex', alignItems: 'center' }}>
-                <CommentProfilePicture className='icon4 mt15' />
+                <CommentProfilePicture lecturer={lecturer} className='icon4 mt15' />
 
                 <OutlinedInput
                     sx={{ height: '35px', outline: 'none', width: '100%' }}
                     id="outlined-adornment-amount"
                     onChange={(e) => setComment(e.target.value)}
-                    endAdornment={<InputAdornment onClick={handleSubmit} style={{ cursor: "pointer" }} position="start"><Send /></InputAdornment>}
+                    endAdornment={<InputAdornment onClick={handleSubmit} position="start"><Send /></InputAdornment>}
                 />
             </div>
+            <hr />
         </>)
 }
 

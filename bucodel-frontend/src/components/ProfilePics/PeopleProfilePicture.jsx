@@ -5,7 +5,7 @@ export const PeopleProfilePicture = ({ fileUrl }) => {
     return (
         <div className="profile-picture">
             {fileUrl ? (
-                <div className="post-profile-picture-container icon4 mt15">
+                <div className="post-profile-picture-container icon4 ">
                     <img src={fileUrl} alt="" />
                 </div>
             ) : (

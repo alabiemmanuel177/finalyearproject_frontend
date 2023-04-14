@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import { VideoSDKMeeting } from "@videosdk.live/rtc-js-prebuilt";
 import { useParams } from "react-router-dom";
 
-export default function SMeeting({ student }) {
+export default function Meeting({ lecturer }) {
     const id = useParams()
     useEffect(() => {
         const config = {
-            name: "Demo User",
+            name: lecturer.name,
             meetingId: id,
             apiKey: process.env.REACT_APP_VIDEOSDK_API,
 

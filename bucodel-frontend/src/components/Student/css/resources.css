@@ -9,9 +9,13 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 90%;
+  height: 100%;
   position: relative;
-  overflow: hidden scroll !important;
+  overflow-y: scroll !important;
+}
+.mxH570{
+  max-height: 570px;
+
 }
 .icon8 {
   font-size: 56px;

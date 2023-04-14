@@ -8,6 +8,8 @@ import { GrDocumentPdf } from "react-icons/gr";
 import CreateAssignment from '../../components/Student/modal/CreateAssignment';
 import UnsubmitAssignment from '../../components/Student/modal/UnsubmitAssignmnet';
 import io from "socket.io-client";
+import { FaFilePowerpoint, FaFileWord } from 'react-icons/fa';
+import { AiFillFileUnknown } from 'react-icons/ai';
 const socket = io(`${config.baseURL}`);
 
 socket.on('ASSIGNMENT_UPDATED', (message) => {
@@ -108,6 +110,20 @@ const AssignmentSubmitted = ({ answer, assignmentId }) => {
     document.body.appendChild(link);
     link.click();
   };
+  const getFileIcon = (fileExt) => {
+    switch (fileExt) {
+      case "pdf":
+        return <GrDocumentPdf className="icon8 " />;
+      case "doc":
+      case "docx":
+        return <FaFileWord className="icon8 word" />;
+      case "ppt":
+      case "pptx":
+        return <FaFilePowerpoint className="icon8 ppt" />;
+      default:
+        return <AiFillFileUnknown className="icon8 " />;
+    }
+  };
 
   const handleUnsubmit = async (e) => {
     e.preventDefault();
@@ -126,10 +142,13 @@ const AssignmentSubmitted = ({ answer, assignmentId }) => {
       <div className="files">
         {fileDets && <>
           <div className="submittedFile">
-            <GrDocumentPdf className='icon8 red1' />
+            {getFileIcon(fileDets.fileUrl.substring(fileDets.fileUrl.lastIndexOf('.') + 1))}
             <div className="filename" onClick={handleDownload}>
-              <h2>{fileDets.fileName}</h2>
-              <h4>PDF</h4>
+              <h2 style={{
+                overflow: "hidden",
+                textOverflow: "ellipsis", maxHeight: "40px"
+              }}>{fileDets.fileName}</h2>
+              <h4 style={{ textTransform: "uppercase" }}>{fileDets.fileUrl.substring(fileDets.fileUrl.lastIndexOf('.') + 1)}</h4>
             </div>
           </div>
         </>}

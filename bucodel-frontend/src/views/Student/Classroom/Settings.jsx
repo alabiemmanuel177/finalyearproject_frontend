@@ -7,8 +7,12 @@ import { TabContext, TabList, TabPanel } from '@mui/lab';
 import { Tab } from '@mui/material';
 
 const Settings = ({ student }) => {
-    const [value, setValue] = useState('1')
-    const handleChange = (event, newValue) => setValue(newValue);
+    const [value, setValue] = useState(localStorage.getItem('sSactiveTab') || '1'); // Initialize the active tab value from localStorage, or default to '1'
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+        localStorage.setItem('sSactiveTab', newValue); // Store the active tab value in localStorage
+    };
 
     const [department, setDepartment] = useState("");
     useEffect(() => {

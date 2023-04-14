@@ -10,7 +10,7 @@ export const PostProfilePicture = ({ fileUrl, student, lecturer }) => {
     useEffect(() => {
         const getUserDetails = async () => {
             if (student && student._id) { // check if student and _id are defined
-                const res = await axios.get(`${config.baseURL}/student/${student.id}`);
+                const res = await axios.get(`${config.baseURL}/student/${student._id}`);
                 setUserData(res.data);
             }
             else if (lecturer && lecturer._id) {
@@ -37,7 +37,7 @@ export const PostProfilePicture = ({ fileUrl, student, lecturer }) => {
                     <img src={image} alt="" />
                 </div>
             ) : (
-                <FaUserCircle className="icon4 mt15" />
+                <FaUserCircle className="icon4 " />
             )}
         </div>
     );

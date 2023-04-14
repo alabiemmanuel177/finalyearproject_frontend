@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import config from '../../../config';
 import PeopleProfilePicture from '../../ProfilePics/PeopleProfilePicture';
+import CommentProfilePicture from '../../ProfilePics/CommentProfilePicture';
 
 export function PeopleCard({ name, role, lecturer }) {
     let fileUrl;
@@ -11,7 +12,7 @@ export function PeopleCard({ name, role, lecturer }) {
     return (
         <div className='peoplelistcard' style={{ padding: '0 5px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '12px 0' }}>
             <div style={{ display: 'flex', alignItems: 'center', }}>
-                <PeopleProfilePicture fileUrl={fileUrl} className='icon4 mt15' />
+                <PeopleProfilePicture fileUrl={fileUrl} className='icon4 ' />
                 <h6 style={{ margin: 0 }}>{name}</h6>
             </div>
             {
@@ -40,7 +41,7 @@ export function PeopleCardS({ name, student, k, user, isStudent }) {
     return (
         <div className='peoplelistcard' style={{ padding: '0 5px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '12px 0' }}>
             <div style={{ display: 'flex', alignItems: 'center', }}>
-                <PeopleProfilePicture fileUrl={fileUrl} className='icon4 mt15' />
+                <PeopleProfilePicture fileUrl={fileUrl} className='icon4 ' />
                 <h6 style={{ margin: 0 }}>{name}</h6>
             </div>
             {
@@ -64,9 +65,8 @@ export function PeopleCardG({ name, p, leader }) {
     return (
         <div className='peoplelistcard' style={{ padding: '0 5px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '12px 0' }}>
             <div style={{ display: 'flex', alignItems: 'center', }}>
-                <div style={{ height: '30px', width: '30px', marginRight: '15px' }}>
-                    <img style={{ height: '100%', width: '100%' }} src="https://cdn-icons-png.flaticon.com/512/147/147144.png" alt="AVATAR" />
-                </div>
+                <CommentProfilePicture className='icon4' />
+
                 <h6 style={{ margin: 0 }}>{name}</h6>
             </div>
             {
@@ -116,7 +116,7 @@ function People({ course, student }) {
                 <div className='pcontainerhead' style={{ padding: '8px 0px', borderBottom: '2px solid #0a3697' }}>
                     <h5 style={{ fontWeight: 'bold' }}>Students</h5>
                 </div>
-                <div className='pcontainerlist' style={{ maxHeight: '400px', overflow: 'scroll' }}>
+                <div className='pcontainerlist' style={{ maxHeight: '500px', overflowY: 'scroll' }}>
                     {students.map((p) => (
                         <PeopleCardS name={`${p.lastname} ${p.firstname} ${p.matricno}`} key={p._id} k={p._id} student={student} user={p} />
                     ))}

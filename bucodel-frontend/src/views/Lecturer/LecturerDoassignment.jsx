@@ -28,11 +28,12 @@ socket.on('ASSIGNMENT_ANSWER_GRADED', (message) => {
 export default function LecturerDoassignment({ lecturer }) {
     let { id } = useParams();
 
-    const [value, setValue] = useState('Overview')
+    const [value, setValue] = useState(localStorage.getItem('LAactiveTab') || 'Overview'); // Initialize the active tab value from localStorage, or default to '1'
 
-    function handleChange(event, newValue) {
+    const handleChange = (event, newValue) => {
         setValue(newValue);
-    }
+        localStorage.setItem('LAactiveTab', newValue); // Store the active tab value in localStorage
+    };
 
     const [assignment, setAssignment] = useState([])
     useEffect(() => {
@@ -73,7 +74,7 @@ export default function LecturerDoassignment({ lecturer }) {
                         <Overview assignment={assignment} lecturer={lecturer} />
                     </TabPanel>
                     <TabPanel className='tabpanel-doass' value='Submissions' >
-                        <Sub submissions={submissions} />
+                        <Sub submissions={submissions} assignment={assignment} />
                     </TabPanel>
                 </TabContext>
             </div>

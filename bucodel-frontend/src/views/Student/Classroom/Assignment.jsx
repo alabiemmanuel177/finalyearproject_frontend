@@ -31,8 +31,12 @@ socket.on('ASSIGNMENT_DELETED', (message) => {
 
 const Assignment = ({ student }) => {
 
-    const [value, setValue] = useState('1')
-    const handleChange = (event, newValue) => setValue(newValue);
+    const [value, setValue] = useState(localStorage.getItem('saactiveTab') || '1'); // Initialize the active tab value from localStorage, or default to '1'
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+        localStorage.setItem('saactiveTab', newValue); // Store the active tab value in localStorage
+    };
     const [empty, setEmpty] = useState(false);
 
     const [assignedAssignments, setAssignedAssignments] = useState([])

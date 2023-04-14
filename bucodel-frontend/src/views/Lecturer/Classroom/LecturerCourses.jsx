@@ -13,17 +13,7 @@ import { Tab } from '@mui/material';
 // const socket = io(`${config.baseURL}`);
 
 const LecturerCourses = ({ lecturer }) => {
-  var btnContainer = document.getElementById("headers");
-  if (btnContainer !== null) {
-    var btns = btnContainer.getElementsByClassName("headerButton");
-    for (var i = 0; i < btns.length; i++) {
-      btns[i].addEventListener("click", function () {
-        var current = document.getElementsByClassName("active1");
-        current[0].className = current[0].className.replace("active1", "");
-        this.className += " active1";
-      });
-    }
-  }
+
   const [value, setValue] = useState("Overview");
   const handleChange = (event, newValue) => setValue(newValue);
   const [courses, setCourses] = useState([])

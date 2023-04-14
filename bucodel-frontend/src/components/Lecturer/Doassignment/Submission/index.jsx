@@ -1,10 +1,12 @@
-import { Button, Checkbox, MenuItem, Select } from '@mui/material'
+import { Button, MenuItem, Select } from '@mui/material'
 import React, { useState } from 'react'
 import './index.css'
 import StudentCard from './StudentCard'
 import io from "socket.io-client";
 import config from '../../../../config';
 import DocViewer, { DocViewerRenderers } from "react-doc-viewer";
+import axios from 'axios';
+
 const socket = io(`${config.baseURL}`);
 
 socket.on('ASSIGNMENT_ANSWER_DELETED', (message) => {
@@ -12,15 +14,33 @@ socket.on('ASSIGNMENT_ANSWER_DELETED', (message) => {
     window.location.reload();
 });
 
-export default function Sub({ submissions }) {
-    const docs = [
-        { uri: "https://res.cloudinary.com/manlikeemma/raw/upload/v1678733885/BUCODEL/Assignments/gzs7nec7v08hku4iysrp.docx" },
-    ];
+export default function Sub({ submissions, assignment }) {
 
     const [selectedSubmission, setSelectedSubmission] = useState(null);
+    const [grade, setGrade] = useState();
+    const [answer, setAnswer] = useState();
 
     const handleSelectSubmission = (submission) => {
         setSelectedSubmission(submission);
+        setGrade(submission.grade);
+        setAnswer(submission._id);
+    };
+
+    const handleGradeChange = (e) => {
+        setGrade(e.target.value);
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const res = await axios.post(`${config.baseURL}/assignment/${answer}`, {
+                grade
+            });
+            if (res.data) {
+                window.location.reload();
+            }
+        } catch (err) {
+        }
     };
 
     return (
@@ -38,15 +58,26 @@ export default function Sub({ submissions }) {
                 <div className='submission-studentlist'>
                     {submissions.map((p) => (
                         <div key={p._id} onClick={() => handleSelectSubmission(p)}>
-                            <StudentCard submission={p} selected={p === selectedSubmission} />
+                            <StudentCard submission={p} />
                         </div>
                     ))}
                 </div>
                 <div className='submission-content-body'>
-                    <div className='sub-content-head'>
-                        <h6 className='sub-content-head-mark'>8/10</h6>
-                    </div>
-                    <DocViewer {...(selectedSubmission ? { documents: [{ uri: selectedSubmission.file.fileUrl }], pluginRenderers: DocViewerRenderers, style: { width: "100%", height: "60%" } } : { documents: docs, pluginRenderers: DocViewerRenderers, style: { width: "100%", height: "60%" } })} />
+                    {selectedSubmission && (
+                        <div className='sub-content-head'>
+                            <input type={"text"} value={grade} style={{ width: "30px", marginRight: "5px" }} className='sub-content-head-mark' onChange={handleGradeChange} />
+                            <h6 className='sub-content-head-mark'> /{assignment.grade}</h6>
+                            <Button onClick={handleSubmit} sx={{ p: '3px 8px', textTransform: 'none', fontWeight: 'bold' }} style={{ marginLeft: "50px" }} variant='contained' >Post</Button>
+
+                        </div>
+                    )}
+                    {selectedSubmission && (
+                        <DocViewer
+                            documents={[{ uri: selectedSubmission.file.fileUrl }]}
+                            pluginRenderers={DocViewerRenderers}
+                            style={{ width: "100%", height: "60%" }}
+                        />
+                    )}
                 </div>
             </div>
         </div>

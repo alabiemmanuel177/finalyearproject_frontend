@@ -143,7 +143,7 @@ export const ExistingPost = ({ post, student }) => {
                     placeholder='Add Comment '
                     onChange={(e) => setComment(e.target.value)}>
                 </input>
-                <IoMdSend className='icon4' onClick={handleSubmit} />
+                <IoMdSend className='icon4' style={{ cursor: "pointer" }} onClick={handleSubmit} />
             </div>
         </div>
     )

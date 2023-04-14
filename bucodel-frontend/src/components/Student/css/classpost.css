@@ -19,7 +19,7 @@
   flex-direction: column;
   max-height: 460px;
   width: 100%;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 .newPost {
   display: flex;
@@ -158,4 +158,12 @@
 }
 .icon5 {
   font-size: 24px;
+}
+.mgbm10 {
+  margin-bottom: 10px !important;
+}
+.groupContainer {
+  max-height: 530px;
+  width: 95%;
+  overflow-y: scroll;
 }

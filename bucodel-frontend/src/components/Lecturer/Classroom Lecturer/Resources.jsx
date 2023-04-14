@@ -23,7 +23,7 @@ const LecturerResources = ({ resources, course, empty }) => {
           <CreateResourceModal open={open} setOpen={setOpen} />
         </div>
       </div>
-      {empty ? (<div className="resourcesContainer">
+      {empty ? (<div className="resourcesContainer mxH470">
         {resources.map((p) => (
           <Resource resource={p} key={p._id} course={course} />
         ))}

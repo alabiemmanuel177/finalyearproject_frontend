@@ -12,7 +12,7 @@ import EmptyResources from './EmptyResource';
 const Resources = ({ resources, course, empty }) => {
   return (
     <div className='resources'>
-      {empty ? (<div className="resourcesContainer">
+      {empty ? (<div className="resourcesContainer mxH570">
         {resources.map((p) => (
           <Resource resource={p} key={p._id} course={course} />
         ))}

@@ -6,10 +6,12 @@ import Passwords from '../../../components/Lecturer/Settings/Passwords'
 import './css/settings.css'
 
 const LecturerSettings = ({ lecturer }) => {
-    const [value, setValue] = useState('Profile')
-    const handleTabChange = (event, newValue) => {
-        setValue(newValue)
-    }
+    const [value, setValue] = useState(localStorage.getItem('lsactiveTab') || 'Profile')
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+        localStorage.setItem('lsactiveTab', newValue); // Store the active tab value in localStorage
+    };
 
     return (
         <div className="courses">
@@ -19,7 +21,7 @@ const LecturerSettings = ({ lecturer }) => {
             <div>
                 <TabContext value={value}>
                     <Box sx={{ borderBottom: 1, borderColor: 'divider', margin: '-5px 10px', p: 0 }}>
-                        <TabList onChange={handleTabChange} sx={{ p: 0, m: 0 }}>
+                        <TabList onChange={handleChange} sx={{ p: 0, m: 0 }}>
                             <Tab className='tabunit' label="Profile" value={"Profile"}></Tab>
                             <Tab className='tabunit' label="Passwords" value={"Password"}></Tab>
                         </TabList>
