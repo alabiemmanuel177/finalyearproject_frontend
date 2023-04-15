@@ -1,0 +1,93 @@
+.sk-dashboardCourses {
+  background: #f0f0f0;
+  animation: loader-animation 1s infinite ease-in-out;
+  padding: 18px !important;
+}
+.sk-w222h98 {
+  /* padding: 18px !important; */
+  width: 30%;
+  height: 98px;
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  background: #f0f0f0;
+  animation: loader-animation 1s infinite ease-in-out;
+}
+.sk-dashboardCourses-h4 {
+  background-color: #ddd;
+  animation: loader-animation 1s infinite ease-in-out;
+  height: 15px;
+  width: 170px;
+}
+.sk-fr-h3 {
+  background-color: #ddd;
+  animation: loader-animation 1s infinite ease-in-out;
+  height: 25px;
+  width: 20px;
+  margin-top: 20px;
+}
+.sk-hw40 {
+  background-color: #ddd;
+  animation: loader-animation 1s infinite ease-in-out;
+  height: 40px;
+  width: 40px;
+  margin-top: 11px;
+  border-radius: 50%;
+}
+.skdashboardContent {
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  width: 80% !important;
+  height: 200px;
+  margin-top: 20px;
+  background: #f0f0f0;
+  animation: loader-animation 1s infinite ease-in-out;
+}
+.skddashboardAssignment {
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  width: 45%;
+  height: 400px;
+  padding: 20px;
+  background: #f0f0f0;
+  animation: loader-animation 1s infinite ease-in-out;
+}
+
+.skdashboardNotice{
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  width: 45% ;
+  height: 400px !important;
+  padding: 20px;
+  background: #f0f0f0;
+  animation: loader-animation 1s infinite ease-in-out;
+}
+.skcourse{
+  margin-bottom: 40px;
+  border-radius: 8px;
+  width: 240px;
+  height: 192px;
+  background: #f0f0f0;
+  animation: loader-animation 1s infinite ease-in-out;
+}
+.SkResources{
+  width: 1022px;
+  height: 275px;
+  background: #f0f0f0;
+  animation: loader-animation 1s infinite ease-in-out;
+}
+@keyframes loader-animation {
+  0% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes loading {
+  from {
+    background-position: -200px 0;
+  }
+  to {
+    background-position: 200px 0;
+  }
+}
