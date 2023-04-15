@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import "./css/classpost.css"
 import { FaRegUserCircle } from "react-icons/fa";
 import { IoMdSend } from "react-icons/io";
 import axios from 'axios';

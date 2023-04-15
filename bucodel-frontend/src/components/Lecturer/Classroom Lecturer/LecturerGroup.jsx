@@ -2,7 +2,6 @@ import { Send } from '@mui/icons-material';
 import { OutlinedInput } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { InputAdornment } from '@mui/material';
-import EmptyGroup from './EmptyGroup';
 import axios from 'axios';
 import config from '../../../config';
 import { GrDocumentPdf } from 'react-icons/gr';
@@ -35,7 +34,7 @@ function LecturerGroup({ activeGroup, leader, lecturer, course }) {
                     <Button onClick={handleOpen} sx={{ p: '8px 20px', textTransform: 'none', fontWeight: 'bold' }} className='' variant='contained' >Post</Button>
                     <AddGroupPost open={open} setOpen={setOpen} group={activeGroup} lecturer={lecturer} course={course} />
                 </div>
-                <div style={{ marginRight: '25px', border: '1px solid lightgray', borderRadius: '10px', overflowY: "scroll", maxHeight: "430px", marginTop: "10px" }}>
+                <div className='lcg' style={{ marginRight: '25px', border: '1px solid lightgray', borderRadius: '10px', overflowY: "scroll", maxHeight: "430px", marginTop: "10px" }}>
 
                     {groupPost.map((p) => (<GroupContent key={p._id} post={p} lecturer={lecturer} />))}
 

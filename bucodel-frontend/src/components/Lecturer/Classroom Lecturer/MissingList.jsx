@@ -3,8 +3,6 @@ import '../css/assignmentList.css'
 import { Link } from 'react-router-dom';
 import { BsRecordCircleFill } from "react-icons/bs";
 
-
-
 const MissingList = () => {
     return (
         <div className="assignmentList">

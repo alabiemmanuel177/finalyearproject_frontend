@@ -4,9 +4,10 @@ import { useParams } from "react-router-dom";
 
 export default function SMeeting({ student }) {
     const id = useParams()
+    const studentName = `${student.lastname} ${student.firstname} ${student.middlename}`
     useEffect(() => {
         const config = {
-            name: "Demo User",
+            name: studentName,
             meetingId: id,
             apiKey: process.env.REACT_APP_VIDEOSDK_API,
 

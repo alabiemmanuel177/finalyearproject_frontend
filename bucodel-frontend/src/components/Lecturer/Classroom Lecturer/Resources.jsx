@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import './css/resources.css'
 import { MdOutlineAssignment } from "react-icons/md";
 import { GrDocumentPdf } from "react-icons/gr";
 import { FaFileWord, FaFilePowerpoint } from "react-icons/fa";
@@ -23,7 +22,7 @@ const LecturerResources = ({ resources, course, empty }) => {
           <CreateResourceModal open={open} setOpen={setOpen} />
         </div>
       </div>
-      {empty ? (<div className="resourcesContainer mxH470">
+      {empty ? (<div className="resourcesContainer mxH2">
         {resources.map((p) => (
           <Resource resource={p} key={p._id} course={course} />
         ))}
@@ -110,9 +109,12 @@ const File = ({ file, id }) => {
       {fileDets && <>
         {getFileIcon(fileDets.fileUrl.substring(fileDets.fileUrl.lastIndexOf('.') + 1))}
         <div className="filename" >
-          <h2 style={{
+          <h2 
+        
+          style={{
             overflow: "hidden",
-            textOverflow: "ellipsis"
+            textOverflow: "ellipsis",
+           
           }}>{fileDets.fileName}</h2>
           <h3 style={{ textTransform: "uppercase" }}>{fileDets.fileUrl.substring(fileDets.fileUrl.lastIndexOf('.') + 1)}</h3>
         </div>

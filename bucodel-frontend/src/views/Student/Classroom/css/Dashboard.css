@@ -3,29 +3,77 @@
   display: flex;
   flex-direction: row;
   height: 100%;
-  /* overflow: hidden scroll; */
 }
 .dashboardBody {
-  width: 70%;
+  width: 90%;
   display: flex;
   flex-direction: column;
-  border-right: 1.5px solid rgba(10, 9, 9, 0.12);
+  border-right: 1.0px solid rgba(10, 9, 9, 0.12);
   height: 100%;
 }
-.dashboardUtil {
-  width: 30%;
-  flex-direction: column;
+
+@media screen and (max-width: 1440px) {
+  .w222h98 {
+    width: 31.94% !important;
+    height: 98px;
+  }
+
+  .dashboardContentBody {
+  
+    margin-top: 0px !important;
+  }
+  
+  .metricsbody {
+   
+    margin-top: 0px !important;
+  }
+  .assnoticeblody {
+    
+    margin-top: 0px !important;
+  }
+  .dashboardAssignment {
+    border: 2px solid rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    width: 49% !important;
+    height: 400px !important;
+    padding: 20px;
+  }
+  .dashboardNotice {
+    border: 2px solid rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    width: 49% !important;
+    height: 400px !important;
+    padding: 20px;
+  }
 }
 .w222h98 {
-  width: 222px;
+  width: 30%;
   height: 98px;
   border: 2px solid rgba(0, 0, 0, 0.12);
   border-radius: 4px;
 }
 .dashboardMetrics {
-  justify-content: space-evenly;
+  width: 80% !important;
+  justify-content: space-between !important;
   margin-top: 24px;
 }
+.dashboardUtil {
+  width: 30%;
+  flex-direction: column;
+}
+.metricsbody {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.assnoticeblody {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
 .sb {
   justify-content: space-between;
 }
@@ -90,8 +138,8 @@
   font-size: 24px;
 }
 .calendar {
-  width: 325px;
-  height: 310px;
+  width: 320px;
+  /* height: 310px; */
   border: 2px solid rgba(0, 0, 0, 0.12);
   border-radius: 4px;
   margin-top: 24px;
@@ -102,31 +150,36 @@
   align-items: center;
 }
 .css-169iwlq-MuiCalendarPicker-root {
-  width: 316px !important;
-  max-height: 300px !important;
+  width: 80% !important;
+  /* max-height: 800px !important; */
+}
+.dashboardContentBody {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 .dashboardContent {
-  width: 735.45px;
+  width: 80% !important;
   height: 200px;
   border: 2px solid rgba(0, 0, 0, 0.12);
   border-radius: 4px;
   margin-top: 24px;
-  margin-left: 34.725px;
+  align-items: center;
+
   background: #0a3697;
 }
-.welcomeText{
+.welcomeText {
   height: 100%;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
 }
 .welcomeText h4 {
   font-family: "Circular Std";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
-  line-height: 25px;
-  /* text-align: center; */
+  line-height: 20px;
   letter-spacing: 0.0025em;
   color: #ffffff;
 }
@@ -139,24 +192,25 @@
   color: rgba(255, 255, 255, 0.7);
 }
 .dashboardAssignmentNoticeBoard {
+  width: 80% !important;
   margin-top: 24px;
-  justify-content: space-evenly;
+  justify-content: space-between !important;
 }
 .dashboardAssignmentContent {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 .dashboardAssignment {
   border: 2px solid rgba(0, 0, 0, 0.12);
   border-radius: 4px;
-  width: 345px;
-  height: 340px;
+  width: 45% ;
+  height: 400px !important;
   padding: 20px;
 }
 .dashboardNotice {
   border: 2px solid rgba(0, 0, 0, 0.12);
   border-radius: 4px;
-  width: 345px;
-  height: 340px;
+  width: 45% ;
+  height: 400px !important;
   padding: 20px;
 }
 .dashboardAssignment h4 {
@@ -208,13 +262,13 @@
   margin-top: 10px;
 }
 .dashboardNoticeContent {
-  width: 305px;
-  height: 135px;
+  width: 300px;
+  height: 130px;
   background: rgba(249, 249, 249, 0.42);
   border: 1px solid rgba(10, 9, 9, 0.12);
   border-radius: 4px;
-  padding: 5px;
-  margin-top: 5px;
+  padding: 0px;
+  margin-top: 0px;
 }
 .noticeContent h5 {
   font-family: "Circular Std";
@@ -236,12 +290,12 @@
   font-size: 12px;
 }
 .icon13 {
-  font-size: 35px;
+  font-size: 30px;
   margin-right: 6px;
 }
 .task {
   width: 316px;
-  height: 115px;
+  height: 110px;
   background: rgba(10, 54, 151, 0.1);
   border-left: 2px solid #0a3697;
   border-radius: 4px;
@@ -263,5 +317,5 @@
   text-align: right;
 }
 .taskBar {
-  margin-top: 20px;
+  margin-top: 30px;
 }

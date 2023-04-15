@@ -80,10 +80,7 @@ const LecturerClasses = ({ lecturer }) => {
                 <div className="classTitle">
                     <h4>{`Courses / ${course.courseabrev}`}</h4>
                     <h3>{`${course.courseabrev}: ${course.title} `}</h3>
-                    {/* <div className='flexrow'>
-                        <FaRegUserCircle className='icon2' />
-                        <h5>{lecturer.name}</h5>
-                    </div> */}
+
                 </div>
                 <Link to={`/lecturermeeting/${course._id}`} style={{ textDecoration: 'none' }}>
                     <div className="virtualClassButton">
@@ -110,7 +107,6 @@ const LecturerClasses = ({ lecturer }) => {
                     <TabPanel sx={{ p: 0 }} value={'5'}><Gradebook /></TabPanel>
                 </TabContext>
             </div>
-            <hr />
         </div>
     )
 }

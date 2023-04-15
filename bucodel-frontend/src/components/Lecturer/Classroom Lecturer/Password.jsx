@@ -1,7 +1,6 @@
 import React from 'react'
 import '../css/settings.css'
 
-
 const Password = ({ handleOpen={handleOpen}}) => {
     return (
         <div className="password ">

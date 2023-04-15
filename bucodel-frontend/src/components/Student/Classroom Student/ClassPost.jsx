@@ -7,7 +7,6 @@ import config from '../../../config';
 import moment from 'moment';
 import PostProfilePicture from '../../ProfilePics/PostProfilePicture';
 import CommentProfilePicture from '../../ProfilePics/CommentProfilePicture';
-import ProfilePicture from './ProfilePicture';
 import io from "socket.io-client";
 const socket = io(`${config.baseURL}`);
 
@@ -62,10 +61,13 @@ const ClassPost = ({ posts, course, student }) => {
     });
 
     return (
-        <div className="classpost">
+        <div className="classpost" >
             <div className="post" >
-                <div className="newPost">
-                    <PostProfilePicture student={student} className='mgb10' />
+                <div className="newPost" >
+                    <div className='stream-profile-pic'>
+                        <PostProfilePicture student={student} className='mgb10' />
+                    </div>
+
                     <input
                         placeholder='Post a message to your class'
                         onChange={(e) => setContent(e.target.value)}>
@@ -123,7 +125,6 @@ export const ExistingPost = ({ post, student }) => {
 
     return (
         <div className="existingPost">
-
             <div className='postInfo'>
                 <PostProfilePicture fileUrl={fileUrl} className='icon4 mt15' />
                 <div>

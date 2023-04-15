@@ -10,10 +10,16 @@
   flex-direction: column;
   border-right: 1.5px solid rgba(10, 9, 9, 0.12);
   height: 100%;
+  
 }
 .dashboardUtil {
   width: 30%;
   flex-direction: column;
+}
+
+@media screen and (min-width:1440px) {
+
+  
 }
 .w222h98 {
   width: 222px;
@@ -110,7 +116,7 @@
   border: 2px solid rgba(0, 0, 0, 0.12);
   border-radius: 4px;
   margin-top: 24px;
-  margin-left: 34.725px;
+
 }
 .dashboardAssignmentNoticeBoard {
   margin-top: 24px;

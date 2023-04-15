@@ -25,7 +25,6 @@ function Groups({ group, empty, leader, student }) {
     return (
         <> {empty ? (
             <div style={{ height: '', overflow: 'hidden auto', display: 'grid', gridTemplateColumns: '70% 30%', padding: '20px' }}>
-
                 <div className="groupContainer">
                     <div style={{ marginRight: '10px', border: '1px solid lightgray', borderRadius: '10px' }}>
                         {groupPost.map((p) => (<GroupContent key={p._id} post={p} student={student} />))}

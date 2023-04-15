@@ -1,5 +1,5 @@
 import React from 'react';
-// import StudentCard from '../Doassignment/Submission/StudentCard';
+import StudentCard from '../Doassignment/Submission/StudentCard';
 import { Button, Select, MenuItem, Checkbox } from '@mui/material';
 
 const Gradebook = () => {
@@ -17,14 +17,14 @@ const Gradebook = () => {
       <div className='submission-content'>
         <div className='submission-studentlist'>
           <div className='submission-studentlist-wrap'>
-            {/* <StudentCard/>
-                  <StudentCard/>
-                  <StudentCard/>
-                  <StudentCard/>
-                  <StudentCard/>
-                  <StudentCard/>
-                  <StudentCard/>
-                  <StudentCard/> */}
+            <StudentCard />
+            <StudentCard />
+            <StudentCard />
+            <StudentCard />
+            <StudentCard />
+            <StudentCard />
+            <StudentCard />
+            <StudentCard />
           </div>
         </div>
       </div>

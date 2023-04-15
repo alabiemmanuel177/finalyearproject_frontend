@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import { FaBell, FaRegUserCircle } from "react-icons/fa";
+import { FaRegUserCircle } from "react-icons/fa";
 import Sidebar from '../../../components/Lecturer/Classroom Lecturer/Sidebar'
 import { IoMdNotificationsOutline } from 'react-icons/io';
-import { Button, IconButton } from '@mui/material';
-import { MenuItem, Menu } from '@mui/material';
+import { IconButton } from '@mui/material';
 import Notifications from '../../../components/Lecturer/modal/Notifications';
 
-const LecturerClassroom = ({lecturer}) => {
+const LecturerClassroom = ({ lecturer }) => {
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
   const handleClick = (event) => setAnchorEl(event.currentTarget);
@@ -34,8 +33,8 @@ const LecturerClassroom = ({lecturer}) => {
           </div>
           <div className="util">
             <FaRegUserCircle className='icon1' />
-            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start', paddingLeft: '12px'}}>
-                <h3 style={{margin: '0'}}>{lecturer.name}</h3>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', paddingLeft: '12px' }}>
+              <h3 style={{ margin: '0' }}>{lecturer.name}</h3>
             </div>
           </div>
         </div>

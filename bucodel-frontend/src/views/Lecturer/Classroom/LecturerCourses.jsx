@@ -5,12 +5,10 @@ import {
   useState,
   useEffect
 } from "react";
-// import io from "socket.io-client";
 import config from '../../../config';
 import axios from 'axios';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import { Tab } from '@mui/material';
-// const socket = io(`${config.baseURL}`);
 
 const LecturerCourses = ({ lecturer }) => {
 
@@ -32,12 +30,10 @@ const LecturerCourses = ({ lecturer }) => {
           <div>
             <TabList onChange={handleChange}>
               <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} label={'Overview'} value={"Overview"} />
-              {/* <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} label={'Schedule'} value={"Schedule"} /> */}
             </TabList>
             <TabPanel sx={{ p: 0 }} className='coursestab' value='Overview'>
               <CourseList courses={courses} />
             </TabPanel>
-            {/* <TabPanel sx={{ p: 0 }} className='coursestab' value='Schedule'>Schedule</TabPanel> */}
           </div>
         </TabContext>
       </div>

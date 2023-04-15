@@ -15,7 +15,13 @@
 }
 .mxH570{
   max-height: 570px;
+}
 
+@media screen and (max-width:1920px) {
+  .mxH570{
+    max-height: 700px !important;
+  }
+  
 }
 .icon8 {
   font-size: 56px;
@@ -129,9 +135,10 @@
 }
 .filename {
   cursor: pointer !important;
+  
 }
 .filename h2 {
-  max-width: 100px;
+  max-width: 150px;
   overflow: hidden;
   text-overflow: ellipsis;
 }

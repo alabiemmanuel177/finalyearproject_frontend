@@ -100,17 +100,14 @@
   display: flex;
   align-items: center;
 }
-.css-169iwlq-MuiCalendarPicker-root {
-  width: 316px !important;
-  max-height: 300px !important;
-}
+
 .dashboardContent {
   width: 735.45px;
   height: 200px;
   border: 2px solid rgba(0, 0, 0, 0.12);
   border-radius: 4px;
   margin-top: 24px;
-  margin-left: 34.725px;
+  
 }
 .dashboardAssignmentNoticeBoard {
   margin-top: 24px;
