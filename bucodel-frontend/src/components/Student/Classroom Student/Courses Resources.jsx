@@ -7,23 +7,25 @@ import { AiFillFileUnknown } from "react-icons/ai"
 import moment from 'moment';
 import axios from 'axios';
 import config from '../../../config';
+import { SkResources } from '../../Skeleton Loader/dasboardMetrics';
 
-const Resources = ({ resources }) => {
+const Resources = ({ resources, isResources }) => {
   return (
     <div className='resources'>
       <div className="resourcesContainer mxH570">
         {resources.map((p) => (
-          <Resource resource={p} key={p._id} />
+          <Resource resource={p} key={p._id} isResources={isResources} />
         ))}
       </div>
     </div>
   )
 }
 
-const Resource = ({ resource }) => {
+const Resource = ({ resource, isResources }) => {
   const formattedDate = moment(resource.createdAt).format("Do MMM, h:mm a");
   return (
-    <div className="resource">
+    <> {isResources ? <SkResources /> 
+    : <div className="resource">
       <div className="color1">
         <div className='flexRow'>
           <MdOutlineAssignment className='icon8' />
@@ -45,7 +47,8 @@ const Resource = ({ resource }) => {
         </div>
       </div>
 
-    </div>
+    </div>}</>
+
   )
 }
 

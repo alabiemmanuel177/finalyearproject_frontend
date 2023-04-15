@@ -29,21 +29,25 @@ const Courses = ({ student }) => {
   //Get Courses from class
   const [objclass, setObjClass] = useState("");
   const [courses, setCourses] = useState([])
+  const [isCourses, setIsCourses] = useState(true)
   useEffect(() => {
     const fetchCourses = async () => {
       const res = await axios.get(`${config.baseURL}/class/courses/${id}`);
       setObjClass(res.data);
       setCourses(res.data.courses)
+      setIsCourses(false)
     };
     fetchCourses();
   }, [id]);
 
   //Get class resources
   const [resources, setResources] = useState([])
+  const [isResources, setIsResources] = useState(true)
   useEffect(() => {
     const fetchResources = async () => {
       const res = await axios.get(`${config.baseURL}/class/classes/${id}/resources`);
       setResources(res.data);
+      setIsResources(false)
     };
     fetchResources();
   }, [id]);
@@ -59,8 +63,8 @@ const Courses = ({ student }) => {
                 <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'Schedule'} label='Resources' />
               </TabList>
             </div>
-            <TabPanel sx={{ p: 0 }} value={'Overview'}><CourseList courses={courses} /></TabPanel>
-            <TabPanel sx={{ p: 0 }} value={'Schedule'}><Resources resources={resources} /></TabPanel>
+            <TabPanel sx={{ p: 0 }} value={'Overview'}><CourseList courses={courses} isCourses={isCourses} /></TabPanel>
+            <TabPanel sx={{ p: 0 }} value={'Schedule'}><Resources resources={resources} isResources={isResources} /></TabPanel>
           </TabContext>
         </div>
       </div>

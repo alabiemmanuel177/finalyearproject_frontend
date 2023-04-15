@@ -4,17 +4,18 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import config from '../../../config';
 import axios from 'axios';
+import { Skcourse } from '../../Skeleton Loader/dasboardMetrics';
 
-const CourseList = ({ courses }) => {
+const CourseList = ({ courses, isCourses }) => {
     return (
         <div className="courseList">
             {courses.map((p) => (
-                <CourseCard course={p} key={p._id} />
+                <CourseCard course={p} key={p._id} isCourses={isCourses} />
             ))}
         </div>
     )
 }
-const CourseCard = ({ course }) => {
+const CourseCard = ({ course, isCourses }) => {
     const [lecturerList, setLecturerList] = [course.lecturer];
     const [lecturer, setLecturer] = useState("");
     useEffect(() => {
@@ -27,7 +28,7 @@ const CourseCard = ({ course }) => {
     return (
         <div className='maincourse'>
             <Link to={`/class/${course._id}`} style={{ textDecoration: 'none', height: '192px' }}>
-                <div className="course">
+                {isCourses ? <Skcourse /> : <div className="course">
                     <div className="courseTitle">
                         <h3>{course.courseabrev}</h3>
                         <h3>{course.title}</h3>
@@ -39,7 +40,7 @@ const CourseCard = ({ course }) => {
                         </div>
                         <button disabled="disabled">{course.unit} unit</button>
                     </div>
-                </div>
+                </div>}
             </Link>
         </div>
     )

@@ -8,40 +8,52 @@ import config from '../../../config';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { Avatar } from '@mui/material';
-
+import { SkdashboardMetrics } from '../../../components/Skeleton Loader/dasboardMetrics';
+import { SkdasboardContentBody } from '../../../components/Skeleton Loader/dasboardMetrics';
+import { SkddashboardAssignment } from '../../../components/Skeleton Loader/dasboardMetrics';
+import { SkdashboardNotice } from '../../../components/Skeleton Loader/dasboardMetrics';
 const Dashboard = ({ student }) => {
   const [courseCount, setCourseCount] = useState("");
+  const [isCCFetching, setIsCCFetching] = useState(true);
   useEffect(() => {
     const fetchCourseCount = async () => {
       const res = await axios.get(`${config.baseURL}/class/classes/${student.class}/course-count`);
       setCourseCount(res.data.courseCount);
+      setIsCCFetching(false)
     };
     fetchCourseCount();
   });
 
-  const [notices, setNotices] = useState([]);
-  useEffect(() => {
-    const fetchNotices = async () => {
-      const res = await axios.get(`${config.baseURL}/notice`);
-      setNotices(res.data);
-    };
-    fetchNotices();
-  });
-
   const [assignmentCount, setAssignmentCount] = useState("");
+  const [isAssignmentCountFetching, setIsAssignmentCountFetching] = useState(true);
+
   useEffect(() => {
     const fetchAssignmentCount = async () => {
       const res = await axios.get(`${config.baseURL}/class/classes/${student.class}/assignment-count`);
       setAssignmentCount(res.data.assignmentCount);
+      setIsAssignmentCountFetching(false)
     };
     fetchAssignmentCount();
   });
 
+  const [notices, setNotices] = useState([]);
+  const [isNotices, setIsNotices] = useState(true);
+  useEffect(() => {
+    const fetchNotices = async () => {
+      const res = await axios.get(`${config.baseURL}/notice`);
+      setNotices(res.data);
+      setIsNotices(false)
+    };
+    fetchNotices();
+  });
+
   const [assignedAssignments, setAssignedAssignments] = useState([])
+  const [isAssignedAssignments, setIsAssignedAssignments] = useState(true)
   useEffect(() => {
     const fetchAssignedAssignments = async () => {
       const res = await axios.get(`${config.baseURL}/student/${student._id}/assignments/notsubmitted`);
       setAssignedAssignments(res.data);
+      setIsAssignedAssignments(false)
     };
     fetchAssignedAssignments();
   }, [student._id]);
@@ -50,58 +62,65 @@ const Dashboard = ({ student }) => {
       <div className="dashboardBody" >
         <div className="metricsbody">
           <div className="dashboardMetrics flexrow" >
-            <div className="dashboardCourses w222h98" >
-              <h4>Courses this semester</h4>
-              <div className='flexrow sb'>
-                <h3>{courseCount}</h3>
-                <div className="hw40">
-                  <HiOutlineBookmarkAlt className='icon11 blue' />
+
+            {isCCFetching ? <SkdashboardMetrics /> :
+              <div className="dashboardCourses w222h98" >
+                <h4>Courses this semester</h4>
+                <div className='flexrow sb'>
+                  <h3>{courseCount}</h3>
+                  <div className="hw40">
+                    <HiOutlineBookmarkAlt className='icon11 blue' />
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div className="dashboardAssignments w222h98">
-              <h4>Assignments</h4>
-              <div className='flexrow sb'>
-                <h3>{assignmentCount}</h3>
-                <div className="hw40">
-                  <HiOutlineDocumentText className='icon11 blue' />
+              </div>}
+            {isAssignmentCountFetching ? <SkdashboardMetrics /> :
+              <div className="dashboardAssignments w222h98">
+                <h4>Assignments</h4>
+                <div className='flexrow sb'>
+                  <h3>{assignmentCount}</h3>
+                  <div className="hw40">
+                    <HiOutlineDocumentText className='icon11 blue' />
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div className="dashboardLevel w222h98">
-              <h4>Level</h4>
-              <div className='flexrow sb'>
-                <h3>{student.level}</h3>
-                <div className="hw40">
-                  <HiOutlineDocumentText className='icon11 blue' />
+              </div>}
+            {isAssignmentCountFetching ? <SkdashboardMetrics /> :
+              <div className="dashboardLevel w222h98">
+                <h4>Level</h4>
+                <div className='flexrow sb'>
+                  <h3>{student.level}</h3>
+                  <div className="hw40">
+                    <HiOutlineDocumentText className='icon11 blue' />
+                  </div>
                 </div>
-              </div>
-            </div>
-          </div></div>
+              </div>}
+          </div>
+        </div>
 
         <div className='dashboardContentBody'>
-          <div className="dashboardContent flexrow" >
-            <img src="https://res.cloudinary.com/manlikeemma/image/upload/v1677670946/BUCODEL/undraw_reading_time_re_phf7_1_sboim1.svg" alt="" style={{ height: "200px" }} />
-            <div className="welcomeText flexColumn">
-              <h4>Hello {student.firstname},</h4>
-              <h5>Welcome to our platform, where you can discover, learn, and achieve your academic goals. Let's get started</h5>
-            </div>
-          </div></div>
+          {isAssignmentCountFetching ? <SkdasboardContentBody /> :
+            <div className="dashboardContent flexrow" >
+              <img src="https://res.cloudinary.com/manlikeemma/image/upload/v1677670946/BUCODEL/undraw_reading_time_re_phf7_1_sboim1.svg" alt="" style={{ height: "200px" }} />
+              <div className="welcomeText flexColumn">
+                <h4>Hello {student.firstname},</h4>
+                <h5>Welcome to our platform, where you can discover, learn, and achieve your academic goals. Let's get started</h5>
+              </div>
+            </div>}</div>
         <div className="assnoticeblody">
           <div className="dashboardAssignmentNoticeBoard flexrow sb">
-            <div className="dashboardAssignment" style={{ overflow: 'hidden auto' }}>
-              <div className='flexrow sb ac'>
-                <h4>Assignment</h4>
-                <Link to={"/assignment"}><h5 className='blue'>View all</h5></Link>
-              </div>
-              <div className="dashboardAssignmentContent">
-                {assignedAssignments.map((p) => (
-                  <Assignment assignedAssignment={p} key={p._id} />
-                ))}
-              </div>
+            {isAssignedAssignments ? <SkddashboardAssignment /> :
+              <div className="dashboardAssignment" style={{ overflow: 'hidden auto' }}>
+                <div className='flexrow sb ac'>
+                  <h4>Assignment</h4>
+                  <Link to={"/assignment"}><h5 className='blue'>View all</h5></Link>
+                </div>
+                <div className="dashboardAssignmentContent">
+                  {assignedAssignments.map((p) => (
+                    <Assignment assignedAssignment={p} key={p._id} />
+                  ))}
+                </div>
 
-            </div>
-            <div className="dashboardNotice">
+              </div>}
+            {isNotices ? <SkdashboardNotice /> :<div className="dashboardNotice">
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <h4>Notice</h4>
               </div>
@@ -111,7 +130,7 @@ const Dashboard = ({ student }) => {
                 ))}
               </div>
 
-            </div>
+            </div>}
           </div>
         </div>
 
@@ -159,5 +178,8 @@ function Notice({ notice }) {
     </div>
   )
 }
+
+
+
 
 export default Dashboard
