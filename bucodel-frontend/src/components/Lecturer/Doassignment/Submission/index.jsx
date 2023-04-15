@@ -1,44 +1,85 @@
-import { Button, Checkbox, MenuItem, Select } from '@mui/material'
-import React from 'react'
+import { Button, MenuItem, Select } from '@mui/material'
+import React, { useState } from 'react'
 import './index.css'
 import StudentCard from './StudentCard'
+import io from "socket.io-client";
+import config from '../../../../config';
+import DocViewer, { DocViewerRenderers } from "react-doc-viewer";
+import axios from 'axios';
 
-export default function Sub() {
-  return (
-    <div className='submission-root'>
-        <div className='submission-header'>
-            <div>
-                <Checkbox className='sub-checkbox'/>
-                <Button size='small' variant='contained' color='primary'>Return</Button>
+const socket = io(`${config.baseURL}`);
+
+socket.on('ASSIGNMENT_ANSWER_DELETED', (message) => {
+    console.log(message)
+    window.location.reload();
+});
+
+export default function Sub({ submissions, assignment }) {
+
+    const [selectedSubmission, setSelectedSubmission] = useState(null);
+    const [grade, setGrade] = useState();
+    const [answer, setAnswer] = useState();
+
+    const handleSelectSubmission = (submission) => {
+        setSelectedSubmission(submission);
+        setGrade(submission.grade);
+        setAnswer(submission._id);
+    };
+
+    const handleGradeChange = (e) => {
+        setGrade(e.target.value);
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const res = await axios.post(`${config.baseURL}/assignment/${answer}`, {
+                grade
+            });
+            if (res.data) {
+                window.location.reload();
+            }
+        } catch (err) {
+        }
+    };
+
+    return (
+        <div className='submission-root'>
+            <div className='submission-header'>
+                <div>
+
+                </div>
+                <Select size='small' defaultValue={10} sx={{ width: '100px' }}>
+                    <MenuItem>Unmarked</MenuItem>
+                    <MenuItem>Marked</MenuItem>
+                </Select>
             </div>
-            <Select size='small' defaultValue={10} sx={{ width: '100px' }}>
-                <MenuItem>10</MenuItem>
-            </Select>
+            <div className='submission-content'>
+                <div className='submission-studentlist'>
+                    {submissions.map((p) => (
+                        <div key={p._id} onClick={() => handleSelectSubmission(p)}>
+                            <StudentCard submission={p} />
+                        </div>
+                    ))}
+                </div>
+                <div className='submission-content-body'>
+                    {selectedSubmission && (
+                        <div className='sub-content-head'>
+                            <input type={"text"} value={grade} style={{ width: "30px", marginRight: "5px" }} className='sub-content-head-mark' onChange={handleGradeChange} />
+                            <h6 className='sub-content-head-mark'> /{assignment.grade}</h6>
+                            <Button onClick={handleSubmit} sx={{ p: '3px 8px', textTransform: 'none', fontWeight: 'bold' }} style={{ marginLeft: "50px" }} variant='contained' >Post</Button>
+
+                        </div>
+                    )}
+                    {selectedSubmission && (
+                        <DocViewer
+                            documents={[{ uri: selectedSubmission.file.fileUrl }]}
+                            pluginRenderers={DocViewerRenderers}
+                            style={{ width: "100%", height: "60%" }}
+                        />
+                    )}
+                </div>
+            </div>
         </div>
-        <div className='submission-content'>
-            <div className='submission-studentlist'>
-                <div className='submission-studentlist-wrap'>
-                    <StudentCard/>
-                    <StudentCard/>
-                    <StudentCard/>
-                    <StudentCard/>
-                    <StudentCard/>
-                    <StudentCard/>
-                    <StudentCard/>
-                    <StudentCard/>
-                </div>
-            </div>
-            <div className='submission-content-body'>
-                <div className='sub-content-head'>
-                    <h5 className='sub-content-head-word'>Izu Onisokumen Preye</h5>
-                    <h6 className='sub-content-head-mark'>8/10</h6>
-                </div>
-                <div className='sub-content-mainbody'>
-                    body
-                </div>
-                <div>Comment Section</div>
-            </div>
-        </div>
-    </div>
-  )
+    )
 }

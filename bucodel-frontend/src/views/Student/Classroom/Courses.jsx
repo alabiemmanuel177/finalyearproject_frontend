@@ -1,6 +1,8 @@
-import React from 'react'
+import React from 'react';
+import { TabContext, TabPanel, TabList } from '@mui/lab';
+import { Tab } from '@mui/material';
 import CourseList from '../../../components/Student/Classroom Student/CourseList'
-import Resources from '../../../components/Student/Classroom Student/Resources'
+import Resources from '../../../components/Student/Classroom Student/Courses Resources'
 import './css/courses.css'
 import {
   useState,
@@ -17,18 +19,11 @@ socket.on('LECTURER_UPLOADED_NEW_COURSES', (message) => {
 });
 
 const Courses = ({ student }) => {
-  var btnContainer = document.getElementById("headers");
-  if (btnContainer !== null) {
-    var btns = btnContainer.getElementsByClassName("headerButton");
-    for (var i = 0; i < btns.length; i++) {
-      btns[i].addEventListener("click", function () {
-        var current = document.getElementsByClassName("active1");
-        current[0].className = current[0].className.replace("active1", "");
-        this.className += " active1";
-      });
-    }
+
+  const [value, setValue] = useState('Overview');
+  const handleChange = (event, newValue) => {
+    setValue(newValue)
   }
-  const [active2, setActive2] = useState("overview");
   const id = student.class
 
   //Get Courses from class
@@ -52,21 +47,23 @@ const Courses = ({ student }) => {
     };
     fetchResources();
   }, [id]);
-
   return (
     <div className="courses">
       <div className='courseheader'>
         <div className="title"><h3>Courses</h3></div>
-        <div className="headers" id='headers'>
-          <div className="overview headerButton active1"
-            onClick={() => setActive2("overview")}><h3>Overview</h3></div>
-          <div className="schedule headerButton"
-            onClick={() => setActive2("resources")}><h3>Resources</h3></div>
+        <div>
+          <TabContext value={value}>
+            <div style={{ padding: 0 }}>
+              <TabList sx={{ padding: 0, marginLeft: 1, paddingBottom: 0, textTransform: 'none' }} onChange={handleChange}>
+                <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'Overview'} label='Overview' />
+                <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'Schedule'} label='Resources' />
+              </TabList>
+            </div>
+            <TabPanel sx={{ p: 0 }} value={'Overview'}><CourseList courses={courses} /></TabPanel>
+            <TabPanel sx={{ p: 0 }} value={'Schedule'}><Resources resources={resources} /></TabPanel>
+          </TabContext>
         </div>
       </div>
-      <hr />
-      {active2 === "overview" && <CourseList courses={courses} />}
-      {active2 === "resources" && <Resources resources={resources} />}
     </div>
   )
 }

@@ -9,7 +9,7 @@ const CourseList = ({ courses }) => {
     return (
         <div className="courseList">
             {courses.map((p) => (
-                <CourseCard course={p} key={p._id}/>
+                <CourseCard course={p} key={p._id} />
             ))}
         </div>
     )

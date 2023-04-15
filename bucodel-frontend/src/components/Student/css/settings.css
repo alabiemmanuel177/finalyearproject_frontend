@@ -139,8 +139,53 @@
   color: white;
   border: none;
 }
-.passwordControls{
-    align-items: center;
-    display: flex;
-    justify-content: center;
+.passwordControls {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.yourPhotoPic img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+.profile-picture-container {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  border: red solid 1px;
+  padding: 5px;
+}
+.profile-picture-container img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+.post-profile-picture-container {
+  display: flex;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: red solid 1px;
+  padding: 5px;
+  align-items: center;
+  justify-content: center;
+}
+.post-profile-picture-container img {
+  height: 34px;
+  width: 34px;
+  border-radius: 50%;
+}
+.profile-picture {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+#profile-picture {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.mgr100 {
+  margin-right: 100px;
 }

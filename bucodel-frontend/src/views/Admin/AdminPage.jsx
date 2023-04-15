@@ -2,9 +2,9 @@ import React from 'react'
 import { Outlet } from 'react-router-dom'
 import AdminLayout from '../../components/Admin/Page/AdminLayout'
 
-const AdminPage = () => {
+const AdminPage = ({ admin }) => {
   return (
-    <AdminLayout>
+    <AdminLayout admin={admin}>
       <Outlet />
     </AdminLayout>
   )

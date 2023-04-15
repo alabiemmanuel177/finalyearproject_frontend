@@ -23,6 +23,7 @@ const style = {
 const LogOutModal = ({ open, setOpen }) => {
     const { dispatch } = React.useContext(lecturerContext);
     const handleLogout = () => {
+        localStorage.clear();
         dispatch({ type: "LOGOUT" });
         window.location.replace("/")
     };

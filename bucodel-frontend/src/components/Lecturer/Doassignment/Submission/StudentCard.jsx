@@ -1,18 +1,17 @@
-import React from 'react';
-import { FaRegUserCircle } from 'react-icons/fa'
-import { Checkbox } from '@mui/material';
+import React, { useState } from 'react';
+import { FaRegUserCircle } from 'react-icons/fa';
 
-export default function StudentCard() {
+export default function StudentCard({ submission }) {
+
   return (
-    <div className='submission-studentcard'>
-        <Checkbox className='sub-checkbox'/>
-        <div className='sub-studentcard-pic'>
-            <FaRegUserCircle className='sub-stdcard-icon' />
-        </div>
-        <div className='sub-studentcard-info'>
-            <p className='sub-stdcard-name'>Izu Onisokumen Preye</p>
-            <p className='sub-stdcard-number'>19/1485</p>
-        </div>
+    <div className="submission-studentcard" >
+      <div className='sub-studentcard-pic mgl10'>
+        <FaRegUserCircle className='sub-stdcard-icon' />
+      </div>
+      <div className='sub-studentcard-info'>
+        <p className='sub-stdcard-name'>{`${submission.studentId.lastname} ${submission.studentId.firstname}`}</p>
+        <p className='sub-stdcard-number'>{submission.studentId.matricno}</p>
+      </div>
     </div>
-  )
+  );
 }

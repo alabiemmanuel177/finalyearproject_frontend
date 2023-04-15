@@ -1,144 +1,60 @@
 import React from 'react'
 import EmptyGroup from './EmptyGroup';
-import {
-  useState,
-  // useEffect
-} from "react";
 import "./css/group.css"
+import CommentProfilePicture from '../../ProfilePics/CommentProfilePicture';
+import LecturerGroup from './LecturerGroup';
 
-import { FaRegUserCircle } from "react-icons/fa";
+const Groups = ({ groups, empty, course, clazz, lecturer }) => {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const [activeGroup, setActiveGroup] = React.useState();
+  const [activeLeader, setActiveLeader] = React.useState();
 
-const Groups = () => {
-  const [empty] = useState(false);
   return (
     <div className='group'>
-      {empty ? (<div>
-        <div className="groupTitle mgt20">
-          <h3>Group 1</h3>
-          <hr className='blue' />
+      {empty ? (
+        <div>
+          {!open ? <>{
+            groups.map((p) => (
+              <Group group={p} key={p._id} handleOpen={handleOpen} setActiveGroup={setActiveGroup} setActiveLeader={setActiveLeader} />
+            ))
+          }
+          </> : (<LecturerGroup activeGroup={activeGroup} leader={activeLeader} lecturer={lecturer} course={course} />)}
         </div>
-        <div className="groupMembers">
-          <div className="peopleList flexrow jcsb ac">
-            <div className='flexrow ac'>
-              <FaRegUserCircle className='icon4' />
-              <h3>Dr. Adetofunmi Adetunji</h3>
-            </div>
-            <button>Leader</button>
-          </div>
-          <div className="peopleList flexrow jcsb ac">
-            <div className='flexrow ac'>
-              <FaRegUserCircle className='icon4' />
-              <h3>Dr. Adetofunmi Adetunji</h3>
-            </div>
-          </div>
-          <div className="peopleList flexrow jcsb ac">
-            <div className='flexrow ac'>
-              <FaRegUserCircle className='icon4' />
-              <h3>Dr. Adetofunmi Adetunji</h3>
-            </div>
-          </div>
-          <div className="peopleList flexrow jcsb ac">
-            <div className='flexrow ac'>
-              <FaRegUserCircle className='icon4' />
-              <h3>Dr. Adetofunmi Adetunji</h3>
-            </div>
-          </div>
+      ) : (<EmptyGroup course={course} clazz={clazz} />)}
+    </div>
+  )
+}
+
+const Group = ({ group, handleOpen, setActiveGroup, setActiveLeader }) => {
+  return (
+    <div style={{ marginBottom: '35px', }}>
+      <div className="groupTitle mgt20">
+        <div className="virtualClassButton">
+          <button onClick={() => { handleOpen(); setActiveGroup(group); setActiveLeader(group.leader); }}>{group.name}</button>
         </div>
-        <div className="groupTitle mg20">
-          <h3>Group 2</h3>
-          <hr className='blue' />
-        </div>
-        <div className="groupMembers">
-          <div className="peopleList flexrow jcsb ac">
-            <div className='flexrow ac'>
-              <FaRegUserCircle className='icon4' />
-              <h3>Dr. Adetofunmi Adetunji</h3>
-            </div>
-            <button>Leader</button>
-          </div>
-          <div className="peopleList flexrow jcsb ac">
-            <div className='flexrow ac'>
-              <FaRegUserCircle className='icon4' />
-              <h3>Dr. Adetofunmi Adetunji</h3>
-            </div>
-          </div>
-          <div className="peopleList flexrow jcsb ac">
-            <div className='flexrow ac'>
-              <FaRegUserCircle className='icon4' />
-              <h3>Dr. Adetofunmi Adetunji</h3>
-            </div>
-          </div>
-          <div className="peopleList flexrow jcsb ac">
-            <div className='flexrow ac'>
-              <FaRegUserCircle className='icon4' />
-              <h3>Dr. Adetofunmi Adetunji</h3>
-            </div>
-          </div>
-        </div>
-        <div className="groupTitle mg20">
-          <h3>Group 3</h3>
-          <hr className='blue' />
-        </div>
-        <div className="groupMembers">
-          <div className="peopleList flexrow jcsb ac">
-            <div className='flexrow ac'>
-              <FaRegUserCircle className='icon4' />
-              <h3>Dr. Adetofunmi Adetunji</h3>
-            </div>
-            <button>Leader</button>
-          </div>
-          <div className="peopleList flexrow jcsb ac">
-            <div className='flexrow ac'>
-              <FaRegUserCircle className='icon4' />
-              <h3>Dr. Adetofunmi Adetunji</h3>
-            </div>
-          </div>
-          <div className="peopleList flexrow jcsb ac">
-            <div className='flexrow ac'>
-              <FaRegUserCircle className='icon4' />
-              <h3>Dr. Adetofunmi Adetunji</h3>
-            </div>
-          </div>
-          <div className="peopleList flexrow jcsb ac">
-            <div className='flexrow ac'>
-              <FaRegUserCircle className='icon4' />
-              <h3>Dr. Adetofunmi Adetunji</h3>
-            </div>
-          </div>
-        </div>
-        <div className="groupTitle mg20">
-          <h3>Group 4</h3>
-          <hr className='blue' />
-        </div>
-        <div className="groupMembers">
-          <div className="peopleList flexrow jcsb ac">
-            <div className='flexrow ac'>
-              <FaRegUserCircle className='icon4' />
-              <h3>Dr. Adetofunmi Adetunji</h3>
-            </div>
-            <button>Leader</button>
-          </div>
-          <div className="peopleList flexrow jcsb ac">
-            <div className='flexrow ac'>
-              <FaRegUserCircle className='icon4' />
-              <h3>Dr. Adetofunmi Adetunji</h3>
-            </div>
-          </div>
-          <div className="peopleList flexrow jcsb ac">
-            <div className='flexrow ac'>
-              <FaRegUserCircle className='icon4' />
-              <h3>Dr. Adetofunmi Adetunji</h3>
-            </div>
-          </div>
-          <div className="peopleList flexrow jcsb ac">
-            <div className='flexrow ac'>
-              <FaRegUserCircle className='icon4' />
-              <h3>Dr. Adetofunmi Adetunji</h3>
-            </div>
-          </div>
-        </div>
+        <hr className='blue' />
       </div>
-      ) : (<EmptyGroup />)}
+      <div className="groupMembers">
+        {group.students.map((p) => (
+          <Members member={p} key={p._id} leader={group.leader} />
+        ))}
+
+
+      </div>
+    </div>
+  )
+}
+
+const Members = ({ member, leader }) => {
+  return (
+    <div className="peopleList flexrow jcsb ac">
+      <div className='flexrow ac'>
+        <CommentProfilePicture className='icon4 mt15' />
+        <h3>{`${member.lastname} ${member.firstname} ${member.matricno}`}</h3>
+      </div>
+      {leader === member._id ? <><button disabled="disabled">Leader</button></> : <></>}
+
     </div>
   )
 }

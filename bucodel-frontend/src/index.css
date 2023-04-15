@@ -2,6 +2,7 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
 }
 hr{
   margin: 0;
@@ -12,7 +13,22 @@ a {
   outline: none;
   color: inherit;
 }
+a:hover {
+  color: inherit;
+}
 
 button {
   text-transform: none;
+}
+
+.span {
+  color: inherit !important;
+}
+
+.logintext {
+  color: inherit !important;
+}
+
+.custom-table-item:nth-child(odd) {
+  background-color: azure;
 }

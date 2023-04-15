@@ -2,7 +2,6 @@ import React from 'react'
 import '../css/settings.css'
 import { FaUserCircle } from "react-icons/fa";
 
-
 const Profile = () => {
     return (
         <div className="profile">

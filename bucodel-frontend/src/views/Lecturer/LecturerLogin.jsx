@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import './css/lecturerlogin.css'
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { NavLink } from 'react-router-dom';
@@ -9,7 +9,8 @@ import config from "../../config";
 const LecturerLogin = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { dispatch } = useContext(lecturerContext);
+  const { dispatch, isFetching } = useContext(lecturerContext);
+  const [error, setError] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,6 +24,7 @@ const LecturerLogin = () => {
       res.data && window.location.replace("/lecturerdashboard");
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE" });
+      setError(err.response.data.message);
     }
   };
   return (
@@ -54,7 +56,8 @@ const LecturerLogin = () => {
             <NavLink to='/lecturerreset' style={{ textDecoration: 'none' }}>
               <h4>Forgot Password?</h4>
             </NavLink>
-            <button type='submit'>Log In</button>
+            <button type='submit' disabled={isFetching}>Log In</button>
+            {error && <p className="error">{error}</p>}
           </form>
         </div>
       </div>

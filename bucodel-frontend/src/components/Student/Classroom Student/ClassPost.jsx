@@ -5,6 +5,35 @@ import { IoMdSend } from "react-icons/io";
 import axios from 'axios';
 import config from '../../../config';
 import moment from 'moment';
+import PostProfilePicture from '../../ProfilePics/PostProfilePicture';
+import CommentProfilePicture from '../../ProfilePics/CommentProfilePicture';
+import io from "socket.io-client";
+const socket = io(`${config.baseURL}`);
+
+socket.on('NEW_COMMENT', (message) => {
+    console.log(message)
+    window.location.reload();
+});
+socket.on('COMMENT_UPDATED', (message) => {
+    console.log(message)
+    window.location.reload();
+});
+socket.on('COMMENT_DELETED', (message) => {
+    console.log(message)
+    window.location.reload();
+});
+socket.on('NEW_CLASSPOST_POSTED', (message) => {
+    console.log(message)
+    window.location.reload();
+});
+socket.on('CLASSPOST_UPDATED', (message) => {
+    console.log(message)
+    window.location.reload();
+});
+socket.on('CLASSPOST_DELETED', (message) => {
+    console.log(message)
+    window.location.reload();
+});
 
 const ClassPost = ({ posts, course, student }) => {
     const [content, setContent] = useState("");
@@ -32,10 +61,13 @@ const ClassPost = ({ posts, course, student }) => {
     });
 
     return (
-        <div className="classpost">
+        <div className="classpost" >
             <div className="post" >
-                <div className="newPost">
-                    <FaRegUserCircle className='icon1' />
+                <div className="newPost" >
+                    <div className='stream-profile-pic'>
+                        <PostProfilePicture student={student} className='mgb10' />
+                    </div>
+
                     <input
                         placeholder='Post a message to your class'
                         onChange={(e) => setContent(e.target.value)}>
@@ -44,12 +76,12 @@ const ClassPost = ({ posts, course, student }) => {
                 </div>
                 <div className="postContainer">
                     {posts.map((p) => (
-                        <ExistingPost post={p} key={p._id} />
+                        <ExistingPost post={p} key={p.content._id} student={student} />
                     ))}
                 </div>
             </div>
             <div className="noticeboard">
-                <h3>Noticeboard</h3>
+                <h3>Classboard</h3>
                 <hr />
                 <div className="noticeContainer">
                     {notices.map((p) => (
@@ -63,13 +95,38 @@ const ClassPost = ({ posts, course, student }) => {
 
 export default ClassPost
 
-export const ExistingPost = ({ post }) => {
+export const ExistingPost = ({ post, student }) => {
     const formattedDate = moment(post.content.createdAt).format("Do MMM, h:mm a");
+
+    const [comments, setComments] = useState([])
+    useEffect(() => {
+        const fetchComments = async () => {
+            const res = await axios.get(`${config.baseURL}/classpost/${post.content._id}/comments`);
+            setComments(res.data);
+        };
+        fetchComments();
+    }, [post.content._id]);
+
+    const [comment, setComment] = useState("");
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const res = await axios.post(`${config.baseURL}/classcomment/`, {
+                classPost: post.content._id,
+                comment,
+                student_id: student._id,
+            });
+            res.data && window.location.reload();
+        } catch (err) {
+        }
+    };
+
+    const { profilePic: { fileUrl } = {} } = post.author;
 
     return (
         <div className="existingPost">
             <div className='postInfo'>
-                <FaRegUserCircle className='icon4 mt15' />
+                <PostProfilePicture fileUrl={fileUrl} className='icon4 mt15' />
                 <div>
                     <h3>{post.author.name}</h3>
                     <h5>{formattedDate}</h5>
@@ -77,19 +134,42 @@ export const ExistingPost = ({ post }) => {
             </div>
             <h4>{post.content.content}</h4>
             <hr />
-            <div className="newComment">
-                <FaRegUserCircle className='icon4' />
+            {comments.map((p) => (
+                <ExistingComment comment={p} key={p.content._id} />
+            ))}
+
+            <div className="newComment ">
                 <input
-                    placeholder='Add Comment '>
+                    className='mgl10'
+                    placeholder='Add Comment '
+                    onChange={(e) => setComment(e.target.value)}>
                 </input>
-                <IoMdSend className='icon4' type='submit' />
+                <IoMdSend className='icon4' style={{ cursor: "pointer" }} onClick={handleSubmit} />
             </div>
         </div>
     )
 }
 
+export const ExistingComment = ({ comment }) => {
+    const { profilePic: { fileUrl } = {} } = comment.author;
+
+    const formattedDate = moment(comment.content.createdAt).format("Do MMM, h:mm a");
+    return (
+        <div className="existingComment">
+            <div className='postInfo'>
+                <CommentProfilePicture fileUrl={fileUrl} className='icon4 mt15' />
+                <div>
+                    <h3>{comment.author.name}</h3>
+                    <h5>{formattedDate}</h5>
+                </div>
+            </div>
+            <h4>{comment.content.comment}</h4>
+            <hr />
+        </div>
+    )
+}
+
 const Notice = ({ notice }) => {
-    // console.log(notice);
     const formattedDate = moment(notice.createdAt).format("Do MMM, h:mm a");
     return (
         <div className="dashboardNoticeContent">

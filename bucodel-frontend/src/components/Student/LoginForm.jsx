@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./css/LoginForm.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -10,7 +10,8 @@ import config from "../../config";
 export const LoginForm = () => {
   const matricnoRef = useRef();
   const passwordRef = useRef();
-  const { dispatch } = useContext(studentContext);
+  const { dispatch, isFetching } = useContext(studentContext);
+  const [error, setError] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,6 +25,7 @@ export const LoginForm = () => {
       res.data && window.location.replace("/dashboard");
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE" });
+      setError(err.response.data.message);
     }
   };
 
@@ -53,9 +55,10 @@ export const LoginForm = () => {
           </Link>
         </div>
 
-        <button type="submit" className="btn btn-primary loginBtn">
+        <button type="submit" className="btn btn-primary loginBtn" disabled={isFetching}>
           Login
         </button>
+        {error && <p className="error">{error}</p>}
       </form>
     </div>
   );

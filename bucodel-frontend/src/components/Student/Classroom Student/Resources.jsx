@@ -1,27 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../css/resources.css'
 import { MdOutlineAssignment } from "react-icons/md";
 import { GrDocumentPdf } from "react-icons/gr";
+import { FaFileWord, FaFilePowerpoint } from "react-icons/fa";
+import { AiFillFileUnknown } from "react-icons/ai"
 import moment from 'moment';
 import axios from 'axios';
 import config from '../../../config';
+import EmptyResources from './EmptyResource';
 
-const Resources = ({ resources }) => {
-
+const Resources = ({ resources, course, empty }) => {
   return (
     <div className='resources'>
-      <div className="resourcesContainer">
+      {empty ? (<div className="resourcesContainer mxH570">
         {resources.map((p) => (
-          <Resource resource={p} key={p._id} />
+          <Resource resource={p} key={p._id} course={course} />
         ))}
       </div>
+      ) : (<EmptyResources />)}
     </div>
   )
 }
 
-const Resource = ({ resource }) => {
+const Resource = ({ resource, course }) => {
   const formattedDate = moment(resource.createdAt).format("Do MMM, h:mm a");
-  const [files, setFiles] = resource.files;
 
   return (
     <div className="resource">
@@ -30,7 +32,7 @@ const Resource = ({ resource }) => {
           <MdOutlineAssignment className='icon8' />
           <div className="resourceDetails">
             <h2>{resource.title}</h2>
-            <h3>COSC 302: Data Structure And Algorithms</h3>
+            <h3>{`${course.courseabrev}: ${course.title}`}</h3>
           </div>
         </div>
         <div className="date">{formattedDate}</div>
@@ -40,7 +42,7 @@ const Resource = ({ resource }) => {
         <div className="resourceFiles">
           <div className="files">
             {resource.files.map((p) => (
-              <File file={p} key={p._id} id={resource._id} />
+              <File file={p} key={p} id={resource._id} />
             ))}
           </div>
         </div>
@@ -51,29 +53,60 @@ const Resource = ({ resource }) => {
 }
 
 const File = ({ file, id }) => {
-  const handleDownload = async (file) => {
-    try {
-      const response = await axios.get(`${config.baseURL}/coursematerial/${id}/file/${file._id}`, {
-        responseType: 'blob'
-      });
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', file.filename);
-      document.body.appendChild(link);
-      link.click();
-    } catch (error) {
-      console.error(error);
+  //Get class resources
+  const [fileDets, setFileDets] = useState(null)
+  useEffect(() => {
+    const fetchFileDets = async () => {
+      const res = await axios.get(`${config.baseURL}/coursematerialfile/${file}/`);
+      setFileDets(res.data);
+    };
+    fetchFileDets();
+  }, [file]);
+
+  const handleDownload = async () => {
+    const fileUrl = fileDets.fileUrl
+    const fileName = fileDets.fileName
+    const res = await axios.get(fileUrl, {
+      responseType: 'blob'
+    });
+    const url = window.URL.createObjectURL(new Blob([res.data]));
+    const link = document.createElement('a');
+    link.href = url;
+    const fileExt = fileUrl.substring(fileUrl.lastIndexOf('.') + 1);
+    link.setAttribute('download', `${fileName}.${fileExt}`);
+    document.body.appendChild(link);
+    link.click();
+  };
+
+
+  const getFileIcon = (fileExt) => {
+    switch (fileExt) {
+      case "pdf":
+        return <GrDocumentPdf className="icon8 " />;
+      case "doc":
+      case "docx":
+        return <FaFileWord className="icon8 word" />;
+      case "ppt":
+      case "pptx":
+        return <FaFilePowerpoint className="icon8 ppt" />;
+      default:
+        return <AiFillFileUnknown className="icon8 " />;
     }
   };
+
   return (
-    <div className="file">
-      <GrDocumentPdf className='icon8 red1' />
-      <div className="filename" onClick={() => handleDownload(file)}>
-        <h2>{file.filename}</h2>
-        <h3>PDF</h3>
-      </div>
-    </div>
+    <div className="file" onClick={handleDownload}>
+      {fileDets && <>
+        {getFileIcon(fileDets.fileUrl.substring(fileDets.fileUrl.lastIndexOf('.') + 1))}
+        <div className="filename" >
+          <h2 style={{
+            overflow: "hidden",
+            textOverflow: "ellipsis"
+          }}>{fileDets.fileName}</h2>
+          <h3 style={{ textTransform: "uppercase" }}>{fileDets.fileUrl.substring(fileDets.fileUrl.lastIndexOf('.') + 1)}</h3>
+        </div>
+      </>}
+    </div >
   )
 }
 

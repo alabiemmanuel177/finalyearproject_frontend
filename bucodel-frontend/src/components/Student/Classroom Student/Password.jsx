@@ -52,7 +52,7 @@ const Password = ({ student }) => {
                 </div>
 
             </div>
-            <PasswordChange open={open} setOpen={setOpen} handleSubmit={handleSubmit} />
+            <PasswordChange open={open} setOpen={setOpen} handleSubmit={handleSubmit} error={error} />
 
         </div>
     )

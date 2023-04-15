@@ -3,6 +3,7 @@
     padding: 0;
     margin: 0;
     height: 100%;
+    overflow: hidden;
     width: 100%;
     display: grid;
     grid-template-rows: 100px calc(100vh - 100px);
@@ -28,6 +29,34 @@
     border-right: 1px solid lightgray;
 }
 
+.page-header-menu {
+    width: 100%;
+    padding-right: 75px;
+}
+
+.pclassroomContainer {
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    height: 100%;
+}
+
+.page-util-details {
+    margin-left: 12px;
+}
+
+.page-util-details h3 {
+    font-size: medium;
+    margin: 0;
+    font-weight: bold;
+}
+
+.page-util-details h5 {
+    font-size: small;
+    margin: 5px 0 0 0;
+}
+
 /* Admin Sidebar Styling */
 .page-sidebar-root {
     height: 100%;
@@ -49,7 +78,7 @@
     text-transform: none;
     width: 100%;
     text-align: left;
-    margin: 5px 0;
+    margin: 12.5px 0;
     padding: 10px 15px;
     display: flex;
     align-items: center;
@@ -76,3 +105,8 @@
     color: black;
 }
 
+.page-output {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}

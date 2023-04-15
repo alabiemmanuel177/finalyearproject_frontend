@@ -8,7 +8,7 @@ import Courses from "./views/Student/Classroom/Courses";
 import Assignment from "./views/Student/Classroom/Assignment";
 import Settings from "./views/Student/Classroom/Settings";
 import Classes from "./views/Student/Classroom/Classes";
-import Meeting from "./views/Student/Meeting";
+import Meeting from "../src/views/Test/Meeting";
 import DoAssignment from "./views/Student/DoAssignment";
 import LecturerPasswordReset from "./views/Lecturer/LecturerPasswordReset";
 import LecturerLogin from "./views/Lecturer/LecturerLogin";
@@ -23,13 +23,15 @@ import LecturerAssignments from "./views/Lecturer/Classroom/LecturerAssignments"
 import LecturerDoassignment from "./views/Lecturer/LecturerDoassignment";
 import LandingPage from "./views/LandingPage";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import LecturerCourses from "./views/Lecturer/Classroom/LecturerCourses";
 import LecturerClasses from "./views/Lecturer/Classroom/LecturerClasses";
 import { useContext } from "react";
 import {
   studentContext,
   lecturerContext,
-  // adminContext,
+  adminContext,
 } from "./context/Context";
 
 import {
@@ -38,6 +40,9 @@ import {
   LecturerContextProvider,
 } from "./context/Context";
 import AdminClass from "./views/Admin/Page/AdminClass";
+import AdminDatabase from "./views/Admin/Page/AdminDatabase";
+import AdminSettings from "./views/Admin/AdminSettings";
+import SMeeting from "./views/Student/Meeting";
 
 const theme = createTheme({
   palette: {
@@ -50,7 +55,7 @@ const theme = createTheme({
 export const App = () => {
   const { student } = useContext(studentContext);
   const { lecturer } = useContext(lecturerContext);
-  //const { admin } = useContext(adminContext);
+  const { admin } = useContext(adminContext);
 
   return (
     <ThemeProvider theme={theme}>
@@ -63,8 +68,8 @@ export const App = () => {
             <Route element={<Login />} path="/login" />
             <Route element={<PasswordReset />} path="/passwordreset" />
             <Route
-              element={student ? <Meeting student={student} /> : <Login />}
-              path="/meeting"
+              element={student ? <SMeeting student={student} /> : <Login />}
+              path="/meeting/:id"
             />
             <Route
               element={student ? <Classroom student={student} /> : <Login />}
@@ -98,6 +103,10 @@ export const App = () => {
             "Lecturer"
             <Route element={<LecturerLogin />} path="/lecturerlogin" />
             <Route element={<LecturerPasswordReset />} path="/lecturerreset" />
+            <Route
+              element={lecturer ? <Meeting lecturer={lecturer} /> : <Login />}
+              path="/lecturermeeting/:id"
+            />
             <Route
               element={
                 lecturer ? (
@@ -138,15 +147,29 @@ export const App = () => {
           <Routes>
             "Admin"
             <Route element={<AdminLogin />} path="/adminlogin" />
-            {/* <Route element={<AdminPage />} path="/adminpage" /> */}
             <Route
-              element={
-                lecturer ? <AdminPage lecturer={lecturer} /> : <AdminLogin />
-              }
+              element={admin ? <AdminPage admin={admin} /> : <AdminLogin />}
             >
-              <Route element={<AdminDashboard />} path="/admindashboard" />
-              <Route element={<AdminCourses />} path="/admincourses" />
-              <Route element={<AdminClass />} path="/adminclass" />
+              <Route
+                element={<AdminDashboard admin={admin} />}
+                path="/admindashboard"
+              />
+              <Route
+                element={<AdminCourses admin={admin} />}
+                path="/admincourses"
+              />
+              <Route
+                element={<AdminClass admin={admin} />}
+                path="/adminclass/:id"
+              />
+              <Route
+                element={<AdminDatabase admin={admin} />}
+                path="/admindatabase"
+              />
+              <Route
+                element={<AdminSettings admin={admin} />}
+                path="/adminsettings"
+              />
             </Route>
           </Routes>
         </AdminContextProvider>

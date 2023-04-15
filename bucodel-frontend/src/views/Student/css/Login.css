@@ -25,7 +25,7 @@
 }
 .logintext h1,
 span {
-  color: white;
+  color: inherit;
 }
 .logintext h3 {
   color: rgb(177, 169, 169);

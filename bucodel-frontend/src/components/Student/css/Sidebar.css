@@ -47,11 +47,12 @@
   border-radius: 6px;
   margin-top: 12px;
   margin-bottom: 12px;
-  background-color: white;
+  background: #0a3697;
   text-align: left;
   font-size: 16px;
   font-family: Circular Std;
   border: 0;
+  color: whitesmoke;
 }
 .settingButton {
   align-self: center;
@@ -62,14 +63,20 @@
   margin-left: 16px;
   margin-right: 16px;
 }
-.active {
-  /* background-color: rgba(10, 54, 151, 0.04) !important; */
-  /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
-}
+
 .logoutButton {
   border-radius: 6px;
   background-color: white;
   font-size: 13px;
   font-family: Circular Std;
   color: #0a3697;
+}
+.active {
+  border-radius: 6px;
+  background-color: #0a3697;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  color: white !important;
+}
+.mgt200{
+  margin-top: 300px !important;
 }

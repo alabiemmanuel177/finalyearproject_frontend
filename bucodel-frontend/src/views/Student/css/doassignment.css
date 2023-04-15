@@ -74,7 +74,7 @@
 }
 .addFile {
   width: 295px;
-  height: 44px;
+  height: 44px !important;
   background: #0a3697;
   border-radius: 4px;
   font-family: "Circular Std";
@@ -83,6 +83,20 @@
   font-size: 16px;
   line-height: 24px;
   color: #ffffff;
+  border: 0;
+}
+.addFile2 {
+  /* width: 295px; */
+  height: 84px !important;
+  background: #0a3697;
+  border-radius: 4px;
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+  border: 0;
 }
 .Create {
   width: 295px;
@@ -95,4 +109,33 @@
   font-size: 16px;
   line-height: 24px;
   color: #1d1a1a;
+}
+.green {
+  color: green !important;
+  font-weight: bolder;
+}
+main {
+  width: 70%;
+  margin: auto;
+  text-align: center;
+}
+
+main button {
+  margin-top: 20px;
+  background-color: #2d8cff;
+  color: #ffffff;
+  text-decoration: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
+  display: inline-block;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+main button:hover {
+  background-color: #2681f2;
 }

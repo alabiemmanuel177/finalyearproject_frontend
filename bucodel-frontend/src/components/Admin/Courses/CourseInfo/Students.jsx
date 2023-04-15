@@ -1,81 +1,102 @@
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
-import React from 'react';
-import { BsPerson } from 'react-icons/bs';
-import { styled } from '@mui/system';
-import { Search } from '@mui/icons-material';
-import { AiOutlineMore } from 'react-icons/ai';
+import { CancelOutlined, PersonOutline, Search } from '@mui/icons-material'
+import { IconButton, Menu, MenuItem } from '@mui/material'
+import React from 'react'
+import { AiOutlineMore } from 'react-icons/ai'
 
-export default function Students() {
-    function createData(name, matricId, year, school, department) {
-        return {name, matricId, year, school, department}
-    }
+function TableItem({ name, year, matricId, department, school }) {
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
-    const rows = [
-        createData('Izu Onisokumen Preye', '19/1485', 400, 'CES', 'Software Engineering'),
-        createData('Izu Onisokumen Preye', '19/1485', 400, 'CES', 'Software Engineering'),
-        createData('Izu Onisokumen Preye', '19/1485', 400, 'CES', 'Software Engineering'),
-        createData('Izu Onisokumen Preye', '19/1485', 400, 'CES', 'Software Engineering'),
-        createData('Izu Onisokumen Preye', '19/1485', 400, 'CES', 'Software Engineering'),
-        createData('Izu Onisokumen Preye', '19/1485', 400, 'CES', 'Software Engineering'),
-        createData('Izu Onisokumen Preye', '19/1485', 400, 'CES', 'Software Engineering'),
-        createData('Izu Onisokumen Preye', '19/1485', 400, 'CES', 'Software Engineering'),
-        createData('Izu Onisokumen Preye', '19/1485', 400, 'CES', 'Software Engineering'),
-        createData('Izu Onisokumen Preye', '19/1485', 400, 'CES', 'Software Engineering'),
-        createData('Izu Onisokumen Preye', '19/1485', 400, 'CES', 'Software Engineering'),
-    ]
+    const id = open ? 'student-more-button' : undefined
 
-    const StyledTableRow = styled(TableRow)(({ theme }) => ({
-        '& > *': {
-            border: 0,
-        },
-        '&:nth-of-type(odd)': {
-          backgroundColor: theme.palette.action.hover,
-        },
-        // hide last border
-        '&:last-child td, &:last-child th': {
-          border: 0,
-        },
-      }));
+    return (
+        <li className='custom-table-item'
+            style={{
+                display: 'flex',
+                alignItems: 'center',
+                width: '100%',
+                margin: '0',
+                padding: '10px 20px'
+            }}
+        >
+            <div style={{ width: '32.5%', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', margin: '0' }}>
+                <PersonOutline sx={{ marginRight: '15px' }} />
+                <h6 style={{ fontSize: '0.9rem', margin: '0', width: '100%' }}>{name}</h6>
+            </div>
+            <div style={{ fontSize: '0.9rem', width: '13.3%', }}>{matricId}</div>
+            <div style={{ fontSize: '0.9rem', width: '13.3%', }}>{year}</div>
+            <div style={{ fontSize: '0.9rem', width: '13.3%', }}>{school}</div>
+            <div style={{ fontSize: '0.9rem', width: '22.5%', }}>{department}</div>
+            <div style={{ width: '5%' }}>
+                <IconButton
+                    id="item-button"
+                    aria-controls={open ? 'item-menu' : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={open ? 'true' : undefined}
+                    onClick={handleClick}
+                >
+                    <AiOutlineMore />
+                </IconButton>
+                <Menu
+                    id='item-menu'
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClose}
+                    MenuListProps={{
+                        'aria-labelledby': 'item-button',
+                    }}
+                    sx={{ borderRadius: '10px' }}
+                >
+                    <MenuItem style={{ color: 'red', display: 'flex', padding: '8px 20px 8px 15px', justifyContent: 'flex-start', alignItems: 'center' }}>
+                        <CancelOutlined style={{ marginRight: '5px', fontSize: '1.1rem' }} />
+                        <h6 style={{ margin: '0 5px 0 0', fontSize: '0.9rem' }}>Remove</h6>
+                    </MenuItem>
+                </Menu>
+            </div>
+        </li>
+    )
+}
 
-  return (
-    <div style={{ padding: '0', width: '100%' }}>
-        <div style={{ padding: '12px 30px', borderTop: '1px solid lightgray', borderBottom: '1px solid lightgray', display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
-            <Search style={{ height: '25px', width: '25px', color: 'gray', marginRight: '6px' }}/>
-            <input style={{ border: 0, height: '100%', width: '100%', outline: 'none'}} placeholder='Search'/>
+function Student2({ students }) {
+    return (
+        <div style={{ width: '100%' }}>
+            <div style={{ padding: '7px 30px', borderTop: '1px solid lightgray', borderBottom: '1px solid lightgray', display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
+                <Search style={{ height: '25px', width: '25px', color: 'gray', marginRight: '6px' }} />
+                <input style={{ border: 0, height: '100%', width: '100%', outline: 'none' }} placeholder='Search' />
+            </div>
+            <div style={{ padding: '0', margin: '0', }}>
+                <li
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        width: '100%',
+                        margin: '0',
+                        padding: '12px 20px',
+                        borderBottom: '1px solid lightgray',
+                        fontSize: '0.9rem',
+                        fontWeight: 'bold',
+                    }}
+                >
+                    <div style={{ width: '31.7%', }}>Name</div>
+                    <div style={{ width: '13.1%', }}>Matric ID</div>
+                    <div style={{ width: '13.2%', }}>Year</div>
+                    <div style={{ width: '13.2%', }}>School</div>
+                    <div style={{ width: '27.5%', }}>Department</div>
+                </li>
+                <div style={{ height: 'calc(100vh - 330px)', width: '100%', overflow: 'hidden auto', }}>
+                    {students.map((student) => (
+                        <TableItem name={`${student.lastname} ${student.firstname} ${student.middlename}`} year={student.level} school={student.department.school.abrev} department={student.department.name} matricId={student.matricno} />
+                    ))}
+                </div>
+            </div>
         </div>
-        <div>
-            <TableContainer sx={{ m: 0, p: 2, margin: 0 }} component={Paper}>
-                <Table>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell sx={{ fontWeight: 'bold' }}>Name</TableCell>
-                            <TableCell sx={{ fontWeight: 'bold' }} align='left'>Matric ID</TableCell>
-                            <TableCell sx={{ fontWeight: 'bold' }} align='left'>Year</TableCell>
-                            <TableCell sx={{ fontWeight: 'bold' }} align='left'>School</TableCell>
-                            <TableCell sx={{ fontWeight: 'bold' }} align='left'>Department</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {rows.map((row) => (
-                            <StyledTableRow key={row.name}>
-                                <TableCell component={'th'} scope='row'>
-                                    <BsPerson style={{ fontSize: '28px', marginRight: '10px' }}/> {row.name}
-                                </TableCell>
-                                <TableCell align='left'>{row.matricId}</TableCell>
-                                <TableCell align='left'>{row.year}</TableCell>
-                                <TableCell align='left'>{row.school}</TableCell>
-                                <TableCell align='left'>
-                                    <div  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: 0}}>
-                                        {row.department} 
-                                        <AiOutlineMore/>
-                                    </div>
-                                </TableCell>
-                            </StyledTableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-        </div>
-    </div>
-  )
-} 
+    )
+}
+
+export default Student2
