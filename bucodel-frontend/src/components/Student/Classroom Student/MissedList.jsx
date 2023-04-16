@@ -3,14 +3,20 @@ import '../css/assignmentList.css'
 import { Link } from 'react-router-dom';
 import { BsRecordCircleFill } from "react-icons/bs";
 import moment from 'moment';
+import EmptyAssignment from './EmptyAssignment';
+import { Skcourse } from '../../Skeleton Loader/dasboardMetrics';
 
-const MissedList = ({ missedAssignments }) => {
+const MissedList = ({ missedAssignments, isMissedAssignments, empty1 }) => {
     return (
-        <div className="assignmentList">
-            {missedAssignments.map((p) => (
-                <Assignment missedAssignment={p} key={p._id} />
-            ))}
-        </div>
+        <> {isMissedAssignments ? <Skcourse /> : <>{!empty1 ? (
+            <div className="assignmentList">
+                {missedAssignments.map((p) => (
+                    <Assignment missedAssignment={p} key={p._id} />
+                ))}
+            </div>
+        ) : (<EmptyAssignment />)}
+        </>}
+        </>
     )
 }
 

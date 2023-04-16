@@ -11,19 +11,27 @@ import { FaFilePowerpoint, FaFileWord } from 'react-icons/fa';
 import { AiFillFileUnknown } from 'react-icons/ai';
 import CommentProfilePicture from '../../ProfilePics/CommentProfilePicture';
 import moment from 'moment';
+import { SkgroupCont } from '../../Skeleton Loader/dasboardMetrics';
 
-function Groups({ group, empty, leader, student }) {
+function Groups({ group, empty, leader, student, isGroup }) {
     const [groupPost, setGroupPost] = useState([])
+    const [isGroupPost, setIsGroupPost] = useState(true)
     useEffect(() => {
         const fetchGroup = async () => {
-            const res = await axios.get(`${config.baseURL}/grouppost/group/${group._id}`);
-            setGroupPost(res.data);
+            if (group && group._id) { // Add this conditional check
+                const res = await axios.get(`${config.baseURL}/grouppost/group/${group._id}`);
+                setGroupPost(res.data);
+                setIsGroupPost(false)
+            }
         };
         fetchGroup();
-    }, []);
+    }, [group]); // Update the dependency array to include 'group'
+
+    const shouldRenderSkeletons = isGroupPost || isGroup;
+
 
     return (
-        <> {empty ? (
+        <> {shouldRenderSkeletons ? <SkgroupCont /> : <>{empty ? (
             <div style={{ height: '', overflow: 'hidden auto', display: 'grid', gridTemplateColumns: '70% 30%', padding: '20px' }}>
                 <div className="groupContainer">
                     <div style={{ marginRight: '10px', border: '1px solid lightgray', borderRadius: '10px' }}>
@@ -38,7 +46,7 @@ function Groups({ group, empty, leader, student }) {
                     <GroupMembers group={group} leader={leader} />
                 </div>
             </div>
-        ) : (<EmptyGroup />)}
+        ) : (<EmptyGroup />)} </>}
         </>
     )
 }

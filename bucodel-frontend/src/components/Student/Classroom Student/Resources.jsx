@@ -8,17 +8,20 @@ import moment from 'moment';
 import axios from 'axios';
 import config from '../../../config';
 import EmptyResources from './EmptyResource';
+import { SkResources } from '../../Skeleton Loader/dasboardMetrics';
 
-const Resources = ({ resources, course, empty }) => {
+const Resources = ({ resources, course, empty, isResources }) => {
   return (
-    <div className='resources'>
+    <>{isResources ? <SkResources /> : <div className='resources'>
       {empty ? (<div className="resourcesContainer mxH570">
         {resources.map((p) => (
           <Resource resource={p} key={p._id} course={course} />
         ))}
       </div>
       ) : (<EmptyResources />)}
-    </div>
+    </div>}
+    </>
+
   )
 }
 

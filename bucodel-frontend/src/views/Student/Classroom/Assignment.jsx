@@ -38,12 +38,13 @@ const Assignment = ({ student }) => {
         localStorage.setItem('saactiveTab', newValue); // Store the active tab value in localStorage
     };
     const [empty, setEmpty] = useState(false);
-
     const [assignedAssignments, setAssignedAssignments] = useState([])
+    const [isAssignedAssignments, setIsAssignedAssignments] = useState(true)
     useEffect(() => {
         const fetchAssignedAssignments = async () => {
             const res = await axios.get(`${config.baseURL}/student/${student._id}/assignments/notsubmitted`);
             setAssignedAssignments(res.data);
+            setIsAssignedAssignments(false)
             if (!assignedAssignments) {
                 setEmpty(true)
             }
@@ -51,20 +52,33 @@ const Assignment = ({ student }) => {
         fetchAssignedAssignments();
     }, [student]);
 
+    const [empty1, setEmpty1] = useState(false);
     const [missedAssignments, setMissedAssignments] = useState([])
+    const [isMissedAssignments, setIsMissedAssignments] = useState(true)
     useEffect(() => {
         const fetchMissedAssignments = async () => {
             const res = await axios.get(`${config.baseURL}/student/assignments/missed/${student._id}`);
             setMissedAssignments(res.data);
+            setIsMissedAssignments(false)
+            if (missedAssignments.length == 0) {
+                setEmpty1(true)
+            }
         };
         fetchMissedAssignments();
-    },);
+    }, [student]);
 
+
+    const [empty2, setEmpty2] = useState(false);
     const [doneAssignments, setDoneAssignments] = useState([])
+    const [isDoneAssignments, setIsDoneAssignments] = useState(true)
     useEffect(() => {
         const fetchDoneAssignments = async () => {
             const res = await axios.get(`${config.baseURL}/student/assignments/submitted/${student._id}`);
             setDoneAssignments(res.data);
+            setIsDoneAssignments(false)
+            if (!doneAssignments) {
+                setEmpty2(true)
+            }
 
         };
         fetchDoneAssignments();
@@ -84,9 +98,9 @@ const Assignment = ({ student }) => {
                             <Tab sx={{ fontWeight: 'bold', color: 'black', paddingBottom: 0, textTransform: 'none' }} value={'3'} label='Done' />
                         </TabList>
                     </div>
-                    <TabPanel sx={{ p: 0 }} value={'1'}><AssignmentList assignedAssignments={assignedAssignments} empty={empty} /></TabPanel>
-                    <TabPanel sx={{ p: 0 }} value={'2'}><MissedList missedAssignments={missedAssignments} /></TabPanel>
-                    <TabPanel sx={{ p: 0 }} value={'3'}><DoneList doneAssignments={doneAssignments} /></TabPanel>
+                    <TabPanel sx={{ p: 0 }} value={'1'}><AssignmentList assignedAssignments={assignedAssignments} empty={empty} isAssignedAssignments={isAssignedAssignments} /></TabPanel>
+                    <TabPanel sx={{ p: 0 }} value={'2'}><MissedList missedAssignments={missedAssignments} isMissedAssignments={isMissedAssignments} empty1={empty1} /></TabPanel>
+                    <TabPanel sx={{ p: 0 }} value={'3'}><DoneList doneAssignments={doneAssignments} isDoneAssignments={isDoneAssignments} empty2={empty2} /></TabPanel>
                 </TabContext>
             </div>
         </div>

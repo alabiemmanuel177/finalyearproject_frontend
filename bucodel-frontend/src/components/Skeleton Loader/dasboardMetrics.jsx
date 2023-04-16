@@ -31,7 +31,6 @@ export const SkddashboardAssignment = () => {
     )
 }
 
-
 export const SkdashboardNotice = () => {
     return (
         <div className="skdashboardNotice">
@@ -46,22 +45,86 @@ export const SkdashboardNotice = () => {
 
 export const Skcourse = () => {
     return (
-        <div className="skcourse">
+        <div className="skcourseList">
+            <div className="skcourse">
+
+            </div>
+            <div className="skcourse">
+
+            </div>
+            <div className="skcourse">
+
+            </div>
+            <div className="skcourse">
+
+            </div>
+            <div className="skcourse">
+
+            </div>
+            <div className="skcourse">
+
+            </div>
+            <div className="skcourse">
+
+            </div>
+            <div className="skcourse">
+
+
+            </div>
+        </div>
+
+    )
+}
+
+export const SkclassTitle = () => {
+    return (
+        <div className="skclassTitle">
+            <div className="skclassTitleh3"></div>
+            <div className='flexrow'>
+                <div className="skclassTitleh5"></div>
+            </div>
+        </div>
+    )
+}
+
+export const Sknewpost = () => {
+    return (
+        <div className="sknewPost" >
 
         </div>
     )
 }
 
+export const SkpostCont = () => {
+    return (
+        <div className="skexistingPost">
 
-export const SkResources = () => {
-  return (
-    <div className="SkResources">
-        
-    </div>
-  )
+        </div>
+    )
 }
 
+export const SkgroupCont = () => {
+    return (
+        <div style={{ height: '', overflow: 'hidden auto', display: 'grid', gridTemplateColumns: '70% 30%', padding: '20px' }}>
+
+            <div className='skgroupCont' style={{ marginRight: '10px', border: '1px solid lightgray', borderRadius: '10px' }}>
+
+            </div>
+        </div>
+    )
+}
+
+export const SkResources = () => {
+    return (
+        <div className="skresourcesContainer mxH570">
+            <div className="skresource">
 
 
+            </div>
+            <div className="skresource">
 
 
+            </div>
+        </div>
+    )
+}

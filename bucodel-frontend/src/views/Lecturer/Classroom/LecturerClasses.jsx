@@ -104,7 +104,7 @@ const LecturerClasses = ({ lecturer }) => {
                     <TabPanel sx={{ p: 0 }} value={'2'}><People course={id} /></TabPanel>
                     <TabPanel sx={{ p: 0 }} value={'3'}><Groups groups={groups} empty={empty} course={id} clazz={clazz} lecturer={lecturer} /></TabPanel>
                     <TabPanel sx={{ p: 0 }} value={'4'}><LecturerResources resources={resources} course={course} empty={emptyRes} /></TabPanel>
-                    <TabPanel sx={{ p: 0 }} value={'5'}><Gradebook /></TabPanel>
+                    <TabPanel sx={{ p: 0 }} value={'5'}><Gradebook course={id} /></TabPanel>
                 </TabContext>
             </div>
         </div>

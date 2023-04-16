@@ -20,10 +20,12 @@ socket.on('LECTURER_UPLOADED_NEW_COURSES', (message) => {
 
 const Courses = ({ student }) => {
 
-  const [value, setValue] = useState('Overview');
+  const [value, setValue] = useState(localStorage.getItem('scactiveTab') || 'Overview'); // Initialize the active tab value from localStorage, or default to '1'
+
   const handleChange = (event, newValue) => {
-    setValue(newValue)
-  }
+    setValue(newValue);
+    localStorage.setItem('scactiveTab', newValue); // Store the active tab value in localStorage
+  };
   const id = student.class
 
   //Get Courses from class

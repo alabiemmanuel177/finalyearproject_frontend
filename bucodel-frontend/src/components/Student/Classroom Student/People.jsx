@@ -65,7 +65,7 @@ export function PeopleCardG({ name, p, leader }) {
     return (
         <div className='peoplelistcard' style={{ padding: '0 5px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '12px 0' }}>
             <div style={{ display: 'flex', alignItems: 'center', }}>
-                <CommentProfilePicture className='icon4' />
+                <CommentProfilePicture className='icon4' student={p} />
 
                 <h6 style={{ margin: 0 }}>{name}</h6>
             </div>

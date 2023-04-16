@@ -12,6 +12,7 @@ import { SkdashboardMetrics } from '../../../components/Skeleton Loader/dasboard
 import { SkdasboardContentBody } from '../../../components/Skeleton Loader/dasboardMetrics';
 import { SkddashboardAssignment } from '../../../components/Skeleton Loader/dasboardMetrics';
 import { SkdashboardNotice } from '../../../components/Skeleton Loader/dasboardMetrics';
+
 const Dashboard = ({ student }) => {
   const [courseCount, setCourseCount] = useState("");
   const [isCCFetching, setIsCCFetching] = useState(true);
@@ -57,13 +58,16 @@ const Dashboard = ({ student }) => {
     };
     fetchAssignedAssignments();
   }, [student._id]);
+
+  const shouldRenderSkeletons = isCCFetching || isAssignmentCountFetching || isNotices;
+
   return (
     <div className="dashboard">
       <div className="dashboardBody" >
         <div className="metricsbody">
           <div className="dashboardMetrics flexrow" >
 
-            {isCCFetching ? <SkdashboardMetrics /> :
+            {shouldRenderSkeletons ? <SkdashboardMetrics /> :
               <div className="dashboardCourses w222h98" >
                 <h4>Courses this semester</h4>
                 <div className='flexrow sb'>
@@ -73,7 +77,7 @@ const Dashboard = ({ student }) => {
                   </div>
                 </div>
               </div>}
-            {isAssignmentCountFetching ? <SkdashboardMetrics /> :
+            {shouldRenderSkeletons ? <SkdashboardMetrics /> :
               <div className="dashboardAssignments w222h98">
                 <h4>Assignments</h4>
                 <div className='flexrow sb'>
@@ -83,7 +87,7 @@ const Dashboard = ({ student }) => {
                   </div>
                 </div>
               </div>}
-            {isAssignmentCountFetching ? <SkdashboardMetrics /> :
+            {shouldRenderSkeletons ? <SkdashboardMetrics /> :
               <div className="dashboardLevel w222h98">
                 <h4>Level</h4>
                 <div className='flexrow sb'>
@@ -107,7 +111,7 @@ const Dashboard = ({ student }) => {
             </div>}</div>
         <div className="assnoticeblody">
           <div className="dashboardAssignmentNoticeBoard flexrow sb">
-            {isAssignedAssignments ? <SkddashboardAssignment /> :
+            {shouldRenderSkeletons ? <SkddashboardAssignment /> :
               <div className="dashboardAssignment" style={{ overflow: 'hidden auto' }}>
                 <div className='flexrow sb ac'>
                   <h4>Assignment</h4>
@@ -120,7 +124,7 @@ const Dashboard = ({ student }) => {
                 </div>
 
               </div>}
-            {isNotices ? <SkdashboardNotice /> :<div className="dashboardNotice">
+            {shouldRenderSkeletons ? <SkdashboardNotice /> : <div className="dashboardNotice">
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <h4>Notice</h4>
               </div>

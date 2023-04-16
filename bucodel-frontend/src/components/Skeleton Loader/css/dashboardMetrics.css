@@ -52,16 +52,18 @@
   animation: loader-animation 1s infinite ease-in-out;
 }
 
-.skdashboardNotice{
+.skdashboardNotice {
   border: 2px solid rgba(0, 0, 0, 0.12);
   border-radius: 4px;
-  width: 45% ;
+  width: 45%;
   height: 400px !important;
   padding: 20px;
   background: #f0f0f0;
   animation: loader-animation 1s infinite ease-in-out;
 }
-.skcourse{
+.skcourse {
+  margin-right: 15px;
+  margin-top:20px;
   margin-bottom: 40px;
   border-radius: 8px;
   width: 240px;
@@ -69,12 +71,104 @@
   background: #f0f0f0;
   animation: loader-animation 1s infinite ease-in-out;
 }
-.SkResources{
+.skcourseList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 0 15px;
+  height: 100%;
+}
+.SkResources {
   width: 1022px;
   height: 275px;
   background: #f0f0f0;
   animation: loader-animation 1s infinite ease-in-out;
 }
+.skclassTitleh3 {
+  width: 400px;
+  height: 29px;
+  background: #f0f0f0;
+  animation: loader-animation 1s infinite ease-in-out;
+}
+.skclassTitleh5 {
+  margin-top: 20px;
+  width: 140px;
+  height: 20px;
+  background: #f0f0f0;
+  animation: loader-animation 1s infinite ease-in-out;
+}
+.sknewPost {
+  display: flex;
+  flex-direction: row;
+  width: 90% !important;
+  height: 59px;
+  background: #f0f0f0;
+  animation: loader-animation 1s infinite ease-in-out;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.skexistingPost {
+  width: 90% !important;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  background: #f0f0f0;
+  animation: loader-animation 1s infinite ease-in-out;
+  height: 162px;
+}
+.skgroupCont {
+  width: 730px;
+  height: 500px;
+  background: #f0f0f0;
+  animation: loader-animation 1s infinite ease-in-out;
+}
+.skresourcesContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  overflow-y: scroll;
+}
+.skresource {
+  width: 1022px;
+  height: 274px;
+  margin: 15px 10px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  background-color: #f0f0f0;
+  animation: loader-animation 1s infinite ease-in-out;
+}
+.skcolor1 {
+  background: #f0f0f0;
+  animation: loader-animation 1s infinite ease-in-out;
+  width: 100%;
+  border-radius: 20px 20px 0px 0px;
+  display: flex;
+  flex-direction: row;
+}
+.skresourceContent {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 15px;
+  width: 100%;
+  background: #f0f0f0;
+  animation: loader-animation 1s infinite ease-in-out;
+}
+.skfile {
+  border: 1.5px solid rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  width: 313px;
+  height: 86px;
+  background: #f0f0f0;
+  animation: loader-animation 1s infinite ease-in-out;
+}
+
 @keyframes loader-animation {
   0% {
     opacity: 0.7;

@@ -7,12 +7,14 @@ import axios from 'axios';
 import { Skcourse } from '../../Skeleton Loader/dasboardMetrics';
 
 const CourseList = ({ courses, isCourses }) => {
-    return (
-        <div className="courseList">
+    return (<>
+        {isCourses ? <Skcourse /> : <div className="courseList">
             {courses.map((p) => (
                 <CourseCard course={p} key={p._id} isCourses={isCourses} />
             ))}
-        </div>
+        </div>}
+    </>
+
     )
 }
 const CourseCard = ({ course, isCourses }) => {
@@ -28,7 +30,7 @@ const CourseCard = ({ course, isCourses }) => {
     return (
         <div className='maincourse'>
             <Link to={`/class/${course._id}`} style={{ textDecoration: 'none', height: '192px' }}>
-                {isCourses ? <Skcourse /> : <div className="course">
+                <div className="course">
                     <div className="courseTitle">
                         <h3>{course.courseabrev}</h3>
                         <h3>{course.title}</h3>
@@ -40,7 +42,7 @@ const CourseCard = ({ course, isCourses }) => {
                         </div>
                         <button disabled="disabled">{course.unit} unit</button>
                     </div>
-                </div>}
+                </div>
             </Link>
         </div>
     )

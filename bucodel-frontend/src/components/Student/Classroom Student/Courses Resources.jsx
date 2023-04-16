@@ -11,21 +11,23 @@ import { SkResources } from '../../Skeleton Loader/dasboardMetrics';
 
 const Resources = ({ resources, isResources }) => {
   return (
-    <div className='resources'>
+    <>{isResources ? <SkResources /> : <div className='resources'>
       <div className="resourcesContainer mxH570">
         {resources.map((p) => (
           <Resource resource={p} key={p._id} isResources={isResources} />
         ))}
       </div>
-    </div>
+    </div>}
+    </>
   )
 }
 
 const Resource = ({ resource, isResources }) => {
   const formattedDate = moment(resource.createdAt).format("Do MMM, h:mm a");
   return (
-    <> {isResources ? <SkResources /> 
-    : <div className="resource">
+    // <> {isResources ? <SkResources /> 
+    // : 
+    <div className="resource">
       <div className="color1">
         <div className='flexRow'>
           <MdOutlineAssignment className='icon8' />
@@ -47,7 +49,8 @@ const Resource = ({ resource, isResources }) => {
         </div>
       </div>
 
-    </div>}</>
+    </div>
+    // }</>
 
   )
 }
