@@ -4,15 +4,21 @@ import { Link } from 'react-router-dom';
 import { BsRecordCircleFill } from "react-icons/bs";
 import axios from 'axios';
 import config from '../../../config';
+import EmptyAssignment from './EmptyAssignment';
+import { Skcourse } from '../../Skeleton Loader/dasboardMetrics';
 
-const DoneList = ({ doneAssignments }) => {
+const DoneList = ({ doneAssignments, isDoneAssignments, empty2 }) => {
     return (
-        <div className="assignmentList">
-            {doneAssignments.map((p) => (
-                <Assignment doneAssignment={p.assignmentId} key={p._id} />
-            ))}
+        <> {isDoneAssignments ? <Skcourse /> : <> {!empty2 ? (
+            <div className="assignmentList">
+                {doneAssignments.map((p) => (
+                    <Assignment doneAssignment={p.assignmentId} key={p._id} />
+                ))}
 
-        </div>
+            </div>
+        ) : (<EmptyAssignment />)}</>}
+        </>
+
     )
 }
 

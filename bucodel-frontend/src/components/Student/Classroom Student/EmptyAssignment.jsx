@@ -8,7 +8,7 @@ const EmptyAssignment = () => {
             <div className="groupsSvg">
                 <MdAssignment className='icon1' />
             </div>
-            <h3>No Assignment Yet</h3>
+            <h3>No Assignment </h3>
         </div>
     )
 }

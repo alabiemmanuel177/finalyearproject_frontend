@@ -8,6 +8,7 @@ import moment from 'moment';
 import PostProfilePicture from '../../ProfilePics/PostProfilePicture';
 import CommentProfilePicture from '../../ProfilePics/CommentProfilePicture';
 import io from "socket.io-client";
+import { Sknewpost, SkpostCont } from '../../Skeleton Loader/dasboardMetrics';
 const socket = io(`${config.baseURL}`);
 
 socket.on('NEW_COMMENT', (message) => {
@@ -35,7 +36,7 @@ socket.on('CLASSPOST_DELETED', (message) => {
     window.location.reload();
 });
 
-const ClassPost = ({ posts, course, student }) => {
+const ClassPost = ({ posts, course, student, isFposts }) => {
     const [content, setContent] = useState("");
 
     const handleSubmit = async (e) => {
@@ -63,7 +64,7 @@ const ClassPost = ({ posts, course, student }) => {
     return (
         <div className="classpost" >
             <div className="post" >
-                <div className="newPost" >
+                {isFposts ? <Sknewpost /> : <div className="newPost" >
                     <div className='stream-profile-pic'>
                         <PostProfilePicture student={student} className='mgb10' />
                     </div>
@@ -73,22 +74,15 @@ const ClassPost = ({ posts, course, student }) => {
                         onChange={(e) => setContent(e.target.value)}>
                     </input>
                     <button onClick={handleSubmit}>Post</button>
-                </div>
-                <div className="postContainer">
+                </div>}
+                {isFposts ? <><SkpostCont />
+                    <SkpostCont /></> : <div className="postContainer">
                     {posts.map((p) => (
                         <ExistingPost post={p} key={p.content._id} student={student} />
                     ))}
-                </div>
+                </div>}
             </div>
-            <div className="noticeboard">
-                <h3>Classboard</h3>
-                <hr />
-                <div className="noticeContainer">
-                    {notices.map((p) => (
-                        <Notice notice={p} key={p._id} />
-                    ))}
-                </div>
-            </div>
+
         </div>
     )
 }
