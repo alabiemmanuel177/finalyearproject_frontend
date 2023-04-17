@@ -6,6 +6,7 @@ import config from '../../../config';
 
 function CreateCourseModal({ open, setOpen }) {
     const handleClose = () => setOpen(false)
+    const [isLoading, setIsLoading] = useState(false); // Add isLoading state
     const [selectedDepartment, setSelectedDepartment] = useState("");
     const [selectedLecturer, setSelectedLecturer] = useState("");
 
@@ -40,6 +41,7 @@ function CreateCourseModal({ open, setOpen }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true); // Set isLoading to true when submitting
         try {
             const res = await axios.post(`${config.baseURL}/course`, {
                 title,
@@ -116,7 +118,7 @@ function CreateCourseModal({ open, setOpen }) {
                         </div>
                         <div className='assign-bottom-btn'>
                             <Button onClick={handleClose} className='assign-main-btn' sx={{ textTransform: 'none' }} variant='outlined'>Cancel</Button>
-                            <Button className='assign-main-btn' sx={{ textTransform: 'none' }} variant='contained' onClick={handleSubmit}>Post</Button>
+                            <Button className='assign-main-btn' sx={{ textTransform: 'none' }} variant='contained' onClick={handleSubmit} disabled={isLoading}>{isLoading ? 'Posting...' : 'Post'}</Button>
                         </div>
                     </div>
                 </div>

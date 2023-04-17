@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import '../css/courseList.css'
-import { FaRegUserCircle } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import config from '../../../config';
 import axios from 'axios';
@@ -37,7 +36,6 @@ const CourseCard = ({ course, isCourses }) => {
                     </div>
                     <div className="courseLecturer">
                         <div className='lectDet'>
-                            <FaRegUserCircle className='icon2' />
                             <h3>{lecturer}</h3>
                         </div>
                         <button disabled="disabled">{course.unit} unit</button>

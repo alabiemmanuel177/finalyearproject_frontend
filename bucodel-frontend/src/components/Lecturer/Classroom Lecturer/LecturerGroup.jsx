@@ -12,13 +12,16 @@ import moment from 'moment';
 import { PeopleCardG } from '../../Student/Classroom Student/People';
 import { Button } from '@mui/material';
 import AddGroupPost from '../modal/AddGroupPost';
+import { SkgroupCont } from '../../Skeleton Loader/dasboardMetrics';
 
-function LecturerGroup({ activeGroup, leader, lecturer, course }) {
+function LecturerGroup({ activeGroup, leader, lecturer, course, isGroup }) {
     const [groupPost, setGroupPost] = useState([])
+    const [isGroupPost, setIsGroupPost] = useState(true)
     useEffect(() => {
         const fetchGroup = async () => {
             const res = await axios.get(`${config.baseURL}/grouppost/group/${activeGroup._id}`);
             setGroupPost(res.data);
+            setIsGroupPost(false)
         };
         fetchGroup();
     }, []);
@@ -26,9 +29,10 @@ function LecturerGroup({ activeGroup, leader, lecturer, course }) {
     const [open, setOpen] = useState(false)
     const handleOpen = () => setOpen(true);
 
+    const shouldRenderSkeletons = isGroupPost || isGroup;
 
     return (
-        <div style={{ height: '', overflow: 'hidden auto', display: 'grid', gridTemplateColumns: '63% 37%', padding: '20px' }}>
+        <> {shouldRenderSkeletons ? <SkgroupCont /> : <div style={{ height: '', overflow: 'hidden auto', display: 'grid', gridTemplateColumns: '63% 37%', padding: '20px' }}>
             <div>
                 <div className="addResouces">
                     <Button onClick={handleOpen} sx={{ p: '8px 20px', textTransform: 'none', fontWeight: 'bold' }} className='' variant='contained' >Post</Button>
@@ -48,7 +52,8 @@ function LecturerGroup({ activeGroup, leader, lecturer, course }) {
                 <GroupMembers group={activeGroup} leader={leader} />
             </div>
         </div>
-
+        }
+        </>
     )
 }
 

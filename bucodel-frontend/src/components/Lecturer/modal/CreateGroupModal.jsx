@@ -5,11 +5,12 @@ import { MdOutlineCancel } from 'react-icons/md';
 import axios from 'axios';
 import config from '../../../config';
 
-
-function CreateGroupModal({ open, setOpen, course, clazz }) {
+function CreateGroupModal({ open, course, handleClose, clazz }) {
     const [groupCapacity, setGroupCapacity] = useState("");
+    const [isLoading, setIsLoading] = useState(false); // Add isLoading state
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true); // Set isLoading to true when submitting
         try {
             const res = await axios.post(`${config.baseURL}/group/${course}/${clazz}/${groupCapacity}`, {
             });
@@ -22,13 +23,13 @@ function CreateGroupModal({ open, setOpen, course, clazz }) {
         <div>
             <Modal
                 open={open}
-                onClose={() => setOpen(false)}
+                onClose={() => handleClose}
             >
                 <div className='assign-modal-root'>
                     <div className='assign-modal-header'>
                         <div className='assign-modal-title'>Assignment</div>
                         <div className='assign-modal-cancel'>
-                            <MdOutlineCancel className='assign-modal-cancel' onClick={setOpen(false)} />
+                            <MdOutlineCancel className='assign-modal-cancel' onClick={handleClose} />
                         </div>
                     </div>
                     <div className='assign-modal-body'>
@@ -52,9 +53,11 @@ function CreateGroupModal({ open, setOpen, course, clazz }) {
                             <p style={{ fontSize: '0.8rem', color: 'grey' }}>{`The system will create groups with ${groupCapacity} students each, and any remaining students will be added to the last group(s) to complete the group`}</p>
                         </div>
                         <div className='assign-bottom-btn'>
-                            <Button onClick={() => setOpen(false)} className='assign-main-btn' sx={{ textTransform: 'none' }} variant='outlined'>Cancel</Button>
-                            <Button className='assign-main-btn' sx={{ textTransform: 'none' }} variant='contained' onClick={handleSubmit}>Create</Button>
-                        </div>
+                            <Button onClick={() => handleClose} className='assign-main-btn' sx={{ textTransform: 'none' }} variant='outlined'>Cancel</Button>
+                            {/* Disable the button when isLoading is true */}
+                            <Button className='assign-main-btn' sx={{ textTransform: 'none' }} variant='contained' onClick={handleSubmit} disabled={isLoading}>
+                                {isLoading ? 'Creating...' : 'Create'}
+                            </Button>                        </div>
                     </div>
 
                 </div>

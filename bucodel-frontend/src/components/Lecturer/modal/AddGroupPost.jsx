@@ -25,8 +25,10 @@ function AddGroupPost({ open, setOpen, group, lecturer }) {
     };
 
     const [setError] = useState(false)
+    const [isLoading, setIsLoading] = useState(false); // Add isLoading state
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true); // Set isLoading to true when submitting
         try {
             const formData = new FormData();
             for (let i = 0; i < files.length; i++) {
@@ -104,7 +106,7 @@ function AddGroupPost({ open, setOpen, group, lecturer }) {
                         </div>
                         <div className='assign-bottom-btn'>
                             <Button onClick={() => setOpen(false)} className='assign-main-btn' sx={{ textTransform: 'none' }} variant='outlined'>Cancel</Button>
-                            <Button className='assign-main-btn' sx={{ textTransform: 'none' }} variant='contained' onClick={handleSubmit}>Post</Button>
+                            <Button className='assign-main-btn' sx={{ textTransform: 'none' }} disabled={isLoading} variant='contained' onClick={handleSubmit}>{isLoading ? 'Creating...' : 'Create'}</Button>
                         </div>
                     </div>
                 </div>

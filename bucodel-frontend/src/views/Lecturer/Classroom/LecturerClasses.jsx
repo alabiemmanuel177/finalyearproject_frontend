@@ -10,6 +10,7 @@ import axios from 'axios';
 import config from '../../../config';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import { Tab } from '@mui/material';
+import { SkclassTitle } from '../../../components/Skeleton Loader/dasboardMetrics';
 
 const LecturerClasses = ({ lecturer }) => {
     let { id } = useParams();
@@ -21,11 +22,13 @@ const LecturerClasses = ({ lecturer }) => {
     };
     const [course, setCourse] = useState([])
     const [lecturerList, setLecturerList] = useState();
+    const [isCourse, setIsCourse] = useState(true)
     useEffect(() => {
         const fetchCourses = async () => {
             const res = await axios.get(`${config.baseURL}/course/${id}`);
             setCourse(res.data)
             setLecturerList(res.data.lecturer)
+            setIsCourse(false)
         };
         fetchCourses();
     }, [id]);
@@ -40,20 +43,24 @@ const LecturerClasses = ({ lecturer }) => {
     }, [id, lecturerList]);
 
     const [posts, setPosts] = useState([])
+    const [isFposts, setIsFPosts] = useState(true)
     useEffect(() => {
         const fetchPosts = async () => {
             const res = await axios.get(`${config.baseURL}/classpost/posts/${id}`);
             setPosts(res.data);
+            setIsFPosts(false)
         };
         fetchPosts();
     }, [id]);
 
     const [resources, setResources] = useState([])
+    const [isResources, setIsResources] = useState(true)
     const [emptyRes, setEmptyRes] = useState(false);
     useEffect(() => {
         const fetchResources = async () => {
             const res = await axios.get(`${config.baseURL}/course/${id}/materials`);
             setResources(res.data.materials);
+            setIsResources(false)
             if (res.data.materials.length > 0) {
                 setEmptyRes(true)
             }
@@ -63,10 +70,12 @@ const LecturerClasses = ({ lecturer }) => {
 
     const [groups, setGroups] = useState([])
     const [empty, setEmpty] = useState(false);
+    const [isGroup, setIsGroup] = useState(true);
     useEffect(() => {
         const fetchGroups = async () => {
             const res = await axios.get(`${config.baseURL}/group/courses/${id}/groups`);
             setGroups(res.data);
+            setIsGroup(false)
             if (res.data.length > 0) {
                 setEmpty(true)
             }
@@ -74,14 +83,15 @@ const LecturerClasses = ({ lecturer }) => {
         fetchGroups();
     }, [id]);
 
+    const shouldRenderSkeletons = isCourse;
+
     return (
         <div className="classes">
             <div className="classHead">
-                <div className="classTitle">
+                {shouldRenderSkeletons ? <SkclassTitle /> : <div className="classTitle">
                     <h4>{`Courses / ${course.courseabrev}`}</h4>
                     <h3>{`${course.courseabrev}: ${course.title} `}</h3>
-
-                </div>
+                </div>}
                 <Link to={`/lecturermeeting/${course._id}`} style={{ textDecoration: 'none' }}>
                     <div className="virtualClassButton">
                         <button >Start Virtual Class</button>
@@ -100,11 +110,11 @@ const LecturerClasses = ({ lecturer }) => {
 
                         </TabList>
                     </div>
-                    <TabPanel sx={{ p: 0 }} value={'1'}><ClassPost posts={posts} course={id} lecturer={lecturer} /></TabPanel>
+                    <TabPanel sx={{ p: 0 }} value={'1'}><ClassPost posts={posts} course={id} lecturer={lecturer} isFposts={isFposts} /></TabPanel>
                     <TabPanel sx={{ p: 0 }} value={'2'}><People course={id} /></TabPanel>
-                    <TabPanel sx={{ p: 0 }} value={'3'}><Groups groups={groups} empty={empty} course={id} clazz={clazz} lecturer={lecturer} /></TabPanel>
+                    <TabPanel sx={{ p: 0 }} value={'3'}><Groups isGroup={isGroup} groups={groups} empty={empty} course={id} clazz={clazz} lecturer={lecturer} /></TabPanel>
                     <TabPanel sx={{ p: 0 }} value={'4'}><LecturerResources resources={resources} course={course} empty={emptyRes} /></TabPanel>
-                    <TabPanel sx={{ p: 0 }} value={'5'}><Gradebook course={id} /></TabPanel>
+                    <TabPanel sx={{ p: 0 }} value={'5'}><Gradebook isResources={isResources} course={id} /></TabPanel>
                 </TabContext>
             </div>
         </div>

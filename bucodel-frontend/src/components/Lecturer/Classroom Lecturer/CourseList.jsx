@@ -1,16 +1,16 @@
 import React from 'react'
 import './css/courseList.css'
-import { FaRegUserCircle } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { Skcourse } from '../../Skeleton Loader/dasboardMetrics';
 
 const CourseList = ({ courses, isCourses }) => {
-    return (
-        <div className="courseList">
+    return (<>
+        {isCourses ? <Skcourse /> : <div className="courseList">
             {courses.map((p) => (
                 <CourseCard course={p} key={p._id} isCourses={isCourses} />
             ))}
-        </div>
+        </div>}
+    </>
     )
 }
 
@@ -26,7 +26,6 @@ const CourseCard = ({ course, isCourses }) => {
                         </div>
                         <div className="courseLecturer">
                             <div className='lectDet'>
-                                <FaRegUserCircle className='icon2' />
                                 <h3>{course.lecturer[0].name}</h3>
                             </div>
                             <button disabled="disabled">{course.unit} unit</button>
