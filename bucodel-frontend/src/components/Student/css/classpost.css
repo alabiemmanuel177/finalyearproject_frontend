@@ -38,9 +38,12 @@
   .mxH2 {
     max-height: 470px !important;
   }
+  .postContainer {
+    max-height: 449px;
+  }
 }
 
-.titleHolder{
+.titleHolder {
   width: 500px !important;
 }
 
@@ -114,8 +117,6 @@
   display: flex;
   flex-direction: row;
 }
-
-
 
 .postInfo h3 {
   font-size: 16px;

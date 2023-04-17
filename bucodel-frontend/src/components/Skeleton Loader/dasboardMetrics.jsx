@@ -79,10 +79,11 @@ export const Skcourse = () => {
 export const SkclassTitle = () => {
     return (
         <div className="skclassTitle">
-            <div className="skclassTitleh3"></div>
             <div className='flexrow'>
                 <div className="skclassTitleh5"></div>
             </div>
+            <div className="skclassTitleh3"></div>
+
         </div>
     )
 }
