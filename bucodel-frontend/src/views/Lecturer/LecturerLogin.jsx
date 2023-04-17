@@ -5,15 +5,18 @@ import { NavLink } from 'react-router-dom';
 import { lecturerContext } from '../../context/Context';
 import axios from 'axios';
 import config from "../../config";
+import { InfinitySpin } from 'react-loader-spinner';
 
 const LecturerLogin = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const { dispatch, isFetching } = useContext(lecturerContext);
   const [error, setError] = useState(false)
+  const [isLoading, setIsLoading] = useState(false); // Add isLoading state
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true); // Set isLoading to true when submitting
     dispatch({ type: "LOGIN_START" });
     try {
       const res = await axios.post(`${config.baseURL}/lecturer/login`, {
@@ -25,6 +28,7 @@ const LecturerLogin = () => {
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE" });
       setError(err.response.data.message);
+      setIsLoading(false); // Set isLoading to false when submitting
     }
   };
   return (
@@ -56,8 +60,8 @@ const LecturerLogin = () => {
             <NavLink to='/lecturerreset' style={{ textDecoration: 'none' }}>
               <h4>Forgot Password?</h4>
             </NavLink>
-            <button type='submit' disabled={isFetching}>Log In</button>
-            {error && <p className="error">{error}</p>}
+            <button type='submit' style={{ alignItems: "center", display: "flex", justifyContent: "center" }} disabled={isFetching}>{isLoading ? <InfinitySpin width='80' color='white' /> : "Log In"}</button>
+            {error && <p className="error">{"Wrong Credential"}</p>}
           </form>
         </div>
       </div>

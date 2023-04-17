@@ -6,15 +6,18 @@ import { studentContext } from "../../context/Context";
 import { useContext, useRef } from "react";
 import axios from "axios";
 import config from "../../config";
+import { InfinitySpin } from 'react-loader-spinner';
 
 export const LoginForm = () => {
   const matricnoRef = useRef();
   const passwordRef = useRef();
   const { dispatch, isFetching } = useContext(studentContext);
   const [error, setError] = useState(false)
+  const [isLoading, setIsLoading] = useState(false); // Add isLoading state
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true); // Set isLoading to true when submitting
     dispatch({ type: "LOGIN_START" });
     try {
       const res = await axios.post(`${config.baseURL}/student/login`, {
@@ -26,6 +29,7 @@ export const LoginForm = () => {
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE" });
       setError(err.response.data.message);
+      setIsLoading(false); // Set isLoading to false when submitting
     }
   };
 
@@ -56,8 +60,7 @@ export const LoginForm = () => {
         </div>
 
         <button type="submit" className="btn btn-primary loginBtn" disabled={isFetching}>
-          Login
-        </button>
+          {isLoading ? <InfinitySpin width='80' color='white' /> : "Log In"}        </button>
         {error && <p className="error">{error}</p>}
       </form>
     </div>

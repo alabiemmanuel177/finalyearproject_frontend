@@ -14,7 +14,6 @@ export const Login = () => {
         <div className="login_svg-1">
           <img
             src="https://res.cloudinary.com/manlikeemma/image/upload/v1664703033/BUCODEL/Group_1_gc0czt.svg"
-            alt=""
           />
         </div>
         <div className="logintext_container">
@@ -23,7 +22,6 @@ export const Login = () => {
             Study and earn a degree in Babcock <br />
             University through its
             <span>
-              {" "}
               Center for Open <br />
               Distance and E-Learning(E-tech/ <br />
               BUCODeL)

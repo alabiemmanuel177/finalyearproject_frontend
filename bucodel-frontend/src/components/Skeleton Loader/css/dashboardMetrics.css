@@ -63,7 +63,7 @@
 }
 .skcourse {
   margin-right: 15px;
-  margin-top:20px;
+  margin-top: 20px;
   margin-bottom: 40px;
   border-radius: 8px;
   width: 240px;
@@ -91,7 +91,7 @@
   animation: loader-animation 1s infinite ease-in-out;
 }
 .skclassTitleh5 {
-  margin-top: 20px;
+  margin-bottom: 10px;
   width: 140px;
   height: 20px;
   background: #f0f0f0;
