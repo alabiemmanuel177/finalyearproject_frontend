@@ -29,7 +29,6 @@ function Groups({ group, empty, leader, student, isGroup }) {
 
     const shouldRenderSkeletons = isGroupPost || isGroup;
 
-
     return (
         <> {shouldRenderSkeletons ? <SkgroupCont /> : <>{empty ? (
             <div style={{ height: '', overflow: 'hidden auto', display: 'grid', gridTemplateColumns: '70% 30%', padding: '20px' }}>

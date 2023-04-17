@@ -36,10 +36,12 @@ export default function LecturerDoassignment({ lecturer }) {
     };
 
     const [assignment, setAssignment] = useState([])
+    const [isAssignment, setIsAssignment] = useState(true)
     useEffect(() => {
         const fetchAssignments = async () => {
             const res = await axios.get(`${config.baseURL}/assignment/${id}`);
             setAssignment(res.data.assignment);
+            setIsAssignment(false)
         };
         fetchAssignments();
     }, [id]);

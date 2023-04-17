@@ -8,115 +8,132 @@ import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { Avatar, Button } from '@mui/material';
 import NewNotice from '../../../components/Lecturer/modal/NewNotice';
+import { SkdasboardContentBody, SkdashboardMetrics, SkdashboardNotice, SkddashboardAssignment } from '../../../components/Skeleton Loader/dasboardMetrics';
 
 const Dashboard = ({ lecturer }) => {
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true);
 
   const [courseCount, setCourseCount] = useState("");
+  const [isCCFetching, setIsCCFetching] = useState(true);
   useEffect(() => {
     const fetchCourseCount = async () => {
       const res = await axios.get(`${config.baseURL}/lecturer/${lecturer._id}/count-courses`);
-      setCourseCount(res.data);
+      setCourseCount(res.data)
+      setIsCCFetching(false)
+        ;
     };
     fetchCourseCount();
   });
 
   const [assignmentCount, setAssignmentCount] = useState("");
+  const [isAssignmentCountFetching, setIsAssignmentCountFetching] = useState(true);
   useEffect(() => {
     const fetchAssignmentCount = async () => {
       const res = await axios.get(`${config.baseURL}/lecturer/${lecturer._id}/assignments/count`);
       setAssignmentCount(res.data.count);
+      setIsAssignmentCountFetching(false)
     };
     fetchAssignmentCount();
   });
 
   const [notices, setNotices] = useState([]);
+  const [isNotices, setIsNotices] = useState(true);
   useEffect(() => {
     const fetchNotices = async () => {
       const res = await axios.get(`${config.baseURL}/notice`);
       setNotices(res.data);
+      setIsNotices(false)
     };
     fetchNotices();
   });
 
   const [studentCount, setStudentCount] = useState("");
+  const [isStudentCount, setIsStudentCount] = useState(true);
   useEffect(() => {
     const fetchStudentCount = async () => {
       const res = await axios.get(`${config.baseURL}/lecturer/${lecturer._id}/students-count`);
       setStudentCount(res.data.studentCount);
+      setIsStudentCount(false)
     };
     fetchStudentCount();
   });
 
   const [assignedAssignments, setAssignedAssignments] = useState([])
+  const [isAssignedAssignments, setIsAssignedAssignments] = useState(true)
   useEffect(() => {
     const fetchAssignedAssignments = async () => {
       const res = await axios.get(`${config.baseURL}/lecturer/assignments/${lecturer._id}`);
       setAssignedAssignments(res.data);
+      setIsAssignedAssignments(false)
     };
     fetchAssignedAssignments();
   }, [lecturer._id]);
+
+  const shouldRenderSkeletons = isStudentCount || isCCFetching || isAssignmentCountFetching || isNotices || isAssignedAssignments;
 
   return (
     <div className="dashboard">
       <div className="dashboardBody">
         <div className="metricsbody">
           <div className="dashboardMetrics flexrow">
-            <div className="dashboardCourses w222h98">
-              <h4>Courses tutoring</h4>
-              <div className='flexrow sb'>
-                <h3>{courseCount.count}</h3>
-                <div className="hw40">
-                  <HiOutlineBookmarkAlt className='icon11' />
+            {shouldRenderSkeletons ? <SkdashboardMetrics /> :
+              <div className="dashboardCourses w222h98">
+                <h4>Courses tutoring</h4>
+                <div className='flexrow sb'>
+                  <h3>{courseCount.count}</h3>
+                  <div className="hw40">
+                    <HiOutlineBookmarkAlt className='icon11' />
+                  </div>
                 </div>
-              </div>
-
-            </div>
-            <div className="dashboardAssignments w222h98">
-              <h4>Assignments given</h4>
-              <div className='flexrow sb'>
-                <h3>{assignmentCount}</h3>
-                <div className="hw40">
-                  <HiOutlineDocumentText className='icon11' />
+              </div>}
+            {shouldRenderSkeletons ? <SkdashboardMetrics /> :
+              <div className="dashboardAssignments w222h98">
+                <h4>Assignments given</h4>
+                <div className='flexrow sb'>
+                  <h3>{assignmentCount}</h3>
+                  <div className="hw40">
+                    <HiOutlineDocumentText className='icon11' />
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div className="dashboardLevel w222h98">
-              <h4>Total students</h4>
-              <div className='flexrow sb'>
-                <h3>{studentCount}</h3>
-                <div className="hw40">
-                  <HiOutlineDocumentText className='icon11' />
+              </div>}
+            {shouldRenderSkeletons ? <SkdashboardMetrics /> :
+              <div className="dashboardLevel w222h98">
+                <h4>Total students</h4>
+                <div className='flexrow sb'>
+                  <h3>{studentCount}</h3>
+                  <div className="hw40">
+                    <HiOutlineDocumentText className='icon11' />
+                  </div>
                 </div>
-              </div>
-            </div>
+              </div>}
           </div>
         </div>
         <div className='dashboardContentBody'>
-          <div className="dashboardContent flexrow">
-            <img src="https://res.cloudinary.com/manlikeemma/image/upload/v1677670946/BUCODEL/undraw_reading_time_re_phf7_1_sboim1.svg" alt="" style={{ height: "200px" }} />
-            <div className="welcomeText flexColumn">
-              <h4>Hello {lecturer.name},</h4>
-              <h5>Welcome to our platform, where you can discover, learn, and achieve your academic goals. Let's get started</h5>
-            </div>
-          </div>
+          {isAssignmentCountFetching ? <SkdasboardContentBody /> :
+            <div className="dashboardContent flexrow">
+              <img src="https://res.cloudinary.com/manlikeemma/image/upload/v1677670946/BUCODEL/undraw_reading_time_re_phf7_1_sboim1.svg" alt="" style={{ height: "200px" }} />
+              <div className="welcomeText flexColumn">
+                <h4>Hello {lecturer.name},</h4>
+                <h5>Welcome to our platform, where you can discover, learn, and achieve your academic goals. Let's get started</h5>
+              </div>
+            </div>}
         </div>
         <div className="assnoticeblody">
           <div className="dashboardAssignmentNoticeBoard flexrow">
-            <div className="dashboardAssignment">
-              <div className='flexrow sb ac'>
-                <h4>Assignment</h4>
-                <Link to={'/lecturerassignment'}><h5 className='blue'>View all</h5></Link>
-              </div>
-              <div className="dashboardAssignmentContent">
-                {assignedAssignments.map((p) => (
-                  <Assignment assignedAssignment={p} key={p._id} />
-                ))}
-              </div>
-
-            </div>
-            <div className="dashboardNotice">
+            {shouldRenderSkeletons ? <SkddashboardAssignment /> :
+              <div className="dashboardAssignment">
+                <div className='flexrow sb ac'>
+                  <h4>Assignment</h4>
+                  <Link to={'/lecturerassignment'}><h5 className='blue'>View all</h5></Link>
+                </div>
+                <div className="dashboardAssignmentContent">
+                  {assignedAssignments.map((p) => (
+                    <Assignment assignedAssignment={p} key={p._id} />
+                  ))}
+                </div>
+              </div>}
+            {shouldRenderSkeletons ? <SkdashboardNotice /> : <div className="dashboardNotice">
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <h4>Notice</h4>
                 <Button
@@ -132,7 +149,7 @@ const Dashboard = ({ lecturer }) => {
                   <Notice notice={p} key={p._id} />
                 ))}
               </div>
-            </div>
+            </div>}
           </div>
         </div>
 

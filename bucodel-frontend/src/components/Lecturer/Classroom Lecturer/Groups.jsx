@@ -4,7 +4,7 @@ import "./css/group.css"
 import CommentProfilePicture from '../../ProfilePics/CommentProfilePicture';
 import LecturerGroup from './LecturerGroup';
 
-const Groups = ({ groups, empty, course, clazz, lecturer }) => {
+const Groups = ({ groups, empty, course, clazz, lecturer, isGroup }) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const [activeGroup, setActiveGroup] = React.useState();
@@ -19,7 +19,7 @@ const Groups = ({ groups, empty, course, clazz, lecturer }) => {
               <Group group={p} key={p._id} handleOpen={handleOpen} setActiveGroup={setActiveGroup} setActiveLeader={setActiveLeader} />
             ))
           }
-          </> : (<LecturerGroup activeGroup={activeGroup} leader={activeLeader} lecturer={lecturer} course={course} />)}
+          </> : (<LecturerGroup activeGroup={activeGroup} leader={activeLeader} lecturer={lecturer} course={course} isGroup={isGroup} />)}
         </div>
       ) : (<EmptyGroup course={course} clazz={clazz} />)}
     </div>

@@ -27,7 +27,6 @@ const Dashboard = ({ student }) => {
 
   const [assignmentCount, setAssignmentCount] = useState("");
   const [isAssignmentCountFetching, setIsAssignmentCountFetching] = useState(true);
-
   useEffect(() => {
     const fetchAssignmentCount = async () => {
       const res = await axios.get(`${config.baseURL}/class/classes/${student.class}/assignment-count`);
@@ -59,7 +58,7 @@ const Dashboard = ({ student }) => {
     fetchAssignedAssignments();
   }, [student._id]);
 
-  const shouldRenderSkeletons = isCCFetching || isAssignmentCountFetching || isNotices;
+  const shouldRenderSkeletons = isCCFetching || isAssignedAssignments || isAssignmentCountFetching || isNotices;
 
   return (
     <div className="dashboard">
@@ -122,7 +121,6 @@ const Dashboard = ({ student }) => {
                     <Assignment assignedAssignment={p} key={p._id} />
                   ))}
                 </div>
-
               </div>}
             {shouldRenderSkeletons ? <SkdashboardNotice /> : <div className="dashboardNotice">
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>

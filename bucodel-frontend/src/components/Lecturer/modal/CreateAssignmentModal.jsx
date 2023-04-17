@@ -27,8 +27,9 @@ function CreateAssignmentModal({ open, setOpen, lecturer }) {
     const [grade, setGrade] = useState()
     const [date, setDate] = useState("")
     const [time, setTime] = useState("")
-
+    const [isLoading, setIsLoading] = useState(false); // Add isLoading state
     const handleSubmit = async (e) => {
+        setIsLoading(true); // Set isLoading to true when submitting
         e.preventDefault();
         const timeValue = time || "00:00";
         const combinedDateTime = new Date(`${date}T${timeValue}`);
@@ -118,7 +119,7 @@ function CreateAssignmentModal({ open, setOpen, lecturer }) {
                         </div>
                         <div className='assign-bottom-btn'>
                             <Button onClick={handleClose} className='assign-main-btn' sx={{ textTransform: 'none' }} variant='outlined'>Cancel</Button>
-                            <Button className='assign-main-btn' sx={{ textTransform: 'none' }} variant='contained' onClick={handleSubmit}>Post</Button>
+                            <Button className='assign-main-btn' sx={{ textTransform: 'none' }} disabled={isLoading} variant='contained' onClick={handleSubmit}>{isLoading ? 'Posting...' : 'Post'}</Button>
                         </div>
                     </div>
                 </div>

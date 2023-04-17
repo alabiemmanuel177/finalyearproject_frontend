@@ -12,9 +12,7 @@ function CreateResourceModal({ open, setOpen }) {
     const [files, setFiles] = useState([]);
     const [selectedFileNames, setSelectedFileNames] = useState([]);
     let { id } = useParams();
-
-
-
+    const [isLoading, setIsLoading] = useState(false); // Add isLoading state
     const handleFileChange = (event) => {
         setFiles([...files, ...event.target.files]);
         const fileNames = Array.from(event.target.files).map((file) => file.name);
@@ -25,9 +23,10 @@ function CreateResourceModal({ open, setOpen }) {
         document.querySelector('input[type="file"]').click();
     };
 
-    const [ setError] = useState(false)
+    const [setError] = useState(false)
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true); // Set isLoading to true when submitting
         try {
             const formData = new FormData();
             for (let i = 0; i < files.length; i++) {
@@ -110,7 +109,7 @@ function CreateResourceModal({ open, setOpen }) {
                         </div>
                         <div className='assign-bottom-btn'>
                             <Button onClick={() => setOpen(false)} className='assign-main-btn' sx={{ textTransform: 'none' }} variant='outlined'>Cancel</Button>
-                            <Button className='assign-main-btn' sx={{ textTransform: 'none' }} variant='contained' onClick={handleSubmit}>Post</Button>
+                            <Button className='assign-main-btn' sx={{ textTransform: 'none' }} variant='contained' onClick={handleSubmit}>{isLoading ? 'Posting...' : 'Post'}</Button>
                         </div>
                     </div>
                 </div>

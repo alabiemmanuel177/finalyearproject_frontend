@@ -42,11 +42,10 @@ function EditAssignmentModal({ open, setOpen, lecturer, assignment }) {
         setDate(Adate);
         setTime(Atime);
     }, [assignment]);
-
-
-
+    const [isLoading, setIsLoading] = useState(false); // Add isLoading state
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true); // Set isLoading to true when submitting
         const timeValue = time || "00:00";
         const combinedDateTime = new Date(`${date}T${timeValue}`);
         if (isNaN(combinedDateTime.getTime())) {
@@ -136,7 +135,7 @@ function EditAssignmentModal({ open, setOpen, lecturer, assignment }) {
                         </div>
                         <div className='assign-bottom-btn'>
                             <Button onClick={handleClose} className='assign-main-btn' sx={{ textTransform: 'none' }} variant='outlined'>Cancel</Button>
-                            <Button className='assign-main-btn' sx={{ textTransform: 'none' }} variant='contained' onClick={handleSubmit}>Edit</Button>
+                            <Button className='assign-main-btn' disabled={isLoading} sx={{ textTransform: 'none' }} variant='contained' onClick={handleSubmit}>{isLoading ? 'Editing...' : 'Edit'}</Button>
                         </div>
                     </div>
                 </div>

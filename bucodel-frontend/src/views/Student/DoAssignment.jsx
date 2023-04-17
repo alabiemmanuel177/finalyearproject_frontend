@@ -26,11 +26,13 @@ const DoAssignment = ({ student }) => {
   let { id } = useParams();
 
   const [assignment, setAssignment] = useState(null)
+  const [isAssignment, setIsAssignment] = useState(true)
   const [submitted, setSubmitted] = useState(true)
   useEffect(() => {
     const fetchAssignment = async () => {
       const res = await axios.get(`${config.baseURL}/assignment/${id}/${student._id}`);
       setAssignment(res.data)
+      setIsAssignment(false)
       setformattedDate(moment(res.data.dueDate).format("Do MMM, h:mm a"))
       if (!res.data.answer) {
         setSubmitted(false)

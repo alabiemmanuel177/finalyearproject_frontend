@@ -4,7 +4,6 @@ import {
     useState
 } from "react";
 import AssignmentList from '../../../components/Student/Classroom Student/AssignmentList';
-import MissingList from '../../../components/Student/Classroom Student/MissingList';
 import MissedList from '../../../components/Student/Classroom Student/MissedList';
 import DoneList from '../../../components/Student/Classroom Student/DoneList';
 import axios from 'axios';
@@ -30,7 +29,6 @@ socket.on('ASSIGNMENT_DELETED', (message) => {
 });
 
 const Assignment = ({ student }) => {
-
     const [value, setValue] = useState(localStorage.getItem('saactiveTab') || '1'); // Initialize the active tab value from localStorage, or default to '1'
 
     const handleChange = (event, newValue) => {
@@ -60,7 +58,7 @@ const Assignment = ({ student }) => {
             const res = await axios.get(`${config.baseURL}/student/assignments/missed/${student._id}`);
             setMissedAssignments(res.data);
             setIsMissedAssignments(false)
-            if (missedAssignments.length == 0) {
+            if (missedAssignments.length === 0) {
                 setEmpty1(true)
             }
         };

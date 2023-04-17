@@ -29,9 +29,11 @@ export default function Sub({ submissions, assignment }) {
     const handleGradeChange = (e) => {
         setGrade(e.target.value);
     };
+    const [isLoading, setIsLoading] = useState(false); // Add isLoading state
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true); // Set isLoading to true when submitting
         try {
             const res = await axios.post(`${config.baseURL}/assignment/${answer}`, {
                 grade
@@ -67,7 +69,7 @@ export default function Sub({ submissions, assignment }) {
                         <div className='sub-content-head'>
                             <input type={"text"} value={grade} style={{ width: "30px", marginRight: "5px" }} className='sub-content-head-mark' onChange={handleGradeChange} />
                             <h6 className='sub-content-head-mark'> /{assignment.grade}</h6>
-                            <Button onClick={handleSubmit} sx={{ p: '3px 8px', textTransform: 'none', fontWeight: 'bold' }} style={{ marginLeft: "50px" }} variant='contained' >Post</Button>
+                            <Button onClick={handleSubmit} sx={{ p: '3px 8px', textTransform: 'none', fontWeight: 'bold' }} style={{ marginLeft: "50px" }} disabled={isLoading} variant='contained' >{isLoading ? 'Creating...' : 'Create'}</Button>
 
                         </div>
                     )}

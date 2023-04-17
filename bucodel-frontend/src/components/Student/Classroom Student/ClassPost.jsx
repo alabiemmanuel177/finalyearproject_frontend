@@ -38,9 +38,10 @@ socket.on('CLASSPOST_DELETED', (message) => {
 
 const ClassPost = ({ posts, course, student, isFposts }) => {
     const [content, setContent] = useState("");
-
+    const [isLoading, setIsLoading] = useState(false); // Add isLoading state
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true); // Set isLoading to true when submitting
         try {
             const res = await axios.post(`${config.baseURL}/classpost/`, {
                 content,
@@ -73,7 +74,7 @@ const ClassPost = ({ posts, course, student, isFposts }) => {
                         placeholder='Post a message to your class'
                         onChange={(e) => setContent(e.target.value)}>
                     </input>
-                    <button onClick={handleSubmit}>Post</button>
+                    <button onClick={handleSubmit} disabled={isLoading}>{isLoading ? 'Posting...' : 'Post'}</button>
                 </div>}
                 {isFposts ? <><SkpostCont />
                     <SkpostCont /></> : <div className="postContainer">
@@ -93,10 +94,12 @@ export const ExistingPost = ({ post, student }) => {
     const formattedDate = moment(post.content.createdAt).format("Do MMM, h:mm a");
 
     const [comments, setComments] = useState([])
+    const [isComments, setIsComments] = useState(true)
     useEffect(() => {
         const fetchComments = async () => {
             const res = await axios.get(`${config.baseURL}/classpost/${post.content._id}/comments`);
             setComments(res.data);
+            setIsComments(false)
         };
         fetchComments();
     }, [post.content._id]);

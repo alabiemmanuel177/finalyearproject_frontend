@@ -25,7 +25,6 @@ socket.on('ASSIGNMENT_DELETED', (message) => {
   window.location.reload();
 });
 
-
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -52,7 +51,6 @@ TabPanel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
@@ -64,18 +62,23 @@ export default function LecturerAssignments({ lecturer }) {
   const [value, setValue] = useState(0)
   const [open, setOpen] = useState(false)
 
-
   const handleOpen = () => setOpen(true);
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }
 
+  const [empty, setEmpty] = useState(false);
   const [assignments, setAssignments] = useState([])
+  const [isAssignments, setIsAssignments] = useState(true)
   useEffect(() => {
     const fetchAssignments = async () => {
       const res = await axios.get(`${config.baseURL}/lecturer/assignments/${lecturer._id}`);
       setAssignments(res.data);
+      setIsAssignments(false)
+      if (!assignments) {
+        setEmpty(true)
+      }
     };
     fetchAssignments();
   }, [lecturer]);
@@ -91,11 +94,10 @@ export default function LecturerAssignments({ lecturer }) {
           <Tab sx={{ marginLeft: '25px', fontSize: '1.1rem', fontWeight: 'bold', textTransform: 'none', color: 'black' }} label={"Assigned"} {...a11yProps(0)} />
         </Tabs>
         <TabPanel value={value} index={0}>
-          <Assignment assignments={assignments} />
+          <Assignment assignments={assignments} empty={empty} isAssignments={isAssignments} />
         </TabPanel>
       </div>
       <CreateAssignmentModal open={open} setOpen={setOpen} lecturer={lecturer._id} />
     </div>
   )
-
 }
