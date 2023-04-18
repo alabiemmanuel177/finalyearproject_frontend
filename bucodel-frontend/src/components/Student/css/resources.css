@@ -12,13 +12,17 @@
   position: relative;
   overflow-y: scroll ;
 }
-.mxH570{
-  max-height: 560px !important;
-}
 
 @media screen and (max-width:1920px) {
   .mxH570{
     max-height: 740px ;
+  }
+  
+}
+
+@media screen and (max-width:1440px) {
+  .mxH570{
+    max-height: 550px ;
   }
   
 }

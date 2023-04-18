@@ -69,7 +69,7 @@ export default function Sub({ submissions, assignment }) {
                         <div className='sub-content-head'>
                             <input type={"text"} value={grade} style={{ width: "30px", marginRight: "5px" }} className='sub-content-head-mark' onChange={handleGradeChange} />
                             <h6 className='sub-content-head-mark'> /{assignment.grade}</h6>
-                            <Button onClick={handleSubmit} sx={{ p: '3px 8px', textTransform: 'none', fontWeight: 'bold' }} style={{ marginLeft: "50px" }} disabled={isLoading} variant='contained' >{isLoading ? 'Creating...' : 'Create'}</Button>
+                            <Button onClick={handleSubmit} sx={{ p: '3px 8px', textTransform: 'none', fontWeight: 'bold' }} style={{ marginLeft: "50px" }} disabled={isLoading} variant='contained' >{isLoading ? 'Grading...' : 'Grade'}</Button>
 
                         </div>
                     )}
